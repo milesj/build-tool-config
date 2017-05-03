@@ -11,9 +11,10 @@
     "jest"
   ],
   "bin": {
-    "build": "./bin/build.js",
-    "lint": "./bin/lint.js",
-    "test": "./bin/test.js"
+    "build-lib": "./bin/build.js",
+    "run-linter": "./bin/lint.js",
+    "run-tests": "./bin/test.js",
+    "type-check": "./bin/flow.js"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
+    "flow-bin": "^0.45.0",
     "jest": "^19.0.2"
   }
 }
