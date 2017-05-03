@@ -1,2 +1,43 @@
 # build-tool-config
-Build tool configuration files for easy re-use.
+
+I got tired of duplicating build tool configuration files over and over again between projects,
+so I built this repository to house them.
+
+## Install
+
+```
+yarn add @milesj/build-tool-config
+```
+
+## Usage
+
+This library provides binaries that can be consumed per project, they are.
+
+* `build-lib` - Build the library using Babel.
+* `run-linter` - Lint files using ESLint.
+* `run-tests` - Run unit tests using Jest.
+* `type-check` - Statically analyze and type check files using Flowtype (in progress).
+
+Simply add them as NPM/Yarn scripts.
+
+```json
+"scripts": {
+  "build": "build-lib ./src -d ./lib",
+  "lint": "run-linter ./src ./tests",
+  "test": "run-tests",
+  "flow": "type-check",
+}
+```
+
+> CLI options are passed through.
+
+### Babel
+
+Babel doesn't allow custom `.babelrc` paths, so to work around this,
+add the following to `package.json`.
+
+```json
+"babel": {
+  "extends": "./node_modules/@milesj/build-tool-config/.babelrc"
+}
+```

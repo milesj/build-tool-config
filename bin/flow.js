@@ -1,7 +1,4 @@
 #! /usr/bin/env node
-process.argv.push(
-  '--color',
-  'check'
-);
+process.argv.push('check');
 
 require('flow-bin/cli');
