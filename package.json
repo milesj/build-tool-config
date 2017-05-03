@@ -1,5 +1,5 @@
 {
-  "name": "build-tool-config",
+  "name": "@milesj/build-tool-config",
   "version": "0.0.0",
   "description": "Build tool configuration files for easy re-use.",
   "keywords": [
@@ -11,9 +11,9 @@
     "jest"
   ],
   "bin": {
-    "dev-build": "./bin/build.js",
-    "dev-lint": "./bin/lint.js",
-    "dev-test": "./bin/test.js"
+    "build": "./bin/build.js",
+    "lint": "./bin/lint.js",
+    "test": "./bin/test.js"
   },
   "repository": {
     "type": "git",
