@@ -1,0 +1,31 @@
+{
+  "name": "build-tool-config",
+  "version": "0.0.0",
+  "description": "Build tool configuration files for easy re-use.",
+  "keywords": [
+    "build",
+    "tool",
+    "config",
+    "babel",
+    "eslint",
+    "jest"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milesj/build-tool-config.git"
+  },
+  "author": {
+    "name": "Miles Johnson",
+    "url": "http://milesj.me"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "babel-eslint": "^7.2.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-flowtype": "^2.32.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0"
+  }
+}
