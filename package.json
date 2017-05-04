@@ -15,6 +15,7 @@
     "build-lib": "./bin/build.js",
     "run-linter": "./bin/lint.js",
     "run-tests": "./bin/test.js",
+    "sync-configs": "./bin/sync.js",
     "type-check": "./bin/flow.js"
   },
   "repository": {
