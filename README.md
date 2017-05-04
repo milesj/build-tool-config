@@ -38,6 +38,8 @@ add the following to `package.json`.
 
 ```json
 "babel": {
-  "extends": "./node_modules/@milesj/build-tool-config/.babelrc"
+  "extends": "./node_modules/@milesj/build-tool-config/babel.json"
 }
 ```
+
+> Use `babel.node.json` when building a Node.js specific library.
