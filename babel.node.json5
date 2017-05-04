@@ -1,0 +1,14 @@
+{
+  babelrc: false,
+  comments: false,
+  minified: true,
+  presets: [
+    ['env', {
+      targets: { node: 6.5 },
+      useBuiltIns: true,
+      debug: true,
+    }],
+    'stage-2',
+    'flow',
+  ],
+}

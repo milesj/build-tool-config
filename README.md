@@ -3,8 +3,8 @@
 I got tired of duplicating build tool configuration files over and over again between projects,
 so I built this repository to house them. The following tools are pre-configured:
 
-* [Babel](https://github.com/milesj/build-tool-config/blob/master/babel.json)
-* [ESLint](https://github.com/milesj/build-tool-config/blob/master/eslint.js)
+* [Babel](https://github.com/milesj/build-tool-config/blob/master/babel.json5)
+* [ESLint](https://github.com/milesj/build-tool-config/blob/master/eslint.json5)
 * [Jest](https://github.com/milesj/build-tool-config/blob/master/jest.json)
 
 Plus configurations files that can be synced into each project (as they must exist in each project).
@@ -55,8 +55,8 @@ add the following to `package.json`.
 
 ```json
 "babel": {
-  "extends": "./node_modules/@milesj/build-tool-config/babel.json"
+  "extends": "./node_modules/@milesj/build-tool-config/babel.json5"
 }
 ```
 
-> Use `babel.node.json` when building a Node.js specific library.
+> Use `babel.node.json5` when building a Node.js specific library.
