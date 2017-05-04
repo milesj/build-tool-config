@@ -36,7 +36,11 @@ if (noClean) {
 
 // Automatically clean the target folder if defined
 if (target && !noClean) {
-  rimraf(path.join(process.cwd(), target));
+  rimraf.sync(path.join(process.cwd(), target), {}, function(error) {
+    if (error) {
+      console.log('Failed to clean target folder', target);
+    }
+  });
 }
 
 require('babel-cli/bin/babel');
