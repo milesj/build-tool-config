@@ -9,10 +9,10 @@ so I built this repository to house them. The following tools are pre-configured
 
 Plus configurations files that can be synced into each project (as they must exist in each project).
 
-* [Flow](https://github.com/milesj/build-tool-config/blob/master/res/.flowconfig)
-* [Git](https://github.com/milesj/build-tool-config/blob/master/res/.gitignore)
-* [NPM](https://github.com/milesj/build-tool-config/blob/master/res/.npmignore)
-* [Travis](https://github.com/milesj/build-tool-config/blob/master/res/.travis.yml)
+* [Flow](https://github.com/milesj/build-tool-config/blob/master/res/flowconfig)
+* [Git](https://github.com/milesj/build-tool-config/blob/master/res/gitignore)
+* [NPM](https://github.com/milesj/build-tool-config/blob/master/res/npmignore)
+* [Travis](https://github.com/milesj/build-tool-config/blob/master/res/travis.yml)
 
 ## Install
 
