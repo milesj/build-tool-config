@@ -30,9 +30,9 @@ node ./node_modules/.bin/sync-configs
 
 This library provides binaries that can be consumed per project, they are.
 
-* `build-lib` - Build the library using Babel.
-* `run-linter` - Lint files using ESLint.
-* `run-tests` - Run unit tests using Jest.
+* `build-lib` - Build the library using Babel. Will clean the target folder automatically.
+* `run-linter` - Lint files using ESLint. Will also ignore files automatically.
+* `run-tests` - Run unit tests using Jest. Also supports code coverage.
 * `type-check` - Statically analyze and type check files using Flowtype (in progress).
 
 Simply add them as NPM/Yarn scripts.
