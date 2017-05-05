@@ -35,12 +35,7 @@
     'no-constant-condition': 'error',
     'no-div-regex': 'error',
     'no-eq-null': 'error',
-    'no-extra-parens': ['error', 'all', {
-      conditionalAssign: true,
-      nestedBinaryExpressions: true,
-      returnAssign: false,
-      ignoreJSX: 'all',
-    }],
+    'no-extra-parens': 'off',
     'no-implicit-coercion': 'error',
     'no-invalid-this': 'error',
     'no-magic-numbers': ['error', {
@@ -95,8 +90,8 @@
     'flowtype/no-types-missing-file-annotation': 'error',
     'flowtype/no-weak-types': ['error', {
       any: true,
-      Object: false,
-      Function: true,
+      'Object': false,
+      'Function': true,
     }],
     'flowtype/object-type-delimiter': ['error', 'comma'],
     'flowtype/require-parameter-type': ['error', {
