@@ -27,7 +27,7 @@
     'no-console': 'off',
     'padded-blocks': 'off',
 
-    // Want to support, but disabled in Airbnb
+    // Want to support but disabled in Airbnb
     complexity: ['error', 11],
     'jsx-quotes': ['error', 'prefer-double'],
     'newline-before-return': 'error',
@@ -45,15 +45,20 @@
     }],
     'no-native-reassign': 'error',
     'no-negated-condition': 'error',
+    'no-unused-vars': ['error', {
+      vars: 'all',
+      args: 'none', // Required for flowtype
+    }],
     'no-useless-call': 'error',
     'prefer-destructuring': 'error',
     'prefer-promise-reject-errors': ['error', {
       allowEmptyReject: true,
     }],
-    'sort-imports': ['error', {
+    // Doesn't work with flowtype and doesn't support sorting by third-party packages
+    'sort-imports': ['off', {
       ignoreCase: false,
       ignoreMemberSort: false,
-      memberSyntaxSortOrder: ['single', 'multiple', 'all', 'none'],
+      memberSyntaxSortOrder: ['none', 'single', 'multiple', 'all'],
     }],
     'import/default': 'error',
     'import/named': 'error',

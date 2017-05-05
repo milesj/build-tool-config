@@ -3,8 +3,7 @@ const path = require('path');
 
 process.argv.push(
   '--color',
-  '--config=' + path.join(__dirname, '../eslint.json5'),
-  '--ignore-path=' + path.join(__dirname, '../eslintignore')
+  '--config=' + path.join(__dirname, '../eslint.json5')
 );
 
 require('eslint/bin/eslint');
