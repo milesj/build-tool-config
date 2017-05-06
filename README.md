@@ -17,7 +17,13 @@ Plus configurations files that can be synced into each project (as they must exi
 ## Install
 
 ```
-yarn add @milesj/build-tool-config
+yarn add @milesj/build-tool-config --dev
+```
+
+To compile Babel with its runtime, add the dependency per project (non-Node.js only).
+
+```
+yarn add babel-runtime
 ```
 
 To sync project required configuration files, like ignore files,
@@ -35,7 +41,7 @@ Add the following to `package.json` to extend the base configuration files.
 "babel": {
   "extends": "./node_modules/@milesj/build-tool-config/babel.json5"
 },
-"eslint": {
+"eslintConfig": {
   "extends": "./node_modules/@milesj/build-tool-config/eslint.json5"
 },
 "jest": {

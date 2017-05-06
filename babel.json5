@@ -7,7 +7,6 @@
     ['env', {
       targets: { ie: 11 },
       useBuiltIns: true,
-      debug: true,
     }],
     'stage-2',
     'react',
