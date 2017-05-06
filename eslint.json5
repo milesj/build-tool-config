@@ -28,7 +28,7 @@
     'padded-blocks': 'off',
 
     // Want to support but disabled in Airbnb
-    complexity: ['error', 11],
+    'complexity': ['error', 11],
     'jsx-quotes': ['error', 'prefer-double'],
     'newline-before-return': 'error',
     'no-compare-neg-zero': 'error',
@@ -64,7 +64,7 @@
     'import/named': 'error',
     'import/order': ['error', {
       groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-      // Doesn't work well with flowtype
+      // Doesn't work with flowtype
       // 'newlines-between': 'never',
     }],
     'react/forbid-foreign-prop-types': 'error',

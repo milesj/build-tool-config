@@ -1,9 +1,4 @@
 #! /usr/bin/env node
-const path = require('path');
-
-process.argv.push(
-  '--colors',
-  '--config=' + path.join(__dirname, '../jest.json')
-);
+process.argv.push('--colors');
 
 require('jest/bin/jest');

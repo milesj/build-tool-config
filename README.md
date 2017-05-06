@@ -20,11 +20,30 @@ Plus configurations files that can be synced into each project (as they must exi
 yarn add @milesj/build-tool-config
 ```
 
-To sync project required configuration files, run the following in the project root.
+To sync project required configuration files, like ignore files,
+run the following command in the project root.
 
 ```
 node ./node_modules/.bin/sync-configs
 ```
+
+## Setup
+
+Add the following to `package.json` to extend the base configuration files.
+
+```json
+"babel": {
+  "extends": "./node_modules/@milesj/build-tool-config/babel.json5"
+},
+"eslint": {
+  "extends": "./node_modules/@milesj/build-tool-config/eslint.json5"
+},
+"jest": {
+  "preset": "@milesj/build-tool-config"
+}
+```
+
+> Use `babel.node.json5` when building a Node.js specific library.
 
 ## Usage
 
@@ -47,16 +66,3 @@ Simply add them as NPM/Yarn scripts.
 ```
 
 > CLI options are passed through.
-
-### Babel
-
-Babel doesn't allow custom `.babelrc` paths, so to work around this,
-add the following to `package.json`.
-
-```json
-"babel": {
-  "extends": "./node_modules/@milesj/build-tool-config/babel.json5"
-}
-```
-
-> Use `babel.node.json5` when building a Node.js specific library.

@@ -16,7 +16,7 @@
     "run-linter": "./bin/lint.js",
     "run-tests": "./bin/test.js",
     "sync-configs": "./bin/sync.js",
-    "type-check": "./bin/flow.js"
+    "type-check": "./bin/check.js"
   },
   "repository": {
     "type": "git",
