@@ -2,7 +2,7 @@
   root: true,
   parser: 'babel-eslint',
   extends: ['airbnb'],
-  plugins: ['flowtype'],
+  plugins: ['flowtype', 'jest'],
   env: {
     browser: true,
     node: true,
@@ -67,6 +67,8 @@
       // Doesn't work with flowtype
       // 'newlines-between': 'never',
     }],
+    'jest/no-identical-title': 'error',
+    'jest/valid-expect': 'error',
     'react/forbid-foreign-prop-types': 'error',
     'react/jsx-handler-names': ['error', {
       eventHandlerPrefix: 'handle',
