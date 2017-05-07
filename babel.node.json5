@@ -1,13 +1,12 @@
 {
   babelrc: false,
   comments: false,
-  minified: true,
   presets: [
+    'flow',
+    'stage-2',
     ['env', {
       targets: { node: 6.5 },
       useBuiltIns: true,
     }],
-    'stage-2',
-    'flow',
   ],
 }
