@@ -24,9 +24,8 @@
   rules: {
     // Do not want to support
     'class-methods-use-this': 'off',
-    'no-console': 'off',
-    'no-extra-parens': 'off',
     'padded-blocks': 'off',
+    'import/no-extraneous-dependencies': 'off',
     'react/jsx-filename-extension': 'off',
 
     // Want to support but disabled in Airbnb
@@ -78,6 +77,7 @@
     'react/void-dom-elements-no-children': 'error',
 
     // Does not work with Flowtype
+    'no-extra-parens': 'off',
     'sort-imports': 'off',
     'import/order': 'off',
 
