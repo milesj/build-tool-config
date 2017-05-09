@@ -25,7 +25,9 @@
     // Do not want to support
     'class-methods-use-this': 'off',
     'no-console': 'off',
+    'no-extra-parens': 'off',
     'padded-blocks': 'off',
+    'react/jsx-filename-extension': 'off',
 
     // Want to support but disabled in Airbnb
     'complexity': ['error', 11],
@@ -35,7 +37,6 @@
     'no-constant-condition': 'error',
     'no-div-regex': 'error',
     'no-eq-null': 'error',
-    'no-extra-parens': 'off',
     'no-implicit-coercion': 'error',
     'no-invalid-this': 'error',
     'no-magic-numbers': ['error', {
@@ -54,19 +55,8 @@
     'prefer-promise-reject-errors': ['error', {
       allowEmptyReject: true,
     }],
-    // Doesn't work with flowtype and doesn't support sorting by third-party packages
-    'sort-imports': ['off', {
-      ignoreCase: false,
-      ignoreMemberSort: false,
-      memberSyntaxSortOrder: ['none', 'single', 'multiple', 'all'],
-    }],
     'import/default': 'error',
     'import/named': 'error',
-    'import/order': ['error', {
-      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-      // Doesn't work with flowtype
-      // 'newlines-between': 'never',
-    }],
     'jest/no-identical-title': 'error',
     'jest/valid-expect': 'error',
     'react/forbid-foreign-prop-types': 'error',
@@ -86,6 +76,10 @@
       callbacksLast: true,
     }],
     'react/void-dom-elements-no-children': 'error',
+
+    // Does not work with Flowtype
+    'sort-imports': 'off',
+    'import/order': 'off',
 
     // Flowtype support
     'flowtype/boolean-style': 'error',
