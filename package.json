@@ -38,6 +38,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "copy": "^0.3.0",
+    "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-flowtype": "^2.32.0",
@@ -47,6 +48,9 @@
     "eslint-plugin-react": "^6.10.0",
     "flow-bin": "^0.45.0",
     "jest": "^20.0.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1"
   }
 }
