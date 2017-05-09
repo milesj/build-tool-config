@@ -2,13 +2,14 @@
   babelrc: false,
   comments: false,
   plugins: ['transform-runtime'],
+  // Order is important here
   presets: [
-    'flow',
-    'react',
-    'stage-2',
     ['env', {
       targets: { ie: 11 },
       useBuiltIns: true,
     }],
+    'stage-2',
+    'react',
+    'flow',
   ],
 }
