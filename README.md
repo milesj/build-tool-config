@@ -4,11 +4,21 @@ I got tired of duplicating build tool configuration files over and over again be
 so I built this repository to house them. The following tools are pre-configured:
 
 * [Babel](https://github.com/milesj/build-tool-config/blob/master/babel.json5)
+  * Configured with `env`, `stage-2`, `react`, and `flow` presets.
+  * Builds using the `babel-runtime`.
+  * Cleans the target folder automatically.
+  * Supports a Node.js specific configuration.
 * [ESLint](https://github.com/milesj/build-tool-config/blob/master/eslint.json5)
+  * Configured with `import`, `jest`, `react`, `jsx-a11y`, and `flowtype` plugins.
+  * Extends the `airbnb` configuration preset.
+  * Provides `.eslintignore` when syncing configs.
 * [Jest](https://github.com/milesj/build-tool-config/blob/master/jest.json)
+  * Supports React and Enzyme based unit tests.
+  * Provides code coverage scripts.
 
 Plus configurations files that can be synced into each project (as they must exist in each project).
 
+* [ESLint](https://github.com/milesj/build-tool-config/blob/master/res/eslintignore)
 * [Flow](https://github.com/milesj/build-tool-config/blob/master/res/flowconfig)
 * [Git](https://github.com/milesj/build-tool-config/blob/master/res/gitignore)
 * [NPM](https://github.com/milesj/build-tool-config/blob/master/res/npmignore)
@@ -55,16 +65,18 @@ Add the following to `package.json` to extend the base configuration files.
 
 This library provides binaries that can be consumed per project, they are.
 
-* `build-lib` - Build the library using Babel. Will clean the target folder automatically.
-* `run-linter` - Lint files using ESLint. Will also ignore files automatically.
-* `run-tests` - Run unit tests using Jest. Also supports code coverage.
-* `type-check` - Statically analyze and type check files using Flowtype (in progress).
+* `build-lib` - Builds the library using Babel.
+* `run-linter` - Lints files using ESLint.
+* `run-tests` - Runs unit tests using Jest.
+* `run-coverage` - Runs unit test code coverage using Jest.
+* `type-check` - Statically analyzes and type checks files using Flowtype.
 
 Simply add them as NPM/Yarn scripts.
 
 ```json
 "scripts": {
   "build": "build-lib ./src -d ./lib",
+  "cover": "run-coverage",
   "lint": "run-linter ./src ./tests",
   "test": "run-tests",
   "flow": "type-check",

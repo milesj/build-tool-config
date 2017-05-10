@@ -13,6 +13,7 @@
   ],
   "bin": {
     "build-lib": "./bin/build.js",
+    "run-coverage": "./bin/coverage.js",
     "run-linter": "./bin/lint.js",
     "run-tests": "./bin/test.js",
     "sync-configs": "./bin/sync.js",
