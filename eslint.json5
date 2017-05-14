@@ -37,7 +37,6 @@
     'no-div-regex': 'error',
     'no-eq-null': 'error',
     'no-implicit-coercion': 'error',
-    'no-invalid-this': 'error',
     'no-magic-numbers': ['error', {
       ignore: [-1, 0, 1],
       ignoreArrayIndexes: true,
@@ -80,6 +79,9 @@
     'no-extra-parens': 'off',
     'sort-imports': 'off',
     'import/order': 'off',
+
+    // Does not work with class properties spec
+    'no-invalid-this': 'off',
 
     // Flowtype support
     'flowtype/boolean-style': 'error',
