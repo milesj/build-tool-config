@@ -1,7 +1,7 @@
 {
   babelrc: false,
   comments: false,
-  // Order is important here
+  // Order is important!
   presets: [
     ['env', {
       targets: { node: 6.5 },

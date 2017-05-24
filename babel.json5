@@ -2,7 +2,7 @@
   babelrc: false,
   comments: false,
   plugins: ['transform-runtime'],
-  // Order is important here
+  // Order is important!
   presets: [
     ['env', {
       targets: { ie: 11 },

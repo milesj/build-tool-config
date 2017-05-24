@@ -15,6 +15,9 @@ so I built this repository to house them. The following tools are pre-configured
 * [Jest](https://github.com/milesj/build-tool-config/blob/master/jest.json)
   * Supports React and Enzyme based unit tests.
   * Provides code coverage scripts.
+* [Rollup](https://github.com/milesj/build-tool-config/blob/master/rollup.js)
+  * Configured with `commonjs`, `babel`, and `json` plugins.
+  * Customized output through the `--format` option.
 
 Plus configurations files that can be synced into each project (as they must exist in each project).
 
@@ -66,6 +69,7 @@ Add the following to `package.json` to extend the base configuration files.
 This library provides binaries that can be consumed per project, they are.
 
 * `build-lib` - Builds the library using Babel.
+* `bundle-lib` - Bundles the library into a single file using Rollup.
 * `run-linter` - Lints files using ESLint.
 * `run-tests` - Runs unit tests using Jest.
 * `run-coverage` - Runs unit test code coverage using Jest.
@@ -76,6 +80,7 @@ Simply add them as NPM/Yarn scripts.
 ```json
 "scripts": {
   "build": "build-lib ./src -d ./lib",
+  "bundle": "bundle-lib",
   "cover": "run-coverage",
   "lint": "run-linter ./src ./tests",
   "test": "run-tests",
