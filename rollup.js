@@ -4,6 +4,7 @@ import path from 'path';
 import babel from 'rollup-plugin-babel';
 import common from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
+import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
 
@@ -38,6 +39,9 @@ export default {
   sourceMap: (format === 'iife'),
   // Order is important!
   plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     resolve({
       extensions,
       jsnext: true,
