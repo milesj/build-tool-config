@@ -8,13 +8,13 @@ const dest = process.cwd();
 console.log('Copying files to', dest);
 
 // Copy config files to the current working directory, which *should* be the project root
-copy(path.join(__dirname, '../res/*'), dest, function (error, files) {
+copy(path.join(__dirname, '../res/*'), dest, (error, files) => {
   if (error) {
     console.error('Failed to copy files!');
   } else {
-    files.forEach(function (file) {
+    files.forEach((file) => {
       const oldName = path.basename(file.path);
-      const newName = '.' + oldName;
+      const newName = `.${oldName}`;
 
       // The original files are not prefixed with ".", as it causes git/npm issues
       // in this repository. So we need to rename them after they are copied.

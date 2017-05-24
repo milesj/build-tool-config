@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign, comma-dangle */
+
 import fs from 'fs';
 import JSON5 from 'json5';
 import path from 'path';
@@ -16,9 +18,9 @@ const format = process.argv.reduce((value, arg, index, args) => {
     return arg;
   } else if (value === false) {
     return (arg === '-f' || arg === '--format');
-  } else {
-    return value;
   }
+
+  return value;
 }, false) || 'cjs';
 
 // Modify Babel config a bit

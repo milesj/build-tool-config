@@ -6,7 +6,7 @@ var target;
 var noClean;
 var foundOutOption = false;
 
-process.argv.forEach(function (option, index) {
+process.argv.forEach((option, index) => {
   // Save our target
   if (foundOutOption) {
     target = option;
@@ -27,7 +27,7 @@ process.argv.forEach(function (option, index) {
   if (option === '--no-clean') {
     noClean = index;
   }
-})
+});
 
 // Remove the no-clean option before passing to babel
 if (noClean) {
@@ -36,7 +36,7 @@ if (noClean) {
 
 // Automatically clean the target folder if defined
 if (target && !noClean) {
-  rimraf.sync(path.join(process.cwd(), target), {}, function(error) {
+  rimraf.sync(path.join(process.cwd(), target), {}, (error) => {
     if (error) {
       console.log('Failed to clean target folder', target);
     }

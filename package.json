@@ -21,6 +21,9 @@
     "sync-configs": "./bin/sync.js",
     "type-check": "./bin/check.js"
   },
+  "scripts": {
+    "lint": "eslint ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/milesj/build-tool-config.git"
@@ -30,6 +33,9 @@
     "url": "http://milesj.me"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=6.5.0"
+  },
   "dependencies": {
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.0",
@@ -64,5 +70,12 @@
     "rollup-plugin-replace": "^1.1.1",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^3.2.2"
+  },
+  "eslintConfig": {
+    "extends": "./eslint.node.json5",
+    "rules": {
+      "no-var": "off",
+      "no-console": "off"
+    }
   }
 }
