@@ -4,7 +4,7 @@
   // Order is important!
   presets: [
     ['env', {
-      targets: { node: 6.5 },
+      targets: { node: '6.5' },
       useBuiltIns: true,
     }],
     'stage-2',
