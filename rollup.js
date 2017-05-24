@@ -5,21 +5,22 @@ import babel from 'rollup-plugin-babel';
 import common from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import resolve from 'rollup-plugin-node-resolve';
+import uglify from 'rollup-plugin-uglify';
 
 const extensions = ['.js', '.jsx', '.json'];
 
 // Extract the format from the command line
-const format = process.argv.reduce((value, item, index, args) => {
+const format = process.argv.reduce((value, arg, index, args) => {
   if (value === true) {
-    return args[index + 1];
+    return arg;
   } else if (value === false) {
-    return (item === '-f' || item === '--format');
+    return (arg === '-f' || arg === '--format');
   } else {
     return value;
   }
 }, false) || 'cjs';
 
-// Disable Babel modules
+// Modify Babel config a bit
 const babelConfig = JSON5.parse(fs.readFileSync(
   path.join(__dirname, `babel${(format === 'cjs') ? '.node' : ''}.json5`)
 ));
@@ -38,13 +39,17 @@ export default {
   // Order is important!
   plugins: [
     resolve({
-      jsnext: true,
       extensions,
+      jsnext: true,
     }),
     common({
       extensions,
     }),
     json(),
-    babel(babelConfig),
+    babel(Object.assign(babelConfig, {
+      exclude: 'node_modules/**',
+      runtimeHelpers: (babelConfig.plugins.indexOf('transform-runtime') >= 0),
+    })),
+    uglify(),
   ],
 };

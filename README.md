@@ -18,6 +18,7 @@ so I built this repository to house them. The following tools are pre-configured
 * [Rollup](https://github.com/milesj/build-tool-config/blob/master/rollup.js)
   * Configured with `commonjs`, `babel`, and `json` plugins.
   * Customized output through the `--format` option.
+  * Minifies output using Uglify.
 
 Plus configurations files that can be synced into each project (as they must exist in each project).
 
