@@ -2,7 +2,7 @@
   root: true,
   parser: 'babel-eslint',
   extends: ['airbnb/base'],
-  plugins: ['flowtype', 'jest'],
+  plugins: ['flowtype', 'jest', 'promise'],
   env: {
     node: true,
     jest: true,
@@ -14,17 +14,27 @@
   },
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 2017,
+    ecmaVersion: 2018,
     ecmaFeatures: {
       jsx: true,
       experimentalObjectRestSpread: true,
     },
   },
   rules: {
-    // Do not want to support
     'class-methods-use-this': 'off',
     'padded-blocks': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'jest/no-identical-title': 'error',
+    'jest/valid-expect': 'error',
+    'promise/always-return': 'error',
+    'promise/avoid-new': 'off',
+    'promise/catch-or-return': 'error',
+    'promise/no-callback-in-promise': 'error',
+    'promise/no-native': 'off',
+    'promise/no-nesting': 'off',
+    'promise/no-promise-in-callback': 'error',
+    'promise/no-return-wrap': 'error',
+    'promise/param-names': 'error',
 
     // Want to support but disabled in Airbnb
     'complexity': ['error', 11],
@@ -54,8 +64,6 @@
     }],
     'import/default': 'error',
     'import/named': 'error',
-    'jest/no-identical-title': 'error',
-    'jest/valid-expect': 'error',
 
     // Does not work with Flowtype
     'no-extra-parens': 'off',
