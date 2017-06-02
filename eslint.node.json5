@@ -2,7 +2,7 @@
   root: true,
   parser: 'babel-eslint',
   extends: ['airbnb/base'],
-  plugins: ['flowtype', 'jest', 'promise'],
+  plugins: ['flowtype', 'jest', 'promise', 'unicorn'],
   env: {
     node: true,
     jest: true,
@@ -35,6 +35,22 @@
     'promise/no-promise-in-callback': 'error',
     'promise/no-return-wrap': 'error',
     'promise/param-names': 'error',
+    'unicorn/catch-error-name': ['error', {
+      name: 'error',
+    }],
+    'unicorn/custom-error-definition': 'error',
+    'unicorn/escape-case': 'error',
+    'unicorn/explicit-length-check': 'error',
+    'unicorn/filename-case': 'off',
+    'unicorn/no-abusive-eslint-disable': 'off',
+    'unicorn/no-array-instanceof': 'error',
+    'unicorn/no-hex-escape': 'error',
+    'unicorn/no-new-buffer': 'error',
+    'unicorn/no-process-exit': 'error',
+    'unicorn/number-literal-case': 'error',
+    'unicorn/prefer-starts-ends-with': 'error',
+    'unicorn/prefer-type-error': 'error',
+    'unicorn/throw-new-error': 'error',
 
     // Want to support but disabled in Airbnb
     'complexity': ['error', 11],
