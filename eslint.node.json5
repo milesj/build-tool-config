@@ -53,10 +53,9 @@
     'unicorn/throw-new-error': 'error',
 
     // New and not in Airbnb yet
-    'import/no-anonymous-default-export': 'error',
-    'react/default-props-match-prop-types': 'error',
-    'react/jsx-closing-tag-location': 'error',
-    'react/no-redundant-should-component-update': 'error',
+    'import/no-anonymous-default-export': ['error', {
+      allowObject: true,
+    }],
 
     // Want to support but disabled in Airbnb
     'complexity': ['error', 11],
