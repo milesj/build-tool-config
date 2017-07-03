@@ -1,27 +1,21 @@
-/* eslint-disable no-param-reassign, comma-dangle */
+/* eslint-disable no-param-reassign, comma-dangle, no-magic-numbers, dot-notation */
 
 import fs from 'fs';
-import JSON5 from 'json5';
 import path from 'path';
+import JSON5 from 'json5';
 import babel from 'rollup-plugin-babel';
 import common from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
+import yargs from 'yargs-parser';
 
+const options = yargs(process.argv.slice(2));
 const extensions = ['.js', '.jsx', '.json'];
 
 // Extract the format from the command line
-const format = process.argv.reduce((value, arg, index, args) => {
-  if (value === true) {
-    return arg;
-  } else if (value === false) {
-    return (arg === '-f' || arg === '--format');
-  }
-
-  return value;
-}, false) || 'cjs';
+const format = options.f || options.format || 'cjs';
 
 // Modify Babel config a bit
 const babelConfig = JSON5.parse(fs.readFileSync(
@@ -34,6 +28,16 @@ babelConfig.presets.forEach((preset) => {
   }
 });
 
+// Determine constants to replace
+const replacements = {
+  __DEV__: "process.env.NODE_ENV !== 'production'",
+};
+
+if (process.env.NODE_ENV === 'production') {
+  replacements['__DEV__'] = true;
+  replacements['process.env.NODE_ENV'] = JSON.stringify('production');
+}
+
 export default {
   format,
   entry: './src/index.js',
@@ -41,9 +45,7 @@ export default {
   sourceMap: (format === 'iife'),
   // Order is important!
   plugins: [
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
-    }),
+    replace(replacements),
     resolve({
       extensions,
       jsnext: true,

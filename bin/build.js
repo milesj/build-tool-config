@@ -1,41 +1,17 @@
 #! /usr/bin/env node
+/* eslint-disable no-magic-numbers */
 const path = require('path');
 const rimraf = require('rimraf');
+const options = require('yargs-parser')(process.argv.slice(2));
 
-var target;
-var noClean;
-var foundOutOption = false;
+// Find the output target file or folder
+const target = options.o || options.d || options.outFile || options.outDir;
 
-process.argv.forEach((option, index) => {
-  // Save our target
-  if (foundOutOption) {
-    target = option;
-    foundOutOption = false;
-  }
-
-  // We found our target
-  if (
-    option === '-o' ||
-    option === '-d' ||
-    option === '--out-file' ||
-    option === '--out-dir'
-  ) {
-    foundOutOption = true;
-  }
-
-  // If we dont want to clean
-  if (option === '--no-clean') {
-    noClean = index;
-  }
-});
-
-// Remove the no-clean option before passing to babel
-if (noClean) {
-  process.argv.splice(noClean, 1);
-}
+// Support --no-clean options
+const clean = ('clean' in options) ? options.clean : true;
 
 // Automatically clean the target folder if defined
-if (target && !noClean) {
+if (target && clean) {
   rimraf.sync(path.join(process.cwd(), target), {}, (error) => {
     if (error) {
       console.log('Failed to clean target folder', target);
