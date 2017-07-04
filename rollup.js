@@ -28,9 +28,8 @@ babelConfig.presets.forEach((preset) => {
   }
 });
 
-babelConfig.plugins.push('external-helpers');
 babelConfig.exclude = 'node_modules/**';
-babelConfig.externalHelpers = true;
+babelConfig.runtimeHelpers = (babelConfig.plugins.indexOf('transform-runtime') >= 0);
 
 // Determine constants to replace
 const replacements = {
@@ -55,5 +54,8 @@ export default {
     resolve({ extensions }),
     common({ extensions }),
     uglify(),
+  ],
+  externals: [
+    'babel-runtime',
   ],
 };

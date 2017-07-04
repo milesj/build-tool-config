@@ -1,7 +1,12 @@
 {
   babelrc: false,
   comments: false,
-  plugins: ['transform-export-extensions'],
+  plugins: [
+    'transform-export-extensions',
+    ['transform-dev', {
+      evaluate: false,
+    }],
+  ],
   // Order is important!
   presets: [
     ['env', {
