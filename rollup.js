@@ -19,7 +19,7 @@ const format = options.f || options.format || 'cjs';
 
 // Modify Babel config a bit
 const babelConfig = JSON5.parse(fs.readFileSync(
-  path.join(__dirname, `babel${(format === 'cjs') ? '.node' : ''}.json5`)
+  path.join(__dirname, `babel${options.node ? '.node' : ''}.json5`)
 ));
 
 babelConfig.presets.forEach((preset) => {
@@ -28,13 +28,17 @@ babelConfig.presets.forEach((preset) => {
   }
 });
 
+babelConfig.plugins.push('external-helpers');
+babelConfig.exclude = 'node_modules/**';
+babelConfig.externalHelpers = true;
+
 // Determine constants to replace
 const replacements = {
   __DEV__: "process.env.NODE_ENV !== 'production'",
 };
 
 if (process.env.NODE_ENV === 'production') {
-  replacements['__DEV__'] = true;
+  replacements['__DEV__'] = JSON.stringify(true);
   replacements['process.env.NODE_ENV'] = JSON.stringify('production');
 }
 
@@ -45,19 +49,11 @@ export default {
   sourceMap: (format === 'iife'),
   // Order is important!
   plugins: [
-    replace(replacements),
-    resolve({
-      extensions,
-      jsnext: true,
-    }),
-    common({
-      extensions,
-    }),
     json(),
-    babel(Object.assign(babelConfig, {
-      exclude: 'node_modules/**',
-      runtimeHelpers: (babelConfig.plugins.indexOf('transform-runtime') >= 0),
-    })),
+    babel(babelConfig),
+    replace(replacements),
+    resolve({ extensions }),
+    common({ extensions }),
     uglify(),
   ],
 };
