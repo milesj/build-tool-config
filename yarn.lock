@@ -1584,7 +1584,7 @@ eslint-module-utils@^2.0.0:
     debug "2.2.0"
     pkg-dir "^1.0.0"
 
-eslint-plugin-flowtype@^2.34.1:
+eslint-plugin-flowtype@2.34.1:
   version "2.34.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.34.1.tgz#ea109175645b05d37baeac53b9b65066d79b9446"
   dependencies:
@@ -3772,16 +3772,17 @@ rollup-pluginutils@^2.0.1:
     estree-walker "^0.3.0"
     micromatch "^2.3.11"
 
-rollup-watch@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/rollup-watch/-/rollup-watch-4.0.0.tgz#309051b9403b9e5445c5746c9eba9a466951d39e"
+rollup-watch@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/rollup-watch/-/rollup-watch-4.3.1.tgz#5aa1eaeab787addf368905d102b39d6fc5ce4a8b"
   dependencies:
     chokidar "^1.7.0"
     require-relative "0.8.7"
+    rollup-pluginutils "^2.0.1"
 
-rollup@^0.43.0:
-  version "0.43.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.43.0.tgz#b36bdb75fa5e0823b6de8aee18ff7b5655520543"
+rollup@^0.45.2:
+  version "0.45.2"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.45.2.tgz#63a284c2b31234656f24e9e9717fabb6a7f0fa43"
   dependencies:
     source-map-support "^0.4.0"
 
