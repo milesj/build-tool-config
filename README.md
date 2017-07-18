@@ -12,6 +12,7 @@ so I built this repository to house them. The following tools are pre-configured
   * Configured with `import`, `jest`, `react`, `jsx-a11y`, `flowtype`, and `unicorn` plugins.
   * Extends the `airbnb` configuration preset.
   * Provides `.eslintignore` when syncing configs.
+  * Supports parallel tests with `esprint`.
 * [Jest](https://github.com/milesj/build-tool-config/blob/master/jest.json)
   * Supports React and Enzyme based unit tests.
   * Provides code coverage scripts.
@@ -66,8 +67,10 @@ node ./node_modules/.bin/init-package
 This library provides binaries that can be consumed per project, they are.
 
 * `build-lib` - Builds the library using Babel.
+  * Pass `--no-clean` to disable automatic target cleaning.
 * `bundle-lib` - Bundles the library into a single file using Rollup.
 * `run-linter` - Lints files using ESLint.
+  * Pass `--parallel` to run tests simultaneously.
 * `run-tests` - Runs unit tests using Jest.
 * `run-coverage` - Runs unit test code coverage using Jest.
 * `type-check` - Statically analyzes and type checks files using Flowtype.
