@@ -15,6 +15,7 @@
   "bin": {
     "build-lib": "./bin/build.js",
     "bundle-lib": "./bin/bundle.js",
+    "init-package": "./bin/init.js",
     "run-coverage": "./bin/coverage.js",
     "run-linter": "./bin/lint.js",
     "run-tests": "./bin/test.js",

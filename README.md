@@ -9,14 +9,14 @@ so I built this repository to house them. The following tools are pre-configured
   * Cleans the target folder automatically.
   * Supports a Node.js specific configuration.
 * [ESLint](https://github.com/milesj/build-tool-config/blob/master/eslint.json5)
-  * Configured with `import`, `jest`, `react`, `jsx-a11y`, and `flowtype` plugins.
+  * Configured with `import`, `jest`, `react`, `jsx-a11y`, `flowtype`, and `unicorn` plugins.
   * Extends the `airbnb` configuration preset.
   * Provides `.eslintignore` when syncing configs.
 * [Jest](https://github.com/milesj/build-tool-config/blob/master/jest.json)
   * Supports React and Enzyme based unit tests.
   * Provides code coverage scripts.
 * [Rollup](https://github.com/milesj/build-tool-config/blob/master/rollup.js)
-  * Configured with `commonjs`, `babel`, and `json` plugins.
+  * Configured with `commonjs`, `babel`, `json`, and `uglify` plugins.
   * Customized output through the `--format` option.
   * Minifies output using Uglify.
 
@@ -40,32 +40,28 @@ To compile Babel with its runtime, add the dependency per project (non-Node.js o
 yarn add babel-runtime
 ```
 
-To sync project required configuration files, like ignore files,
-run the following command in the project root.
+## Sync Configuration
+
+Some build tools require configuration files to be local to the project, which sucks.
+To get around this, we can easily sync them to each project, by running the following
+command in the project root.
 
 ```
 node ./node_modules/.bin/sync-configs
 ```
 
-## Setup
+## Init Package
 
-Add the following to `package.json` to extend the base configuration files.
+To make use of `babel`, `eslint`, and `jest`, we need to configure our `package.json` to
+extend from the presets. To do this, run the following command in the project root.
 
-```json
-"babel": {
-  "extends": "./node_modules/@milesj/build-tool-config/babel.json5"
-},
-"eslintConfig": {
-  "extends": "./node_modules/@milesj/build-tool-config/eslint.json5"
-},
-"jest": {
-  "preset": "@milesj/build-tool-config"
-}
+```
+node ./node_modules/.bin/init-package
 ```
 
-> Use `babel.node.json5` when building a Node.js specific library.
+> Pass `--node` to initialize a Node.js specific package.
 
-## Usage
+## Scripts Usage
 
 This library provides binaries that can be consumed per project, they are.
 
