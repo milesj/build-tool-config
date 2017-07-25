@@ -8,7 +8,6 @@ if (options.parallel) {
   process.argv.push('check');
 
   require('esprint/build/cli');
-
 } else {
   require('eslint/bin/eslint');
 }

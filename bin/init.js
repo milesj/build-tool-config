@@ -24,6 +24,12 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
     extends: `./node_modules/@milesj/build-tool-config/eslint${isNode ? '.node' : ''}.json5`,
   };
 
+  packageConfig.eslintIgnore = [
+    'lib/',
+    '*.min.js',
+    '*.map',
+  ];
+
   packageConfig.jest = {
     preset: '@milesj/build-tool-config',
   };

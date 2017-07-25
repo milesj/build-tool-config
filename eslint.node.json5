@@ -2,10 +2,9 @@
   root: true,
   parser: 'babel-eslint',
   extends: ['airbnb/base'],
-  plugins: ['flowtype', 'jest', 'promise', 'unicorn'],
+  plugins: ['flowtype', 'promise', 'unicorn'],
   env: {
     node: true,
-    jest: true,
   },
   globals: {
     __DEV__: true,
@@ -25,79 +24,11 @@
   },
   rules: {
     'class-methods-use-this': 'off',
-    'padded-blocks': 'off',
-    'import/no-extraneous-dependencies': 'off',
-    'jest/no-identical-title': 'error',
-    'jest/valid-expect': 'error',
-    'promise/always-return': 'error',
-    'promise/avoid-new': 'off',
-    'promise/catch-or-return': 'error',
-    'promise/no-callback-in-promise': 'error',
-    'promise/no-native': 'off',
-    'promise/no-nesting': 'off',
-    'promise/no-promise-in-callback': 'error',
-    'promise/no-return-wrap': 'error',
-    'promise/param-names': 'error',
-    'unicorn/catch-error-name': ['error', {
-      name: 'error',
+    'padded-blocks': ['error', {
+      blocks: 'never',
+      classes: 'never',
+      switches: 'never',
     }],
-    'unicorn/custom-error-definition': 'error',
-    'unicorn/escape-case': 'error',
-    'unicorn/explicit-length-check': 'error',
-    'unicorn/filename-case': 'off',
-    'unicorn/no-abusive-eslint-disable': 'off',
-    'unicorn/no-array-instanceof': 'error',
-    'unicorn/no-hex-escape': 'error',
-    'unicorn/no-new-buffer': 'error',
-    'unicorn/no-process-exit': 'error',
-    'unicorn/number-literal-case': 'error',
-    'unicorn/prefer-starts-ends-with': 'error',
-    'unicorn/prefer-type-error': 'error',
-    'unicorn/throw-new-error': 'error',
-
-    // New and not in Airbnb yet
-    'import/no-anonymous-default-export': ['error', {
-      allowObject: true,
-    }],
-
-    // Want to support but disabled in Airbnb
-    'complexity': ['error', 11],
-    'jsx-quotes': ['error', 'prefer-double'],
-    'newline-before-return': 'error',
-    'no-compare-neg-zero': 'error',
-    'no-constant-condition': 'error',
-    'no-div-regex': 'error',
-    'no-eq-null': 'error',
-    'no-implicit-coercion': 'error',
-    'no-magic-numbers': ['error', {
-      ignore: [-1, 0, 1],
-      ignoreArrayIndexes: true,
-      enforceConst: true,
-    }],
-    'no-native-reassign': 'error',
-    'no-negated-condition': 'error',
-    'no-unused-vars': ['error', {
-      vars: 'all',
-      args: 'none', // Required for flowtype
-      ignoreRestSiblings: true,
-    }],
-    'no-useless-call': 'error',
-    'prefer-destructuring': 'error',
-    'prefer-promise-reject-errors': ['error', {
-      allowEmptyReject: true,
-    }],
-    'import/default': 'error',
-    'import/named': 'error',
-
-    // Does not work with Flowtype
-    'no-extra-parens': 'off',
-    'sort-imports': 'off',
-    'import/order': 'off',
-
-    // Does not work with class properties spec
-    'no-invalid-this': 'off',
-
-    // Flowtype support
     'flowtype/boolean-style': 'error',
     'flowtype/define-flow-type': 'error',
     'flowtype/delimiter-dangle': ['error', 'always-multiline'],
@@ -131,5 +62,91 @@
     'flowtype/type-id-match': 'off',
     'flowtype/union-intersection-spacing': ['error', 'always'],
     'flowtype/use-flow-type': 'error',
+    'import/no-extraneous-dependencies': 'off',
+    'promise/always-return': 'error',
+    'promise/avoid-new': 'off',
+    'promise/catch-or-return': 'error',
+    'promise/no-callback-in-promise': 'error',
+    'promise/no-native': 'off',
+    'promise/no-nesting': 'off',
+    'promise/no-promise-in-callback': 'error',
+    'promise/no-return-wrap': 'error',
+    'promise/param-names': 'error',
+    'unicorn/catch-error-name': ['error', {
+      name: 'error',
+    }],
+    'unicorn/custom-error-definition': 'error',
+    'unicorn/escape-case': 'error',
+    'unicorn/explicit-length-check': 'error',
+    'unicorn/filename-case': 'off',
+    'unicorn/no-abusive-eslint-disable': 'off',
+    'unicorn/no-array-instanceof': 'error',
+    'unicorn/no-hex-escape': 'error',
+    'unicorn/no-new-buffer': 'error',
+    'unicorn/no-process-exit': 'error',
+    'unicorn/number-literal-case': 'error',
+    'unicorn/prefer-starts-ends-with': 'error',
+    'unicorn/prefer-type-error': 'error',
+    'unicorn/throw-new-error': 'error',
+
+    // New and not in Airbnb yet
+    'no-multi-spaces': ['error', {
+      ignoreEOLComments: true,
+    }],
+    'import/no-anonymous-default-export': ['error', {
+      allowObject: true,
+    }],
+
+    // Want to support but disabled in Airbnb
+    'complexity': ['error', 11],
+    'getter-return': 'error',
+    'jsx-quotes': ['error', 'prefer-double'],
+    'newline-before-return': 'error',
+    'no-compare-neg-zero': 'error',
+    'no-constant-condition': 'error',
+    'no-div-regex': 'error',
+    'no-eq-null': 'error',
+    'no-implicit-coercion': 'error',
+    'no-magic-numbers': ['error', {
+      ignore: [-1, 0, 1],
+      ignoreArrayIndexes: true,
+      enforceConst: true,
+    }],
+    'no-native-reassign': 'error',
+    'no-negated-condition': 'error',
+    'no-unused-vars': ['error', {
+      vars: 'all',
+      args: 'none', // Required for flowtype
+      ignoreRestSiblings: true,
+    }],
+    'no-useless-call': 'error',
+    'prefer-destructuring': 'error',
+    'prefer-promise-reject-errors': ['error', {
+      allowEmptyReject: true,
+    }],
+    'import/default': 'error',
+    'import/named': 'error',
+
+    // Does not work with Flowtype
+    'no-extra-parens': 'off',
+    'sort-imports': 'off',
+    'import/order': 'off',
+
+    // Does not work with class properties
+    'no-invalid-this': 'off',
   },
+  overrides: [
+    {
+      files: 'tests/**/*.test.js',
+      plugins: ['jest'],
+      env: {
+        jest: true,
+      },
+      rules: {
+        'no-magic-numbers': 'off',
+        'jest/no-identical-title': 'error',
+        'jest/valid-expect': 'error',
+      },
+    },
+  ],
 }
