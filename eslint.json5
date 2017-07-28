@@ -27,12 +27,4 @@
       callbacksLast: true,
     }],
   },
-  overrides: [
-    {
-      files: 'tests/**/*.test.js',
-      rules: {
-        'react/jsx-no-literals': 'off',
-      },
-    },
-  ],
 }

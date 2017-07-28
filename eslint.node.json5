@@ -116,7 +116,7 @@
     'no-negated-condition': 'error',
     'no-unused-vars': ['error', {
       vars: 'all',
-      args: 'none', // Required for flowtype
+      args: 'none', // Required for Flow
       ignoreRestSiblings: true,
     }],
     'no-useless-call': 'error',
@@ -127,7 +127,7 @@
     'import/default': 'error',
     'import/named': 'error',
 
-    // Does not work with Flowtype
+    // Does not work with Flow
     'no-extra-parens': 'off',
     'sort-imports': 'off',
     'import/order': 'off',
@@ -137,7 +137,7 @@
   },
   overrides: [
     {
-      files: 'tests/**/*.test.js',
+      files: ['tests/**/*.test.js'],
       plugins: ['jest'],
       env: {
         jest: true,
