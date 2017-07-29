@@ -26,7 +26,8 @@
   rules: {
     'class-methods-use-this': 'off',
     'padded-blocks': ['error', {
-      blocks: 'never',
+      // Dont apply either rule to blocks
+      // blocks: 'never',
       classes: 'never',
       switches: 'never',
     }],
