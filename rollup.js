@@ -15,9 +15,6 @@ const isProd = (process.env.NODE_ENV === 'production');
 const options = yargs(process.argv.slice(2));
 const extensions = ['.js', '.jsx', '.json'];
 
-// Extract the format from the command line
-const format = options.f || options.format || 'cjs';
-
 // Modify Babel config a bit
 const babelConfig = JSON5.parse(fs.readFileSync(
   path.join(__dirname, `babel${options.node ? '.node' : ''}.json5`)
@@ -38,10 +35,11 @@ const replacements = isProd ? {
 } : {};
 
 export default {
-  format,
-  entry: './src/index.js',
-  dest: './lib/bundle.js',
-  sourceMap: (format === 'iife'),
+  input: './src/index.js',
+  output: [
+    { file: './lib/bundle.js', format: 'cjs' },
+    { file: './lib/bundle.es.js', format: 'es' },
+  ],
   // Order is important!
   plugins: [
     json(),
