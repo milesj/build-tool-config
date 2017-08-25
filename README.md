@@ -75,7 +75,7 @@ This library provides binaries that can be consumed per project, they are.
 * `run-coverage` - Runs unit test code coverage using Jest.
 * `type-check` - Statically analyzes and type checks files using Flowtype.
 
-Simply add them as NPM/Yarn scripts.
+Simply add them as NPM/Yarn scripts, or run `init-package` mentioned previously.
 
 ```json
 "scripts": {
@@ -89,3 +89,41 @@ Simply add them as NPM/Yarn scripts.
 ```
 
 > CLI options are passed through.
+
+## Lerna Support
+
+Some projects require Lerna to manage multiple packages within the same repository.
+Lerna isn't available out of the box as the dependency is quite large, most projects don't need it,
+and it's just too complicated to get working correctly.
+
+So to support Lerna, please follow these instructions per project.
+
+```
+yarn add lerna --dev
+```
+
+Run the `init-package` command with a `lerna` flag.
+
+```
+node ./node_modules/.bin/init-package --lerna
+```
+
+Update `.travis.yml` to boostrap Lerna.
+
+```yaml
+before_script: yarn run bootstrap:slow
+```
+
+And remaining setup, like converting old Yarn scripts, or moving files to package folders.
+That should be it.
+
+### Configuring Packages
+
+To build packages using `lerna run`, each package must install this project as a dev
+dependency, while also configuring the Yarn `build` script, like so.
+
+```json
+"scripts": {
+  "build": "build-lib ./src -d ./lib",
+}
+```

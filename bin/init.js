@@ -5,7 +5,9 @@ const path = require('path');
 const options = require('yargs-parser')(process.argv.slice(2));
 
 const PACKAGE_PATH = path.join(process.cwd(), 'package.json');
+const LERNA_PATH = path.join(process.cwd(), 'lerna.json');
 const isNode = options.node || false;
+const lerna = options.lerna || false;
 
 fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
   if (error) {
@@ -16,10 +18,25 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
 
   const packageConfig = JSON.parse(data);
 
+  Object.assign(packageConfig.scripts, {
+    babel: 'build-lib ./src -d ./lib',
+    coverage: 'run-coverage',
+    eslint: 'run-linter ./src ./tests',
+    jest: 'run-tests',
+    flow: 'type-check',
+    posttest: 'yarn run flow',
+    postversion: 'yarn run babel',
+    pretest: 'yarn run eslint',
+    preversion: 'yarn test',
+    test: 'yarn run jest',
+  });
+
+  // Babel
   packageConfig.babel = {
     extends: `./node_modules/@milesj/build-tool-config/babel${isNode ? '.node' : ''}.json5`,
   };
 
+  // ESLint
   packageConfig.eslintConfig = {
     extends: `./node_modules/@milesj/build-tool-config/eslint${isNode ? '.node' : ''}.json5`,
   };
@@ -30,10 +47,21 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
     '*.map',
   ];
 
+  if (lerna) {
+    packageConfig.scripts.eslint += ' ./packages/*/{src,tests}';
+  }
+
+  // Jest
   packageConfig.jest = {
     preset: '@milesj/build-tool-config',
   };
 
+  if (lerna) {
+    packageConfig.jest.roots = ['./packages', './tests'];
+    packageConfig.jest.testRegex = './packages/([-a-z]+)?/tests/.*\\.test\\.js$';
+  }
+
+  // Node.js
   if (packageConfig.engines) {
     packageConfig.engines.node = '>=6.5.0';
   } else {
@@ -45,8 +73,44 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
   fs.writeFile(PACKAGE_PATH, JSON.stringify(packageConfig, null, 2), 'utf8', (writeError) => {
     if (writeError) {
       console.error('Failed to update package.json', writeError);
+      process.exit();
     } else {
       console.log('Updated package.json');
     }
   });
+
+  // Lerna
+  if (lerna) {
+    Object.assign(packageConfig.scripts, {
+      assemble: 'yarn run clean && yarn run build && yarn test',
+      bootstrap: 'lerna bootstrap',
+      'bootstrap:slow': 'lerna bootstrap --concurrency=1',
+      build: 'lerna run build',
+      clean: 'rimraf ./packages/{*}/lib/ && lerna clean --yes',
+      outdated: 'yarn outdated; for dir in `find ./packages/ -type d -maxdepth 1`; do (cd "$dir" && yarn outdated); done;',
+      prepublish: 'yarn run assemble',
+      publish: 'lerna publish',
+      'publish:force': 'npm run publish -- --force-publish=*',
+      updated: 'lerna updated',
+    });
+
+    const lernaConfig = {
+      lerna: '2.0.0',
+      version: 'independent',
+      npmClient: 'yarn',
+      commands: {
+        publish: {
+          ignore: ['*.md'],
+        },
+      },
+    };
+
+    fs.writeFile(LERNA_PATH, JSON.stringify(lernaConfig, null, 2), 'utf8', (writeError) => {
+      if (writeError) {
+        console.error('Failed to create lerna.json', writeError);
+      } else {
+        console.log('Created lerna.json');
+      }
+    });
+  }
 });
