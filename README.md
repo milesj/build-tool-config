@@ -124,6 +124,6 @@ dependency, while also configuring the Yarn `build` script, like so.
 
 ```json
 "scripts": {
-  "build": "build-lib ./src -d ./lib",
-}
+  "build": "build-lib ./src -d ./lib"
+},
 ```

@@ -40,9 +40,8 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
       build: 'lerna run build',
       clean: 'rimraf ./packages/{*}/lib/ && lerna clean --yes',
       outdated: 'yarn outdated; for dir in `find ./packages/ -type d -maxdepth 1`; do (cd "$dir" && yarn outdated); done;',
-      prepublish: 'yarn run assemble',
       publish: 'lerna publish',
-      'publish:force': 'npm run publish -- --force-publish=*',
+      'publish:force': 'lerna publish --force-publish=*',
       updated: 'lerna updated',
     });
 
