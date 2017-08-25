@@ -18,6 +18,7 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
 
   const packageConfig = JSON.parse(data);
 
+  // Scripts
   Object.assign(packageConfig.scripts, {
     babel: 'build-lib ./src -d ./lib',
     coverage: 'run-coverage',
@@ -30,6 +31,25 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
     preversion: 'yarn test',
     test: 'yarn run jest',
   });
+
+  if (lerna) {
+    Object.assign(packageConfig.scripts, {
+      assemble: 'yarn run clean && yarn run build && yarn test',
+      bootstrap: 'lerna bootstrap',
+      'bootstrap:slow': 'lerna bootstrap --concurrency=1',
+      build: 'lerna run build',
+      clean: 'rimraf ./packages/{*}/lib/ && lerna clean --yes',
+      outdated: 'yarn outdated; for dir in `find ./packages/ -type d -maxdepth 1`; do (cd "$dir" && yarn outdated); done;',
+      prepublish: 'yarn run assemble',
+      publish: 'lerna publish',
+      'publish:force': 'npm run publish -- --force-publish=*',
+      updated: 'lerna updated',
+    });
+
+    delete packageConfig.scripts.babel;
+    delete packageConfig.scripts.postversion;
+    delete packageConfig.scripts.preversion;
+  }
 
   // Babel
   packageConfig.babel = {
@@ -81,21 +101,8 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
 
   // Lerna
   if (lerna) {
-    Object.assign(packageConfig.scripts, {
-      assemble: 'yarn run clean && yarn run build && yarn test',
-      bootstrap: 'lerna bootstrap',
-      'bootstrap:slow': 'lerna bootstrap --concurrency=1',
-      build: 'lerna run build',
-      clean: 'rimraf ./packages/{*}/lib/ && lerna clean --yes',
-      outdated: 'yarn outdated; for dir in `find ./packages/ -type d -maxdepth 1`; do (cd "$dir" && yarn outdated); done;',
-      prepublish: 'yarn run assemble',
-      publish: 'lerna publish',
-      'publish:force': 'npm run publish -- --force-publish=*',
-      updated: 'lerna updated',
-    });
-
     const lernaConfig = {
-      lerna: '2.0.0',
+      lerna: packageConfig.devDependencies.lerna.slice(1),
       version: 'independent',
       npmClient: 'yarn',
       commands: {
