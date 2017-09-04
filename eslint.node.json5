@@ -92,6 +92,7 @@
     'unicorn/throw-new-error': 'error',
 
     // New and not in Airbnb yet
+    'function-paren-newline': ['error', 'consistent'],
     'no-multi-spaces': ['error', {
       ignoreEOLComments: true,
     }],

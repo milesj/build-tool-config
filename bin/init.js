@@ -34,9 +34,9 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
 
   if (lerna) {
     Object.assign(packageConfig.scripts, {
-      assemble: 'yarn run clean && yarn run build && yarn test',
-      bootstrap: 'lerna bootstrap',
-      'bootstrap:slow': 'lerna bootstrap --concurrency=1',
+      assemble: 'yarn run clean && yarn run bootstrap && yarn run build && yarn test',
+      bootstrap: 'lerna bootstrap --hoist',
+      'bootstrap:slow': 'yarn run bootstrap -- --concurrency=1',
       build: 'lerna run build',
       clean: 'rimraf ./packages/{*}/lib/ && lerna clean --yes',
       outdated: 'yarn outdated; for dir in `find ./packages/ -type d -maxdepth 1`; do (cd "$dir" && yarn outdated); done;',
