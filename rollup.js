@@ -44,7 +44,10 @@ export default {
   plugins: [
     json(),
     babel(babelConfig),
-    replace(replacements),
+    replace({
+      delimiters: ['', ''],
+      values: replacements,
+    }),
     resolve({ extensions }),
     common({ extensions }),
     uglify(),
