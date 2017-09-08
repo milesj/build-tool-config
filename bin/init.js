@@ -18,7 +18,7 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
 
   const packageConfig = JSON.parse(data);
 
-  // Scripts
+  // Config and scripts
   Object.assign(packageConfig.scripts, {
     babel: 'build-lib ./src -d ./lib',
     coverage: 'run-coverage',
@@ -33,6 +33,9 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
   });
 
   if (lerna) {
+    packageConfig.private = true;
+    packageConfig.workspaces = ['packages/*'];
+
     Object.assign(packageConfig.scripts, {
       assemble: 'yarn run clean && yarn run bootstrap && yarn run build && yarn test',
       bootstrap: 'lerna bootstrap --hoist',
@@ -104,6 +107,7 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
       lerna: packageConfig.devDependencies.lerna.slice(1),
       version: 'independent',
       npmClient: 'yarn',
+      useWorkspaces: true,
       commands: {
         publish: {
           ignore: ['*.md'],
