@@ -11,7 +11,6 @@ import resolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
 import yargs from 'yargs-parser';
 
-const isProd = (process.env.NODE_ENV === 'production');
 const options = yargs(process.argv.slice(2));
 const extensions = ['.js', '.jsx', '.json'];
 
@@ -29,11 +28,6 @@ babelConfig.presets.forEach((preset) => {
 babelConfig.exclude = 'node_modules/**';
 babelConfig.runtimeHelpers = (babelConfig.plugins.indexOf('transform-runtime') >= 0);
 
-// Determine constants to replace
-const replacements = isProd ? {
-  'process.env.NODE_ENV': JSON.stringify('production'),
-} : {};
-
 export default {
   input: './src/index.js',
   output: [
@@ -46,7 +40,9 @@ export default {
     babel(babelConfig),
     replace({
       delimiters: ['', ''],
-      values: replacements,
+      values: {
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      },
     }),
     resolve({ extensions }),
     common({ extensions }),
