@@ -1,6 +1,8 @@
 #! /usr/bin/env node
+
 const path = require('path');
 
-process.argv.push('--config', path.join(__dirname, '../rollup.js'));
+process.argv.push('--color');
+process.argv.push('--config', path.join(__dirname, '../webpack.js'));
 
-require('rollup/bin/rollup');
+require('webpack/bin/webpack');

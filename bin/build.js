@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 /* eslint-disable no-magic-numbers */
+
 const path = require('path');
 const rimraf = require('rimraf');
 const options = require('yargs-parser')(process.argv.slice(2));

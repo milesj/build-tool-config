@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 /* eslint-disable no-magic-numbers */
+
 const fs = require('fs');
 const path = require('path');
 const options = require('yargs-parser')(process.argv.slice(2));
