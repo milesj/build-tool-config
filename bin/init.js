@@ -7,7 +7,7 @@ const options = require('yargs-parser')(process.argv.slice(2));
 
 const PACKAGE_PATH = path.join(process.cwd(), 'package.json');
 const LERNA_PATH = path.join(process.cwd(), 'lerna.json');
-const isNode = options.node || false;
+const node = options.node || false;
 const lerna = options.lerna || false;
 
 fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
@@ -56,12 +56,12 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
 
   // Babel
   packageConfig.babel = {
-    extends: `./node_modules/@milesj/build-tool-config/babel${isNode ? '.node' : ''}.json5`,
+    extends: `./node_modules/@milesj/build-tool-config/babel${node ? '.node' : ''}.js`,
   };
 
   // ESLint
   packageConfig.eslintConfig = {
-    extends: `./node_modules/@milesj/build-tool-config/eslint${isNode ? '.node' : ''}.json5`,
+    extends: `./node_modules/@milesj/build-tool-config/eslint${node ? '.node' : ''}.js`,
   };
 
   packageConfig.eslintIgnore = [
@@ -82,15 +82,6 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
   if (lerna) {
     packageConfig.jest.roots = ['./packages', './tests'];
     packageConfig.jest.testRegex = './packages/([-a-z]+)?/tests/.*\\.test\\.js$';
-  }
-
-  // Node.js
-  if (packageConfig.engines) {
-    packageConfig.engines.node = '>=6.5.0';
-  } else {
-    packageConfig.engines = {
-      node: '>=6.5.0',
-    };
   }
 
   fs.writeFile(PACKAGE_PATH, JSON.stringify(packageConfig, null, 2), 'utf8', (writeError) => {

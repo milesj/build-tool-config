@@ -1,4 +1,4 @@
-{
+module.exports = {
   babelrc: false,
   comments: false,
   plugins: [
@@ -6,16 +6,14 @@
     ['transform-dev', {
       evaluate: false,
     }],
-    'transform-runtime',
   ],
   // Order is important!
   presets: [
     ['env', {
-      targets: { ie: '10' },
+      targets: { node: '6.5' },
       useBuiltIns: true,
     }],
     'stage-2',
-    'react',
     'flow',
   ],
-}
+};

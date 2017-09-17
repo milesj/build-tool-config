@@ -77,7 +77,7 @@
     "yargs-parser": "^7.0.0"
   },
   "eslintConfig": {
-    "extends": "./eslint.node.json5",
+    "extends": "./eslint.node.js",
     "rules": {
       "no-var": "off",
       "no-console": "off"

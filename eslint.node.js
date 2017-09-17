@@ -1,4 +1,4 @@
-{
+module.exports = {
   root: true,
   parser: 'babel-eslint',
   extends: ['airbnb/base'],
@@ -40,8 +40,8 @@
     'flowtype/no-types-missing-file-annotation': 'error',
     'flowtype/no-weak-types': ['error', {
       any: true,
-      'Object': false,
-      'Function': true,
+      Object: false,
+      Function: true,
     }],
     'flowtype/object-type-delimiter': ['error', 'comma'],
     'flowtype/require-parameter-type': ['error', {
@@ -101,7 +101,7 @@
     }],
 
     // Want to support but disabled in Airbnb
-    'complexity': ['error', 11],
+    complexity: ['error', 11], // eslint-disable-line
     'getter-return': 'error',
     'jsx-quotes': ['error', 'prefer-double'],
     'newline-before-return': 'error',
@@ -157,4 +157,4 @@
   //     },
   //   },
   // ],
-}
+};

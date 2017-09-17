@@ -1,5 +1,5 @@
-{
-  extends: ['airbnb', './eslint.node.json5'],
+module.exports = {
+  extends: ['airbnb', './eslint.node.js'],
   env: {
     browser: true,
     node: false,
@@ -29,4 +29,4 @@
       callbacksLast: true,
     }],
   },
-}
+};
