@@ -3,12 +3,12 @@
 I got tired of duplicating build tool configuration files over and over again between projects,
 so I built this repository to house them. The following tools are pre-configured:
 
-* [Babel](https://github.com/milesj/build-tool-config/blob/master/babel.js)
+* [Babel](https://github.com/milesj/build-tool-config/blob/master/babel.json5)
   * Configured with `env`, `stage-2`, `react`, and `flow` presets.
   * Builds using the `babel-runtime`.
   * Cleans the target folder automatically.
   * Supports a Node.js specific configuration.
-* [ESLint](https://github.com/milesj/build-tool-config/blob/master/eslint.js)
+* [ESLint](https://github.com/milesj/build-tool-config/blob/master/eslint.json5)
   * Configured with `import`, `jest`, `react`, `jsx-a11y`, `flowtype`, and `unicorn` plugins.
   * Extends the `airbnb` configuration preset.
   * Provides `.eslintignore` when syncing configs.
