@@ -57,6 +57,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "copy": "^0.3.1",
     "enzyme": "^3.0.0",
+    "enzyme-adapter-react-16": "^1.0.0",
     "eslint": "^4.7.2",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-flowtype": "2.34.1",
