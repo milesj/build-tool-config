@@ -8,13 +8,6 @@
     // Do not want to support
     'react/jsx-filename-extension': 'off',
 
-    // New and not in Airbnb yet
-    'react/default-props-match-prop-types': 'error',
-    'react/jsx-closing-tag-location': 'error',
-    'react/no-redundant-should-component-update': 'error',
-    'react/no-typos': 'error',
-    'react/no-unused-state': 'error',
-
     // Want to support but disabled in Airbnb
     'react/forbid-foreign-prop-types': 'error',
     'react/jsx-handler-names': ['error', {
