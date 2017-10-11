@@ -40,7 +40,7 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
     Object.assign(packageConfig.scripts, {
       assemble: 'yarn run clean && yarn run bootstrap && yarn run build && yarn test',
       bootstrap: 'lerna bootstrap --hoist',
-      'bootstrap:slow': 'yarn run bootstrap -- --concurrency=1',
+      'bootstrap:slow': 'yarn run bootstrap --concurrency=1',
       build: 'lerna run build',
       clean: 'rimraf ./packages/{*}/lib/ && lerna clean --yes',
       outdated: 'yarn outdated; for dir in `find ./packages/ -type d -maxdepth 1`; do (cd "$dir" && yarn outdated); done;',
@@ -82,15 +82,6 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
   if (lerna) {
     packageConfig.jest.roots = ['./packages', './tests'];
     packageConfig.jest.testRegex = './packages/([-a-z]+)?/tests/.*\\.test\\.js$';
-  }
-
-  // Node.js
-  if (packageConfig.engines) {
-    packageConfig.engines.node = '>=6.5.0';
-  } else {
-    packageConfig.engines = {
-      node: '>=6.5.0',
-    };
   }
 
   fs.writeFile(PACKAGE_PATH, JSON.stringify(packageConfig, null, 2), 'utf8', (writeError) => {
