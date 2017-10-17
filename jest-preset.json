@@ -2,7 +2,7 @@
   "coverageDirectory": "./coverage",
   "coverageReporters": ["lcov"],
   "globals": { "__DEV__": true },
-  "roots": ["./src", "./tests"],
+  "roots": ["./src", "./tests", "./packages"],
   "setupFiles": [
     "./node_modules/@milesj/build-tool-config/jest-setup.js"
   ],

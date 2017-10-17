@@ -43,7 +43,6 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
       'bootstrap:slow': 'yarn run bootstrap --concurrency=1',
       build: 'lerna run build',
       clean: 'rimraf ./packages/{*}/lib/ && lerna clean --yes',
-      outdated: 'yarn outdated; for dir in `find ./packages/ -type d -maxdepth 1`; do (cd "$dir" && yarn outdated); done;',
       publish: 'lerna publish',
       'publish:force': 'lerna publish --force-publish=*',
       updated: 'lerna updated',
@@ -78,11 +77,6 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
   packageConfig.jest = {
     preset: '@milesj/build-tool-config',
   };
-
-  if (lerna) {
-    packageConfig.jest.roots = ['./packages', './tests'];
-    packageConfig.jest.testRegex = './packages/([-a-z]+)?/tests/.*\\.test\\.js$';
-  }
 
   fs.writeFile(PACKAGE_PATH, JSON.stringify(packageConfig, null, 2), 'utf8', (writeError) => {
     if (writeError) {
