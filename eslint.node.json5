@@ -75,11 +75,10 @@
     'promise/no-native': 'off',
     'promise/no-nesting': 'off',
     'promise/no-promise-in-callback': 'error',
-    'promise/no-return-wrap': 'error',
+    'promise/no-return-in-finally': 'error',
+    'promise/no-return-wrap': ['error', { allowReject: true }],
     'promise/param-names': 'error',
-    'unicorn/catch-error-name': ['error', {
-      name: 'error',
-    }],
+    'unicorn/catch-error-name': ['error', { name: 'error' }],
     'unicorn/custom-error-definition': 'error',
     'unicorn/escape-case': 'error',
     'unicorn/explicit-length-check': 'error',
@@ -93,6 +92,10 @@
     'unicorn/prefer-starts-ends-with': 'error',
     'unicorn/prefer-type-error': 'error',
     'unicorn/throw-new-error': 'error',
+
+    // New and not yet in Airbnb
+    'lines-between-class-members': 'error',
+    'multiline-comment-style': 'error',
 
     // Want to support but disabled in Airbnb
     'complexity': ['error', 11],

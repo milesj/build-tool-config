@@ -6,8 +6,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const options = require('yargs-parser')(process.argv.slice(2));
 
-// Webpack requires the inputs and output passed as CLI arguments,
-// so make sure they are passed instead of configured here.
+/*
+ * Webpack requires the inputs and output passed as CLI arguments,
+ * so make sure they are passed instead of configured here.
+ */
 const inputs = [...options._];
 const output = inputs.pop();
 
@@ -19,7 +21,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
           {
