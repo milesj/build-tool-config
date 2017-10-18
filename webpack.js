@@ -18,11 +18,12 @@ if (inputs.length === 0 || !output) {
 }
 
 const config = {
+  devtool: 'cheap-source-map',
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
         exclude: /node_modules/,
+        test: /\.jsx?$/,
         use: [
           {
             loader: 'babel-loader',
@@ -37,7 +38,6 @@ const config = {
   plugins: [
     new webpack.EnvironmentPlugin(['NODE_ENV']),
   ],
-  devtool: 'cheap-source-map',
   target: 'web',
 };
 

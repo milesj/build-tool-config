@@ -37,6 +37,8 @@
     'flowtype/delimiter-dangle': ['error', 'always-multiline'],
     'flowtype/generic-spacing': ['error', 'never'],
     'flowtype/no-dupe-keys': 'error',
+    'flowtype/no-mutable-array': 'off',
+    'flowtype/no-unused-expressions': 'error',
     'flowtype/no-primitive-constructor-types': 'error',
     'flowtype/no-types-missing-file-annotation': 'error',
     'flowtype/no-weak-types': ['error', {
@@ -48,13 +50,15 @@
     'flowtype/require-parameter-type': ['error', {
       excludeArrowFunctions: true,
     }],
-    'flowtype/require-return-type': ['error', {
+    'flowtype/require-return-type': ['error', 'always', {
+      annotateUndefined: 'never',
       excludeArrowFunctions: true,
     }],
     'flowtype/require-valid-file-annotation': ['error', 'always'],
     'flowtype/require-variable-type': 'off',
     'flowtype/semi': ['error', 'always'],
     'flowtype/sort-keys': ['error', 'asc', {
+      caseSensitive: false,
       natural: true,
     }],
     'flowtype/space-after-type-colon': ['error', 'always', {
@@ -118,6 +122,10 @@
       ignoreRestSiblings: true,
     }],
     'no-useless-call': 'error',
+    'sort-keys': ['error', 'asc', {
+      caseSensitive: false,
+      natural: true,
+    }],
     'import/default': 'error',
     'import/named': 'error',
     'import/no-anonymous-default-export': ['error', {

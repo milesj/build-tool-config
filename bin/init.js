@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-/* eslint-disable no-magic-numbers */
+/* eslint-disable no-magic-numbers, sort-keys */
 
 const fs = require('fs');
 const path = require('path');
@@ -24,8 +24,8 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
     babel: 'build-lib ./src -d ./lib',
     coverage: 'run-coverage',
     eslint: 'run-linter ./src ./tests',
-    jest: 'run-tests',
     flow: 'type-check',
+    jest: 'run-tests',
     posttest: 'yarn run flow',
     postversion: 'yarn run babel',
     pretest: 'yarn run eslint',
