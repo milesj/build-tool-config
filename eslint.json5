@@ -17,9 +17,6 @@
     'react/jsx-key': 'error',
     'react/jsx-no-literals': 'off', // Broken
     'react/no-direct-mutation-state': 'error',
-    'react/sort-prop-types': ['error', {
-      ignoreCase: false,
-      callbacksLast: true,
-    }],
+    'react/sort-prop-types': 'off', // Handled by sort-keys
   },
 }
