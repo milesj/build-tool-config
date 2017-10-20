@@ -26,6 +26,7 @@
   rules: {
     'class-methods-use-this': 'off',
     'function-paren-newline': ['error', 'consistent'],
+    'multiline-comment-style': 'off',
     'padded-blocks': ['error', {
       // Never apply to blocks
       // blocks: 'never',
@@ -99,7 +100,6 @@
 
     // New and not yet in Airbnb
     'lines-between-class-members': 'error',
-    'multiline-comment-style': 'error',
 
     // Want to support but disabled in Airbnb
     'complexity': ['error', 11],
