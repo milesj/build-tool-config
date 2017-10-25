@@ -1,23 +1,34 @@
 #! /usr/bin/env node
-/* eslint-disable no-magic-numbers */
 
+const execa = require('execa');
 const path = require('path');
 const rimraf = require('rimraf');
 const options = require('yargs-parser')(process.argv.slice(2));
-
-// Find the output target file or folder
-const target = options.o || options.d || options.outFile || options.outDir;
+const exec = require('./utils/exec');
 
 // Support --no-clean options
 const clean = ('clean' in options) ? options.clean : true;
 
-// Automatically clean the target folder if defined
-if (target && clean) {
-  rimraf.sync(path.join(process.cwd(), target), {}, (error) => {
-    if (error) {
-      console.log('Failed to clean target folder', target);
+function runBabel(isModule = false) {
+  const source = path.join(process.cwd(), './src');
+  const target = path.join(process.cwd(), isModule ? './esm' : './lib');
+
+  // Automatically clean the target folder
+  if (target && clean) {
+    try {
+      rimraf.sync(target);
+    } catch (error) {
+      return Promise.reject(error);
     }
-  });
+  }
+
+  return execa('babel-cli/bin/babel', [
+    source,
+    '--out-dir',
+    target,
+    '--source-type',
+    isModule ? 'module' : 'script',
+  ]);
 }
 
-require('babel-cli/bin/babel');
+exec('babel', [runBabel(), runBabel(true)], 'Transpiled CJS and ESM builds');

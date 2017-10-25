@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "promise/always-return": 0
+  }
+}
