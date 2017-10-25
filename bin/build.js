@@ -3,18 +3,23 @@
 const execa = require('execa');
 const path = require('path');
 const rimraf = require('rimraf');
-const options = require('yargs-parser')(process.argv.slice(2));
+const yargs = require('yargs-parser');
 const exec = require('./utils/exec');
 
-// Support --no-clean options
-const clean = ('clean' in options) ? options.clean : true;
+const options = yargs(process.argv.slice(2), {
+  default: {
+    cjs: true,
+    clean: true,
+    esm: true,
+  },
+});
 
 function runBabel(isModule = false) {
   const source = path.join(process.cwd(), './src');
   const target = path.join(process.cwd(), isModule ? './esm' : './lib');
 
   // Automatically clean the target folder
-  if (target && clean) {
+  if (target && options.clean) {
     try {
       rimraf.sync(target);
     } catch (error) {
@@ -31,4 +36,17 @@ function runBabel(isModule = false) {
   ]);
 }
 
-exec('babel', [runBabel(), runBabel(true)], 'Transpiled CJS and ESM builds');
+const commands = [];
+const builds = [];
+
+if (options.cjs) {
+  commands.push(runBabel());
+  builds.push('CJS');
+}
+
+if (options.esm) {
+  commands.push(runBabel(true));
+  builds.push('ESM');
+}
+
+exec('babel', commands, `Transpiled ${builds.join(', ')} builds`);
