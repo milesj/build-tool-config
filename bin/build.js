@@ -6,7 +6,8 @@ const rimraf = require('rimraf');
 const yargs = require('yargs-parser');
 const exec = require('./utils/exec');
 
-const options = yargs(process.argv.slice(2), {
+const args = process.argv.slice(2);
+const options = yargs(args, {
   default: {
     cjs: true,
     clean: true,
@@ -27,12 +28,12 @@ function runBabel(isModule = false) {
     }
   }
 
-  return execa('babel-cli/bin/babel', [
+  return execa('babel', [
     source,
     '--out-dir',
     target,
-    '--source-type',
-    isModule ? 'module' : 'script',
+    options.esm ? '--modules' : '--no-modules',
+    ...args,
   ]);
 }
 

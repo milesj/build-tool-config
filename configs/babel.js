@@ -1,36 +1,38 @@
-const yargs = require('yargs-parser');
-
-const options = yargs(process.argv.slice(2), {
-  default: {},
+const options = require('yargs-parser')(process.argv.slice(2), {
+  default: {
+    modules: false,
+    node: false,
+    react: false,
+  },
 });
-
-console.log(process, options);
 
 // Setup plugins
 const plugins = [
-  'transform-export-extensions',
-  ['transform-dev', { evaluate: false }],
+  require.resolve('babel-plugin-transform-export-extensions'),
+  [require.resolve('babel-plugin-transform-dev'), { evaluate: false }],
 ];
 
 if (!options.node) {
-  plugins.push('transform-runtime');
+  plugins.push([require.resolve('babel-plugin-transform-runtime'), {
+    polyfill: false,
+    regenerator: false,
+  }]);
 }
 
 // Setup presets (order is important)
 const presets = [
-  ['env', {
-    debug: options.debug || false,
-    modules: options.esm ? false : 'commonjs',
+  [require.resolve('babel-preset-env'), {
+    modules: options.modules ? false : 'commonjs',
     shippedProposals: true,
     targets: options.node ? { node: '6.5' } : { ie: '10' },
     useBuiltIns: 'usage',
   }],
-  'stage-2',
-  'flow',
+  require.resolve('babel-preset-stage-2'),
+  require.resolve('babel-preset-flow'),
 ];
 
 if (options.react) {
-  presets.push('react');
+  presets.push(require.resolve('babel-preset-react'));
 }
 
 module.exports = {
