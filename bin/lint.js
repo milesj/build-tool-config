@@ -5,7 +5,7 @@ const run = require('./utils/run');
 
 const args = process.argv.slice(2);
 
-function runEslint() {
+function runESLint() {
   return execa('eslint', [
     './src',
     './tests',
@@ -16,4 +16,4 @@ function runEslint() {
   ]);
 }
 
-run('eslint', runEslint(), 'Linted files');
+run('eslint', runESLint(), 'Linted files');

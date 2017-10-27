@@ -1,6 +1,20 @@
 #! /usr/bin/env node
 
-process.env.NODE_ENV = 'test';
-process.argv.push('--colors');
+const execa = require('execa');
+const run = require('./utils/run');
 
-require('jest/bin/jest');
+const args = process.argv.slice(2);
+
+function runJest() {
+  process.env.NODE_ENV = 'test';
+
+  return execa('jest', [
+    '--config',
+    path.join(__dirname, '../configs/jest.js'),
+    '--colors',
+    '--logHeapUsage',
+    ...args,
+  ]);
+}
+
+run('jest', runJest(), 'Tested files');

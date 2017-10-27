@@ -21,7 +21,7 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
   // Config and scripts
   Object.assign(packageConfig.scripts, {
     babel: 'build-lib',
-    coverage: 'run-coverage',
+    coverage: 'run-tests --coverage',
     eslint: 'run-linter',
     flow: 'type-check',
     jest: 'run-tests',
@@ -37,19 +37,22 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
     packageConfig.workspaces = ['packages/*'];
 
     Object.assign(packageConfig.scripts, {
-      assemble: 'yarn run clean && yarn run bootstrap && yarn run build && yarn test',
+      assemble: 'yarn run bootstrap && yarn run build && yarn test',
       bootstrap: 'lerna bootstrap --hoist',
-      'bootstrap:slow': 'yarn run bootstrap --concurrency=1',
+      'bootstrap:slow': 'yarn run bootstrap --concurrency 1',
       build: 'lerna run build',
-      clean: 'rimraf ./packages/{*}/lib/ && lerna clean --yes',
+      clean: 'lerna clean --yes',
       publish: 'lerna publish',
-      'publish:force': 'lerna publish --force-publish=*',
+      'publish:force': 'lerna publish --force-publish *',
       updated: 'lerna updated',
     });
 
     delete packageConfig.scripts.babel;
     delete packageConfig.scripts.postversion;
     delete packageConfig.scripts.preversion;
+  } else {
+    packageConfig.main = './lib/index.js';
+    packageConfig.module = './esm/index.js';
   }
 
   // Babel
@@ -59,19 +62,15 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
 
   // ESLint
   packageConfig.eslintConfig = {
-    extends: './node_modules/@milesj/build-tool-config/eslint.json5',
+    extends: './node_modules/@milesj/build-tool-config/eslint.js',
   };
 
   packageConfig.eslintIgnore = [
     'lib/',
+    'esm/',
     '*.min.js',
     '*.map',
   ];
-
-  // Jest
-  packageConfig.jest = {
-    preset: '@milesj/build-tool-config',
-  };
 
   fs.writeFile(PACKAGE_PATH, JSON.stringify(packageConfig, null, 2), 'utf8', (writeError) => {
     if (writeError) {

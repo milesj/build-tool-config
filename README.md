@@ -3,29 +3,30 @@
 I got tired of duplicating build tool configuration files over and over again between projects,
 so I built this repository to house them. The following tools are pre-configured:
 
-* [Babel](https://github.com/milesj/build-tool-config/blob/master/babel.json5)
+* [Babel](https://github.com/milesj/build-tool-config/blob/master/configs/babel.js)
   * Configured with `env`, `stage-2`, `react`, and `flow` presets.
   * Builds both CommonJS (cjs) and ECMAScript modules (esm).
   * Builds using the `babel-runtime`.
   * Cleans the target folder automatically.
   * Supports a Node.js specific configuration.
-* [ESLint](https://github.com/milesj/build-tool-config/blob/master/eslint.json5)
+* [ESLint](https://github.com/milesj/build-tool-config/blob/master/configs/eslint.js)
   * Configured with `import`, `jest`, `react`, `jsx-a11y`, `flowtype`, and `unicorn` plugins.
   * Extends the `airbnb` configuration preset.
   * Provides `.eslintignore` when syncing dotfiles.
-* [Jest](https://github.com/milesj/build-tool-config/blob/master/jest.json)
-  * Supports React and Enzyme based unit tests.
-  * Provides code coverage scripts.
-* [Webpack](https://github.com/milesj/build-tool-config/blob/master/webpack.js)
+* [Jest](https://github.com/milesj/build-tool-config/blob/master/configs/jest.js)
+  * Supports React and Enzyme 3 based unit tests.
+  * Provides built-in code coverage scripts.
+* [Webpack](https://github.com/milesj/build-tool-config/blob/master/configs/webpack.js)
   * Configured with `babel-loader` and `uglify` plugin.
 
-Plus configurations files that can be synced into each project (as they must exist in each project).
+Plus dotfiles that can be synced into each project (as they must exist in each project).
 
-* [ESLint](https://github.com/milesj/build-tool-config/blob/master/res/eslintignore)
-* [Flow](https://github.com/milesj/build-tool-config/blob/master/res/flowconfig)
-* [Git](https://github.com/milesj/build-tool-config/blob/master/res/gitignore)
-* [NPM](https://github.com/milesj/build-tool-config/blob/master/res/npmignore)
-* [Travis](https://github.com/milesj/build-tool-config/blob/master/res/travis.yml)
+* [ESLint](https://github.com/milesj/build-tool-config/blob/master/dotfiles/eslintignore)
+* [Flow](https://github.com/milesj/build-tool-config/blob/master/dotfiles/flowconfig)
+* [Git](https://github.com/milesj/build-tool-config/blob/master/dotfiles/gitignore)
+* [NPM](https://github.com/milesj/build-tool-config/blob/master/dotfiles/npmignore)
+* [Travis](https://github.com/milesj/build-tool-config/blob/master/dotfiles/travis.yml)
+* [Yarn](https://github.com/milesj/build-tool-config/blob/master/dotfiles/yarnrc)
 
 ## Install
 
@@ -41,7 +42,7 @@ yarn add babel-runtime
 
 ## Sync Configuration
 
-Some build tools require configuration files to be local to the project, which sucks.
+Some build tools require dotfiles to be local to the project, which sucks.
 To get around this, we can easily sync them to each project, by running the following
 command in the project root.
 
@@ -51,14 +52,12 @@ node ./node_modules/.bin/sync-configs
 
 ## Init Package
 
-To make use of `babel`, `eslint`, and `jest`, we need to configure our `package.json` to
+To make use of `babel` and `eslint`, we need to configure our `package.json` to
 extend from the presets. To do this, run the following command in the project root.
 
 ```
 node ./node_modules/.bin/init-package
 ```
-
-> Pass `--node` to initialize a Node.js specific package.
 
 ## Scripts Usage
 
