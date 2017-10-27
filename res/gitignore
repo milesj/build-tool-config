@@ -43,4 +43,5 @@ jspm_packages
 
 # Custom paths
 lib/
+esm/
 tests/bundle.min.js

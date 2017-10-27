@@ -5,6 +5,7 @@ so I built this repository to house them. The following tools are pre-configured
 
 * [Babel](https://github.com/milesj/build-tool-config/blob/master/babel.json5)
   * Configured with `env`, `stage-2`, `react`, and `flow` presets.
+  * Builds both CommonJS (cjs) and ECMAScript modules (esm).
   * Builds using the `babel-runtime`.
   * Cleans the target folder automatically.
   * Supports a Node.js specific configuration.
@@ -62,10 +63,14 @@ node ./node_modules/.bin/init-package
 
 ## Scripts Usage
 
-This library provides binaries that can be consumed per project, they are.
+This library provides the following binaries that can be consumed per project.
 
-* `build-lib` - Builds the library using Babel.
-  * Pass `--no-clean` to disable automatic target cleaning.
+* `build-lib` - Transpiles the root `src/` folder to both CommonJS (main) and ECMAScript (module) builds using Babel.
+  * `--no-clean` - Disable automatic target cleaning.
+  * `--no-cjs` - Disable CommonJS `lib/` builds.
+  * `--no-esm` - Disable ECMAScript `esm/` builds.
+  * `--node` - Target Node.js 6.5+ instead of web (IE 10+).
+  * `--react` - Include `babel-preset-react`.
 * `bundle-lib` - Bundles the library into a single file using Webpack.
 * `run-linter` - Lints files using ESLint.
 * `run-tests` - Runs unit tests using Jest.
@@ -76,7 +81,7 @@ Simply add them as NPM/Yarn scripts, or run `init-package` mentioned previously.
 
 ```json
 "scripts": {
-  "build": "build-lib ./src -d ./lib",
+  "build": "build-lib",
   "bundle": "bundle-lib",
   "cover": "run-coverage",
   "lint": "run-linter ./src ./tests",
@@ -121,6 +126,6 @@ dependency, while also configuring the Yarn `build` script, like so.
 
 ```json
 "scripts": {
-  "build": "build-lib ./src -d ./lib"
+  "build": "build-lib"
 },
 ```

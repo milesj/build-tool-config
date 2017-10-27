@@ -7,7 +7,6 @@ const options = require('yargs-parser')(process.argv.slice(2));
 
 const PACKAGE_PATH = path.join(process.cwd(), 'package.json');
 const LERNA_PATH = path.join(process.cwd(), 'lerna.json');
-const isNode = options.node || false;
 const lerna = options.lerna || false;
 
 fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
@@ -21,7 +20,7 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
 
   // Config and scripts
   Object.assign(packageConfig.scripts, {
-    babel: 'build-lib ./src -d ./lib',
+    babel: 'build-lib',
     coverage: 'run-coverage',
     eslint: 'run-linter ./src ./tests',
     flow: 'type-check',
@@ -55,12 +54,12 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
 
   // Babel
   packageConfig.babel = {
-    extends: `./node_modules/@milesj/build-tool-config/babel${isNode ? '.node' : ''}.json5`,
+    presets: '@milesj/build-tool-config/babel',
   };
 
   // ESLint
   packageConfig.eslintConfig = {
-    extends: `./node_modules/@milesj/build-tool-config/eslint${isNode ? '.node' : ''}.json5`,
+    extends: './node_modules/@milesj/build-tool-config/eslint.json5',
   };
 
   packageConfig.eslintIgnore = [
