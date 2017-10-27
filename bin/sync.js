@@ -8,8 +8,8 @@ const dest = process.cwd();
 
 console.log('Copying files to', dest);
 
-// Copy config files to the current working directory, which *should* be the project root
-copy(path.join(__dirname, '../res/*'), dest, (error, files) => {
+// Copy dotfiles to the current working directory, which *should* be the project root
+copy(path.join(__dirname, '../dotfiles/*'), dest, (error, files) => {
   if (error) {
     console.error('Failed to copy files!');
   } else {
@@ -17,10 +17,8 @@ copy(path.join(__dirname, '../res/*'), dest, (error, files) => {
       const oldName = path.basename(file.path);
       const newName = `.${oldName}`;
 
-      /*
-       * The original files are not prefixed with ".", as it causes git/npm issues
-       * in this repository. So we need to rename them after they are copied.
-       */
+      // The original files are not prefixed with ".", as it causes git/npm issues
+      // in this repository. So we need to rename them after they are copied.
       fs.renameSync(path.join(dest, oldName), path.join(dest, newName));
 
       console.log('Copied', newName);
