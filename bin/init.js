@@ -22,7 +22,7 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
   Object.assign(packageConfig.scripts, {
     babel: 'build-lib',
     coverage: 'run-coverage',
-    eslint: 'run-linter ./src ./tests',
+    eslint: 'run-linter',
     flow: 'type-check',
     jest: 'run-tests',
     posttest: 'yarn run flow',
@@ -67,10 +67,6 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
     '*.min.js',
     '*.map',
   ];
-
-  if (lerna) {
-    packageConfig.scripts.eslint += ' ./packages/*/{src,tests}';
-  }
 
   // Jest
   packageConfig.jest = {

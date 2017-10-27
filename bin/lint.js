@@ -1,6 +1,17 @@
 #! /usr/bin/env node
-/* eslint-disable no-magic-numbers, global-require */
 
-process.argv.push('--color');
+const execa = require('execa');
+const run = require('./utils/run');
 
-require('eslint/bin/eslint');
+const args = process.argv.slice(2);
+
+function runEslint() {
+  return execa('eslint', [
+    './{src,tests}',
+    './packages/*/{src,tests}',
+    '--color',
+    ...args,
+  ]);
+}
+
+run('eslint', runEslint(), 'Linted files');

@@ -4,7 +4,7 @@ const execa = require('execa');
 const path = require('path');
 const rimraf = require('rimraf');
 const yargs = require('yargs-parser');
-const exec = require('./utils/exec');
+const run = require('./utils/run');
 
 const args = process.argv.slice(2);
 const options = yargs(args, {
@@ -50,4 +50,4 @@ if (options.esm) {
   builds.push('ESM');
 }
 
-exec('babel', commands, `Transpiled ${builds.join(', ')} builds`);
+run('babel', commands, `Transpiled ${builds.join(', ')} builds`);
