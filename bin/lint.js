@@ -7,9 +7,11 @@ const args = process.argv.slice(2);
 
 function runEslint() {
   return execa('eslint', [
-    './{src,tests}',
+    './src',
+    './tests',
     './packages/*/{src,tests}',
     '--color',
+    '--report-unused-disable-directives',
     ...args,
   ]);
 }
