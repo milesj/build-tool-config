@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   coverageDirectory: './coverage',
   coverageReporters: ['lcov'],
@@ -10,8 +12,8 @@ module.exports = {
     './packages',
   ],
   setupFiles: [
-    './node_modules/@milesj/build-tool-config/jest-setup.js'
+    path.join(__dirname, '../jest-setup.js'),
   ],
   setupTestFrameworkScriptFile: './tests/setup.js',
-  verbose: false
+  verbose: false,
 };

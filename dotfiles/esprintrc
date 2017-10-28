@@ -1,6 +1,7 @@
 {
   "paths": [
-    "src/**/*.js"
+    "src/**/*.js",
+    "packages/*/src/**/*.js"
   ],
   "ignored": [
     "**/node_modules/**/*"

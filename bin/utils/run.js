@@ -9,7 +9,7 @@ module.exports = function run(type, commands, message) {
 
       process.exitCode = 2;
 
-      return;
+      return Promise.reject();
     }
 
     promise = Promise.all(commands);
@@ -17,8 +17,10 @@ module.exports = function run(type, commands, message) {
     promise = Promise.resolve(commands);
   }
 
-  promise.then(() => {
+  return promise.then((output) => {
     log.success(type, message);
+
+    return output;
   }).catch((error) => {
     log.error(type, `Failed to execute: ${error.message}`);
 

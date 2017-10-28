@@ -1,5 +1,15 @@
 #! /usr/bin/env node
 
-process.argv.push('check');
+const execa = require('execa');
+const run = require('./utils/run');
 
-require('flow-bin/cli');
+const args = process.argv.slice(2);
+
+function runFlow() {
+  return execa('flow', [
+    'check',
+    ...args,
+  ]);
+}
+
+run('flow', runFlow(), 'Type checked files');

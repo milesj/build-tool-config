@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 const execa = require('execa');
+const path = require('path');
 const run = require('./utils/run');
 
 const args = process.argv.slice(2);
