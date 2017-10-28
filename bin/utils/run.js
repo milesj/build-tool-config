@@ -1,21 +1,25 @@
+const execa = require('execa');
 const log = require('./log');
 
-module.exports = function run(type, commands, message) {
+const args = process.argv.slice(2);
+
+module.exports = function run(type, message, ...commands) {
   let promise;
 
-  process.env.BUILD_CURRENT_RUN = type;
-
-  if (Array.isArray(commands)) {
-    if (commands.length === 0) {
-      const error = new Error('No executable commands');
-      error.code = 2;
-
-      promise = Promise.reject(error);
-    } else {
-      promise = Promise.all(commands);
-    }
+  if (commands.length === 0) {
+    promise = Promise.reject(new Error('No executable commands'));
   } else {
-    promise = Promise.all([commands]);
+    promise = Promise.all(commands.map(command => (
+      execa(type, [
+        ...command,
+        ...args,
+      ], {
+        env: {
+          BUILD_CURRENT_RUN: type,
+          NODE_ENV: 'test',
+        },
+      })
+    )));
   }
 
   return promise
@@ -35,10 +39,5 @@ module.exports = function run(type, commands, message) {
       log.log(type, error.message);
 
       process.exitCode = error.code || 1;
-    })
-    .then((value) => {
-      process.env.BUILD_CURRENT_RUN = '';
-
-      return value;
     });
 };

@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 
-const execa = require('execa');
 const path = require('path');
 const rimraf = require('rimraf');
 const yargs = require('yargs-parser');
@@ -15,39 +14,38 @@ const options = yargs(args, {
   },
 });
 
-function runBabel(isModule = false) {
+function buildBabelCommand(isModule = false) {
   const source = path.join(process.cwd(), './src');
   const target = path.join(process.cwd(), isModule ? './esm' : './lib');
 
   // Automatically clean the target folder
   if (target && options.clean) {
-    try {
-      rimraf.sync(target);
-    } catch (error) {
-      return Promise.reject(error);
-    }
+    rimraf.sync(target);
   }
 
-  return execa('babel', [
+  return [
     source,
     '--out-dir',
     target,
-    options.esm ? '--modules' : '--no-modules',
-    ...args,
-  ]);
+    isModule ? '--modules' : '--no-modules',
+  ];
 }
 
 const commands = [];
 const builds = [];
 
 if (options.cjs) {
-  commands.push(runBabel());
+  commands.push(buildBabelCommand());
   builds.push('CJS');
 }
 
 if (options.esm) {
-  commands.push(runBabel(true));
+  commands.push(buildBabelCommand(true));
   builds.push('ESM');
 }
 
-run('babel', commands, `Transpiled ${builds.join(', ')} builds`);
+run(
+  'babel',
+  `Transpiled ${builds.join(', ')} builds`,
+  ...commands,
+);
