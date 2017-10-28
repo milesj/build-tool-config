@@ -66,8 +66,8 @@ fs.readFile(PACKAGE_PATH, 'utf8', (error, data) => {
   };
 
   packageConfig.eslintIgnore = [
-    'lib/',
     'esm/',
+    'lib/',
     '*.min.js',
     '*.map',
   ];

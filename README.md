@@ -73,17 +73,16 @@ This library provides the following binaries that can be consumed per project.
 * `run-linter` - Lints source, test, and packages files using ESLint.
   * `--cache` - Speed up the linting process.
 * `run-tests` - Runs unit tests using Jest.
-* `run-coverage` - Runs unit test code coverage using Jest.
+  * `--coverage` - Run code coverage.
 * `type-check` - Statically analyzes and type checks files using Flowtype.
 
-Simply add them as NPM/Yarn scripts, or run `init-package` mentioned previously.
+Simply add them as Yarn scripts or run `init-package` mentioned previously.
 
 ```json
 "scripts": {
   "build": "build-lib",
   "bundle": "bundle-lib",
-  "cover": "run-coverage",
-  "lint": "run-linter ./src ./tests",
+  "lint": "run-linter",
   "test": "run-tests",
   "flow": "type-check",
 }
@@ -93,7 +92,7 @@ Simply add them as NPM/Yarn scripts, or run `init-package` mentioned previously.
 
 ## Lerna Support
 
-Some projects require Lerna to manage multiple packages within the same repository.
+Some projects require Lerna to manage multiple packages within the same repository -- a monorepo.
 Lerna isn't available out of the box as the dependency is quite large, most projects don't need it,
 and it's just too complicated to get working correctly.
 
