@@ -6,6 +6,7 @@ module.exports = {
   globals: {
     __DEV__: true,
   },
+  rootDir: process.cwd(),
   roots: [
     './src',
     './tests',
@@ -14,6 +15,6 @@ module.exports = {
   setupFiles: [
     path.join(__dirname, '../jest-setup.js'),
   ],
-  setupTestFrameworkScriptFile: './tests/setup.js',
+  setupTestFrameworkScriptFile: path.join(process.cwd(), './tests/setup.js'),
   verbose: false,
 };

@@ -3,27 +3,42 @@ const log = require('./log');
 module.exports = function run(type, commands, message) {
   let promise;
 
+  process.env.BUILD_CURRENT_RUN = type;
+
   if (Array.isArray(commands)) {
     if (commands.length === 0) {
-      log.error(type, 'No commands to run');
+      const error = new Error('No executable commands');
+      error.code = 2;
 
-      process.exitCode = 2;
-
-      return Promise.reject();
+      promise = Promise.reject(error);
+    } else {
+      promise = Promise.all(commands);
     }
-
-    promise = Promise.all(commands);
   } else {
-    promise = Promise.resolve(commands);
+    promise = Promise.all([commands]);
   }
 
-  return promise.then((output) => {
-    log.success(type, message);
+  return promise
+    .then((outputs) => {
+      log.success(type, message);
 
-    return output;
-  }).catch((error) => {
-    log.error(type, `Failed to execute: ${error.message}`);
+      outputs.forEach((out) => {
+        if (out.stdout) {
+          log.log(type, out.stdout);
+        }
+      });
 
-    process.exitCode = 1;
-  });
+      return outputs;
+    })
+    .catch((error) => {
+      log.error(type, 'Failed to run');
+      log.log(type, error.message);
+
+      process.exitCode = error.code || 1;
+    })
+    .then((value) => {
+      process.env.BUILD_CURRENT_RUN = '';
+
+      return value;
+    });
 };

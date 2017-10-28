@@ -2,7 +2,7 @@ const options = require('yargs-parser')(process.argv.slice(2), {
   default: {
     modules: false,
     node: false,
-    react: false,
+    react: (process.env.BUILD_CURRENT_RUN === 'jest'),
   },
 });
 
