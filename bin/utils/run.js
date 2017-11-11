@@ -15,6 +15,7 @@ module.exports = function run(type, message, ...commands) {
         ...args,
       ], {
         env: {
+          ...process.env,
           BUILD_CURRENT_RUN: type,
           NODE_ENV: 'test',
         },
@@ -28,7 +29,9 @@ module.exports = function run(type, message, ...commands) {
 
       outputs.forEach((out) => {
         if (out.stdout) {
-          log.log(type, out.stdout);
+          log.log(type, `\n${out.stdout}`);
+        } else if (out.stderr) {
+          log.log(type, `\n${out.stderr}`);
         }
       });
 
