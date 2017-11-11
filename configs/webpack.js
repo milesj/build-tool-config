@@ -26,7 +26,7 @@ const config = {
           {
             loader: 'babel-loader',
             options: {
-              extends: path.resolve(__dirname, 'babel.json5'),
+              presets: [path.resolve(__dirname, 'babel.js')],
             },
           },
         ],

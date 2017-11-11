@@ -4,6 +4,7 @@ const log = require('./log');
 const args = process.argv.slice(2);
 
 module.exports = function run(type, message, ...commands) {
+  const env = Object.assign({}, process.env);
   let promise;
 
   if (commands.length === 0) {
@@ -14,11 +15,10 @@ module.exports = function run(type, message, ...commands) {
         ...command,
         ...args,
       ], {
-        env: {
-          ...process.env,
+        env: Object.assign(env, {
           BUILD_CURRENT_RUN: type,
           NODE_ENV: 'test',
-        },
+        }),
       })
     )));
   }

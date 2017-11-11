@@ -5,5 +5,5 @@ const run = require('./utils/run');
 run(
   'flow',
   'Type checked files',
-  ['check'],
+  ['check']
 );

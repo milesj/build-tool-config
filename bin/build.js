@@ -47,5 +47,5 @@ if (options.esm) {
 run(
   'babel',
   `Transpiled ${builds.join(', ')} builds`,
-  ...commands,
+  ...commands
 );

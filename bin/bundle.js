@@ -10,5 +10,5 @@ run(
     '--config',
     path.join(__dirname, '../configs/webpack.js'),
     '--color',
-  ],
+  ]
 );

@@ -11,5 +11,5 @@ run(
     './packages/*/{src,tests}',
     '--color',
     '--report-unused-disable-directives',
-  ],
+  ]
 );

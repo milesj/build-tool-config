@@ -15,7 +15,7 @@ const plugins = [
 if (!options.node) {
   plugins.push([require.resolve('babel-plugin-transform-runtime'), {
     polyfill: false,
-    regenerator: false,
+    regenerator: true,
   }]);
 }
 
