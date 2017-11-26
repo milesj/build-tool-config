@@ -86,6 +86,7 @@ module.exports = {
     'promise/no-return-wrap': ['error', { allowReject: true }],
     'promise/param-names': 'error',
     'react/jsx-filename-extension': 'off',
+    'react/sort-prop-types': 'off', // Handled by sort-keys
     'unicorn/catch-error-name': ['error', { name: 'error' }],
     'unicorn/custom-error-definition': 'error',
     'unicorn/escape-case': 'error',
@@ -106,7 +107,12 @@ module.exports = {
     'unicorn/throw-new-error': 'error',
 
     // New and not yet in Airbnb
+    'implicit-arrow-linebreak': 'error',
     'lines-between-class-members': 'error',
+    'react/button-has-type': 'error',
+    'react/destructuring-assignment': 'error',
+    'react/jsx-one-expression-per-line': 'error',
+    'react/no-access-state-in-setstate': 'error',
 
     // Want to support but disabled in Airbnb
     complexity: ['error', 11],
@@ -146,7 +152,6 @@ module.exports = {
     'react/jsx-key': 'error',
     'react/jsx-no-literals': 'off', // Broken
     'react/no-direct-mutation-state': 'error',
-    'react/sort-prop-types': 'off', // Handled by sort-keys
 
     // Does not work with Flow
     'no-extra-parens': 'off',
