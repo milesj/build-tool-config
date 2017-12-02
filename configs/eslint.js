@@ -110,7 +110,7 @@ module.exports = {
     'implicit-arrow-linebreak': 'error',
     'lines-between-class-members': 'error',
     'react/button-has-type': 'error',
-    'react/destructuring-assignment': 'error',
+    'react/destructuring-assignment': 'off',
     'react/jsx-one-expression-per-line': 'error',
     'react/no-access-state-in-setstate': 'error',
 
