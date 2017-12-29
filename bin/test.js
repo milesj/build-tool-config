@@ -11,6 +11,6 @@ run(
     path.join(__dirname, '../configs/jest.js'),
     '--colors',
     '--logHeapUsage',
-    '--detectLeaks',
+    // '--detectLeaks',
   ]
 );
