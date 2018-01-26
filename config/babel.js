@@ -1,3 +1,6 @@
+// ./src --out-dir ./lib --cjs
+// ./src --out-dir ./esm --esm
+
 module.exports = function babel(options) {
   // Setup plugins
   const plugins = [
