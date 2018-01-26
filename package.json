@@ -15,8 +15,7 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "yarn run lint",
-    "preversion": "yarn test"
+    "test": "yarn run lint"
   },
   "repository": {
     "type": "git",
