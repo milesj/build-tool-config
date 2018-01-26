@@ -93,6 +93,7 @@ module.exports = function eslint() {
       'promise/param-names': 'error',
       'react/jsx-filename-extension': 'off',
       'react/sort-prop-types': 'off', // Handled by sort-keys
+      'react/jsx-sort-default-props': 'off', // Handled by sort-keys
       'unicorn/catch-error-name': ['error', { name: 'error' }],
       'unicorn/custom-error-definition': 'error',
       'unicorn/escape-case': 'error',
@@ -119,6 +120,7 @@ module.exports = function eslint() {
       'react/destructuring-assignment': 'off',
       'react/jsx-one-expression-per-line': 'error',
       'react/no-access-state-in-setstate': 'error',
+      'react/no-this-in-sfc': 'error',
 
       // Want to support but disabled in Airbnb
       complexity: ['error', 11],
