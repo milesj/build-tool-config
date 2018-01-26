@@ -75,6 +75,10 @@
   version "0.1.0"
   resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-0.1.0.tgz#c88576de382eee01be34183da84fc2053acb6ceb"
 
+"@beemo/driver-flow@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-flow/-/driver-flow-0.1.0.tgz#dbed271ee152e5adda661ff5c9bea43c9bd1eef5"
+
 "@beemo/driver-jest@^0.1.0":
   version "0.1.0"
   resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-0.1.0.tgz#71caeb3e8897e399e98ff2e82de73d866b62a852"

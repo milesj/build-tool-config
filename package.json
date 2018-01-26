@@ -34,6 +34,7 @@
     "@beemo/core": "^0.1.0",
     "@beemo/driver-babel": "^0.1.0",
     "@beemo/driver-eslint": "^0.1.0",
+    "@beemo/driver-flow": "^0.1.0",
     "@beemo/driver-jest": "^0.1.0",
     "@beemo/driver-prettier": "^0.1.0",
     "babel-cli": "^6.26.0",
@@ -74,7 +75,7 @@
     "webpack": "^3.10.0"
   },
   "eslintConfig": {
-    "extends": "./eslint.js",
+    "extends": "./config/eslint.js",
     "rules": {
       "no-var": "off",
       "no-console": "off"
