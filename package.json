@@ -30,12 +30,12 @@
     "node": ">=6.5.0"
   },
   "dependencies": {
-    "@beemo/core": "^0.5.0",
-    "@beemo/driver-babel": "^0.5.0",
-    "@beemo/driver-eslint": "^0.5.0",
-    "@beemo/driver-flow": "^0.5.0",
-    "@beemo/driver-jest": "^0.5.0",
-    "@beemo/driver-prettier": "^0.5.0",
+    "@beemo/core": "^0.7.0",
+    "@beemo/driver-babel": "^0.7.0",
+    "@beemo/driver-eslint": "^0.7.0",
+    "@beemo/driver-flow": "^0.7.0",
+    "@beemo/driver-jest": "^0.7.0",
+    "@beemo/driver-prettier": "^0.7.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
@@ -61,7 +61,7 @@
     "eslint-plugin-jest": "^21.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-react": "^7.6.0",
+    "eslint-plugin-react": "^7.6.1",
     "eslint-plugin-unicorn": "^3.0.1",
     "flow-bin": "^0.64.0",
     "jest": "^22.1.4",
@@ -70,7 +70,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-test-renderer": "^16.2.0",
-    "uglifyjs-webpack-plugin": "1.1.6",
+    "uglifyjs-webpack-plugin": "1.1.8",
     "webpack": "^3.10.0"
   },
   "eslintConfig": {
