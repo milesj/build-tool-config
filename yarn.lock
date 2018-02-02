@@ -54,9 +54,17 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@beemo/core@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.7.0.tgz#8e647c12ce71f9293de7c7079ddb3861a315bf60"
+"@beemo/cli@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-0.8.0.tgz#3a8a26c3c02c7ac44e167174b8006d0882528574"
+  dependencies:
+    chalk "^2.3.0"
+    semver "^5.5.0"
+    yargs "^11.0.0"
+
+"@beemo/core@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.8.0.tgz#2074b326626851c391fb5b6462ea4b95426cebe9"
   dependencies:
     boost "^0.27.0"
     chalk "^2.3.0"
@@ -66,27 +74,27 @@
     optimal "^0.14.0"
     yargs-parser "^9.0.2"
 
-"@beemo/driver-babel@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-0.7.0.tgz#e761510cac18fc93e233d136317709018bc8f004"
+"@beemo/driver-babel@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-0.8.0.tgz#2b2b22d71c892309d0bfd97ef3b2c07453063b49"
   dependencies:
     rimraf "^2.6.2"
 
-"@beemo/driver-eslint@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-0.7.0.tgz#43bd25318bea2d83f175dcf26fdc714103075e6a"
+"@beemo/driver-eslint@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-0.8.0.tgz#7b29386ec6fda31690f829f660be5d757d6a01f0"
 
-"@beemo/driver-flow@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-flow/-/driver-flow-0.7.0.tgz#0c1b54a1865bbe05f3e011468c95801443c5491c"
+"@beemo/driver-flow@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-flow/-/driver-flow-0.8.0.tgz#5835cd61d8916a0f6a6aaa5d9437caca47a97227"
 
-"@beemo/driver-jest@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-0.7.0.tgz#3fc41ff696060a7d501ccbfa29c5daabab96cf7c"
+"@beemo/driver-jest@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-0.8.0.tgz#346bf78c3b85242e8e4fb600b539b7d7a55adc80"
 
-"@beemo/driver-prettier@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-0.7.0.tgz#43aa55acbbe16ce9f87c73660d378407914faac8"
+"@beemo/driver-prettier@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-0.8.0.tgz#bbf418d45271ec6a43c09036e1fb9c087a69b282"
 
 "@types/node@*":
   version "8.5.2"
@@ -1418,6 +1426,14 @@ cliui@^3.2.0:
   dependencies:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
+    wrap-ansi "^2.0.0"
+
+cliui@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/cliui/-/cliui-4.0.0.tgz#743d4650e05f36d1ed2575b59638d87322bfbbcc"
+  dependencies:
+    string-width "^2.1.1"
+    strip-ansi "^4.0.0"
     wrap-ansi "^2.0.0"
 
 clone-stats@^0.0.1:
@@ -4921,6 +4937,10 @@ schema-utils@^0.4.2:
   version "5.4.1"
   resolved "https://registry.npmjs.org/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
 
+semver@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.npmjs.org/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
+
 serialize-javascript@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/serialize-javascript/-/serialize-javascript-1.4.0.tgz#7c958514db6ac2443a8abc062dc9f7886a7f6005"
@@ -5694,6 +5714,23 @@ yargs@^10.0.3:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^8.0.0"
+
+yargs@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.npmjs.org/yargs/-/yargs-11.0.0.tgz#c052931006c5eee74610e5fc0354bedfd08a201b"
+  dependencies:
+    cliui "^4.0.0"
+    decamelize "^1.1.1"
+    find-up "^2.1.0"
+    get-caller-file "^1.0.1"
+    os-locale "^2.0.0"
+    require-directory "^2.1.1"
+    require-main-filename "^1.0.1"
+    set-blocking "^2.0.0"
+    string-width "^2.0.0"
+    which-module "^2.0.0"
+    y18n "^3.2.1"
+    yargs-parser "^9.0.2"
 
 yargs@^8.0.2:
   version "8.0.2"
