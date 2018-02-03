@@ -1,7 +1,5 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
-// ./src ./tests ./packages/*/{src,tests} --color --report-unused-disable-directives
-
 module.exports = function eslint() {
   return {
     root: true,

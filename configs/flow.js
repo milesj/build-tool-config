@@ -1,12 +1,19 @@
 module.exports = function flow(options) {
-  return {
-    ignore: [
-      '.*/node_modules/.*',
+  const ignore = [
+    '.*/node_modules/.*',
+    '.*/tests/.*',
+    '.*\\.test\\.js',
+  ];
+
+  if (options.workspaces) {
+    ignore.push(
       '.*/packages/.*/esm/.*',
       '.*/packages/.*/lib/.*',
-      '.*/tests/.*',
-      '.*\\.test\\.js',
-    ],
+    );
+  }
+
+  return {
+    ignore,
     include: [
       options.workspaces ? './packages' : './src',
     ],

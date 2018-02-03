@@ -1,5 +1,3 @@
-// --colors --logHeapUsage --detectLeaks
-
 const path = require('path');
 
 module.exports = function jest(options) {
