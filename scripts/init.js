@@ -27,7 +27,7 @@ module.exports = class InitScript extends Script {
       eslint: 'beemo eslint --color --report-unused-disable-directives',
       flow: 'beemo flow check',
       jest: 'beem jest --colors --logHeapUsage',
-      prettier: 'beemo prettier --write',
+      prettier: 'beemo prettier --write ./README.md',
 
       // Hooks
       pretest: 'yarn run eslint',
@@ -59,7 +59,6 @@ module.exports = class InitScript extends Script {
         // Hooks
         prerelease: 'yarn run package',
       });
-
     } else {
       packageConfig.main = './lib/index.js';
       packageConfig.module = './esm/index.js';
@@ -75,24 +74,26 @@ module.exports = class InitScript extends Script {
     // Save files
     const packagePath = path.join(tool.options.root, 'package.json');
     const lernaPath = path.join(tool.options.root, 'lerna.json');
-    const promises = [
-      fs.writeJSON(packagePath, packageConfig, { spaces: 2 }),
-    ];
+    const promises = [fs.writeJSON(packagePath, packageConfig, { spaces: 2 })];
 
     if (options.workspaces) {
-      fs.writeJSON(lernaPath, {
-        lerna: packageConfig.devDependencies.lerna.slice(1),
-        version: 'independent',
-        npmClient: 'yarn',
-        useWorkspaces: true,
-        commands: {
-          publish: {
-            ignore: ['*.md'],
+      fs.writeJSON(
+        lernaPath,
+        {
+          lerna: packageConfig.devDependencies.lerna.slice(1),
+          version: 'independent',
+          npmClient: 'yarn',
+          useWorkspaces: true,
+          commands: {
+            publish: {
+              ignore: ['*.md'],
+            },
           },
         },
-      }, { spaces: 2 });
+        { spaces: 2 },
+      );
     }
 
     return Promise.all(promises);
   }
-}
+};

@@ -30,11 +30,14 @@ module.exports = function eslint() {
       'class-methods-use-this': 'off',
       'function-paren-newline': ['error', 'consistent'],
       'multiline-comment-style': 'off',
-      'padded-blocks': ['error', {
-        // Never apply to blocks
-        classes: 'never',
-        switches: 'never',
-      }],
+      'padded-blocks': [
+        'error',
+        {
+          // Never apply to blocks
+          classes: 'never',
+          switches: 'never',
+        },
+      ],
       'flowtype/boolean-style': 'error',
       'flowtype/define-flow-type': 'error',
       'flowtype/delimiter-dangle': ['error', 'always-multiline'],
@@ -44,29 +47,47 @@ module.exports = function eslint() {
       'flowtype/no-unused-expressions': 'error',
       'flowtype/no-primitive-constructor-types': 'error',
       'flowtype/no-types-missing-file-annotation': 'error',
-      'flowtype/no-weak-types': ['error', {
-        any: true,
-        Object: false,
-        Function: true,
-      }],
+      'flowtype/no-weak-types': [
+        'error',
+        {
+          any: true,
+          Object: false,
+          Function: true,
+        },
+      ],
       'flowtype/object-type-delimiter': ['error', 'comma'],
-      'flowtype/require-parameter-type': ['error', {
-        excludeArrowFunctions: true,
-      }],
-      'flowtype/require-return-type': ['error', 'always', {
-        annotateUndefined: 'never',
-        excludeArrowFunctions: true,
-      }],
+      'flowtype/require-parameter-type': [
+        'error',
+        {
+          excludeArrowFunctions: true,
+        },
+      ],
+      'flowtype/require-return-type': [
+        'error',
+        'always',
+        {
+          annotateUndefined: 'never',
+          excludeArrowFunctions: true,
+        },
+      ],
       'flowtype/require-valid-file-annotation': ['error', 'always'],
       'flowtype/require-variable-type': 'off',
       'flowtype/semi': ['error', 'always'],
-      'flowtype/sort-keys': ['error', 'asc', {
-        caseSensitive: false,
-        natural: true,
-      }],
-      'flowtype/space-after-type-colon': ['error', 'always', {
-        allowLineBreak: false,
-      }],
+      'flowtype/sort-keys': [
+        'error',
+        'asc',
+        {
+          caseSensitive: false,
+          natural: true,
+        },
+      ],
+      'flowtype/space-after-type-colon': [
+        'error',
+        'always',
+        {
+          allowLineBreak: false,
+        },
+      ],
       'flowtype/space-before-generic-bracket': ['error', 'never'],
       'flowtype/space-before-type-colon': ['error', 'never'],
       'flowtype/type-id-match': 'off',
@@ -128,33 +149,49 @@ module.exports = function eslint() {
       'no-div-regex': 'error',
       'no-eq-null': 'error',
       'no-implicit-coercion': 'error',
-      'no-magic-numbers': ['error', {
-        ignore: [-1, 0, 1, 2, 3],
-        ignoreArrayIndexes: true,
-        enforceConst: true,
-      }],
+      'no-magic-numbers': [
+        'error',
+        {
+          ignore: [-1, 0, 1, 2, 3],
+          ignoreArrayIndexes: true,
+          enforceConst: true,
+        },
+      ],
       'no-native-reassign': 'error',
       'no-negated-condition': 'error',
-      'no-unused-vars': ['error', {
-        vars: 'all',
-        args: 'none', // Required for Flow
-        ignoreRestSiblings: true,
-      }],
+      'no-unused-vars': [
+        'error',
+        {
+          vars: 'all',
+          args: 'none', // Required for Flow
+          ignoreRestSiblings: true,
+        },
+      ],
       'no-useless-call': 'error',
-      'sort-keys': ['error', 'asc', {
-        caseSensitive: false,
-        natural: true,
-      }],
+      'sort-keys': [
+        'error',
+        'asc',
+        {
+          caseSensitive: false,
+          natural: true,
+        },
+      ],
       'import/default': 'error',
       'import/named': 'error',
-      'import/no-anonymous-default-export': ['error', {
-        allowObject: true,
-      }],
+      'import/no-anonymous-default-export': [
+        'error',
+        {
+          allowObject: true,
+        },
+      ],
       'react/forbid-foreign-prop-types': 'error',
-      'react/jsx-handler-names': ['error', {
-        eventHandlerPrefix: 'handle',
-        eventHandlerPropPrefix: 'on',
-      }],
+      'react/jsx-handler-names': [
+        'error',
+        {
+          eventHandlerPrefix: 'handle',
+          eventHandlerPropPrefix: 'on',
+        },
+      ],
       'react/jsx-key': 'error',
       'react/jsx-no-literals': 'off', // Broken
       'react/no-direct-mutation-state': 'error',

@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "eslint": "beemo eslint . --color --report-unused-disable-directives",
-    "prettier": "beemo prettier --write ./**/*.{js,json,md}",
+    "prettier": "beemo prettier --write ./{configs,dotfiles,scripts}/*.{js,json,md} ./README.md",
     "test": "yarn run eslint",
     "preversion": "yarn test"
   },

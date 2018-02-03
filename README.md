@@ -79,12 +79,14 @@ This library provides the following binaries that can be consumed per project.
 Simply add them as Yarn scripts or run `init-package` mentioned previously.
 
 ```json
-"scripts": {
-  "build": "build-lib",
-  "bundle": "bundle-lib",
-  "lint": "run-linter",
-  "test": "run-tests",
-  "flow": "type-check",
+{
+  "scripts": {
+    "build": "build-lib",
+    "bundle": "bundle-lib",
+    "lint": "run-linter",
+    "test": "run-tests",
+    "flow": "type-check",
+  }
 }
 ```
 
@@ -123,7 +125,9 @@ To build packages using `lerna run`, each package must install this project as a
 dependency, while also configuring the Yarn `build` script, like so.
 
 ```json
-"scripts": {
-  "build": "build-lib"
-},
+{
+  "scripts": {
+    "build": "build-lib"
+  }
+}
 ```

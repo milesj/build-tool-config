@@ -1,22 +1,13 @@
 module.exports = function flow(options) {
-  const ignore = [
-    '.*/node_modules/.*',
-    '.*/tests/.*',
-    '.*\\.test\\.js',
-  ];
+  const ignore = ['.*/node_modules/.*', '.*/tests/.*', '.*\\.test\\.js'];
 
   if (options.workspaces) {
-    ignore.push(
-      '.*/packages/.*/esm/.*',
-      '.*/packages/.*/lib/.*',
-    );
+    ignore.push('.*/packages/.*/esm/.*', '.*/packages/.*/lib/.*');
   }
 
   return {
     ignore,
-    include: [
-      options.workspaces ? './packages' : './src',
-    ],
+    include: [options.workspaces ? './packages' : './src'],
     lints: {
       all: 'warn',
       sketchy_null_bool: 'off',

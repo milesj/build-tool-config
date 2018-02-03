@@ -6,20 +6,26 @@ module.exports = function babel(options) {
   ];
 
   if (!options.node) {
-    plugins.push(['babel-plugin-transform-runtime', {
-      polyfill: false,
-      regenerator: true,
-    }]);
+    plugins.push([
+      'babel-plugin-transform-runtime',
+      {
+        polyfill: false,
+        regenerator: true,
+      },
+    ]);
   }
 
   // Setup presets (order is important)
   const presets = [
-    ['babel-preset-env', {
-      modules: options.esm ? false : 'commonjs',
-      shippedProposals: true,
-      targets: options.node ? { node: '6.5' } : { ie: '10' },
-      useBuiltIns: 'usage',
-    }],
+    [
+      'babel-preset-env',
+      {
+        modules: options.esm ? false : 'commonjs',
+        shippedProposals: true,
+        targets: options.node ? { node: '6.5' } : { ie: '10' },
+        useBuiltIns: 'usage',
+      },
+    ],
     'babel-preset-stage-2',
     'babel-preset-flow',
   ];
