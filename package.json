@@ -14,8 +14,10 @@
     "webpack"
   ],
   "scripts": {
-    "lint": "eslint .",
-    "test": "yarn run lint"
+    "eslint": "beemo eslint . --color --report-unused-disable-directives",
+    "prettier": "beemo prettier --write ./**/*.{js,json,md}",
+    "test": "yarn run eslint",
+    "preversion": "yarn test"
   },
   "repository": {
     "type": "git",
@@ -76,11 +78,14 @@
     "uglifyjs-webpack-plugin": "1.1.8",
     "webpack": "^3.10.0"
   },
-  "eslintConfig": {
-    "extends": "./config/eslint.js",
-    "rules": {
-      "no-var": "off",
-      "no-console": "off"
+  "beemo": {
+    "config": "@local",
+    "drivers": ["eslint", "prettier"],
+    "eslint": {
+      "rules": {
+        "no-var": "off",
+        "no-console": "off"
+      }
     }
   }
 }

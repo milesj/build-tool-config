@@ -1,3 +1,5 @@
+/* eslint-disable sort-keys */
+
 const { Script } = require('@beemo/core');
 const fs = require('fs-extra');
 const path = require('path');
@@ -88,7 +90,7 @@ module.exports = class InitScript extends Script {
             ignore: ['*.md'],
           },
         },
-      }, { spaces: 2 }),
+      }, { spaces: 2 });
     }
 
     return Promise.all(promises);

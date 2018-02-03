@@ -2,7 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
@@ -25,9 +25,9 @@ const config = {
   },
   plugins: [
     new webpack.EnvironmentPlugin(['NODE_ENV']),
-    new CleanWebpackPlugin([path.dirname(output)], {
-      root: process.cwd(),
-    }),
+    // new CleanWebpackPlugin([path.dirname(output)], {
+    //   root: process.cwd(),
+    // }),
   ],
   target: 'web',
 };
