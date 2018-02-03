@@ -18,6 +18,9 @@ module.exports = class InitScript extends Script {
     packageConfig.beemo = {
       config: '@milesj/build-tool-config',
       drivers: ['babel', 'eslint', 'flow', 'jest', 'prettier'],
+      execute: {
+        cleanup: false,
+      },
     };
 
     // Scripts

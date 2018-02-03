@@ -81,6 +81,9 @@
   "beemo": {
     "config": "@local",
     "drivers": ["eslint", "prettier"],
+    "execute": {
+      "cleanup": false
+    },
     "eslint": {
       "rules": {
         "no-var": "off",

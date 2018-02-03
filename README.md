@@ -85,7 +85,7 @@ Simply add them as Yarn scripts or run `init-package` mentioned previously.
     "bundle": "bundle-lib",
     "lint": "run-linter",
     "test": "run-tests",
-    "flow": "type-check",
+    "flow": "type-check"
   }
 }
 ```
