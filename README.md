@@ -1,7 +1,7 @@
 # build-tool-config
 
-I got tired of duplicating build tool configuration files over and over again between projects,
-so I built this repository to house them. The following tools are pre-configured:
+I got tired of duplicating build tool configuration files over and over again between projects, so I
+built this repository to house them. The following tools are pre-configured:
 
 * [Babel](https://github.com/milesj/build-tool-config/blob/master/configs/babel.js)
   * Configured with `env`, `stage-2`, `react`, and `flow` presets.
@@ -42,9 +42,8 @@ yarn add babel-runtime
 
 ## Sync Configuration
 
-Some build tools require dotfiles to be local to the project, which sucks.
-To get around this, we can easily sync them to each project, by running the following
-command in the project root.
+Some build tools require dotfiles to be local to the project, which sucks. To get around this, we
+can easily sync them to each project, by running the following command in the project root.
 
 ```
 node ./node_modules/.bin/sync-configs
@@ -52,8 +51,8 @@ node ./node_modules/.bin/sync-configs
 
 ## Init Package
 
-To make use of `babel` and `eslint`, we need to configure our `package.json` to
-extend from the presets. To do this, run the following command in the project root.
+To make use of `babel` and `eslint`, we need to configure our `package.json` to extend from the
+presets. To do this, run the following command in the project root.
 
 ```
 node ./node_modules/.bin/init-package
@@ -63,7 +62,8 @@ node ./node_modules/.bin/init-package
 
 This library provides the following binaries that can be consumed per project.
 
-* `build-lib` - Transpiles the root `src/` folder to both CommonJS (main) and ECMAScript (module) builds using Babel.
+* `build-lib` - Transpiles the root `src/` folder to both CommonJS (main) and ECMAScript (module)
+  builds using Babel.
   * `--no-clean` - Disable automatic target cleaning.
   * `--no-cjs` - Disable CommonJS `lib/` builds.
   * `--no-esm` - Disable ECMAScript `esm/` builds.
@@ -116,13 +116,13 @@ Update `.travis.yml` to boostrap Lerna.
 before_script: yarn run bootstrap:slow
 ```
 
-And remaining setup, like converting old Yarn scripts, or moving files to package folders.
-That should be it.
+And remaining setup, like converting old Yarn scripts, or moving files to package folders. That
+should be it.
 
 ### Configuring Packages
 
-To build packages using `lerna run`, each package must install this project as a dev
-dependency, while also configuring the Yarn `build` script, like so.
+To build packages using `lerna run`, each package must install this project as a dev dependency,
+while also configuring the Yarn `build` script, like so.
 
 ```json
 {

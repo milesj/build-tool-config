@@ -3,6 +3,12 @@ module.exports = function prettier() {
     arrowParens: 'avoid',
     bracketSpacing: true,
     jsxBracketSameLine: false,
+    overrides: [
+      {
+        files: '*.md',
+        options: { parser: 'markdown' },
+      },
+    ],
     parser: 'flow',
     printWidth: 100,
     proseWrap: 'always',
