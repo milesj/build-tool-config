@@ -25,7 +25,6 @@ module.exports = class InitScript extends Script {
 
     // Scripts
     Object.assign(packageConfig.scripts, {
-      babel: 'beemo babel ./src --out-dir ./lib --copy-files',
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint --color --report-unused-disable-directives',
       flow: 'beemo flow check',
@@ -33,9 +32,9 @@ module.exports = class InitScript extends Script {
       prettier: 'beemo prettier --write ./README.md',
 
       // Hooks
-      pretest: 'yarn run eslint',
-      test: 'yarn run jest',
-      posttest: 'yarn run flow',
+      pretest: 'yarn run eslint --silent',
+      test: 'yarn run jest --silent',
+      posttest: 'yarn run flow --silent',
     });
 
     if (options.workspaces) {
@@ -68,7 +67,12 @@ module.exports = class InitScript extends Script {
       packageConfig.scripts.eslint += ' ./src ./tests';
       packageConfig.scripts.prettier += ' ./{src,tests}/**/*.{js,json,md}';
 
-      Object.assing(packageConfig.scripts, {
+      Object.assign(packageConfig.scripts, {
+        babel: 'yarn run babel:cjs && yarn run babel:esm',
+        'babel:cjs': 'beemo babel ./src --out-dir ./lib --copy-files --cjs',
+        'babel:esm': 'beemo babel ./src --out-dir ./esm --copy-files --esm',
+
+        // Hooks
         preversion: 'yarn test',
         postversion: 'yarn run babel',
       });
