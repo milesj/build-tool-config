@@ -7,7 +7,7 @@ const path = require('path');
 module.exports = class InitScript extends Script {
   parse() {
     return {
-      boolean: ['workspaces'],
+      boolean: ['local', 'workspaces'],
     };
   }
 
@@ -15,20 +15,20 @@ module.exports = class InitScript extends Script {
     const packageConfig = { ...tool.package };
 
     // Bemo
-    packageConfig.beemo = {
-      config: '@milesj/build-tool-config',
+    Object.assign(packageConfig.beemo, {
+      config: options.local ? '@local' : '@milesj/build-tool-config',
       drivers: ['babel', 'eslint', 'flow', 'jest', 'prettier'],
       execute: {
         cleanup: false,
       },
-    };
+    });
 
     // Scripts
     Object.assign(packageConfig.scripts, {
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint --color --report-unused-disable-directives',
       flow: 'beemo flow check',
-      jest: 'beem jest --colors --logHeapUsage',
+      jest: 'beemo jest --colors --logHeapUsage',
       prettier: 'beemo prettier --write ./README.md',
 
       // Hooks
@@ -54,7 +54,7 @@ module.exports = class InitScript extends Script {
         bootstrap: 'lerna bootstrap',
         'bootstrap:slow': 'yarn run bootstrap --concurrency=1',
         clean: 'rimraf ./packages/*/{lib,esm}/ && lerna clean --yes',
-        package: 'yarn run bootstrap && yarn test',
+        package: 'yarn run clean && yarn run bootstrap && yarn test',
         release: 'lerna publish',
         'release:force': 'yarn run release --force-publish=*',
 

@@ -6,6 +6,7 @@ module.exports = function eslint() {
     parser: 'babel-eslint',
     extends: ['airbnb', 'prettier'],
     plugins: ['flowtype', 'promise', 'unicorn', 'jest'],
+    ignore: ['esm/', 'lib/', '*.min.js', '*.map'],
     env: {
       browser: true,
       jest: true,
