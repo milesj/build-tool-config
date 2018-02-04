@@ -53,8 +53,9 @@ module.exports = class InitScript extends Script {
       Object.assign(packageConfig.scripts, {
         bootstrap: 'lerna bootstrap',
         'bootstrap:slow': 'yarn run bootstrap --concurrency=1',
+        build: 'beemo run-script build-packages',
         clean: 'rimraf ./packages/*/{lib,esm}/ && lerna clean --yes',
-        package: 'yarn run clean && yarn run bootstrap && yarn test',
+        package: 'yarn run clean && yarn run bootstrap && yarn run build && yarn test',
         release: 'lerna publish',
         'release:force': 'yarn run release --force-publish=*',
 
