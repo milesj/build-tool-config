@@ -42,6 +42,7 @@ module.exports = class InitScript extends Script {
         throw new Error(`Lerna must be installed to use workspaces.`);
       }
 
+      packageConfig.name += '-root';
       packageConfig.private = true;
       packageConfig.workspaces = ['packages/*'];
       packageConfig.scripts.eslint += ' ./packages/*/{src,tests}';
@@ -49,7 +50,6 @@ module.exports = class InitScript extends Script {
       packageConfig.scripts.jest += ' --workspaces';
       packageConfig.scripts.prettier += ' ./packages/*/{src,tests}/**/*.{js,json,md}';
 
-      // TODO build babel???
       Object.assign(packageConfig.scripts, {
         bootstrap: 'lerna bootstrap',
         'bootstrap:slow': 'yarn run bootstrap --concurrency=1',

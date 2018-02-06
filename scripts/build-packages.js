@@ -6,7 +6,10 @@ const execa = require('execa');
 module.exports = class BuildPackagesScript extends Script {
   parse() {
     return {
-      string: ['main'],
+      defaults: {
+        mainPackage: 'core',
+      },
+      string: ['mainPackage'],
     };
   }
 
@@ -18,26 +21,36 @@ module.exports = class BuildPackagesScript extends Script {
       .then(files => {
         const promises = [];
 
-        files.forEach(file => {
-          promises.push(this.build(file), this.build(file, true));
+        files.forEach(fileName => {
+          const packagePath = path.join(root, 'packages', fileName);
+          const srcPath = path.join(packagePath, 'src');
+
+          if (!fs.statSync(packagePath).isDirectory() || !fs.existsSync(srcPath)) {
+            return;
+          }
+
+          promises.push(this.build(packagePath), this.build(packagePath, true));
         });
 
         return Promise.all(promises);
       })
-      .then(output => {
-        if (options.main) {
+      .then(responses => {
+        if (options.mainPackage) {
           fs.copySync(
             path.join(root, 'README.md'),
-            path.join(root, 'packages', options.main, 'README.md'),
+            path.join(root, 'packages', options.mainPackage, 'README.md'),
           );
         }
 
-        return output;
+        tool.log(responses.map(response => response.stdout).join('\n'));
+
+        return responses;
       });
   }
 
   build(packageRoot, isModule = false) {
-    return execa('beemo babel', [
+    return execa('beemo', [
+      'babel',
       path.join(packageRoot, 'src'),
       '--out-dir',
       path.join(packageRoot, isModule ? 'esm' : 'lib'),
