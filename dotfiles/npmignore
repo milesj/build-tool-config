@@ -1,5 +1,6 @@
 coverage/
 flow-typed/
+src/
 tests/
 .babelrc
 .eslintcache
