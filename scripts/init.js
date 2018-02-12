@@ -49,7 +49,7 @@ module.exports = class InitScript extends Script {
       packageConfig.scripts.flow += ' --workspaces';
       packageConfig.scripts.jest += ' --workspaces';
       packageConfig.scripts.prettier +=
-        ' ./packages/*/{bin,src,tests}/{,**/}*.js ./packages/*/*.{md,json}';
+        ' "./packages/*/{bin,src,tests}/**/*.js" "./packages/*/*.{md,json}"';
 
       Object.assign(packageConfig.scripts, {
         bootstrap: 'lerna bootstrap',
@@ -67,7 +67,7 @@ module.exports = class InitScript extends Script {
       packageConfig.main = './lib/index.js';
       packageConfig.module = './esm/index.js';
       packageConfig.scripts.eslint += ' ./src ./tests';
-      packageConfig.scripts.prettier += ' ./{bin,src,tests}/{,**/}*.js ./*.{md,json}';
+      packageConfig.scripts.prettier += ' "./{bin,src,tests}/**/*.js" "./*.{md,json}"';
 
       Object.assign(packageConfig.scripts, {
         babel: 'yarn run babel:cjs && yarn run babel:esm',

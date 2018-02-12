@@ -80,14 +80,11 @@
     "webpack": "^3.11.0"
   },
   "beemo": {
-    "config": "@local",
+    "module": "@local",
     "drivers": [
       "eslint",
       "prettier"
     ],
-    "execute": {
-      "cleanup": false
-    },
     "eslint": {
       "rules": {
         "no-var": "off",

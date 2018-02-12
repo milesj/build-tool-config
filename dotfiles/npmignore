@@ -10,6 +10,7 @@ tests/
 .flowconfig
 .gitignore
 .npmignore
+.prettierrc.json
 .travis.yml
 .yarnclean
 jest.json
