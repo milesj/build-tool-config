@@ -10,12 +10,6 @@ module.exports = function flow(options) {
     include: [options.workspaces ? './packages' : './src'],
     lints: {
       all: 'warn',
-      sketchy_null_bool: 'warn',
-      sketchy_null_mixed: 'warn',
-      sketchy_null_number: 'warn',
-      sketchy_null_string: 'warn',
-      unclear_type: 'warn',
-      untyped_import: 'warn',
     },
     options: {
       emoji: true,

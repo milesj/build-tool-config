@@ -15,8 +15,9 @@
   ],
   "scripts": {
     "eslint": "beemo eslint . --color --report-unused-disable-directives",
+    "flow": "beemo flow check",
     "prettier": "beemo prettier --write ./{configs,dotfiles,scripts}/*.{js,json,md} ./README.md",
-    "test": "yarn run eslint",
+    "test": "yarn run eslint && yarn run flow",
     "preversion": "yarn test"
   },
   "repository": {
@@ -83,6 +84,7 @@
     "module": "@local",
     "drivers": [
       "eslint",
+      "flow",
       "prettier"
     ],
     "eslint": {
