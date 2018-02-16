@@ -70,6 +70,7 @@
     "execa": "^0.9.0",
     "flow-bin": "^0.65.0",
     "fs-extra": "^5.0.0",
+    "gitbook-cli": "^2.3.2",
     "jest": "^22.3.0",
     "jest-runner-eslint": "^0.4.0",
     "prettier": "^1.10.2",

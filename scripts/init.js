@@ -7,7 +7,7 @@ const path = require('path');
 module.exports = class InitScript extends Script {
   parse() {
     return {
-      boolean: ['local', 'workspaces'],
+      boolean: ['docs', 'local', 'workspaces'],
     };
   }
 
@@ -33,6 +33,14 @@ module.exports = class InitScript extends Script {
       test: 'yarn run jest --silent',
       posttest: 'yarn run flow --silent',
     });
+
+    if (options.docs) {
+      Object.assign(packageConfig.scripts, {
+        docs: 'gitbook build --log=debug --debug',
+        'docs:serve': 'gitbook serve',
+        'docs:install': 'gitbook install',
+      });
+    }
 
     if (options.workspaces) {
       if (!packageConfig.devDependencies.lerna) {
@@ -83,20 +91,22 @@ module.exports = class InitScript extends Script {
     const promises = [fs.writeJSON(packagePath, packageConfig, { spaces: 2 })];
 
     if (options.workspaces) {
-      fs.writeJSON(
-        lernaPath,
-        {
-          lerna: packageConfig.devDependencies.lerna.slice(1),
-          version: 'independent',
-          npmClient: 'yarn',
-          useWorkspaces: true,
-          commands: {
-            publish: {
-              ignore: ['*.md'],
+      promises.push(
+        fs.writeJSON(
+          lernaPath,
+          {
+            lerna: packageConfig.devDependencies.lerna.slice(1),
+            version: 'independent',
+            npmClient: 'yarn',
+            useWorkspaces: true,
+            commands: {
+              publish: {
+                ignore: ['*.md'],
+              },
             },
           },
-        },
-        { spaces: 2 },
+          { spaces: 2 },
+        ),
       );
     }
 
