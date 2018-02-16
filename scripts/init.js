@@ -16,11 +16,8 @@ module.exports = class InitScript extends Script {
 
     // Bemo
     Object.assign(packageConfig.beemo, {
-      config: options.local ? '@local' : '@milesj/build-tool-config',
+      module: options.local ? '@local' : '@milesj/build-tool-config',
       drivers: ['babel', 'eslint', 'flow', 'jest', 'prettier'],
-      execute: {
-        cleanup: false,
-      },
     });
 
     // Scripts
