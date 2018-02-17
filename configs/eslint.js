@@ -215,7 +215,7 @@ module.exports = function eslint() {
 
     overrides: [
       {
-        files: ['tests/**/*.js'],
+        files: ['tests/**/*.js', 'packages/*/tests/**/*.js'],
         rules: {
           'no-magic-numbers': 'off',
           'sort-keys': 'off',
