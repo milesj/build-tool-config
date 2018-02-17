@@ -96,7 +96,7 @@ module.exports = function eslint() {
       'flowtype/use-flow-type': 'error',
       'import/no-extraneous-dependencies': 'off',
       'jest/consistent-test-it': 'error',
-      'jest/lowercase-name': 'error',
+      'jest/lowercase-name': 'off',
       'jest/no-identical-title': 'error',
       'jest/no-test-prefixes': 'error',
       'jest/no-large-snapshots': 'error',
@@ -141,7 +141,7 @@ module.exports = function eslint() {
       'unicorn/throw-new-error': 'error',
 
       // New and not yet in Airbnb
-      'implicit-arrow-linebreak': 'error',
+      'implicit-arrow-linebreak': 'off',
       'lines-between-class-members': 'error',
       'react/button-has-type': 'error',
       'react/destructuring-assignment': 'off',
@@ -212,5 +212,15 @@ module.exports = function eslint() {
       // Does not work with class properties
       'no-invalid-this': 'off',
     },
+
+    overrides: [
+      {
+        files: ['tests/**/*.js'],
+        rules: {
+          'no-magic-numbers': 'off',
+          'sort-keys': 'off',
+        },
+      },
+    ],
   };
 };
