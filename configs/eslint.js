@@ -143,6 +143,10 @@ module.exports = function eslint() {
       // New and not yet in Airbnb
       'implicit-arrow-linebreak': 'off',
       'lines-between-class-members': 'error',
+      'import/group-exports': 'off',
+      'import/no-default-export': 'off',
+      'import/no-self-import': 'error',
+      'import/no-useless-path-segments': 'error',
       'react/button-has-type': 'error',
       'react/destructuring-assignment': 'off',
       'react/jsx-one-expression-per-line': 'error',
