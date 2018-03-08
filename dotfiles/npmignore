@@ -11,7 +11,7 @@ tests/
 .flowconfig
 .gitignore
 .npmignore
-.prettierrc.json
+.prettierrc
 .travis.yml
 .yarnclean
 jest.json

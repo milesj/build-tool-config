@@ -1,4 +1,4 @@
-.eslintrc.json
+.eslintrc
 .eslintignore
 .flowconfig
-.prettierrc.json
+.prettierrc

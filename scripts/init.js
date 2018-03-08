@@ -47,10 +47,13 @@ module.exports = class InitScript extends Script {
         throw new Error(`Lerna must be installed to use workspaces.`);
       }
 
-      packageConfig.name += '-root';
+      if (!packageConfig.name.endsWith('-root')) {
+        packageConfig.name += '-root';
+      }
+
       packageConfig.private = true;
       packageConfig.workspaces = ['packages/*'];
-      packageConfig.scripts.eslint += ' ./packages/*/{src,tests}';
+      packageConfig.scripts.eslint += ' "./packages/*/{src,tests}"';
       packageConfig.scripts.flow += ' --workspaces';
       packageConfig.scripts.jest += ' --workspaces';
       packageConfig.scripts.prettier +=
