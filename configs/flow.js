@@ -9,7 +9,7 @@ module.exports = function flow(options) {
     ignore,
     include: [options.workspaces ? './packages' : './src'],
     lints: {
-      all: 'warn',
+      all: 'off',
     },
     options: {
       emoji: true,
