@@ -6,10 +6,10 @@ const execa = require('execa');
 module.exports = class BuildPackagesScript extends Script {
   parse() {
     return {
-      defaults: {
-        mainPackage: 'core',
+      default: {
+        'main-package': 'core',
       },
-      string: ['mainPackage'],
+      string: ['main-package'],
     };
   }
 
@@ -42,7 +42,7 @@ module.exports = class BuildPackagesScript extends Script {
           );
         }
 
-        tool.log(responses.map(response => response.stdout).join('\n'));
+        tool.log(responses.map(response => response.stdout.trim()).join('\n'));
 
         return responses;
       });
