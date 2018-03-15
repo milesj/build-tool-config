@@ -32,7 +32,7 @@ module.exports = class BuildPackagesScript extends Script {
             return;
           }
 
-          promises.push(this.build(packagePath, options), this.build(packagePath, options, true));
+          promises.push(this.build(packagePath, options));
         });
 
         return Promise.all(promises);
