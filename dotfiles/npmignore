@@ -12,6 +12,7 @@ tests/
 .gitignore
 .npmignore
 .prettierrc
+.prettierignore
 .travis.yml
 .yarnclean
 jest.json

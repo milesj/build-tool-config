@@ -16,6 +16,7 @@ module.exports = function jest(options) {
 
   return {
     coverageDirectory: './coverage',
+    coveragePathIgnorePatterns: ['/node_modules/', '/lib/', '/esm/'],
     coverageReporters: ['lcov'],
     globals: {
       __DEV__: true,

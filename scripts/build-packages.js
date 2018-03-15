@@ -6,8 +6,11 @@ const execa = require('execa');
 module.exports = class BuildPackagesScript extends Script {
   parse() {
     return {
+      boolean: ['node', 'react'],
       default: {
         'main-package': 'core',
+        node: false,
+        react: false,
       },
       string: ['main-package'],
     };
@@ -29,7 +32,7 @@ module.exports = class BuildPackagesScript extends Script {
             return;
           }
 
-          promises.push(this.build(packagePath), this.build(packagePath, true));
+          promises.push(this.build(packagePath, options), this.build(packagePath, options, true));
         });
 
         return Promise.all(promises);
@@ -42,21 +45,38 @@ module.exports = class BuildPackagesScript extends Script {
           );
         }
 
-        tool.log(responses.map(response => response.stdout.trim()).join('\n'));
+        const out = responses
+          .map(response => response.stdout.trim())
+          .filter(message => !!message)
+          .join('\n');
+
+        if (out) {
+          tool.log(out);
+        }
 
         return responses;
       });
   }
 
-  build(packageRoot, isModule = false) {
+  build(packageRoot, options, isModule = false) {
+    const args = [isModule ? '--esm' : '--cjs'];
+
+    if (options.react) {
+      args.push('--react');
+    }
+
+    if (options.node) {
+      args.push('--node');
+    }
+
     return execa('beemo', [
       'babel',
       path.join(packageRoot, 'src'),
       '--out-dir',
       path.join(packageRoot, isModule ? 'esm' : 'lib'),
       '--copy-files',
-      isModule ? '--esm' : '--cjs',
       '--silent',
+      ...args,
     ]);
   }
 };
