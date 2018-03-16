@@ -17,21 +17,21 @@ module.exports = class InitScript extends Script {
     // Bemo
     Object.assign(packageConfig.beemo, {
       module: options.local ? '@local' : '@milesj/build-tool-config',
-      drivers: ['babel', 'eslint', 'flow', 'jest', 'prettier'],
+      drivers: ['babel', 'eslint', 'jest', 'prettier', 'typescript'],
     });
 
     // Scripts
     Object.assign(packageConfig.scripts, {
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint --color --report-unused-disable-directives',
-      flow: 'beemo flow check',
       jest: 'beemo jest --colors --logHeapUsage',
       prettier: 'beemo prettier --write ./README.md',
+      type: 'beemo typescript',
 
       // Hooks
-      pretest: 'yarn run eslint --silent',
+      pretest: 'yarn run type --silent',
       test: 'yarn run jest --silent',
-      posttest: 'yarn run flow --silent',
+      posttest: 'yarn run eslint --silent',
     });
 
     if (options.docs) {
@@ -54,10 +54,9 @@ module.exports = class InitScript extends Script {
       packageConfig.private = true;
       packageConfig.workspaces = ['packages/*'];
       packageConfig.scripts.eslint += ' "./packages/*/{src,tests}"';
-      packageConfig.scripts.flow += ' --workspaces';
       packageConfig.scripts.jest += ' --workspaces';
       packageConfig.scripts.prettier +=
-        ' "./packages/*/{bin,src,tests}/**/*.js" "./packages/*/*.{md,json}"';
+        ' "./packages/*/{bin,src,tests}/**/*.(t|j)sx?" "./packages/*/*.{md,json}"';
 
       Object.assign(packageConfig.scripts, {
         bootstrap: 'lerna bootstrap',
@@ -75,7 +74,7 @@ module.exports = class InitScript extends Script {
       packageConfig.main = './lib/index.js';
       packageConfig.module = './esm/index.js';
       packageConfig.scripts.eslint += ' ./src ./tests';
-      packageConfig.scripts.prettier += ' "./{bin,src,tests}/**/*.js" "./*.{md,json}"';
+      packageConfig.scripts.prettier += ' "./{bin,src,tests}/**/*.(t|j)sx?" "./*.{md,json}"';
 
       Object.assign(packageConfig.scripts, {
         babel: 'yarn run babel:cjs && yarn run babel:esm',

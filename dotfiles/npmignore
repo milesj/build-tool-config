@@ -17,4 +17,5 @@ tests/
 .yarnclean
 jest.json
 lerna.json
+tsconfig.json
 yarn-error.log

@@ -1,4 +1,7 @@
+const fs = require('fs');
 const path = require('path');
+
+const setupFilePath = path.join(process.cwd(), './tests/setup.js');
 
 module.exports = function jest(options) {
   const setupFiles = [];
@@ -10,7 +13,7 @@ module.exports = function jest(options) {
     roots.push('./src', './tests');
   }
 
-  if (options.enzyme) {
+  if (options.react) {
     setupFiles.push(path.join(__dirname, './jest/enzyme.js'));
   }
 
@@ -21,11 +24,16 @@ module.exports = function jest(options) {
     globals: {
       __DEV__: true,
     },
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
     rootDir: process.cwd(),
     roots,
     setupFiles,
-    // TODO make optional
-    setupTestFrameworkScriptFile: path.join(process.cwd(), './tests/setup.js'),
+    setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : null,
+    testMatch: ['**/?(*.)(spec|test).(t|j)s?(x)'],
+    transform: {
+      '^.+\\.jsx?$': 'babel-jest',
+      '^.+\\.tsx?$': path.join(__dirname, './jest/tsProcessor.js'),
+    },
     verbose: false,
   };
 };

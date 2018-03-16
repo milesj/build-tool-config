@@ -27,7 +27,7 @@ module.exports = function babel(options) {
       },
     ],
     'babel-preset-stage-2',
-    'babel-preset-flow',
+    // TODO Add TypeScript
   ];
 
   if (options.react) {
