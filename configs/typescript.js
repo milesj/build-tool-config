@@ -5,11 +5,12 @@ module.exports = function typescript() {
       allowSyntheticDefaultImports: true,
       esModuleInterop: true,
       forceConsistentCasingInFileNames: true,
+      lib: ['esnext'],
       noImplicitReturns: true,
       outDir: './lib',
       pretty: true,
       removeComments: true,
-      sourceMap: true,
+      sourceMap: false,
       strict: true,
       target: 'es5'
     },

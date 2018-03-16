@@ -120,7 +120,7 @@ module.exports = function eslint() {
         'error',
         {
           vars: 'all',
-          args: 'all',
+          args: 'after-used',
           ignoreRestSiblings: true,
           caughtErrors: 'none',
         },
@@ -184,7 +184,10 @@ module.exports = function eslint() {
     overrides: [
       {
         plugins: ['jest'],
-        env: { jest: true },
+        env: {
+          jest: true,
+          node: true,
+        },
         files: ['tests/**/*.js', 'packages/*/tests/**/*.js'],
         rules: {
           'no-magic-numbers': 'off',
