@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { EXTS, EXT_PATTERN } = require('./constants');
 
 const setupFilePath = path.join(process.cwd(), './tests/setup.js');
 
@@ -24,16 +25,15 @@ module.exports = function jest(options) {
     globals: {
       __DEV__: true,
       'ts-jest': {
-        enableTsDiagnostics: true,
         useBabelrc: true,
       },
     },
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    moduleFileExtensions: EXTS,
     rootDir: process.cwd(),
     roots,
     setupFiles,
     setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : null,
-    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|tsx|js|jsx)$',
+    testRegex: `(/__tests__/.*|(\\.|/)(test|spec))\\.${EXT_PATTERN}$`,
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
       '^.+\\.tsx?$': 'ts-jest',

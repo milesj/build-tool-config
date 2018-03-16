@@ -1,8 +1,8 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
-module.exports = function eslint() {
-  const extensions = ['.ts', '.tsx', '.js', '.jsx', '.json'];
+const { EXTS, EXT_PATTERN } = require('./constants');
 
+module.exports = function eslint() {
   return {
     root: true,
     parser: 'typescript-eslint-parser',
@@ -17,10 +17,10 @@ module.exports = function eslint() {
     },
     settings: {
       polyfills: ['promises'],
-      'import/extensions': extensions,
+      'import/extensions': EXTS,
       'import/resolver': {
         node: {
-          extensions,
+          EXTS,
         },
       },
       'import/parsers': {
@@ -188,7 +188,7 @@ module.exports = function eslint() {
           jest: true,
           node: true,
         },
-        files: ['tests/**/*.js', 'packages/*/tests/**/*.js'],
+        files: [`tests/**/*.${EXT_PATTERN}`, `packages/*/tests/**/*.${EXT_PATTERN}`],
         rules: {
           'no-magic-numbers': 'off',
           'sort-keys': 'off',

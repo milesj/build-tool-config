@@ -98,7 +98,8 @@
     "eslint": {
       "rules": {
         "no-var": "off",
-        "no-console": "off"
+        "no-console": "off",
+        "promise/always-return": "off"
       }
     }
   }

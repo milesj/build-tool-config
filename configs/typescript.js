@@ -12,11 +12,9 @@ module.exports = function typescript() {
       removeComments: true,
       sourceMap: false,
       strict: true,
-      target: 'es5'
+      target: 'es5',
     },
-    include: [
-      './src/**/*',
-      './types/**/*'
-    ],
+    exclude: ['*.test.ts'],
+    include: ['./src/**/*', './types/**/*'],
   };
 };

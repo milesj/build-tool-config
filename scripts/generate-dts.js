@@ -17,6 +17,8 @@ module.exports = class GenerateDtsScript extends Script {
       name: options.name || tool.package.name,
       out: 'index.d.ts',
       project: tool.options.root,
+    }).then(() => {
+      tool.log('Generated index.d.ts file.');
     });
   }
 };
