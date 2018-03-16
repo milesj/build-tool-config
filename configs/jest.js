@@ -23,8 +23,12 @@ module.exports = function jest(options) {
     coverageReporters: ['lcov'],
     globals: {
       __DEV__: true,
+      'ts-jest': {
+        enableTsDiagnostics: true,
+        useBabelrc: true,
+      },
     },
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     rootDir: process.cwd(),
     roots,
     setupFiles,
@@ -32,7 +36,7 @@ module.exports = function jest(options) {
     testMatch: ['**/?(*.)(spec|test).(t|j)s?(x)'],
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
-      '^.+\\.tsx?$': path.join(__dirname, './jest/tsProcessor.js'),
+      '^.+\\.tsx?$': 'ts-jest',
     },
     verbose: false,
   };
