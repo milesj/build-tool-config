@@ -123,6 +123,10 @@
   version "0.13.0"
   resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-0.13.0.tgz#d3a93d20e1f2f12939c328c73e5f594b45cba5af"
 
+"@beemo/driver-typescript@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-0.2.0.tgz#5ae936160227442d8305e9c1943b18c948f4c197"
+
 "@types/node@*":
   version "8.5.2"
   resolved "https://registry.npmjs.org/@types/node/-/node-8.5.2.tgz#83b8103fa9a2c2e83d78f701a9aa7c9539739aa5"

@@ -43,6 +43,7 @@
     "@beemo/driver-flow": "^0.13.0",
     "@beemo/driver-jest": "^0.13.0",
     "@beemo/driver-prettier": "^0.13.0",
+    "@beemo/driver-typescript": "^0.2.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
