@@ -1,5 +1,5 @@
 const { Script } = require('@beemo/core');
-const generate = require('dts-generator');
+const generate = require('dts-generator').default;
 
 module.exports = class GenerateDtsScript extends Script {
   parse() {

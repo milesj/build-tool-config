@@ -33,7 +33,7 @@ module.exports = function jest(options) {
     roots,
     setupFiles,
     setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : null,
-    testMatch: ['**/?(*.)(spec|test).(t|j)s?(x)'],
+    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|tsx|js|jsx)$',
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
       '^.+\\.tsx?$': 'ts-jest',
