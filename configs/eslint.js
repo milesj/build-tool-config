@@ -1,15 +1,14 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
-module.exports = function eslint() {
+module.exports = function eslint(options) {
   return {
     root: true,
     parser: 'babel-eslint',
     extends: ['airbnb', 'prettier'],
-    plugins: ['flowtype', 'promise', 'unicorn', 'jest'],
+    plugins: ['flowtype', 'promise', 'unicorn', 'compat'],
     ignore: ['esm/', 'lib/', '*.min.js', '*.map'],
     env: {
       browser: true,
-      jest: true,
     },
     globals: {
       __DEV__: true,
@@ -18,6 +17,7 @@ module.exports = function eslint() {
       flowtype: {
         onlyFilesWithFlowAnnotation: true,
       },
+      polyfills: ['promises'],
     },
     parserOptions: {
       sourceType: 'module',
@@ -39,6 +39,7 @@ module.exports = function eslint() {
           switches: 'never',
         },
       ],
+      'compat/compat': 'error',
       'flowtype/boolean-style': 'error',
       'flowtype/define-flow-type': 'error',
       'flowtype/delimiter-dangle': ['error', 'always-multiline'],
@@ -95,26 +96,18 @@ module.exports = function eslint() {
       'flowtype/union-intersection-spacing': ['error', 'always'],
       'flowtype/use-flow-type': 'error',
       'import/no-extraneous-dependencies': 'off',
-      'jest/consistent-test-it': 'error',
-      'jest/lowercase-name': 'off',
-      'jest/no-identical-title': 'error',
-      'jest/no-test-prefixes': 'error',
-      'jest/no-large-snapshots': 'error',
-      'jest/prefer-to-be-null': 'error',
-      'jest/prefer-to-be-undefined': 'error',
-      'jest/prefer-to-have-length': 'error',
-      'jest/valid-describe': 'error',
-      'jest/valid-expect': 'error',
       'promise/always-return': 'error',
       'promise/avoid-new': 'off',
       'promise/catch-or-return': 'error',
       'promise/no-callback-in-promise': 'error',
       'promise/no-native': 'off',
       'promise/no-nesting': 'off',
+      'promise/no-new-statics': 'error',
       'promise/no-promise-in-callback': 'error',
       'promise/no-return-in-finally': 'error',
       'promise/no-return-wrap': ['error', { allowReject: true }],
       'promise/param-names': 'error',
+      'promise/valid-params': 'error',
       'react/jsx-filename-extension': 'off',
       'react/sort-prop-types': 'off', // Handled by sort-keys
       'react/jsx-sort-default-props': 'off', // Handled by sort-keys
@@ -219,10 +212,23 @@ module.exports = function eslint() {
 
     overrides: [
       {
+        plugins: ['jest'],
+        env: { jest: true },
         files: ['tests/**/*.js', 'packages/*/tests/**/*.js'],
         rules: {
           'no-magic-numbers': 'off',
           'sort-keys': 'off',
+          'jest/consistent-test-it': 'error',
+          'jest/lowercase-name': 'off',
+          'jest/no-identical-title': 'error',
+          'jest/no-jest-import': 'error',
+          'jest/no-test-prefixes': 'error',
+          'jest/no-large-snapshots': 'error',
+          'jest/prefer-to-be-null': 'error',
+          'jest/prefer-to-be-undefined': 'error',
+          'jest/prefer-to-have-length': 'error',
+          'jest/valid-describe': 'error',
+          'jest/valid-expect': 'error',
         },
       },
     ],
