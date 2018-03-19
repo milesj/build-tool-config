@@ -8,13 +8,18 @@ module.exports = class InitScript extends Script {
   parse() {
     return {
       boolean: ['docs', 'local', 'workspaces'],
+      default: {
+        docs: false,
+        local: false,
+        workspaces: false,
+      },
     };
   }
 
   run(options, tool) {
     const packageConfig = { ...tool.package };
 
-    // Bemo
+    // Beemo
     Object.assign(packageConfig.beemo, {
       module: options.local ? '@local' : '@milesj/build-tool-config',
       drivers: ['babel', 'eslint', 'jest', 'prettier', 'typescript'],
@@ -51,12 +56,14 @@ module.exports = class InitScript extends Script {
         packageConfig.name += '-root';
       }
 
+      if (!packageConfig.workspaces) {
+        packageConfig.workspaces = ['packages/*'];
+      }
+
       packageConfig.private = true;
-      packageConfig.workspaces = ['packages/*'];
 
       Object.assign(packageConfig.scripts, {
         bootstrap: 'lerna bootstrap',
-        'bootstrap:slow': 'yarn run bootstrap --concurrency=1',
         build: 'beemo run-script build-packages',
         clean: 'rimraf ./packages/*/{lib,esm}/ && lerna clean --yes',
         package: 'yarn run clean && yarn run bootstrap && yarn run build && yarn test',
@@ -71,11 +78,12 @@ module.exports = class InitScript extends Script {
       packageConfig.module = './esm/index.js';
 
       Object.assign(packageConfig.scripts, {
-        babel: 'beemo babel --cjs',
+        babel: 'beemo babel --cjs', // TEMP
+        build: 'beemo typescript',
 
         // Hooks
         preversion: 'yarn test',
-        postversion: 'yarn run babel',
+        postversion: 'yarn run build',
       });
     }
 
