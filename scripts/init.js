@@ -23,9 +23,9 @@ module.exports = class InitScript extends Script {
     // Scripts
     Object.assign(packageConfig.scripts, {
       coverage: 'yarn run jest --coverage',
-      eslint: 'beemo eslint --color --report-unused-disable-directives',
-      jest: 'beemo jest --colors --logHeapUsage',
-      prettier: 'beemo prettier --write ./README.md',
+      eslint: 'beemo eslint',
+      jest: 'beemo jest',
+      prettier: 'beemo prettier',
       type: 'beemo typescript',
 
       // Hooks
@@ -53,10 +53,6 @@ module.exports = class InitScript extends Script {
 
       packageConfig.private = true;
       packageConfig.workspaces = ['packages/*'];
-      packageConfig.scripts.eslint += ' "./packages/*/{src,tests}"';
-      packageConfig.scripts.jest += ' --workspaces';
-      packageConfig.scripts.prettier +=
-        ' "./packages/*/{bin,src,tests}/**/*.(t|j)sx?" "./packages/*/*.{md,json}"';
 
       Object.assign(packageConfig.scripts, {
         bootstrap: 'lerna bootstrap',
@@ -73,13 +69,9 @@ module.exports = class InitScript extends Script {
     } else {
       packageConfig.main = './lib/index.js';
       packageConfig.module = './esm/index.js';
-      packageConfig.scripts.eslint += ' ./src ./tests';
-      packageConfig.scripts.prettier += ' "./{bin,src,tests}/**/*.(t|j)sx?" "./*.{md,json}"';
 
       Object.assign(packageConfig.scripts, {
-        babel: 'yarn run babel:cjs && yarn run babel:esm',
-        'babel:cjs': 'beemo babel ./src --out-dir ./lib --copy-files --cjs',
-        'babel:esm': 'beemo babel ./src --out-dir ./esm --copy-files --esm',
+        babel: 'beemo babel --cjs',
 
         // Hooks
         preversion: 'yarn test',

@@ -1,7 +1,7 @@
-.eslintrc
+.eslintrc.js
 .eslintignore
 .flowconfig
-.prettierrc
 .prettierignore
+prettier.config.js
 test.log
 yarn-error.log

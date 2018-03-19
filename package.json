@@ -14,8 +14,8 @@
     "webpack"
   ],
   "scripts": {
-    "eslint": "beemo eslint . --color --report-unused-disable-directives",
-    "prettier": "beemo prettier --write \"./{configs,dotfiles,scripts}/*.{js,json,md}\" ./README.md",
+    "eslint": "beemo eslint .",
+    "prettier": "beemo prettier \"./{configs,dotfiles,scripts}/*.{js,json,md}\"",
     "test": "yarn run eslint",
     "preversion": "yarn test"
   },
