@@ -20,7 +20,7 @@ module.exports = function eslint() {
       'import/extensions': EXTS,
       'import/resolver': {
         node: {
-          EXTS,
+          extensions: EXTS,
         },
       },
       'import/parsers': {
