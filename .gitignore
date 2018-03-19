@@ -3,3 +3,5 @@
 .flowconfig
 .prettierrc
 .prettierignore
+test.log
+yarn-error.log

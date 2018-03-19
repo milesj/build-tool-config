@@ -1,4 +1,4 @@
-module.exports = function typescript() {
+module.exports = function typescript(options) {
   return {
     compilerOptions: {
       allowJs: false,
@@ -15,6 +15,6 @@ module.exports = function typescript() {
       target: 'es5',
     },
     exclude: ['*.test.ts'],
-    include: ['./src/**/*', './types/**/*'],
+    include: [options.workspaces ? './packages/*/src/**/*' : './src/**/*', './types/**/*'],
   };
 };
