@@ -18,9 +18,9 @@ module.exports = function milesj(tool) {
 
     if (yargs._.length === 0) {
       if (yargs.cjs) {
-        args.push('./src', '--out-dir', './lib')
+        args.push('./src', '--out-dir', './lib');
       } else if (yargs.esm) {
-        args.push('./src', '--out-dir', './esm')
+        args.push('./src', '--out-dir', './esm');
       }
     }
   });

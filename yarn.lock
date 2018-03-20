@@ -32,9 +32,9 @@
     optimal "^0.14.0"
     yargs-parser "^9.0.2"
 
-"@beemo/driver-babel@^0.15.0":
-  version "0.15.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-0.15.0.tgz#a9cbf69435d10777f5ba387c131be20c5fc2bfc6"
+"@beemo/driver-babel@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-0.15.1.tgz#8571a73fa3708ed972c4cee853f9adfe6d58a81e"
   dependencies:
     rimraf "^2.6.2"
 
@@ -50,9 +50,9 @@
   version "0.15.0"
   resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-0.15.0.tgz#8433592b6db62b3901c5262a6b4bd919ce4df9fe"
 
-"@beemo/driver-typescript@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-0.4.0.tgz#f68a268869be4df58387143db476725d9130b203"
+"@beemo/driver-typescript@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-0.4.1.tgz#e5f2beef935d2c4c66b0a5ef5169ac046983d3eb"
 
 "@types/cheerio@*":
   version "0.22.7"
@@ -2498,6 +2498,10 @@ eslint-module-utils@^2.1.1:
   dependencies:
     debug "^2.6.8"
     pkg-dir "^1.0.0"
+
+eslint-plugin-babel@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/eslint-plugin-babel/-/eslint-plugin-babel-4.1.2.tgz#79202a0e35757dd92780919b2336f1fa2fe53c1e"
 
 eslint-plugin-compat@^2.2.0:
   version "2.2.0"

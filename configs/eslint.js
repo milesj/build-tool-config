@@ -7,7 +7,7 @@ module.exports = function eslint() {
     root: true,
     parser: 'typescript-eslint-parser',
     extends: ['airbnb', 'prettier'],
-    plugins: ['typescript', 'promise', 'unicorn', 'compat'],
+    plugins: ['typescript', 'promise', 'unicorn', 'compat', 'babel'],
     ignore: ['esm/', 'lib/', '*.min.js', '*.map'],
     env: {
       browser: true,
@@ -39,6 +39,8 @@ module.exports = function eslint() {
       'class-methods-use-this': 'off',
       'function-paren-newline': ['error', 'consistent'],
       'multiline-comment-style': 'off',
+      'no-invalid-this': 'off', // Handled by babel/no-invalid-this
+      'object-curly-spacing': 'off', // Handled by babel/object-curly-spacing
       'padded-blocks': [
         'error',
         {
@@ -47,6 +49,10 @@ module.exports = function eslint() {
           switches: 'never',
         },
       ],
+      'babel/new-cap': 'error',
+      'babel/no-invalid-this': 'error',
+      'babel/object-curly-spacing': ['error', 'always'],
+      'babel/semi': 'error',
       'compat/compat': 'error',
       'import/no-extraneous-dependencies': 'off',
       'promise/always-return': 'error',
@@ -152,9 +158,6 @@ module.exports = function eslint() {
       'react/jsx-key': 'error',
       'react/jsx-no-literals': 'off', // Broken
       'react/no-direct-mutation-state': 'error',
-
-      // Does not work with class properties
-      'no-invalid-this': 'off',
 
       // TypeScript support
       'no-undef': 'off',
