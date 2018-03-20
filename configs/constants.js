@@ -1,4 +1,4 @@
-exports.EXTS = ['.ts', '.tsx', '.js', '.jsx', '.json'];
+exports.EXTS = ['.js', '.jsx', '.json', '.ts', '.tsx'];
 
 exports.EXT_PATTERN = '{ts,tsx,js,jsx}';
 

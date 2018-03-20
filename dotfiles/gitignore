@@ -25,8 +25,8 @@ node_modules/
 .eslintignore
 .eslintrc.js
 .flowconfig
-jest.config.js
 .prettierignore
+jest.config.js
 prettier.config.js
 tsconfig.json
 webpack.config.js

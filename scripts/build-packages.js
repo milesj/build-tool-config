@@ -71,10 +71,6 @@ module.exports = class BuildPackagesScript extends Script {
 
     return execa('beemo', [
       'babel',
-      path.join(packageRoot, 'src'),
-      '--out-dir',
-      path.join(packageRoot, isModule ? 'esm' : 'lib'),
-      '--copy-files',
       '--silent',
       ...args,
     ]);

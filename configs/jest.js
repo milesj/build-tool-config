@@ -20,7 +20,7 @@ module.exports = function jest(options) {
 
   return {
     coverageDirectory: './coverage',
-    coveragePathIgnorePatterns: ['/node_modules/', '/lib/', '/esm/'],
+    coveragePathIgnorePatterns: ['/node_modules/', '/esm/', '/lib/'],
     coverageReporters: ['lcov'],
     globals: {
       __DEV__: true,
@@ -33,7 +33,7 @@ module.exports = function jest(options) {
     roots,
     setupFiles,
     setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : null,
-    testRegex: `(/__tests__/.*|(\\.|/)(test|spec))\\.${EXT_PATTERN}$`,
+    testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
       '^.+\\.tsx?$': 'ts-jest',
