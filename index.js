@@ -5,7 +5,7 @@ module.exports = function milesj(tool) {
   const usingWorkspaces = !!tool.package.workspaces;
 
   // Babel
-  tool.on('babel.init-driver', (event, driver, { args, yargs }) => {
+  tool.on('babel.init-driver', (event, driver, args, { yargs }) => {
     args.push('--copy-files');
 
     if (usingTypeScript) {
@@ -26,7 +26,7 @@ module.exports = function milesj(tool) {
   });
 
   // ESLint
-  tool.on('eslint.init-driver', (event, driver, { args, yargs }) => {
+  tool.on('eslint.init-driver', (event, driver, args, { yargs }) => {
     args.push('--color', '--report-unused-disable-directives');
 
     if (usingTypeScript) {
@@ -47,7 +47,7 @@ module.exports = function milesj(tool) {
   });
 
   // Jest
-  tool.on('jest.init-driver', (event, driver, { args }) => {
+  tool.on('jest.init-driver', (event, driver, args) => {
     args.push('--colors', '--logHeapUsage');
 
     if (usingWorkspaces) {
@@ -56,8 +56,8 @@ module.exports = function milesj(tool) {
   });
 
   // Prettier
-  tool.on('prettier.init-driver', (event, driver, { args }) => {
-    args.push(tool.config.debug ? '--debug-check' : '--write', './README.md');
+  tool.on('prettier.init-driver', (event, driver, args) => {
+    args.push('--write', './README.md');
 
     if (usingWorkspaces) {
       args.push(`"./packages/*/${DIR_PATTERN}/**/*.${EXT_PATTERN}"`, '"./packages/*/*.{md,json}"');

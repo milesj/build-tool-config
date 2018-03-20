@@ -1,17 +1,16 @@
 const fs = require('fs');
 const path = require('path');
-const { EXTS, EXT_PATTERN } = require('./constants');
-
-const setupFilePath = path.join(process.cwd(), './tests/setup.js');
+const { EXTS } = require('./constants');
 
 module.exports = function jest(options) {
+  const setupFilePath = path.join(process.cwd(), './tests/setup.js');
   const setupFiles = [];
-  const roots = [];
+  const projects = [];
 
   if (options.workspaces) {
-    roots.push('./packages');
-  } else {
-    roots.push('./src', './tests');
+    options.workspaces.forEach(workspace => {
+      projects.push(`<rootDir>/${workspace}`);
+    });
   }
 
   if (options.react) {
@@ -29,11 +28,12 @@ module.exports = function jest(options) {
       },
     },
     moduleFileExtensions: EXTS,
-    rootDir: process.cwd(),
-    roots,
+    projects,
+    roots: ['<rootDir>/src', '<rootDir>/tests'],
     setupFiles,
-    setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : null,
-    testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
+    setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : undefined,
+    // testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
+    testRegex: `(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$`,
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
       '^.+\\.tsx?$': 'ts-jest',

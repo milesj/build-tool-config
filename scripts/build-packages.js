@@ -69,10 +69,6 @@ module.exports = class BuildPackagesScript extends Script {
       args.push('--node');
     }
 
-    return execa('beemo', [
-      'babel',
-      '--silent',
-      ...args,
-    ]);
+    return execa('beemo', ['babel', '--silent', ...args]);
   }
 };
