@@ -14,7 +14,7 @@ module.exports = class GenerateDtsScript extends Script {
   run(options, tool) {
     return generate({
       indent: '  ',
-      name: options.name || tool.package.name,
+      name: `${options.name || tool.package.name}/lib`,
       out: 'index.d.ts',
       project: tool.options.root,
     }).then(() => {

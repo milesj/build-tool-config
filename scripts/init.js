@@ -75,10 +75,10 @@ module.exports = class InitScript extends Script {
       });
     } else {
       packageConfig.main = './lib/index.js';
-      packageConfig.module = './esm/index.js';
+      // packageConfig.module = './esm/index.js';
 
       Object.assign(packageConfig.scripts, {
-        babel: 'beemo babel --cjs', // TEMP
+        // babel: 'beemo babel --cjs', // TEMP
         build: 'beemo typescript',
 
         // Hooks
