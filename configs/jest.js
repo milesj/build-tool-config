@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { EXTS } = require('./constants');
+const { EXTS, EXT_PATTERN } = require('./constants');
 
 module.exports = function jest(options) {
   const setupFilePath = path.join(process.cwd(), './tests/setup.js');
@@ -27,13 +27,12 @@ module.exports = function jest(options) {
         useBabelrc: true,
       },
     },
-    moduleFileExtensions: EXTS,
+    moduleFileExtensions: EXTS.map(ext => ext.slice(1)), // No period
     projects,
-    roots: ['<rootDir>/src', '<rootDir>/tests'],
+    roots: ['./src', './tests'],
     setupFiles,
     setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : undefined,
-    // testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
-    testRegex: `(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$`,
+    testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
       '^.+\\.tsx?$': 'ts-jest',
