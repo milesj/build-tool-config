@@ -41,7 +41,7 @@ module.exports = function milesj(tool) {
       args.push('./src', './tests');
 
       if (usingWorkspaces) {
-        args.push(`"./packages/*/${DIR_PATTERN}"`);
+        args.push(`./packages/*/${DIR_PATTERN}`);
       }
     }
   });
@@ -60,9 +60,9 @@ module.exports = function milesj(tool) {
     args.push('--write', './README.md');
 
     if (usingWorkspaces) {
-      args.push(`"./packages/*/${DIR_PATTERN}/**/*.${EXT_PATTERN}"`, '"./packages/*/*.{md,json}"');
+      args.push(`./packages/*/${DIR_PATTERN}/**/*.${EXT_PATTERN}`, './packages/*/*.{md,json}');
     } else {
-      args.push(`"./${DIR_PATTERN}/**/*.${EXT_PATTERN}"`, '"./*.{md,json}"');
+      args.push(`./${DIR_PATTERN}/**/*.${EXT_PATTERN}`, './*.{md,json}');
     }
   });
 };
