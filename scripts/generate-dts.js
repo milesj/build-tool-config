@@ -12,11 +12,16 @@ module.exports = class GenerateDtsScript extends Script {
   }
 
   run(options, tool) {
+    const name = options.name || tool.package.name;
+
     return generate({
       indent: '  ',
-      name: `${options.name || tool.package.name}/lib`,
+      name: `${name}/lib`,
       out: 'index.d.ts',
       project: tool.options.root,
+      resolveModuleId({ currentModuleId }) {
+        return currentModuleId === 'index' ? name : null;
+      },
     }).then(() => {
       tool.log('Generated index.d.ts file.');
     });
