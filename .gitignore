@@ -1,7 +1,7 @@
 .eslintrc.js
 .eslintignore
-.flowconfig
 .prettierignore
 prettier.config.js
 test.log
+tsconfig.json
 yarn-error.log

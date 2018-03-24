@@ -22,8 +22,6 @@ module.exports = class GenerateDtsScript extends Script {
       resolveModuleId({ currentModuleId }) {
         return currentModuleId === 'index' ? name : null;
       },
-    }).then(() => {
-      tool.log('Generated index.d.ts file.');
     });
   }
 };

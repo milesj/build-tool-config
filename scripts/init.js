@@ -3,14 +3,17 @@
 const { Script } = require('@beemo/core');
 const fs = require('fs-extra');
 const path = require('path');
+const { MIN_IE_VERSION } = require('../configs/constants');
 
 module.exports = class InitScript extends Script {
   parse() {
     return {
-      boolean: ['docs', 'local', 'workspaces'],
+      boolean: ['docs', 'local', 'node', 'react', 'workspaces'],
       default: {
         docs: false,
         local: false,
+        node: false,
+        react: false,
         workspaces: false,
       },
     };
@@ -27,13 +30,20 @@ module.exports = class InitScript extends Script {
 
     // Scripts
     Object.assign(packageConfig.scripts, {
+      babel: 'beemo typescript', // TEMP
+      build: 'yarn run babel && yarn run build:dts',
+      'build:dts': 'beemo run-script generate-dts',
+      clean: 'rimraf ./{lib,esm}/',
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
       jest: 'beemo jest',
+      package: 'yarn run clean && yarn run build && yarn test',
       prettier: 'beemo prettier',
+      release: 'np --yolo',
       type: 'beemo typescript --noEmit',
 
       // Hooks
+      prerelease: 'yarn run package',
       pretest: 'yarn run type --silent',
       test: 'yarn run jest --silent',
       posttest: 'yarn run eslint --silent',
@@ -41,7 +51,7 @@ module.exports = class InitScript extends Script {
 
     if (options.docs) {
       Object.assign(packageConfig.scripts, {
-        docs: 'gitbook build --log=debug --debug',
+        docs: 'gitbook build --debug',
         'docs:serve': 'gitbook serve',
         'docs:install': 'gitbook install',
       });
@@ -63,28 +73,26 @@ module.exports = class InitScript extends Script {
       packageConfig.private = true;
 
       Object.assign(packageConfig.scripts, {
-        bootstrap: 'lerna bootstrap',
-        build: 'beemo run-script build-packages',
+        babel: 'beemo run-script build-packages', // TODO typescript
+        build: 'yarn run babel', // TODO dts
         clean: 'rimraf ./packages/*/{lib,esm}/ && lerna clean --yes',
-        package: 'yarn run clean && yarn run bootstrap && yarn run build && yarn test',
         release: 'lerna publish',
         'release:force': 'yarn run release --force-publish=*',
-
-        // Hooks
-        prerelease: 'yarn run package',
       });
     } else {
       packageConfig.main = './lib/index.js';
-      // packageConfig.module = './esm/index.js';
+      packageConfig.module = './esm/index.js';
+    }
 
-      Object.assign(packageConfig.scripts, {
-        // babel: 'beemo babel --cjs', // TEMP
-        build: 'beemo typescript',
+    if (options.node) {
+      packageConfig.scripts.babel += ' --node';
+    } else {
+      packageConfig.browserslist = [`ie ${MIN_IE_VERSION}`];
+    }
 
-        // Hooks
-        preversion: 'yarn test',
-        postversion: 'yarn run build',
-      });
+    if (options.react) {
+      packageConfig.scripts.babel += ' --react';
+      packageConfig.scripts.jest += ' --react';
     }
 
     // Save files

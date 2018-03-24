@@ -79,6 +79,7 @@
     "gitbook-cli": "^2.3.2",
     "jest": "^22.4.3",
     "jest-runner-eslint": "^0.4.0",
+    "np": "^2.20.1",
     "prettier": "^1.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

@@ -1,5 +1,6 @@
+const { MIN_IE_VERSION, MIN_NODE_VERSION } = require('./constants');
+
 module.exports = function babel(options) {
-  // Setup plugins
   const plugins = [
     'babel-plugin-transform-export-extensions',
     ['babel-plugin-transform-dev', { evaluate: false }],
@@ -15,14 +16,14 @@ module.exports = function babel(options) {
     ]);
   }
 
-  // Setup presets (order is important)
+  // Order is important!
   const presets = [
     [
       'babel-preset-env',
       {
         modules: options.esm ? false : 'commonjs',
         shippedProposals: true,
-        targets: options.node ? { node: '6.5' } : { ie: '10' },
+        targets: options.node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
         useBuiltIns: 'usage',
       },
     ],
