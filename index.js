@@ -1,5 +1,7 @@
 const { EXTS, EXT_PATTERN, DIR_PATTERN } = require('./configs/constants');
 
+const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
+
 module.exports = function milesj(tool) {
   const usingTypeScript = tool.config.drivers.includes('typescript');
   const usingWorkspaces = !!tool.package.workspaces;
@@ -12,7 +14,7 @@ module.exports = function milesj(tool) {
       args.push('--typescript');
 
       if (!yargs.extensions) {
-        args.push('--extensions', EXTS.join(','));
+        args.push('--extensions', extsWithoutJSON.join(','));
       }
     }
 
@@ -33,7 +35,7 @@ module.exports = function milesj(tool) {
       args.push('--typescript');
 
       if (!yargs.ext) {
-        args.push('--ext', EXTS.join(','));
+        args.push('--ext', extsWithoutJSON.join(','));
       }
     }
 

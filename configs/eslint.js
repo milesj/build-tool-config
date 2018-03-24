@@ -85,7 +85,6 @@ module.exports = function eslint() {
       'unicorn/no-process-exit': 'error',
       'unicorn/number-literal-case': 'error',
       'unicorn/prefer-add-event-listener': 'error',
-      'unicorn/prefer-spread': 'error',
       'unicorn/prefer-starts-ends-with': 'error',
       'unicorn/prefer-type-error': 'error',
       'unicorn/regex-shorthand': 'error',
@@ -122,15 +121,15 @@ module.exports = function eslint() {
       ],
       'no-native-reassign': 'error',
       'no-negated-condition': 'error',
-      'no-unused-vars': [
-        'error',
-        {
-          vars: 'all',
-          args: 'after-used',
-          ignoreRestSiblings: true,
-          caughtErrors: 'none',
-        },
-      ],
+      // 'no-unused-vars': [
+      //   'error',
+      //   {
+      //     vars: 'all',
+      //     args: 'after-used',
+      //     ignoreRestSiblings: true,
+      //     caughtErrors: 'none',
+      //   },
+      // ],
       'no-useless-call': 'error',
       'sort-keys': [
         'error',
@@ -160,8 +159,6 @@ module.exports = function eslint() {
       'react/no-direct-mutation-state': 'error',
 
       // TypeScript support
-      'no-undef': 'off',
-      'import/named': 'off',
       'import/extensions': [
         'error',
         'never',
@@ -183,6 +180,13 @@ module.exports = function eslint() {
       'typescript/no-use-before-define': 'error',
       'typescript/prefer-namespace-keyword': 'error',
       'typescript/type-annotation-spacing': 'error',
+
+      // Doesnt work with TypeScript
+      'no-restricted-globals': 'off',
+      'no-undef': 'off',
+      'no-unused-vars': 'off',
+      'import/named': 'off',
+      'unicorn/prefer-spread': 'off',
     },
     overrides: [
       {
