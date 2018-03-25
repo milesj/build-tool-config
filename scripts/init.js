@@ -39,14 +39,14 @@ module.exports = class InitScript extends Script {
       jest: 'beemo jest',
       package: 'yarn run clean && yarn run build && yarn test',
       prettier: 'beemo prettier',
-      release: 'np --yolo',
+      release: 'np --yolo --no-yarn',
       type: 'beemo typescript --noEmit',
 
       // Hooks
       prerelease: 'yarn run package',
-      pretest: 'yarn run type --silent',
-      test: 'yarn run jest --silent',
-      posttest: 'yarn run eslint --silent',
+      pretest: 'yarn run type',
+      test: 'yarn run jest',
+      posttest: 'yarn run eslint',
     });
 
     if (options.docs) {
