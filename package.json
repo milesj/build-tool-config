@@ -17,7 +17,7 @@
     "eslint": "beemo eslint .",
     "prettier": "beemo prettier \"./{configs,dotfiles,scripts}/*.{js,json,md}\"",
     "test": "yarn run eslint",
-    "release": "np --no-cleanup"
+    "release": "np --no-cleanup --no-yarn"
   },
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
     "@types/enzyme": "^3.1.9",
     "@types/jest": "^22.2.2",
     "@types/node": "^9.6.0",
-    "@types/react": "^16.0.40",
+    "@types/react": "^16.0.41",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.4.3",
