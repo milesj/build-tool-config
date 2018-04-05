@@ -51,7 +51,7 @@ module.exports = class InitScript extends Script {
 
     if (options.docs) {
       Object.assign(packageConfig.scripts, {
-        docs: 'gitbook build --debug',
+        docs: 'gitbook build --debug --log=debug',
         'docs:serve': 'gitbook serve',
         'docs:install': 'gitbook install',
       });

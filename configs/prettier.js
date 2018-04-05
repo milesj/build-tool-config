@@ -2,7 +2,7 @@ module.exports = function prettier() {
   return {
     arrowParens: 'avoid',
     bracketSpacing: true,
-    ignore: ['package.json'],
+    ignore: ['book.json', 'package.json', 'index.d.ts'],
     jsxBracketSameLine: false,
     printWidth: 100,
     proseWrap: 'always',
