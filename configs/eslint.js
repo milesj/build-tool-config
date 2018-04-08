@@ -37,7 +37,7 @@ module.exports = function eslint() {
     },
     rules: {
       'class-methods-use-this': 'off',
-      'function-paren-newline': ['error', 'consistent'],
+      // 'function-paren-newline': ['error', 'consistent'],
       'multiline-comment-style': 'off',
       'no-invalid-this': 'off', // Handled by babel/no-invalid-this
       'object-curly-spacing': 'off', // Handled by babel/object-curly-spacing
@@ -180,6 +180,9 @@ module.exports = function eslint() {
       'typescript/no-use-before-define': 'error',
       'typescript/prefer-namespace-keyword': 'error',
       'typescript/type-annotation-spacing': 'error',
+
+      // Doesnt work with Prettier
+      'function-paren-newline': 'off',
 
       // Doesnt work with TypeScript
       'no-restricted-globals': 'off',

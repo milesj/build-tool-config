@@ -20,7 +20,7 @@ module.exports = class BuildPackagesScript extends Script {
   run(options, tool) {
     const { root } = tool.options;
 
-    return loadPackageWorkspaces(tool.package, workspaces, root).then(packages =>
+    return loadPackageWorkspaces(tool.package.workspaces, root).then(packages =>
       Promise.all(
         packages.map(({ hasSrc, packageData, workspacePath }) => {
           if (!hasSrc) {
@@ -38,7 +38,7 @@ module.exports = class BuildPackagesScript extends Script {
         }
 
         const out = responses
-          .map(response => response.stdout.trim())
+          .map(response => (response ? response.stdout.trim() : ''))
           .filter(message => !!message)
           .join('\n');
 
@@ -52,7 +52,13 @@ module.exports = class BuildPackagesScript extends Script {
   }
 
   build(packageRoot, options, isModule = false) {
-    const args = [isModule ? '--esm' : '--cjs'];
+    const args = [
+      isModule ? '--esm' : '--cjs',
+      '--project',
+      packageRoot,
+      '--outDir',
+      path.join(packageRoot, 'lib'),
+    ];
 
     if (options.react) {
       args.push('--react');
@@ -62,6 +68,7 @@ module.exports = class BuildPackagesScript extends Script {
       args.push('--node');
     }
 
-    return execa('beemo', ['babel', '--silent', ...args]);
+    // TEMP
+    return execa('beemo', ['typescript', '--silent', ...args]);
   }
 };
