@@ -19,14 +19,16 @@ module.exports = class GenerateDtsScript extends Script {
     const { name, workspaces } = tool.package;
 
     if (workspaces) {
-      return Promise.all(
-        loadPackageWorkspaces(workspaces, root).map(({ packageData, workspacePath }) => {
-          if (!fs.existsSync(path.join(workspacePath, 'tsconfig.json'))) {
-            return Promise.resolve();
-          }
+      return loadPackageWorkspaces(workspaces, root).then(packages =>
+        Promise.all(
+          packages.map(({ packageData, workspacePath }) => {
+            if (!fs.existsSync(path.join(workspacePath, 'tsconfig.json'))) {
+              return Promise.resolve();
+            }
 
-          return this.generate(packageData.name, workspacePath);
-        }),
+            return this.generate(packageData.name, workspacePath);
+          }),
+        ),
       );
     }
 
@@ -37,12 +39,32 @@ module.exports = class GenerateDtsScript extends Script {
     return generate({
       files: './src/**/*.ts',
       indent: '  ',
-      name: `${name}/lib`,
-      out: 'index.d.ts',
+      name,
+      out: `${project}/index.d.ts`,
       project,
-      resolveModuleId({ currentModuleId }) {
-        return currentModuleId === 'index' ? name : null;
+      resolveModuleId: ({ currentModuleId }) => {
+        if (currentModuleId.includes('node_modules')) {
+          return currentModuleId;
+        }
+
+        return this.resolveModulePath(currentModuleId, name);
+      },
+      resolveModuleImport: ({ importedModuleId, currentModuleId }) => {
+        if (importedModuleId.charAt(0) !== '.') {
+          return importedModuleId;
+        }
+
+        return this.resolveModulePath(
+          path.join(path.dirname(currentModuleId), importedModuleId),
+          name,
+        );
       },
     });
+  }
+
+  resolveModulePath(modPath, name) {
+    const id = modPath.includes('/src/') ? modPath.split('/src/')[1] : modPath;
+
+    return id === 'index' ? name : `${name}/lib/${id}`;
   }
 };

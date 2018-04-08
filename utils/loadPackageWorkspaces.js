@@ -3,10 +3,13 @@ const path = require('path');
 const glob = require('glob');
 
 module.exports = function loadPackageWorkspaces(paths, root = process.cwd()) {
-  const folderPaths = paths.map(dir => (dir.slice(-1) === '/' ? dir : `${dir}/`));
-  const workspaces = glob.sync(path.join(root, `{${folderPaths.join(',')}}`), {
-    absolute: true,
-  });
+  const workspaces = paths.reduce((workspacePaths, workspacePath) => {
+    const globPaths = glob.sync(path.join(root, `${workspacePath}/`), {
+      absolute: true,
+    });
+
+    return [...workspacePaths, ...globPaths];
+  }, []);
 
   return Promise.all(
     workspaces.map(workspacePath =>
@@ -14,7 +17,8 @@ module.exports = function loadPackageWorkspaces(paths, root = process.cwd()) {
         hasSrc: fs.existsSync(path.join(workspacePath, 'src')),
         hasTests: fs.existsSync(path.join(workspacePath, 'tests')),
         packageData,
-        packageName: path.basename(workspacePath),
+        packageName: packageData.name,
+        workspaceName: path.basename(workspacePath),
         workspacePath,
       })),
     ),
