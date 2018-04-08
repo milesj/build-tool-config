@@ -8,9 +8,10 @@ module.exports = function jest(options) {
   const projects = [];
 
   if (options.workspaces) {
-    options.workspaces.forEach(workspace => {
-      projects.push(`<rootDir>/${workspace}`);
-    });
+    // options.workspaces.forEach(workspace => {
+    //   projects.push(`<rootDir>/${workspace}`);
+    // });
+    projects.push(`<rootDir>/packages/*`);
   }
 
   if (options.react) {
