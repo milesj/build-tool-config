@@ -5,7 +5,7 @@ module.exports = function typescript(options) {
       allowSyntheticDefaultImports: true,
       esModuleInterop: true,
       forceConsistentCasingInFileNames: true,
-      lib: ['esnext'],
+      lib: ['dom', 'esnext'],
       noImplicitReturns: true,
       outDir: './lib',
       pretty: true,
