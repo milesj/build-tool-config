@@ -58,6 +58,7 @@ module.exports = class BuildPackagesScript extends Script {
       packageRoot,
       '--outDir',
       path.join(packageRoot, 'lib'),
+      '--declaration',
     ];
 
     if (options.react) {

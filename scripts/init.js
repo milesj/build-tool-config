@@ -30,9 +30,8 @@ module.exports = class InitScript extends Script {
 
     // Scripts
     Object.assign(packageConfig.scripts, {
-      babel: 'beemo typescript', // TEMP
-      build: 'yarn run babel && yarn run build:dts',
-      'build:dts': 'beemo run-script generate-dts',
+      babel: 'beemo typescript --declaration', // TEMP
+      build: 'yarn run babel',
       clean: 'rimraf ./{lib,esm}/',
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
@@ -73,12 +72,13 @@ module.exports = class InitScript extends Script {
       packageConfig.private = true;
 
       Object.assign(packageConfig.scripts, {
-        babel: 'beemo run-script build-packages', // TODO typescript
-        build: 'yarn run babel', // TODO dts
+        build: 'lerna run babel',
         clean: 'rimraf ./packages/*/{lib,esm}/ && lerna clean --yes',
         release: 'lerna publish',
         'release:force': 'yarn run release --force-publish=*',
       });
+
+      delete packageConfig.scripts.babel;
     } else {
       packageConfig.main = './lib/index.js';
       packageConfig.module = './esm/index.js';
