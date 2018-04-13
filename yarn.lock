@@ -77,11 +77,9 @@
   version "16.0.40"
   resolved "https://registry.npmjs.org/@types/react/-/react-16.0.40.tgz#caabc2296886f40b67f6fc80f0f3464476461df9"
 
-"@types/react@^16.3.9":
-  version "16.3.9"
-  resolved "https://registry.npmjs.org/@types/react/-/react-16.3.9.tgz#15be16b53c89aac558cf6445774502b2792555ff"
-  dependencies:
-    csstype "^2.2.0"
+"@types/react@16.0.41":
+  version "16.0.41"
+  resolved "https://registry.npmjs.org/@types/react/-/react-16.0.41.tgz#72146737f4d439dc95a53315de4bfb43ac8542ca"
 
 JSONStream@~1.3.1:
   version "1.3.2"
@@ -2084,10 +2082,6 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   resolved "https://registry.npmjs.org/cssstyle/-/cssstyle-0.2.37.tgz#541097234cb2513c83ceed3acddc27ff27987d54"
   dependencies:
     cssom "0.3.x"
-
-csstype@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/csstype/-/csstype-2.2.0.tgz#1656ef97553ac53b77090844a2531c6660ebd902"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"

@@ -3,6 +3,7 @@ module.exports = function typescript(options) {
     compilerOptions: {
       allowJs: false,
       allowSyntheticDefaultImports: true,
+      declaration: true,
       esModuleInterop: true,
       forceConsistentCasingInFileNames: true,
       lib: ['dom', 'esnext'],
@@ -15,6 +16,6 @@ module.exports = function typescript(options) {
       target: 'es5',
     },
     exclude: ['*.test.ts'],
-    include: [options.workspaces ? './packages/*/src/**/*' : './src/**/*', './types/**/*'],
+    include: ['./src/**/*', './types/**/*', '../../types/**/*'],
   };
 };

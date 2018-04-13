@@ -30,7 +30,7 @@ module.exports = class InitScript extends Script {
 
     // Scripts
     Object.assign(packageConfig.scripts, {
-      babel: 'beemo typescript --declaration', // TEMP
+      babel: 'beemo typescript', // TEMP
       build: 'yarn run babel',
       clean: 'rimraf ./{lib,esm}/',
       coverage: 'yarn run jest --coverage',
