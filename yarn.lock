@@ -54,17 +54,6 @@
   version "0.5.0"
   resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-0.5.0.tgz#800647121a81d9eb29c2c35e7de0765d572d98dc"
 
-"@types/cheerio@*":
-  version "0.22.7"
-  resolved "https://registry.npmjs.org/@types/cheerio/-/cheerio-0.22.7.tgz#4a92eafedfb2b9f4437d3a4410006d81114c66ce"
-
-"@types/enzyme@^3.1.9":
-  version "3.1.9"
-  resolved "https://registry.npmjs.org/@types/enzyme/-/enzyme-3.1.9.tgz#fbd97f3beb7cad76fc9c6f04c97d77f4834522ef"
-  dependencies:
-    "@types/cheerio" "*"
-    "@types/react" "*"
-
 "@types/jest@^22.2.3":
   version "22.2.3"
   resolved "https://registry.npmjs.org/@types/jest/-/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
@@ -72,14 +61,6 @@
 "@types/node@*":
   version "8.5.2"
   resolved "https://registry.npmjs.org/@types/node/-/node-8.5.2.tgz#83b8103fa9a2c2e83d78f701a9aa7c9539739aa5"
-
-"@types/react@*":
-  version "16.0.40"
-  resolved "https://registry.npmjs.org/@types/react/-/react-16.0.40.tgz#caabc2296886f40b67f6fc80f0f3464476461df9"
-
-"@types/react@16.0.41":
-  version "16.0.41"
-  resolved "https://registry.npmjs.org/@types/react/-/react-16.0.41.tgz#72146737f4d439dc95a53315de4bfb43ac8542ca"
 
 JSONStream@~1.3.1:
   version "1.3.2"
