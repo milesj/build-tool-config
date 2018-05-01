@@ -6,11 +6,14 @@ module.exports = function jest(args, tool) {
   const setupFilePath = path.join(process.cwd(), './tests/setup.js');
   const setupFiles = [];
   const projects = [];
+  const roots = [];
 
   if (tool.package.workspaces) {
     tool.package.workspaces.forEach(workspace => {
       projects.push(`<rootDir>/${workspace}`);
     });
+  } else {
+    roots.push('<rootDir>/src', '<rootDir>/tests');
   }
 
   if (args.react) {
@@ -29,7 +32,7 @@ module.exports = function jest(args, tool) {
     },
     moduleFileExtensions: EXTS.map(ext => ext.slice(1)), // No period
     projects,
-    roots: ['./src', './tests'],
+    roots,
     setupFiles,
     setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : undefined,
     testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
