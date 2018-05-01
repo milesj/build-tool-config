@@ -2,19 +2,18 @@ const fs = require('fs');
 const path = require('path');
 const { EXTS, EXT_PATTERN } = require('./constants');
 
-module.exports = function jest(options) {
+module.exports = function jest(args, tool) {
   const setupFilePath = path.join(process.cwd(), './tests/setup.js');
   const setupFiles = [];
   const projects = [];
 
-  if (options.workspaces) {
-    // options.workspaces.forEach(workspace => {
-    //   projects.push(`<rootDir>/${workspace}`);
-    // });
-    projects.push(`<rootDir>/packages/*`);
+  if (tool.package.workspaces) {
+    tool.package.workspaces.forEach(workspace => {
+      projects.push(`<rootDir>/${workspace}`);
+    });
   }
 
-  if (options.react) {
+  if (args.react) {
     setupFiles.push(path.join(__dirname, './jest/enzyme.js'));
   }
 

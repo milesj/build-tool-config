@@ -1,12 +1,12 @@
 const { MIN_IE_VERSION, MIN_NODE_VERSION } = require('./constants');
 
-module.exports = function babel(options) {
+module.exports = function babel(args) {
   const plugins = [
     'babel-plugin-transform-export-extensions',
     ['babel-plugin-transform-dev', { evaluate: false }],
   ];
 
-  if (!options.node) {
+  if (!args.node) {
     plugins.push([
       'babel-plugin-transform-runtime',
       {
@@ -21,9 +21,9 @@ module.exports = function babel(options) {
     [
       'babel-preset-env',
       {
-        modules: options.esm ? false : 'commonjs',
+        modules: args.esm ? false : 'commonjs',
         shippedProposals: true,
-        targets: options.node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
+        targets: args.node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
         useBuiltIns: 'usage',
       },
     ],
@@ -31,7 +31,7 @@ module.exports = function babel(options) {
     // TODO Add TypeScript
   ];
 
-  if (options.react) {
+  if (args.react) {
     presets.push('babel-preset-react');
   }
 

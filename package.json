@@ -17,8 +17,7 @@
     "eslint": "beemo eslint .",
     "prettier": "beemo prettier \"./{configs,dotfiles,scripts}/*.{js,json,md}\"",
     "test": "yarn run eslint",
-    "release": "np --no-cleanup --no-yarn",
-    "preversion": "yarn test"
+    "release": "np --no-cleanup --no-yarn"
   },
   "repository": {
     "type": "git",
