@@ -2,16 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const { EXTS, EXT_PATTERN } = require('./constants');
 
+// Package: Run in root
+// Workspaces: Run in root
 module.exports = function jest(args, tool) {
   const setupFilePath = path.join(process.cwd(), './tests/setup.js');
   const setupFiles = [];
-  const projects = [];
   const roots = [];
 
   if (tool.package.workspaces) {
-    tool.package.workspaces.forEach(workspace => {
-      projects.push(`<rootDir>/${workspace}`);
-    });
+    roots.push('<rootDir>/packages');
   } else {
     roots.push('<rootDir>/src', '<rootDir>/tests');
   }
@@ -31,7 +30,6 @@ module.exports = function jest(args, tool) {
       },
     },
     moduleFileExtensions: EXTS.map(ext => ext.slice(1)), // No period
-    projects,
     roots,
     setupFiles,
     setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : undefined,

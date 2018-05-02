@@ -1,5 +1,7 @@
 const { MIN_IE_VERSION, MIN_NODE_VERSION } = require('./constants');
 
+// Package: Run in root
+// Workspaces: Run in each package
 module.exports = function babel(args) {
   const plugins = [
     'babel-plugin-transform-export-extensions',

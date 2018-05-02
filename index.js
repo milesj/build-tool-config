@@ -19,10 +19,10 @@ module.exports = function milesj(tool) {
     }
 
     if (args._.length === 0) {
-      if (args.cjs) {
-        argv.push('./src', '--out-dir', './lib');
-      } else if (args.esm) {
+      if (args.esm) {
         argv.push('./src', '--out-dir', './esm');
+      } else {
+        argv.push('./src', '--out-dir', './lib');
       }
     }
   });

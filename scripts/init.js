@@ -19,12 +19,12 @@ module.exports = class InitScript extends Script {
     };
   }
 
-  run(options, tool) {
+  run(args, tool) {
     const packageConfig = { ...tool.package };
 
     // Beemo
     Object.assign(packageConfig.beemo, {
-      module: options.local ? '@local' : '@milesj/build-tool-config',
+      module: args.local ? '@local' : '@milesj/build-tool-config',
       drivers: ['babel', 'eslint', 'jest', 'prettier', 'typescript'],
     });
 
@@ -48,7 +48,7 @@ module.exports = class InitScript extends Script {
       posttest: 'yarn run eslint',
     });
 
-    if (options.docs) {
+    if (args.docs) {
       Object.assign(packageConfig.scripts, {
         docs: 'gitbook build --debug --log=debug',
         'docs:serve': 'gitbook serve',
@@ -56,7 +56,7 @@ module.exports = class InitScript extends Script {
       });
     }
 
-    if (options.workspaces) {
+    if (args.workspaces) {
       if (!packageConfig.devDependencies.lerna) {
         throw new Error(`Lerna must be installed to use workspaces.`);
       }
@@ -84,13 +84,13 @@ module.exports = class InitScript extends Script {
       packageConfig.module = './esm/index.js';
     }
 
-    if (options.node) {
+    if (args.node) {
       packageConfig.scripts.babel += ' --node';
     } else {
       packageConfig.browserslist = [`ie ${MIN_IE_VERSION}`];
     }
 
-    if (options.react) {
+    if (args.react) {
       packageConfig.scripts.babel += ' --react';
       packageConfig.scripts.jest += ' --react';
     }
@@ -100,7 +100,7 @@ module.exports = class InitScript extends Script {
     const lernaPath = path.join(tool.options.root, 'lerna.json');
     const promises = [fs.writeJSON(packagePath, packageConfig, { spaces: 2 })];
 
-    if (options.workspaces) {
+    if (args.workspaces) {
       promises.push(
         fs.writeJSON(
           lernaPath,

@@ -2,6 +2,8 @@
 
 const { EXTS, EXT_PATTERN } = require('./constants');
 
+// Package: Run in root
+// Workspaces: Run in root
 module.exports = function eslint() {
   return {
     root: true,
