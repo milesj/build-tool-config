@@ -1,6 +1,6 @@
 // Package: Run in root
-// Workspaces: Run in each package (each package should extend with their own config)
-module.exports = function typescript(args, tool) {
+// Workspaces: Run in each package (copied into each package)
+module.exports = function typescript(args) {
   return {
     compilerOptions: {
       allowJs: false,
@@ -18,6 +18,6 @@ module.exports = function typescript(args, tool) {
       target: 'es5',
     },
     exclude: ['*.test.ts'],
-    include: [tool.package.workspaces ? './packages/*/src/**/*' : './src/**/*', './types/**/*'],
+    include: ['./src/**/*', './types/**/*'],
   };
 };
