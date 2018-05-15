@@ -1,6 +1,11 @@
 // Package: Run in root
 // Workspaces: Run in each package (copied into each)
-module.exports = function typescript(args) {
+module.exports = function typescript(args, tool) {
+  // When --workspaces is passed, this config is copied into each package, so use local paths.
+  // However, when running through Jest at the root, we need to find all packages.
+  // Be sure not to breat non-workspace enabled projects.
+  const isWorkspaceRoot = !args.workspaces && tool.package.workspaces;
+
   return {
     compilerOptions: {
       allowJs: false,
@@ -18,11 +23,9 @@ module.exports = function typescript(args) {
       target: 'es5',
     },
     exclude: ['*.test.ts'],
-    // When --workspaces is passed, this config is copied into each package, so just local paths.
-    // However, when running through Jest at the root, we need to find all within each package.
     include: [
-      args.workspaces ? './src/**/*' : './packages/*/src/**/*',
-      args.workspaces ? './types/**/*' : './packages/*/types/**/*',
+      isWorkspaceRoot ? './packages/*/src/**/*' : './src/**/*',
+      isWorkspaceRoot ? './packages/*/types/**/*' : './types/**/*',
     ],
   };
 };
