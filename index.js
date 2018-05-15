@@ -2,6 +2,10 @@ const { EXTS, EXT_PATTERN, DIR_PATTERN } = require('./configs/constants');
 
 const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
 
+function isEmptyArgs(args, name) {
+  return args.length === 0 || (args.length === 1 && args[0] === name);
+}
+
 module.exports = function milesj(tool) {
   const usingTypeScript = tool.config.drivers.includes('typescript');
   const usingWorkspaces = !!tool.package.workspaces;
@@ -18,7 +22,7 @@ module.exports = function milesj(tool) {
       }
     }
 
-    if (args._.length === 0) {
+    if (isEmptyArgs(args._, 'babel')) {
       if (args.esm) {
         argv.push('./src', '--out-dir', './esm');
       } else {
@@ -39,7 +43,7 @@ module.exports = function milesj(tool) {
       }
     }
 
-    if (args._.length === 0) {
+    if (isEmptyArgs(args._, 'eslint')) {
       argv.push('./src', './tests');
 
       if (usingWorkspaces) {
