@@ -101,7 +101,6 @@ module.exports = function eslint() {
       'import/no-useless-path-segments': 'error',
       'react/button-has-type': 'error',
       'react/destructuring-assignment': 'off',
-      'react/jsx-one-expression-per-line': 'error',
       'react/no-access-state-in-setstate': 'error',
       'react/no-this-in-sfc': 'error',
 
@@ -185,6 +184,7 @@ module.exports = function eslint() {
 
       // Doesnt work with Prettier
       'function-paren-newline': 'off',
+      'react/jsx-one-expression-per-line': 'off',
 
       // Doesnt work with TypeScript
       'no-restricted-globals': 'off',
