@@ -6,6 +6,9 @@ node_js:
 before_script:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
+  # Workspaces only
+  - yarn install
+  - yarn run build
 script: yarn test
 notifications:
   email: false

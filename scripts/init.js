@@ -36,7 +36,7 @@ module.exports = class InitScript extends Script {
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
       jest: 'beemo jest',
-      package: 'yarn run clean && yarn run build && yarn test',
+      package: 'yarn run clean && yarn install && yarn run build && yarn test',
       prettier: 'beemo prettier',
       release: 'np --yolo --no-yarn',
       type: 'beemo typescript --noEmit',
@@ -75,7 +75,7 @@ module.exports = class InitScript extends Script {
         build: 'lerna run babel',
         clean: 'rimraf ./packages/*/{lib,esm}/ && lerna clean --yes',
         release: 'lerna publish',
-        'release:force': 'yarn run release --force-publish=*',
+        'release:force': 'npm run release -- --force-publish=*',
       });
 
       delete packageConfig.scripts.babel;
