@@ -39,7 +39,6 @@ module.exports = function eslint() {
     },
     rules: {
       'class-methods-use-this': 'off',
-      // 'function-paren-newline': ['error', 'consistent'],
       'multiline-comment-style': 'off',
       'no-invalid-this': 'off', // Handled by babel/no-invalid-this
       'object-curly-spacing': 'off', // Handled by babel/object-curly-spacing
@@ -100,7 +99,7 @@ module.exports = function eslint() {
       'import/no-self-import': 'error',
       'import/no-useless-path-segments': 'error',
       'react/button-has-type': 'error',
-      'react/destructuring-assignment': 'off',
+      'react/destructuring-assignment': 'error',
       'react/no-access-state-in-setstate': 'error',
       'react/no-this-in-sfc': 'error',
 
@@ -122,15 +121,6 @@ module.exports = function eslint() {
       ],
       'no-native-reassign': 'error',
       'no-negated-condition': 'error',
-      // 'no-unused-vars': [
-      //   'error',
-      //   {
-      //     vars: 'all',
-      //     args: 'after-used',
-      //     ignoreRestSiblings: true,
-      //     caughtErrors: 'none',
-      //   },
-      // ],
       'no-useless-call': 'error',
       'sort-keys': [
         'error',
@@ -215,6 +205,41 @@ module.exports = function eslint() {
           'jest/prefer-to-have-length': 'error',
           'jest/valid-describe': 'error',
           'jest/valid-expect': 'error',
+        },
+      },
+      {
+        files: ['{src,tests}/**/*.tsx', 'packages/*/{src,tests}/**/*.tsx'],
+        rules: {
+          'typescript/member-ordering': 'off',
+          'react/sort-comp': [
+            'error',
+            {
+              order: [
+                'statics',
+                'properties',
+                'lifecycle',
+                'everything-else',
+                'handlers',
+                'rendering',
+              ],
+              groups: {
+                statics: ['propTypes', 'defaultProps'],
+                properties: ['/^(?!on).+$/', '/^(?!handle).+$/', '/^.+Ref$/', 'state'],
+                lifecycle: [
+                  'constructor',
+                  'getDerivedStateFromProps',
+                  'componentDidMount',
+                  'shouldComponentUpdate',
+                  'getSnapshotBeforeUpdate',
+                  'componentDidUpdate',
+                  'componentDidCatch',
+                  'componentWillUnmount',
+                ],
+                handlers: ['/^on.+$/', '/^handle.+$/'],
+                renderers: ['/^render.+$/', 'render'],
+              },
+            },
+          ],
         },
       },
     ],
