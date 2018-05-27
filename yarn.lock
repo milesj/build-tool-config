@@ -10,9 +10,9 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@beemo/cli@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-0.17.0.tgz#4df1f8e3552d82a3fa8aad3fdf5e2728e9157db5"
+"@beemo/cli@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-0.17.1.tgz#e6c9d36923b2d52767dc6fbd326890380d96c3b5"
   dependencies:
     chalk "^2.4.1"
     semver "^5.5.0"

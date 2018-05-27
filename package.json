@@ -36,7 +36,7 @@
     "last 2 versions"
   ],
   "dependencies": {
-    "@beemo/cli": "^0.17.0",
+    "@beemo/cli": "^0.17.1",
     "@beemo/core": "^0.17.1",
     "@beemo/driver-babel": "^0.17.0",
     "@beemo/driver-eslint": "^0.17.0",
