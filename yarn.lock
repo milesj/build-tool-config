@@ -18,9 +18,9 @@
     semver "^5.5.0"
     yargs "^11.0.0"
 
-"@beemo/core@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.17.0.tgz#2ed27b52c865d054b63fc7da932cf87fb2ed73dc"
+"@beemo/core@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.17.1.tgz#8f4f187eab395fa89385f23fff2e73aec3038d43"
   dependencies:
     "@types/execa" "^0.9.0"
     "@types/fs-extra" "^5.0.2"
@@ -29,7 +29,7 @@
     "@types/lodash" "^4.14.109"
     "@types/micromatch" "^3.1.0"
     "@types/yargs" "^11.0.0"
-    boost "^0.56.1"
+    boost "^0.57.0"
     chalk "^2.4.1"
     copy "^0.3.2"
     fs-extra "^6.0.1"
@@ -51,15 +51,15 @@
   version "0.17.0"
   resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-0.17.0.tgz#ef1c7b1c7948e15bb7ad02461d0ee8cded204d93"
 
-"@beemo/driver-jest@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-0.17.0.tgz#cc35ae5d056e7ea6411fffbd0ee09963455e982f"
+"@beemo/driver-jest@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-0.17.1.tgz#b0cdecbb2f93c183b98193b6b3de9485eb6b8006"
 
-"@beemo/driver-prettier@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-0.17.0.tgz#a675d4e107e11509319a7f4c72371330073b4c71"
+"@beemo/driver-prettier@^0.17.1":
+  version "0.17.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-0.17.1.tgz#5820392b8156f3240355ced425c26c1443c8b0f2"
   dependencies:
-    "@types/prettier" "^1.12.2"
+    "@types/prettier" "^1.12.4"
 
 "@beemo/driver-typescript@^0.6.0":
   version "0.6.0"
@@ -115,7 +115,7 @@
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
 
-"@types/lodash@^4.14.108", "@types/lodash@^4.14.109":
+"@types/lodash@^4.14.109":
   version "4.14.109"
   resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.109.tgz#b1c4442239730bf35cabaf493c772b18c045886d"
 
@@ -137,9 +137,9 @@
   version "0.0.28"
   resolved "https://registry.npmjs.org/@types/pluralize/-/pluralize-0.0.28.tgz#daf46f90fdaa6172600bfeac81e46065177f03ea"
 
-"@types/prettier@^1.12.2":
-  version "1.12.2"
-  resolved "https://registry.npmjs.org/@types/prettier/-/prettier-1.12.2.tgz#4a37f0aa8ed20366ada6fa7994b1c6dfe787fdd1"
+"@types/prettier@^1.12.4":
+  version "1.12.4"
+  resolved "https://registry.npmjs.org/@types/prettier/-/prettier-1.12.4.tgz#6b9c9fdd9c5b13f94f7b27a5501e6091fd810ac0"
 
 "@types/split@^0.3.28":
   version "0.3.28"
@@ -1491,16 +1491,16 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
-boost@^0.56.1:
-  version "0.56.1"
-  resolved "https://registry.npmjs.org/boost/-/boost-0.56.1.tgz#fe499fd964d0c55d8f388909c9c75592dfa76cca"
+boost@^0.57.0:
+  version "0.57.0"
+  resolved "https://registry.npmjs.org/boost/-/boost-0.57.0.tgz#cba296c7aa94b744b24ac88da0073c09eabdbfb1"
   dependencies:
     "@types/chalk" "^2.2.0"
     "@types/debug" "^0.0.30"
     "@types/execa" "^0.9.0"
     "@types/glob" "^5.0.35"
     "@types/json5" "^0.0.29"
-    "@types/lodash" "^4.14.108"
+    "@types/lodash" "^4.14.109"
     "@types/pluralize" "^0.0.28"
     "@types/split" "^0.3.28"
     chalk "^2.4.1"
