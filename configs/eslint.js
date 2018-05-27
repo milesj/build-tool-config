@@ -99,7 +99,7 @@ module.exports = function eslint() {
       'import/no-self-import': 'error',
       'import/no-useless-path-segments': 'error',
       'react/button-has-type': 'error',
-      'react/destructuring-assignment': 'error',
+      'react/destructuring-assignment': 'off', // Broken with TS
       'react/no-access-state-in-setstate': 'error',
       'react/no-this-in-sfc': 'error',
 
@@ -147,6 +147,8 @@ module.exports = function eslint() {
       ],
       'react/jsx-key': 'error',
       'react/jsx-no-literals': 'off', // Broken
+      'react/no-did-mount-set-state': 'off', // 16.3+
+      'react/no-did-update-set-state': 'off', // 16.3+
       'react/no-direct-mutation-state': 'error',
 
       // TypeScript support
