@@ -3,30 +3,30 @@
 I got tired of duplicating build tool configuration files over and over again between projects, so I
 built this repository to house them. The following tools are pre-configured:
 
-* [Babel](https://github.com/milesj/build-tool-config/blob/master/configs/babel.js)
-  * Configured with `env`, `stage-2`, `react`, and `flow` presets.
-  * Builds both CommonJS (cjs) and ECMAScript modules (esm).
-  * Builds using the `babel-runtime`.
-  * Cleans the target folder automatically.
-  * Supports a Node.js specific configuration.
-* [ESLint](https://github.com/milesj/build-tool-config/blob/master/configs/eslint.js)
-  * Configured with `import`, `jest`, `react`, `jsx-a11y`, `flowtype`, and `unicorn` plugins.
-  * Extends the `airbnb` configuration preset.
-  * Provides `.eslintignore` when syncing dotfiles.
-* [Jest](https://github.com/milesj/build-tool-config/blob/master/configs/jest.js)
-  * Supports React and Enzyme 3 based unit tests.
-  * Provides built-in code coverage scripts.
-* [Webpack](https://github.com/milesj/build-tool-config/blob/master/configs/webpack.js)
-  * Configured with `babel-loader` and `uglify` plugin.
+- [Babel](https://github.com/milesj/build-tool-config/blob/master/configs/babel.js)
+  - Configured with `env`, `stage-2`, `react`, and `flow` presets.
+  - Builds both CommonJS (cjs) and ECMAScript modules (esm).
+  - Builds using the `babel-runtime`.
+  - Cleans the target folder automatically.
+  - Supports a Node.js specific configuration.
+- [ESLint](https://github.com/milesj/build-tool-config/blob/master/configs/eslint.js)
+  - Configured with `import`, `jest`, `react`, `jsx-a11y`, `flowtype`, and `unicorn` plugins.
+  - Extends the `airbnb` configuration preset.
+  - Provides `.eslintignore` when syncing dotfiles.
+- [Jest](https://github.com/milesj/build-tool-config/blob/master/configs/jest.js)
+  - Supports React and Enzyme 3 based unit tests.
+  - Provides built-in code coverage scripts.
+- [Webpack](https://github.com/milesj/build-tool-config/blob/master/configs/webpack.js)
+  - Configured with `babel-loader` and `uglify` plugin.
 
 Plus dotfiles that can be synced into each project (as they must exist in each project).
 
-* [ESLint](https://github.com/milesj/build-tool-config/blob/master/dotfiles/eslintignore)
-* [Flow](https://github.com/milesj/build-tool-config/blob/master/dotfiles/flowconfig)
-* [Git](https://github.com/milesj/build-tool-config/blob/master/dotfiles/gitignore)
-* [NPM](https://github.com/milesj/build-tool-config/blob/master/dotfiles/npmignore)
-* [Travis](https://github.com/milesj/build-tool-config/blob/master/dotfiles/travis.yml)
-* [Yarn](https://github.com/milesj/build-tool-config/blob/master/dotfiles/yarnrc)
+- [ESLint](https://github.com/milesj/build-tool-config/blob/master/dotfiles/eslintignore)
+- [Flow](https://github.com/milesj/build-tool-config/blob/master/dotfiles/flowconfig)
+- [Git](https://github.com/milesj/build-tool-config/blob/master/dotfiles/gitignore)
+- [NPM](https://github.com/milesj/build-tool-config/blob/master/dotfiles/npmignore)
+- [Travis](https://github.com/milesj/build-tool-config/blob/master/dotfiles/travis.yml)
+- [Yarn](https://github.com/milesj/build-tool-config/blob/master/dotfiles/yarnrc)
 
 ## Install
 
@@ -62,19 +62,19 @@ node ./node_modules/.bin/init-package
 
 This library provides the following binaries that can be consumed per project.
 
-* `build-lib` - Transpiles the root `src/` folder to both CommonJS (main) and ECMAScript (module)
+- `build-lib` - Transpiles the root `src/` folder to both CommonJS (main) and ECMAScript (module)
   builds using Babel.
-  * `--no-clean` - Disable automatic target cleaning.
-  * `--no-cjs` - Disable CommonJS `lib/` builds.
-  * `--no-esm` - Disable ECMAScript `esm/` builds.
-  * `--node` - Target Node.js 6.5+ instead of web (IE 10+).
-  * `--react` - Include `babel-preset-react`.
-* `bundle-lib` - Bundles the library into a single file using Webpack.
-* `run-linter` - Lints source, test, and packages files using ESLint.
-  * `--cache` - Speed up the linting process.
-* `run-tests` - Runs unit tests using Jest.
-  * `--coverage` - Run code coverage.
-* `type-check` - Statically analyzes and type checks files using Flowtype.
+  - `--no-clean` - Disable automatic target cleaning.
+  - `--no-cjs` - Disable CommonJS `lib/` builds.
+  - `--no-esm` - Disable ECMAScript `esm/` builds.
+  - `--node` - Target Node.js 6.5+ instead of web (IE 10+).
+  - `--react` - Include `babel-preset-react`.
+- `bundle-lib` - Bundles the library into a single file using Webpack.
+- `run-linter` - Lints source, test, and packages files using ESLint.
+  - `--cache` - Speed up the linting process.
+- `run-tests` - Runs unit tests using Jest.
+  - `--coverage` - Run code coverage.
+- `type-check` - Statically analyzes and type checks files using Flowtype.
 
 Simply add them as Yarn scripts or run `init-package` mentioned previously.
 
