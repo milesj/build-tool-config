@@ -1,4 +1,4 @@
-const { EXTS, EXT_PATTERN, DIR_PATTERN } = require('./configs/constants');
+const { EXTS, DIR_PATTERN } = require('./configs/constants');
 
 const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
 
@@ -61,10 +61,12 @@ module.exports = function milesj(tool) {
   tool.on('prettier.init-driver', (driver, argv) => {
     argv.push('--write', './README.md');
 
+    const exts = '{ts,tsx,js,jsx,scss,css,gql}';
+
     if (usingWorkspaces) {
-      argv.push(`./packages/*/${DIR_PATTERN}/**/*.${EXT_PATTERN}`, './packages/*/*.{md,json}');
+      argv.push(`./packages/*/${DIR_PATTERN}/**/*.${exts}`, './packages/*/*.{md,json}');
     } else {
-      argv.push(`./${DIR_PATTERN}/**/*.${EXT_PATTERN}`, './*.{md,json}');
+      argv.push(`./${DIR_PATTERN}/**/*.${exts}`, './*.{md,json}');
     }
   });
 };

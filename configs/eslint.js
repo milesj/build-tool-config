@@ -199,6 +199,7 @@ module.exports = function eslint() {
           'jest/consistent-test-it': 'error',
           'jest/lowercase-name': 'off',
           'jest/no-identical-title': 'error',
+          'jest/no-jasmine-globals': 'error',
           'jest/no-jest-import': 'error',
           'jest/no-test-prefixes': 'error',
           'jest/no-large-snapshots': 'error',
