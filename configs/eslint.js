@@ -208,6 +208,7 @@ module.exports = function eslint() {
           'jest/prefer-to-have-length': 'error',
           'jest/valid-describe': 'error',
           'jest/valid-expect': 'error',
+          'react/jsx-filename-extension': 'off',
         },
       },
       {
@@ -223,7 +224,7 @@ module.exports = function eslint() {
                 'lifecycle',
                 'everything-else',
                 'handlers',
-                'rendering',
+                'renderers',
               ],
               groups: {
                 statics: ['propTypes', 'defaultProps'],
