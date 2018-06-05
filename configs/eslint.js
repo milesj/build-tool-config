@@ -100,6 +100,7 @@ module.exports = function eslint() {
       'import/no-useless-path-segments': 'error',
       'react/button-has-type': 'error',
       'react/destructuring-assignment': 'off', // Broken with TS
+      'react/jsx-props-no-multi-spaces': 'error',
       'react/no-access-state-in-setstate': 'error',
       'react/no-this-in-sfc': 'error',
 
