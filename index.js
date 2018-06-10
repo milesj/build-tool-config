@@ -1,4 +1,5 @@
 const fs = require('fs-extra');
+const path = require('path');
 const { EXTS, DIR_PATTERN } = require('./configs/constants');
 
 const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
