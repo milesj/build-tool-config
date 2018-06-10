@@ -51,15 +51,19 @@ module.exports = function milesj(tool) {
   });
 
   // Prettier
-  tool.on('prettier.init-driver', (driver, argv) => {
-    argv.push('--write', './README.md', './docs/**/*.md');
+  tool.on('prettier.init-driver', (driver, argv, { args }) => {
+    argv.push('--write', './README.md');
 
-    const exts = '{ts,tsx,js,jsx,scss,css,gql}';
+    if (isEmptyArgs(args._, 'prettier')) {
+      const exts = '{ts,tsx,js,jsx,scss,css,gql}';
 
-    if (workspacesEnabled) {
-      argv.push(`./packages/*/${DIR_PATTERN}/**/*.${exts}`, './packages/*/*.{md,json}');
-    } else {
-      argv.push(`./${DIR_PATTERN}/**/*.${exts}`, './*.{md,json}');
+      argv.push('./docs/**/*.md');
+
+      if (workspacesEnabled) {
+        argv.push(`./packages/*/${DIR_PATTERN}/**/*.${exts}`, './packages/*/*.{md,json}');
+      } else {
+        argv.push(`./${DIR_PATTERN}/**/*.${exts}`, './*.{md,json}');
+      }
     }
   });
 
