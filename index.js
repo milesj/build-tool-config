@@ -1,3 +1,4 @@
+const fs = require('fs-extra');
 const { EXTS, DIR_PATTERN } = require('./configs/constants');
 
 const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
@@ -8,18 +9,14 @@ function isEmptyArgs(args, name) {
 
 module.exports = function milesj(tool) {
   const usingTypeScript = tool.config.drivers.includes('typescript');
-  const usingWorkspaces = !!tool.package.workspaces;
+  const workspacesEnabled = !!tool.package.workspaces;
 
   // Babel
   tool.on('babel.init-driver', (driver, argv, { args }) => {
     argv.push('--copy-files');
 
-    if (usingTypeScript) {
-      argv.push('--typescript');
-
-      if (!args.extensions) {
-        argv.push('--extensions', extsWithoutJSON.join(','));
-      }
+    if (usingTypeScript && !args.extensions) {
+      argv.push('--extensions', extsWithoutJSON.join(','));
     }
 
     if (isEmptyArgs(args._, 'babel')) {
@@ -35,18 +32,14 @@ module.exports = function milesj(tool) {
   tool.on('eslint.init-driver', (driver, argv, { args }) => {
     argv.push('--color', '--report-unused-disable-directives');
 
-    if (usingTypeScript) {
-      argv.push('--typescript');
-
-      if (!args.ext) {
-        argv.push('--ext', extsWithoutJSON.join(','));
-      }
+    if (usingTypeScript && !args.ext) {
+      argv.push('--ext', extsWithoutJSON.join(','));
     }
 
     if (isEmptyArgs(args._, 'eslint')) {
       argv.push('./src', './tests');
 
-      if (usingWorkspaces) {
+      if (workspacesEnabled) {
         argv.push(`./packages/*/${DIR_PATTERN}`);
       }
     }
@@ -54,19 +47,29 @@ module.exports = function milesj(tool) {
 
   // Jest
   tool.on('jest.init-driver', (driver, argv) => {
-    argv.push('--colors', '--logHeapUsage');
+    argv.push('--colors', '--logHeapUsage', '--detectOpenHandles');
   });
 
   // Prettier
   tool.on('prettier.init-driver', (driver, argv) => {
-    argv.push('--write', './README.md');
+    argv.push('--write', './README.md', './docs/**/*.md');
 
     const exts = '{ts,tsx,js,jsx,scss,css,gql}';
 
-    if (usingWorkspaces) {
+    if (workspacesEnabled) {
       argv.push(`./packages/*/${DIR_PATTERN}/**/*.${exts}`, './packages/*/*.{md,json}');
     } else {
       argv.push(`./${DIR_PATTERN}/**/*.${exts}`, './*.{md,json}');
+    }
+  });
+
+  // TypeScript
+  tool.on('typescript.after-execute', () => {
+    if (workspacesEnabled) {
+      fs.copySync(
+        path.join(tool.options.root, 'README.md'),
+        path.join(tool.options.root, 'packages/core/README.md'),
+      );
     }
   });
 };
