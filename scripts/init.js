@@ -36,8 +36,7 @@ module.exports = class InitScript extends Script {
 
     // Scripts
     Object.assign(packageConfig.scripts, {
-      babel: 'beemo typescript', // TEMP
-      build: 'yarn run babel',
+      build: 'beemo typescript',
       clean: 'rimraf ./{lib,esm}/',
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
@@ -78,26 +77,25 @@ module.exports = class InitScript extends Script {
       packageConfig.private = true;
 
       Object.assign(packageConfig.scripts, {
-        build: 'lerna run babel',
+        build: 'beemo typescript --workspaces=* --priority=core',
         clean: 'rimraf ./packages/*/{lib,esm}/ && lerna clean --yes',
         release: 'lerna publish',
-        'release:force': 'npm run release -- --force-publish=*',
+        type: 'beemo typescript --workspaces=* --noEmit',
       });
-
-      delete packageConfig.scripts.babel;
     } else {
       packageConfig.main = './lib/index.js';
+      packageConfig.types = './lib/index.d.ts';
       packageConfig.module = './esm/index.js';
     }
 
     if (args.node) {
-      packageConfig.scripts.babel += ' --node';
+      packageConfig.scripts.build += ' --node';
     } else {
       packageConfig.browserslist = [`ie ${MIN_IE_VERSION}`];
     }
 
     if (args.react) {
-      packageConfig.scripts.babel += ' --react';
+      packageConfig.scripts.build += ' --react';
       packageConfig.scripts.jest += ' --react';
     }
 
