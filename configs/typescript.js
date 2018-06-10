@@ -4,7 +4,7 @@ module.exports = function typescript(args, tool) {
   // When --workspaces is passed, this config is copied into each package, so use local paths.
   // However, when running through Jest at the root, we need to find all packages.
   // Be sure not to breat non-workspace enabled projects.
-  const isWorkspaceRoot = !args.workspaces && tool.package.workspaces;
+  const isWorkspaceRoot = !args.workspaces && !!tool.package.workspaces;
   const compilerOptions = {
     allowJs: false,
     allowSyntheticDefaultImports: true,

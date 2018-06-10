@@ -5,11 +5,12 @@ const { EXTS, EXT_PATTERN } = require('./constants');
 // Package: Run in root
 // Workspaces: Run in root
 module.exports = function jest(args, tool) {
+  const workspacesEnabled = !!tool.package.workspaces;
   const setupFilePath = path.join(process.cwd(), './tests/setup.js');
   const setupFiles = [];
   const roots = [];
 
-  if (tool.package.workspaces) {
+  if (workspacesEnabled) {
     roots.push('<rootDir>/packages');
   } else {
     roots.push('<rootDir>/src', '<rootDir>/tests');
@@ -23,6 +24,20 @@ module.exports = function jest(args, tool) {
     coverageDirectory: './coverage',
     coveragePathIgnorePatterns: ['/node_modules/', '/esm/', '/lib/'],
     coverageReporters: ['lcov'],
+    coverageThreshold: {
+      global: {
+        branches: 90,
+        functions: 90,
+        lines: 90,
+        statements: 90,
+      },
+      [`${workspacesEnabled ? './packages/*/' : './'}src/**/*.${EXT_PATTERN}`]: {
+        branches: 80,
+        functions: 90,
+        lines: 90,
+        statements: 90,
+      },
+    },
     globals: {
       __DEV__: true,
       'ts-jest': {
