@@ -147,9 +147,9 @@ module.exports = function eslint() {
         },
       ],
       'react/jsx-key': 'error',
-      'react/jsx-no-literals': 'off', // Broken
-      'react/no-did-mount-set-state': 'off', // 16.3+
-      'react/no-did-update-set-state': 'off', // 16.3+
+      'react/jsx-no-literals': 'error',
+      'react/no-did-mount-set-state': 'error',
+      'react/no-did-update-set-state': 'error',
       'react/no-direct-mutation-state': 'error',
 
       // TypeScript support

@@ -25,7 +25,13 @@ module.exports = class InitScript extends Script {
     // Beemo
     Object.assign(packageConfig.beemo, {
       module: args.local ? '@local' : '@milesj/build-tool-config',
-      drivers: ['babel', 'eslint', 'jest', 'prettier', 'typescript'],
+      drivers: [
+        'babel',
+        'eslint',
+        args.workspaces ? { driver: 'jest', dependencies: ['typescript'] } : 'jest',
+        'prettier',
+        'typescript',
+      ],
     });
 
     // Scripts
@@ -36,7 +42,7 @@ module.exports = class InitScript extends Script {
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
       jest: 'beemo jest',
-      package: 'yarn run clean && yarn install && yarn run build && yarn test',
+      package: 'yarn run clean && yarn install && yarn test && yarn run build',
       prettier: 'beemo prettier',
       release: 'np --yolo --no-yarn',
       type: 'beemo typescript --noEmit',

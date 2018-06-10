@@ -12,8 +12,9 @@ module.exports = function babel(args) {
     plugins.push([
       'babel-plugin-transform-runtime',
       {
+        helpers: true,
         polyfill: false,
-        regenerator: true,
+        regenerator: false,
       },
     ]);
   }
