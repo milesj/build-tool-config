@@ -15,7 +15,7 @@ module.exports = function typescript(args, tool) {
     noImplicitReturns: true,
     outDir: './lib',
     pretty: true,
-    removeComments: true,
+    removeComments: false,
     sourceMap: false,
     strict: true,
     target: 'es5',

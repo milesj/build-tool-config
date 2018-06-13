@@ -97,6 +97,7 @@ module.exports = class InitScript extends Script {
     if (args.react) {
       packageConfig.scripts.build += ' --react';
       packageConfig.scripts.jest += ' --react';
+      packageConfig.scripts.type += ' --react';
     }
 
     // Save files
