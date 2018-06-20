@@ -43,7 +43,7 @@
     "@beemo/driver-prettier": "^0.18.0",
     "@beemo/driver-typescript": "^0.7.0",
     "@types/enzyme": "^3.1.10",
-    "@types/jest": "^23.1.0",
+    "@types/jest": "^23.1.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.0.1",
