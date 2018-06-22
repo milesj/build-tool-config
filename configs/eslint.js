@@ -40,6 +40,7 @@ module.exports = function eslint() {
     rules: {
       'class-methods-use-this': 'off',
       'multiline-comment-style': 'off',
+      'no-else-return': ['error', { allowElseIf: true }],
       'no-invalid-this': 'off', // Handled by babel/no-invalid-this
       'object-curly-spacing': 'off', // Handled by babel/object-curly-spacing
       'padded-blocks': [
