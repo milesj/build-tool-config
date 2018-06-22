@@ -186,6 +186,7 @@ module.exports = function eslint() {
         rules: {
           'no-magic-numbers': 'off',
           'sort-keys': 'off',
+          'import/no-extraneous-dependencies': 'off',
           'jest/consistent-test-it': 'error',
           'jest/lowercase-name': 'off',
           'jest/no-identical-title': 'error',
