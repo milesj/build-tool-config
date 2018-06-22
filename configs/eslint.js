@@ -139,6 +139,7 @@ module.exports = function eslint() {
       'react/no-direct-mutation-state': 'error',
 
       // TypeScript support
+      'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
       'import/extensions': [
         'error',
         'never',
@@ -168,6 +169,7 @@ module.exports = function eslint() {
       // Doesnt work with TypeScript
       'no-restricted-globals': 'off',
       'no-undef': 'off',
+      'import/no-cycle': 'off',
       'import/named': 'off',
       'react/destructuring-assignment': 'off',
       'unicorn/prefer-spread': 'off',
