@@ -55,7 +55,6 @@ module.exports = function eslint() {
       'babel/object-curly-spacing': ['error', 'always'],
       'babel/semi': 'error',
       'compat/compat': 'error',
-      'import/no-extraneous-dependencies': 'off',
       'promise/always-return': 'error',
       'promise/avoid-new': 'off',
       'promise/catch-or-return': 'error',
@@ -91,22 +90,8 @@ module.exports = function eslint() {
       'unicorn/regex-shorthand': 'error',
       'unicorn/throw-new-error': 'error',
 
-      // New and not yet in Airbnb
-      'implicit-arrow-linebreak': 'off',
-      'lines-between-class-members': 'error',
-      'import/group-exports': 'off',
-      'import/no-default-export': 'off',
-      'import/no-self-import': 'error',
-      'import/no-useless-path-segments': 'error',
-      'react/button-has-type': 'error',
-      'react/destructuring-assignment': 'off', // Broken with TS
-      'react/jsx-props-no-multi-spaces': 'error',
-      'react/no-access-state-in-setstate': 'error',
-      'react/no-this-in-sfc': 'error',
-
       // Want to support but disabled in Airbnb
       complexity: ['error', 11],
-      'jsx-quotes': ['error', 'prefer-double'],
       'newline-before-return': 'error',
       'no-constant-condition': 'error',
       'no-div-regex': 'error',
@@ -135,6 +120,8 @@ module.exports = function eslint() {
       'import/no-anonymous-default-export': [
         'error',
         {
+          allowArray: true,
+          allowLiteral: true,
           allowObject: true,
         },
       ],
@@ -149,7 +136,6 @@ module.exports = function eslint() {
       'react/jsx-key': 'error',
       'react/jsx-no-literals': 'error',
       'react/no-did-mount-set-state': 'error',
-      'react/no-did-update-set-state': 'error',
       'react/no-direct-mutation-state': 'error',
 
       // TypeScript support
@@ -182,8 +168,8 @@ module.exports = function eslint() {
       // Doesnt work with TypeScript
       'no-restricted-globals': 'off',
       'no-undef': 'off',
-      'no-unused-vars': 'off',
       'import/named': 'off',
+      'react/destructuring-assignment': 'off',
       'unicorn/prefer-spread': 'off',
     },
     overrides: [
@@ -229,7 +215,13 @@ module.exports = function eslint() {
               ],
               groups: {
                 statics: ['propTypes', 'defaultProps'],
-                properties: ['/^(?!on).+$/', '/^(?!handle).+$/', '/^.+Ref$/', 'state'],
+                properties: [
+                  '/^(?!on).+$/',
+                  '/^(?!handle).+$/',
+                  '/^(?!render).+$/',
+                  '/^.+Ref$/',
+                  'state',
+                ],
                 lifecycle: [
                   'constructor',
                   'getDerivedStateFromProps',

@@ -37,17 +37,15 @@ module.exports = class InitScript extends Script {
     // Scripts
     Object.assign(packageConfig.scripts, {
       build: 'beemo typescript',
-      clean: 'rimraf ./{lib,esm}/',
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
       jest: 'beemo jest',
-      package: 'yarn run clean && yarn install && yarn test && yarn run build',
       prettier: 'beemo prettier',
       release: 'np --yolo --no-yarn',
       type: 'beemo typescript --noEmit',
 
       // Hooks
-      prerelease: 'yarn run package',
+      prerelease: 'yarn test && yarn run build',
       pretest: 'yarn run type',
       test: 'yarn run jest',
       posttest: 'yarn run eslint',
@@ -78,7 +76,6 @@ module.exports = class InitScript extends Script {
 
       Object.assign(packageConfig.scripts, {
         build: 'beemo typescript --workspaces=* --priority=core',
-        clean: 'rimraf ./packages/*/{lib,esm}/ && lerna clean --yes',
         release: 'lerna publish',
         type: 'beemo typescript --workspaces=* --noEmit',
       });
