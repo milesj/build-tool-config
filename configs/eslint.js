@@ -91,6 +91,9 @@ module.exports = function eslint() {
       'unicorn/regex-shorthand': 'error',
       'unicorn/throw-new-error': 'error',
 
+      // New and not in Airbnb
+      'react/no-unsafe': 'error',
+
       // Want to support but disabled in Airbnb
       complexity: ['error', 11],
       'newline-before-return': 'error',
