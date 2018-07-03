@@ -53,7 +53,6 @@ module.exports = function milesj(tool) {
   // Prettier
   tool.on('prettier.init-driver', (driver, context) => {
     context.addOption('--write');
-    context.addArgs(['./README.md', './docs/**/*.md']);
 
     if (hasNoPositionalArgs(context, 'prettier')) {
       const exts = '{ts,tsx,js,jsx,scss,css,gql}';
@@ -64,6 +63,8 @@ module.exports = function milesj(tool) {
         context.addArgs([`./${DIR_PATTERN}/**/*.${exts}`, './*.{md,json}']);
       }
     }
+
+    context.addArgs(['./README.md', './docs/**/*.md']);
   });
 
   // TypeScript
