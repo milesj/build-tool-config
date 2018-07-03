@@ -68,7 +68,7 @@ module.exports = function milesj(tool) {
       }
     }
 
-    context.addArgs(['./README.md', './docs/**/*.md']);
+    context.addArgs(['./docs/**/*.md', './README.md']);
   });
 
   // TypeScript
