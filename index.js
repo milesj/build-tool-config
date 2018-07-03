@@ -48,6 +48,10 @@ module.exports = function milesj(tool) {
   // Jest
   tool.on('jest.init-driver', (driver, context) => {
     context.addOptions(['--colors', '--logHeapUsage', '--detectOpenHandles']);
+
+    if (usingTypeScript) {
+      driver.options.dependencies.push('typescript');
+    }
   });
 
   // Prettier
