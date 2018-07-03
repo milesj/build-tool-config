@@ -72,7 +72,6 @@
     "eslint-plugin-unicorn": "^4.0.3",
     "execa": "^0.10.0",
     "fs-extra": "^6.0.1",
-    "gitbook-cli": "^2.3.2",
     "jest": "^23.2.0",
     "jest-runner-eslint": "^0.6.0",
     "np": "^3.0.4",

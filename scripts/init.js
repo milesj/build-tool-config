@@ -8,9 +8,8 @@ const { MIN_IE_VERSION } = require('../configs/constants');
 module.exports = class InitScript extends Script {
   parse() {
     return {
-      boolean: ['docs', 'local', 'node', 'react', 'workspaces'],
+      boolean: ['local', 'node', 'react', 'workspaces'],
       default: {
-        docs: false,
         local: false,
         node: false,
         react: false,
@@ -50,14 +49,6 @@ module.exports = class InitScript extends Script {
       test: 'yarn run jest',
       posttest: 'yarn run eslint',
     });
-
-    if (args.docs) {
-      Object.assign(packageConfig.scripts, {
-        docs: 'gitbook build --debug --log=debug',
-        'docs:serve': 'gitbook serve',
-        'docs:install': 'gitbook install',
-      });
-    }
 
     if (args.workspaces) {
       if (!packageConfig.devDependencies.lerna) {
