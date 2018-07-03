@@ -4,7 +4,9 @@ const { EXTS, DIR_PATTERN } = require('./configs/constants');
 
 const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
 
-function isEmptyArgs(args, name) {
+function hasNoPositionalArgs(context, name) {
+  const args = context.args._;
+
   return args.length === 0 || (args.length === 1 && args[0] === name);
 }
 
@@ -13,68 +15,64 @@ module.exports = function milesj(tool) {
   const workspacesEnabled = !!tool.package.workspaces;
 
   // Babel
-  tool.on('babel.init-driver', (driver, argv, { args }) => {
-    argv.push('--copy-files');
+  tool.on('babel.init-driver', (driver, context) => {
+    context.addOption('--copy-files');
 
-    if (usingTypeScript && !args.extensions) {
-      argv.push('--extensions', extsWithoutJSON.join(','));
+    if (usingTypeScript && !context.args.extensions) {
+      context.addOption('--extensions', extsWithoutJSON.join(','));
     }
 
-    if (isEmptyArgs(args._, 'babel')) {
-      if (args.esm) {
-        argv.push('./src', '--out-dir', './esm');
-      } else {
-        argv.push('./src', '--out-dir', './lib');
-      }
+    if (hasNoPositionalArgs(context, 'babel')) {
+      context.addArg('./src');
+      context.addOption('--out-dir', context.args.esm ? './esm' : './lib');
     }
   });
 
   // ESLint
-  tool.on('eslint.init-driver', (driver, argv, { args }) => {
-    argv.push('--color', '--report-unused-disable-directives');
+  tool.on('eslint.init-driver', (driver, context) => {
+    context.addOptions(['--color', '--report-unused-disable-directives']);
 
-    if (usingTypeScript && !args.ext) {
-      argv.push('--ext', extsWithoutJSON.join(','));
+    if (usingTypeScript && !context.args.ext) {
+      context.addOption('--ext', extsWithoutJSON.join(','));
     }
 
-    if (isEmptyArgs(args._, 'eslint')) {
-      argv.push('./src', './tests');
+    if (hasNoPositionalArgs(context, 'eslint')) {
+      context.addArgs(['./src', './tests']);
 
       if (workspacesEnabled) {
-        argv.push(`./packages/*/${DIR_PATTERN}`);
+        context.addArg(`./packages/*/${DIR_PATTERN}`);
       }
     }
   });
 
   // Jest
-  tool.on('jest.init-driver', (driver, argv) => {
-    argv.push('--colors', '--logHeapUsage', '--detectOpenHandles');
+  tool.on('jest.init-driver', (driver, context) => {
+    context.addOptions(['--colors', '--logHeapUsage', '--detectOpenHandles']);
   });
 
   // Prettier
-  tool.on('prettier.init-driver', (driver, argv, { args }) => {
-    argv.push('--write', './README.md');
+  tool.on('prettier.init-driver', (driver, context) => {
+    context.addOption('--write');
+    context.addArgs(['./README.md', './docs/**/*.md']);
 
-    if (isEmptyArgs(args._, 'prettier')) {
+    if (hasNoPositionalArgs(context, 'prettier')) {
       const exts = '{ts,tsx,js,jsx,scss,css,gql}';
 
-      argv.push('./docs/**/*.md');
-
       if (workspacesEnabled) {
-        argv.push(`./packages/*/${DIR_PATTERN}/**/*.${exts}`, './packages/*/*.{md,json}');
+        context.addArgs([`./packages/*/${DIR_PATTERN}/**/*.${exts}`, './packages/*/*.{md,json}']);
       } else {
-        argv.push(`./${DIR_PATTERN}/**/*.${exts}`, './*.{md,json}');
+        context.addArgs([`./${DIR_PATTERN}/**/*.${exts}`, './*.{md,json}']);
       }
     }
   });
 
   // TypeScript
-  tool.on('typescript.after-execute', () => {
-    if (workspacesEnabled) {
+  if (workspacesEnabled) {
+    tool.on('typescript.after-execute', () => {
       fs.copySync(
         path.join(tool.options.root, 'README.md'),
         path.join(tool.options.root, 'packages/core/README.md'),
       );
-    }
-  });
+    });
+  }
 };
