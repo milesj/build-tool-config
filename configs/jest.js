@@ -6,7 +6,7 @@ const { EXTS, EXT_PATTERN } = require('./constants');
 // Workspaces: Run in root
 module.exports = function jest(args, tool) {
   const workspacesEnabled = !!tool.package.workspaces;
-  const setupFilePath = path.join(process.cwd(), './tests/setup.js');
+  const setupFilePath = path.join(process.cwd(), './tests/setup.ts');
   const setupFiles = [];
   const roots = [];
 

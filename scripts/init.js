@@ -24,13 +24,7 @@ module.exports = class InitScript extends Script {
     // Beemo
     Object.assign(packageConfig.beemo, {
       module: args.local ? '@local' : '@milesj/build-tool-config',
-      drivers: [
-        'babel',
-        'eslint',
-        args.workspaces ? { driver: 'jest', dependencies: ['typescript'] } : 'jest',
-        'prettier',
-        'typescript',
-      ],
+      drivers: ['babel', 'eslint', 'jest', 'prettier', 'typescript'],
     });
 
     // Scripts
@@ -66,14 +60,14 @@ module.exports = class InitScript extends Script {
       packageConfig.private = true;
 
       Object.assign(packageConfig.scripts, {
-        build: 'beemo typescript --workspaces=* --priority=core',
+        build: 'beemo typescript --workspaces=* --priority',
         release: 'lerna publish',
         type: 'beemo typescript --workspaces=* --noEmit',
       });
     } else {
       packageConfig.main = './lib/index.js';
       packageConfig.types = './lib/index.d.ts';
-      packageConfig.module = './esm/index.js';
+      // packageConfig.module = './esm/index.js';
     }
 
     if (args.node) {
