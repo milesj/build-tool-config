@@ -27,10 +27,8 @@ module.exports = function typescript(args, tool) {
 
   return {
     compilerOptions,
-    exclude: ['*.test.js', '*.test.ts'],
-    include: [
-      isWorkspaceRoot ? './packages/*/src/**/*' : './src/**/*',
-      isWorkspaceRoot ? './packages/*/types/**/*' : './types/**/*',
-    ],
+    include: isWorkspaceRoot
+      ? ['./packages/*/src/**/*', './packages/*/tests/**/*', './packages/*/types/**/*']
+      : ['./src/**/*', './tests/**/*', './types/**/*'],
   };
 };
