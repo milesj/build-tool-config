@@ -1,10 +1,6 @@
 // Package: Run in root
 // Workspaces: Run in each package (copied into each)
 module.exports = function typescript(args, tool) {
-  // When --workspaces is passed, this config is copied into each package, so use local paths.
-  // However, when running through Jest at the root, we need to find all packages.
-  // Be sure not to breat non-workspace enabled projects.
-  const isWorkspaceRoot = !args.workspaces && !!tool.package.workspaces;
   const compilerOptions = {
     allowJs: false,
     allowSyntheticDefaultImports: true,
@@ -12,6 +8,7 @@ module.exports = function typescript(args, tool) {
     esModuleInterop: true,
     forceConsistentCasingInFileNames: true,
     lib: ['dom', 'esnext'],
+    noEmitOnError: true,
     noImplicitReturns: true,
     outDir: './lib',
     pretty: true,
@@ -25,10 +22,23 @@ module.exports = function typescript(args, tool) {
     compilerOptions.jsx = 'react';
   }
 
+  let include = ['./src/**/*', './types/**/*'];
+
+  // When --noEmit is passed, we want to run the type checker and include test files.
+  // Otherwise, we do not want to emit declarations for test files.
+  if (args.noEmit) {
+    include.push('./tests/**/*');
+  }
+
+  // When --workspaces is passed, this config is copied into each package, so use local paths.
+  // However, when running through Jest at the root, we need to find all packages.
+  // Be sure not to breat non-workspace enabled projects.
+  if (!args.workspaces && tool.package.workspaces) {
+    include = include.map(path => `./packages/*${path.slice(1)}`);
+  }
+
   return {
     compilerOptions,
-    include: isWorkspaceRoot
-      ? ['./packages/*/src/**/*', './packages/*/tests/**/*', './packages/*/types/**/*']
-      : ['./src/**/*', './tests/**/*', './types/**/*'],
+    include,
   };
 };
