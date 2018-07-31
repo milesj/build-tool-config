@@ -50,6 +50,7 @@ module.exports = function jest(args, tool) {
     setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : undefined,
     snapshotSerializers: ['enzyme-to-json/serializer'],
     testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
+    testURL: 'http://localhost',
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
       '^.+\\.tsx?$': 'ts-jest',
