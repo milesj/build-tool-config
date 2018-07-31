@@ -59,7 +59,7 @@ module.exports = function milesj(tool) {
     context.addOption('--write');
 
     if (hasNoPositionalArgs(context, 'prettier')) {
-      const exts = '{ts,tsx,js,jsx,scss,css,gql}';
+      const exts = '{ts,tsx,js,jsx,scss,css,gql,yml,yaml}';
 
       if (workspacesEnabled) {
         context.addArgs([`./packages/*/${DIR_PATTERN}/**/*.${exts}`, './packages/*/*.{md,json}']);
