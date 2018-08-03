@@ -7,7 +7,6 @@ const { EXTS, EXT_PATTERN } = require('./constants');
 module.exports = function eslint() {
   return {
     root: true,
-    parser: 'typescript-eslint-parser',
     extends: ['airbnb', 'prettier'],
     plugins: ['typescript', 'promise', 'unicorn', 'compat', 'babel'],
     ignore: ['esm/', 'lib/', '*.min.js', '*.map'],
@@ -207,6 +206,7 @@ module.exports = function eslint() {
       },
       {
         files: ['{src,tests}/**/*.tsx', 'packages/*/{src,tests}/**/*.tsx'],
+        parser: 'typescript-eslint-parser',
         rules: {
           'typescript/member-ordering': 'off',
           'react/sort-comp': [
