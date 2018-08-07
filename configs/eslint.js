@@ -34,7 +34,8 @@ module.exports = function eslint() {
       ecmaVersion: 2018,
       ecmaFeatures: {
         jsx: true,
-        experimentalObjectRestSpread: true,
+        // Temp until airbnb is updated
+        experimentalObjectRestSpread: undefined,
       },
     },
     rules: {
