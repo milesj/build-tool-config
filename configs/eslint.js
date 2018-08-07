@@ -96,6 +96,16 @@ module.exports = function eslint() {
 
       // Want to support but disabled in Airbnb
       complexity: ['error', 11],
+      'max-classes-per-file': 'error',
+      'max-lines-per-function': [
+        'off',
+        {
+          max: 50,
+          skipBlankLines: true,
+          skipComments: true,
+          IIFEs: true,
+        },
+      ],
       'newline-before-return': 'error',
       'no-constant-condition': 'error',
       'no-div-regex': 'error',
@@ -109,9 +119,14 @@ module.exports = function eslint() {
           enforceConst: true,
         },
       ],
+      'no-misleading-character-class': 'error',
       'no-native-reassign': 'error',
       'no-negated-condition': 'error',
+      'no-async-promise-executor': 'error',
       'no-useless-call': 'error',
+      'prefer-object-spread': 'error',
+      'require-atomic-updates': 'error',
+      'require-unicode-regexp': 'error',
       'sort-keys': [
         'error',
         'asc',
