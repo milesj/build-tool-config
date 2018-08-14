@@ -207,6 +207,7 @@ module.exports = function eslint() {
           'sort-keys': 'off',
           'import/no-extraneous-dependencies': 'off',
           'jest/consistent-test-it': 'error',
+          'jest/expect-expect': 'error',
           'jest/lowercase-name': 'off',
           'jest/no-identical-title': 'error',
           'jest/no-jasmine-globals': 'error',
