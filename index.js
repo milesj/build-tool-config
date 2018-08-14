@@ -37,10 +37,10 @@ module.exports = function milesj(tool) {
     }
 
     if (hasNoPositionalArgs(context, 'eslint')) {
-      context.addArgs(['./src', './tests']);
-
       if (workspacesEnabled) {
         context.addArg(`./packages/*/${DIR_PATTERN}`);
+      } else {
+        context.addArgs(['./src', './tests']);
       }
     }
   });

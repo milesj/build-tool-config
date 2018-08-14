@@ -92,13 +92,12 @@ module.exports = class InitScript extends Script {
         fs.writeJSON(
           lernaPath,
           {
-            lerna: packageConfig.devDependencies.lerna.slice(1),
             version: 'independent',
             npmClient: 'yarn',
             useWorkspaces: true,
-            commands: {
+            command: {
               publish: {
-                ignore: ['*.md'],
+                ignoreChanges: ['*.md'],
               },
             },
           },
