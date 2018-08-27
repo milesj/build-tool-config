@@ -71,7 +71,7 @@ module.exports = function eslint() {
       'promise/valid-params': 'error',
       'react/sort-prop-types': 'off', // Handled by sort-keys
       'react/jsx-sort-default-props': 'off', // Handled by sort-keys
-      'unicorn/catch-error-name': ['error', { name: 'error' }],
+      'unicorn/catch-error-name': 'error',
       'unicorn/custom-error-definition': 'error',
       'unicorn/error-message': 'error',
       'unicorn/escape-case': 'error',
@@ -87,6 +87,7 @@ module.exports = function eslint() {
       'unicorn/no-process-exit': 'error',
       'unicorn/number-literal-case': 'error',
       'unicorn/prefer-add-event-listener': 'error',
+      'unicorn/prefer-exponentiation-operator': 'error',
       'unicorn/prefer-starts-ends-with': 'error',
       'unicorn/prefer-type-error': 'error',
       'unicorn/regex-shorthand': 'error',
