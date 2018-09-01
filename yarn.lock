@@ -714,9 +714,9 @@
     semver "^5.5.1"
     yargs "^12.0.1"
 
-"@beemo/core@^0.21.1":
-  version "0.21.1"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.21.1.tgz#38099b460adaae9eca76a927639afa5665e6b5e6"
+"@beemo/core@^0.21.2":
+  version "0.21.2"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.21.2.tgz#2f00c51c918277400bf7942af938f18c20e8ceaa"
   dependencies:
     "@boost/core" "^0.64.3"
     "@types/execa" "^0.9.0"

@@ -29,7 +29,7 @@ module.exports = class InitScript extends Script {
 
     // Scripts
     Object.assign(packageConfig.scripts, {
-      build: 'beemo typescript',
+      build: 'beemo babel',
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
       jest: 'beemo jest',
@@ -60,14 +60,14 @@ module.exports = class InitScript extends Script {
       packageConfig.private = true;
 
       Object.assign(packageConfig.scripts, {
-        build: 'beemo typescript --workspaces=* --priority',
+        build: 'beemo babel --workspaces=* --priority',
         release: 'lerna publish',
         type: 'beemo typescript --workspaces=* --noEmit',
       });
     } else {
       packageConfig.main = './lib/index.js';
       packageConfig.types = './lib/index.d.ts';
-      // packageConfig.module = './esm/index.js';
+      packageConfig.module = './esm/index.js';
     }
 
     if (args.node) {
