@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "postinstall": "bash ./links.sh"
+    "postinstall": "bash ./link.sh"
   },
   "dependencies": {
     "@milesj/build-tool-config": "^0.119.3",
