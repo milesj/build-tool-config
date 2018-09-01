@@ -1,6 +1,6 @@
 {
   "name": "@milesj/build-tools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Shared build tools for easier development.",
   "repository": {
     "type": "git",
