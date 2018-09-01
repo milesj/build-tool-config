@@ -30,5 +30,8 @@
   },
   "browserslist": [
     "last 2 versions"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
