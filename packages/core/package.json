@@ -1,0 +1,21 @@
+{
+  "name": "@milesj/build-tools",
+  "version": "0.0.0",
+  "description": "Shared build tools for easier development.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milesj/build-tool-config.git"
+  },
+  "author": {
+    "name": "Miles Johnson",
+    "url": "http://milesj.me"
+  },
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "bash ./links.sh"
+  },
+  "dependencies": {
+    "@milesj/build-tool-config": "^0.119.1",
+    "@milesj/build-tool-runtime": "^0.0.0"
+  }
+}

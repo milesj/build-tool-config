@@ -11,9 +11,6 @@
     "url": "http://milesj.me"
   },
   "license": "MIT",
-  "engines": {
-    "node": ">=8.9.0"
-  },
   "dependencies": {
     "@beemo/cli": "^0.20.0",
     "@beemo/core": "^0.20.0",

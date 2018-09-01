@@ -5,14 +5,17 @@
     "eslint": "beemo eslint .",
     "prettier": "beemo prettier \"./{configs,dotfiles,scripts}/*.{js,json,md,yml,yaml}\"",
     "test": "yarn run eslint",
-    "prerelease": "yarn test",
+    "prereleassse": "yarn test",
     "release": "lerna publish"
+  },
+  "dependencies": {
+    "lerna": "^3.2.1"
   },
   "workspaces": [
     "packages/*"
   ],
   "beemo": {
-    "module": "@local/core",
+    "module": "@local",
     "drivers": [
       "eslint",
       "prettier"
@@ -25,7 +28,7 @@
       }
     }
   },
-  "dependencies": {
-    "lerna": "^3.2.1"
-  }
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
