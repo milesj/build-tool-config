@@ -40,9 +40,6 @@ module.exports = function jest(args, tool) {
     },
     globals: {
       __DEV__: true,
-      'ts-jest': {
-        useBabelrc: true,
-      },
     },
     moduleFileExtensions: EXTS.map(ext => ext.slice(1)), // No period
     roots,
@@ -51,10 +48,10 @@ module.exports = function jest(args, tool) {
     snapshotSerializers: ['enzyme-to-json/serializer'],
     testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
     testURL: 'http://localhost',
-    transform: {
-      '^.+\\.jsx?$': 'babel-jest',
-      '^.+\\.tsx?$': 'ts-jest',
-    },
+    // transform: {
+    //   '^.+\\.jsx?$': 'babel-jest',
+    //   '^.+\\.tsx?$': 'ts-jest',
+    // },
     verbose: false,
   };
 };
