@@ -6,6 +6,9 @@ module.exports = function babel(args) {
   const plugins = [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-proposal-nullish-coalescing-operator',
+    '@babel/plugin-proposal-optional-catch-binding',
+    '@babel/plugin-proposal-optional-chaining',
     ['babel-plugin-transform-dev', { evaluate: false }],
   ];
 
@@ -28,7 +31,7 @@ module.exports = function babel(args) {
         modules: args.esm ? false : 'commonjs',
         shippedProposals: true,
         targets: args.node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
-        useBuiltIns: 'usage',
+        useBuiltIns: false,
       },
     ],
     '@babel/preset-typescript',
