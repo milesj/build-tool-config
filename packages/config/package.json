@@ -1,6 +1,6 @@
 {
   "name": "@milesj/build-tool-config",
-  "version": "0.119.7",
+  "version": "0.119.8",
   "description": "Build tool configuration files for easy re-use.",
   "keywords": [
     "build",
