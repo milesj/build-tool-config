@@ -731,9 +731,9 @@
     semver "^5.5.1"
     yargs "^12.0.1"
 
-"@beemo/core@^0.21.2":
-  version "0.21.2"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.21.2.tgz#2f00c51c918277400bf7942af938f18c20e8ceaa"
+"@beemo/core@^0.21.3":
+  version "0.21.3"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.21.3.tgz#8bbf7dbde719872d2d9a184dd49ccda9f6bf5511"
   dependencies:
     "@boost/core" "^0.64.3"
     "@types/execa" "^0.9.0"
@@ -755,9 +755,9 @@
     yargs "^12.0.1"
     yargs-parser "^10.1.0"
 
-"@beemo/driver-babel@^0.21.1":
-  version "0.21.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-0.21.1.tgz#ac114261936acec8fd0c109761026fd202c3a54a"
+"@beemo/driver-babel@^0.21.2":
+  version "0.21.2"
+  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-0.21.2.tgz#176d1493d3ea3c2a3c2a0e0800a28eb16f8d0798"
   dependencies:
     rimraf "^2.6.2"
 

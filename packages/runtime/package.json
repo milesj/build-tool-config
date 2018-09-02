@@ -17,8 +17,8 @@
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@beemo/cli": "^0.21.1",
-    "@beemo/core": "^0.21.2",
-    "@beemo/driver-babel": "^0.21.1",
+    "@beemo/core": "^0.21.3",
+    "@beemo/driver-babel": "^0.21.2",
     "@beemo/driver-eslint": "^0.21.1",
     "@beemo/driver-jest": "^0.21.1",
     "@beemo/driver-prettier": "^0.21.1",

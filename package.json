@@ -5,7 +5,7 @@
     "eslint": "beemo eslint .",
     "prettier": "beemo prettier \"./packages/config/{configs,dotfiles,scripts}/*.{js,json,md,yml,yaml}\"",
     "test": "yarn run eslint",
-    "prereleassse": "yarn test",
+    "prerelease": "yarn test",
     "release": "lerna publish"
   },
   "dependencies": {
