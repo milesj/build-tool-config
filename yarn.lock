@@ -757,9 +757,9 @@
     semver "^5.5.1"
     yargs "^12.0.1"
 
-"@beemo/core@^0.21.3":
-  version "0.21.3"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.21.3.tgz#8bbf7dbde719872d2d9a184dd49ccda9f6bf5511"
+"@beemo/core@^0.21.4":
+  version "0.21.4"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.21.4.tgz#541e70aeb687870870f8cb3621ce13f9cea2e7c2"
   dependencies:
     "@boost/core" "^0.64.3"
     "@types/execa" "^0.9.0"
@@ -801,9 +801,9 @@
   dependencies:
     "@types/prettier" "^1.13.2"
 
-"@beemo/driver-typescript@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-0.10.1.tgz#f3624f7a3472d7dc3d3a095156be2f3f9187049e"
+"@beemo/driver-typescript@^0.10.2":
+  version "0.10.2"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-0.10.2.tgz#36ed75c783542cebc9c09619b74af71716476aea"
   dependencies:
     rimraf "^2.6.2"
 
