@@ -48,10 +48,9 @@ module.exports = function jest(args, tool) {
     snapshotSerializers: ['enzyme-to-json/serializer'],
     testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
     testURL: 'http://localhost',
-    // transform: {
-    //   '^.+\\.jsx?$': 'babel-jest',
-    //   '^.+\\.tsx?$': 'ts-jest',
-    // },
+    transform: {
+      '^.+\\.(t|j)sx?$': 'babel-jest',
+    },
     verbose: false,
   };
 };

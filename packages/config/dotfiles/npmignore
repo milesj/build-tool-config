@@ -29,6 +29,7 @@ node_modules/
 .gitbook.yaml
 .prettierignore
 .travis.yml
+babel.config.js
 book.json
 jest.config.js
 prettier.config.js
