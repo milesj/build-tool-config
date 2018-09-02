@@ -1,4 +1,4 @@
-/* eslint-disable sort-keys */
+/* eslint-disable sort-keys, import/no-extraneous-dependencies */
 
 const { Script } = require('@beemo/core');
 const fs = require('fs-extra');

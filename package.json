@@ -15,7 +15,7 @@
     "packages/*"
   ],
   "beemo": {
-    "module": "@local",
+    "module": "@milesj/build-tool-config",
     "drivers": [
       "eslint",
       "prettier"

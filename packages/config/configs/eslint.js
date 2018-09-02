@@ -10,7 +10,7 @@ module.exports = function eslint() {
     parser: 'typescript-eslint-parser',
     extends: ['airbnb', 'prettier'],
     plugins: ['typescript', 'promise', 'unicorn', 'compat', 'babel'],
-    ignore: ['esm/', 'lib/', '*.min.js', '*.map'],
+    ignore: ['node_modules/', 'esm/', 'lib/', '*.min.js', '*.map'],
     env: {
       browser: true,
     },
