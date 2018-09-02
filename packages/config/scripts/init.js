@@ -23,7 +23,7 @@ module.exports = class InitScript extends Script {
 
     // Beemo
     Object.assign(packageConfig.beemo, {
-      module: args.local ? '@local' : '@milesj/build-tool-config',
+      module: args.local ? '@local' : '@milesj/build-tools',
       drivers: ['babel', 'eslint', 'jest', 'prettier', 'typescript'],
     });
 
@@ -67,7 +67,7 @@ module.exports = class InitScript extends Script {
     } else {
       packageConfig.main = './lib/index.js';
       packageConfig.types = './lib/index.d.ts';
-      packageConfig.module = './esm/index.js';
+      // packageConfig.module = './esm/index.js';
     }
 
     if (args.node) {

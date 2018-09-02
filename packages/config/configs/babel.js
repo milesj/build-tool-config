@@ -39,12 +39,12 @@ module.exports = function babel(args) {
 
   if (args.react) {
     presets.push('@babel/preset-react');
+    plugins.push('babel-plugin-typescript-to-proptypes');
   }
 
   return {
     babelrc: false,
     comments: false,
-    minified: true,
     plugins,
     presets,
   };
