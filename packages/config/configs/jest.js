@@ -1,28 +1,31 @@
 const fs = require('fs');
 const path = require('path');
-const { EXTS, EXT_PATTERN } = require('./constants');
+const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('./constants');
 
 // Package: Run in root
 // Workspaces: Run in root
 module.exports = function jest(args, tool) {
+  const { react } = tool.config.settings;
   const workspacesEnabled = !!tool.package.workspaces;
   const setupFilePath = path.join(process.cwd(), './tests/setup.ts');
+  const snapshotSerializers = [];
   const setupFiles = [];
   const roots = [];
 
   if (workspacesEnabled) {
     roots.push('<rootDir>/packages');
   } else {
-    roots.push('<rootDir>/src', '<rootDir>/tests');
+    roots.push('<rootDir>');
   }
 
-  if (args.react) {
+  if (react) {
     setupFiles.push(path.join(__dirname, './jest/enzyme.js'));
+    snapshotSerializers.push('enzyme-to-json/serializer');
   }
 
   return {
     coverageDirectory: './coverage',
-    coveragePathIgnorePatterns: ['/node_modules/', '/esm/', '/lib/'],
+    coveragePathIgnorePatterns: [...IGNORE_PATHS],
     coverageReporters: ['lcov'],
     coverageThreshold: {
       global: {
@@ -45,7 +48,7 @@ module.exports = function jest(args, tool) {
     roots,
     setupFiles,
     setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : undefined,
-    snapshotSerializers: ['enzyme-to-json/serializer'],
+    snapshotSerializers,
     testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
     testURL: 'http://localhost',
     transform: {

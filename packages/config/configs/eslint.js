@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
-const { EXTS, EXT_PATTERN } = require('./constants');
+const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('./constants');
 
 // Package: Run in root
 // Workspaces: Run in root
@@ -10,7 +10,7 @@ module.exports = function eslint() {
     parser: 'typescript-eslint-parser',
     extends: ['airbnb', 'prettier'],
     plugins: ['typescript', 'promise', 'unicorn', 'compat', 'babel'],
-    ignore: ['node_modules/', 'esm/', 'lib/', '*.min.js', '*.map'],
+    ignore: [...IGNORE_PATHS, '*.min.js', '*.map'],
     env: {
       browser: true,
     },
@@ -34,8 +34,6 @@ module.exports = function eslint() {
       ecmaVersion: 2018,
       ecmaFeatures: {
         jsx: true,
-        // Temp until airbnb is updated
-        experimentalObjectRestSpread: undefined,
       },
     },
     rules: {

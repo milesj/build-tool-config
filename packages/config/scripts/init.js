@@ -3,7 +3,7 @@
 const { Script } = require('@beemo/core');
 const fs = require('fs-extra');
 const path = require('path');
-const { MIN_IE_VERSION } = require('../configs/constants');
+const { MIN_IE_VERSION, MIN_NODE_VERSION } = require('../configs/constants');
 
 module.exports = class InitScript extends Script {
   parse() {
@@ -25,11 +25,20 @@ module.exports = class InitScript extends Script {
     Object.assign(packageConfig.beemo, {
       module: args.local ? '@local' : '@milesj/build-tools',
       drivers: ['babel', 'eslint', 'jest', 'prettier', 'typescript'],
+      settings: {},
     });
+
+    if (args.node) {
+      packageConfig.beemo.settings.node = true;
+    }
+
+    if (args.react) {
+      packageConfig.beemo.settings.react = true;
+    }
 
     // Scripts
     Object.assign(packageConfig.scripts, {
-      build: 'beemo babel',
+      build: 'beemo typescript',
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
       jest: 'beemo jest',
@@ -60,7 +69,7 @@ module.exports = class InitScript extends Script {
       packageConfig.private = true;
 
       Object.assign(packageConfig.scripts, {
-        build: 'beemo babel --workspaces=* --priority',
+        build: 'beemo typescript --workspaces=*',
         release: 'lerna publish',
         type: 'beemo typescript --workspaces=* --noEmit',
       });
@@ -71,15 +80,9 @@ module.exports = class InitScript extends Script {
     }
 
     if (args.node) {
-      packageConfig.scripts.build += ' --node';
+      packageConfig.engines = { node: `>=${MIN_NODE_VERSION}` };
     } else {
       packageConfig.browserslist = [`ie ${MIN_IE_VERSION}`];
-    }
-
-    if (args.react) {
-      packageConfig.scripts.build += ' --react';
-      packageConfig.scripts.jest += ' --react';
-      packageConfig.scripts.type += ' --react';
     }
 
     // Save files

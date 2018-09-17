@@ -2,7 +2,8 @@ const { MIN_IE_VERSION, MIN_NODE_VERSION } = require('./constants');
 
 // Package: Run in root
 // Workspaces: Run in each package (using --config-file option)
-module.exports = function babel(args) {
+module.exports = function babel(args, tool) {
+  const { node, react } = tool.config.settings;
   const plugins = [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-export-default-from',
@@ -12,7 +13,7 @@ module.exports = function babel(args) {
     ['babel-plugin-transform-dev', { evaluate: false }],
   ];
 
-  if (!args.node) {
+  if (!node) {
     plugins.push([
       '@babel/plugin-transform-runtime',
       {
@@ -30,14 +31,14 @@ module.exports = function babel(args) {
       {
         modules: args.esm ? false : 'commonjs',
         shippedProposals: true,
-        targets: args.node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
+        targets: node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
         useBuiltIns: false,
       },
     ],
     '@babel/preset-typescript',
   ];
 
-  if (args.react) {
+  if (react) {
     presets.push('@babel/preset-react');
     plugins.push('babel-plugin-typescript-to-proptypes');
   }

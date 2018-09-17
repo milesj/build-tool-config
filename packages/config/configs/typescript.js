@@ -1,6 +1,7 @@
 // Package: Run in root
 // Workspaces: Run in each package (copied into each)
 module.exports = function typescript(args, tool) {
+  const { node, react } = tool.config.settings;
   const compilerOptions = {
     allowJs: false,
     allowSyntheticDefaultImports: true,
@@ -8,6 +9,7 @@ module.exports = function typescript(args, tool) {
     esModuleInterop: true,
     forceConsistentCasingInFileNames: true,
     lib: ['dom', 'esnext'],
+    module: 'commonjs',
     noEmitOnError: true,
     noImplicitReturns: true,
     outDir: './lib',
@@ -15,10 +17,10 @@ module.exports = function typescript(args, tool) {
     removeComments: false,
     sourceMap: false,
     strict: true,
-    target: 'es5',
+    target: node ? 'es2017' : 'es5',
   };
 
-  if (args.react) {
+  if (react) {
     compilerOptions.jsx = 'react';
   }
 
