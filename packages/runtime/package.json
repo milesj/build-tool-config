@@ -24,9 +24,9 @@
     "@beemo/driver-prettier": "^0.22.0",
     "@beemo/driver-typescript": "^0.11.0",
     "babel-core": "7.0.0-bridge.0",
-    "eslint": "^5.6.1",
+    "eslint": "^5.7.0",
     "jest": "^23.6.0",
     "prettier": "^1.14.3",
-    "typescript": "^3.1.1"
+    "typescript": "^3.1.3"
   }
 }

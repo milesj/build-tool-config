@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 const fs = require('fs-extra');
 const path = require('path');
 const { EXTS, DIR_PATTERN } = require('./configs/constants');
@@ -52,6 +54,9 @@ module.exports = function milesj(tool) {
     if (usingTypeScript) {
       driver.options.dependencies.push('typescript');
     }
+
+    driver.options.env.NODE_ENV = 'test';
+    driver.options.env.TZ = 'UTC';
   });
 
   // Prettier
