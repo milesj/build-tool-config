@@ -12,12 +12,12 @@ function hasNoPositionalArgs(context, name) {
   return args.length === 0 || (args.length === 1 && args[0] === name);
 }
 
-module.exports = function milesj(tool) {
+module.exports = function milesOS(tool) {
   const usingTypeScript = tool.config.drivers.includes('typescript');
   const workspacesEnabled = !!tool.package.workspaces;
 
   // Babel
-  tool.on('babel.init-driver', (driver, context) => {
+  tool.on('babel.init-driver', context => {
     context.addOption('--copy-files');
 
     if (usingTypeScript && !context.args.extensions) {
@@ -31,7 +31,7 @@ module.exports = function milesj(tool) {
   });
 
   // ESLint
-  tool.on('eslint.init-driver', (driver, context) => {
+  tool.on('eslint.init-driver', context => {
     context.addOptions(['--color', '--report-unused-disable-directives']);
 
     if (usingTypeScript && !context.args.ext) {
@@ -48,7 +48,7 @@ module.exports = function milesj(tool) {
   });
 
   // Jest
-  tool.on('jest.init-driver', (driver, context) => {
+  tool.on('jest.init-driver', (context, driver) => {
     context.addOptions(['--colors', '--logHeapUsage', '--detectOpenHandles']);
 
     if (usingTypeScript) {
@@ -60,7 +60,7 @@ module.exports = function milesj(tool) {
   });
 
   // Prettier
-  tool.on('prettier.init-driver', (driver, context) => {
+  tool.on('prettier.init-driver', context => {
     context.addOption('--write');
 
     if (hasNoPositionalArgs(context, 'prettier')) {
