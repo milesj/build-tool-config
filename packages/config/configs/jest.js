@@ -23,7 +23,7 @@ if (react) {
   snapshotSerializers.push('enzyme-to-json/serializer');
 }
 
-return {
+module.exports = {
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: [...IGNORE_PATHS],
   coverageReporters: ['lcov'],

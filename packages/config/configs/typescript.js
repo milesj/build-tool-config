@@ -39,7 +39,7 @@ if (!context.args.workspaces && tool.package.workspaces) {
   include = include.map(path => `./packages/*${path.slice(1)}`);
 }
 
-return {
+module.exports = {
   compilerOptions,
   include,
 };
