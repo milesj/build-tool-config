@@ -65,7 +65,7 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-test-renderer": "^16.6.0",
-    "typescript": "^3.1.5",
-    "typescript-eslint-parser": "^20.1.1"
+    "typescript": "^3.1.6",
+    "typescript-eslint-parser": "20.0.0"
   }
 }
