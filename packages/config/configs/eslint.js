@@ -260,6 +260,11 @@ module.exports = {
             },
           },
         ],
+
+        // TEMP BROKEN
+        'no-dupe-args': 'off',
+        'no-redeclare': 'off',
+        'no-shadow': 'off',
       },
     },
   ],
