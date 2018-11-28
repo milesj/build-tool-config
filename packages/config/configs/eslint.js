@@ -157,7 +157,7 @@ module.exports = {
     'react/no-direct-mutation-state': 'error',
 
     // TypeScript support
-    'no-unused-vars': ['error', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
+    'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
     'import/extensions': [
       'error',
       'never',
