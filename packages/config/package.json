@@ -37,7 +37,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
     "@types/enzyme": "^3.1.15",
-    "@types/jest": "^23.3.9",
+    "@types/jest": "^23.3.10",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-plugin-transform-dev": "^2.0.1",
@@ -61,11 +61,11 @@
     "fs-extra": "^7.0.1",
     "jest": "^23.6.0",
     "np": "^3.0.4",
-    "prettier": "^1.15.2",
+    "prettier": "^1.15.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-test-renderer": "^16.6.3",
-    "typescript": "^3.1.6",
-    "typescript-eslint-parser": "21.0.1"
+    "typescript": "^3.2.1",
+    "typescript-eslint-parser": "^21.0.1"
   }
 }

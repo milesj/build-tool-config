@@ -34,6 +34,9 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+
+    // TEMP
+    tokens: true,
   },
   rules: {
     'class-methods-use-this': 'off',
@@ -262,9 +265,9 @@ module.exports = {
         ],
 
         // TEMP BROKEN
-        'no-dupe-args': 'off',
-        'no-redeclare': 'off',
-        'no-shadow': 'off',
+        // 'no-dupe-args': 'off',
+        // 'no-redeclare': 'off',
+        // 'no-shadow': 'off',
       },
     },
   ],
