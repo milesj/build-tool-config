@@ -265,9 +265,9 @@ module.exports = {
         ],
 
         // TEMP BROKEN
-        // 'no-dupe-args': 'off',
-        // 'no-redeclare': 'off',
-        // 'no-shadow': 'off',
+        'no-dupe-args': 'warn',
+        'no-redeclare': 'warn',
+        'no-shadow': 'warn',
       },
     },
   ],
