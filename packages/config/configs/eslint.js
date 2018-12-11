@@ -35,7 +35,7 @@ module.exports = {
       jsx: true,
     },
 
-    // TEMP
+    // TEMP https://github.com/eslint/typescript-eslint-parser/issues/570
     tokens: true,
   },
   rules: {
@@ -263,11 +263,6 @@ module.exports = {
             },
           },
         ],
-
-        // TEMP BROKEN
-        'no-dupe-args': 'warn',
-        'no-redeclare': 'warn',
-        'no-shadow': 'warn',
       },
     },
   ],
