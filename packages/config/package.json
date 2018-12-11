@@ -42,8 +42,8 @@
     "babel-jest": "^23.6.0",
     "babel-plugin-transform-dev": "^2.0.1",
     "babel-plugin-typescript-to-proptypes": "^0.13.0",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
     "eslint": "^5.10.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -62,10 +62,12 @@
     "jest": "^23.6.0",
     "np": "^3.0.4",
     "prettier": "^1.15.3",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
     "react-test-renderer": "^16.6.3",
     "typescript": "^3.2.2",
     "typescript-eslint-parser": "^21.0.2"
+  },
+  "devDependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
   }
 }
