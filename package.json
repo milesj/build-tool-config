@@ -9,7 +9,7 @@
     "release": "lerna publish"
   },
   "dependencies": {
-    "lerna": "^3.6.0"
+    "lerna": "^3.7.1"
   },
   "workspaces": [
     "packages/*"
