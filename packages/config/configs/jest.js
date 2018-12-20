@@ -9,6 +9,7 @@ const { react } = tool.config.settings;
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = path.join(process.cwd(), './tests/setup.ts');
 const snapshotSerializers = [];
+const setupFilesAfterEnv = [];
 const setupFiles = [];
 const roots = [];
 
@@ -21,6 +22,10 @@ if (workspacesEnabled) {
 if (react) {
   setupFiles.push(path.join(__dirname, './jest/enzyme.js'));
   snapshotSerializers.push('enzyme-to-json/serializer');
+}
+
+if (fs.existsSync(setupFilePath)) {
+  setupFilesAfterEnv.push(setupFilePath);
 }
 
 module.exports = {
@@ -46,7 +51,7 @@ module.exports = {
   },
   roots,
   setupFiles,
-  setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : undefined,
+  setupFilesAfterEnv,
   snapshotSerializers,
   testURL: 'http://localhost',
   verbose: false,
