@@ -38,8 +38,6 @@
     "@babel/preset-typescript": "^7.1.0",
     "@types/enzyme": "^3.1.15",
     "@types/jest": "^23.3.10",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
     "babel-plugin-transform-dev": "^2.0.1",
     "babel-plugin-typescript-to-proptypes": "^0.15.0",
     "enzyme": "^3.8.0",
