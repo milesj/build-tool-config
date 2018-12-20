@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('./constants');
+const { EXT_PATTERN, IGNORE_PATHS } = require('./constants');
 
 // Package: Run in root
 // Workspaces: Run in root
@@ -44,15 +44,10 @@ module.exports = {
   globals: {
     __DEV__: true,
   },
-  moduleFileExtensions: EXTS.map(ext => ext.slice(1)), // No period
   roots,
   setupFiles,
   setupTestFrameworkScriptFile: fs.existsSync(setupFilePath) ? setupFilePath : undefined,
   snapshotSerializers,
-  testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
   testURL: 'http://localhost',
-  transform: {
-    '^.+\\.(t|j)sx?$': 'babel-jest',
-  },
   verbose: false,
 };
