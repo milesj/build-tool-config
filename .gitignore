@@ -8,3 +8,5 @@ prettier.config.js
 test.log
 tsconfig.json
 yarn-error.log
+babel.config.js
+jest.config.js

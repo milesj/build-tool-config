@@ -2,9 +2,10 @@
   "private": true,
   "name": "milesj-root",
   "scripts": {
-    "eslint": "beemo eslint .",
+    "eslint": "beemo eslint ./packages/config",
+    "jest": "beemo jest",
     "prettier": "beemo prettier \"./packages/config/{configs,dotfiles,scripts}/*.{js,json,md,yml,yaml}\"",
-    "test": "yarn run eslint",
+    "test": "yarn run eslint && yarn run jest",
     "prerelease": "yarn test",
     "release": "lerna publish"
   },
@@ -17,7 +18,9 @@
   "beemo": {
     "module": "@milesj/build-tool-config",
     "drivers": [
+      "babel",
       "eslint",
+      "jest",
       "prettier"
     ],
     "eslint": {
