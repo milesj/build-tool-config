@@ -94,6 +94,9 @@ module.exports = {
     'unicorn/throw-new-error': 'error',
 
     // New and not in Airbnb
+    'no-useless-catch': 'error',
+    'react/jsx-fragments': ['error', 'syntax'],
+    'react/no-typos': 'error',
     'react/no-unsafe': 'error',
 
     // Want to support but disabled in Airbnb
