@@ -1,96 +1,82 @@
-# build-tool-config
+# 👨‍💻 MilesOS Dev Tools
 
-I got tired of duplicating build tool configuration files over and over again between projects, so I
-built this repository to house them. The following tools are pre-configured:
+I got tired of duplicating dev tool configuration files over and over again between projects, so I
+built [Beemo](https://github.com/milesj/beemo) and subsequently this repository to house them. The
+following tools are pre-configured:
 
-- [Babel](https://github.com/milesj/build-tool-config/blob/master/configs/babel.js)
-  - Configured with `env`, `stage-2`, `react`, and `flow` presets.
+- [Babel](https://github.com/milesj/build-tool-config/blob/master/packages/config/configs/babel.js)
+  - Configured with `env`, `react`, and `typescript` presets.
   - Builds both CommonJS (cjs) and ECMAScript modules (esm).
-  - Builds using the `babel-runtime`.
+  - Builds using the Babel runtime.
   - Cleans the target folder automatically.
   - Supports a Node.js specific configuration.
-- [ESLint](https://github.com/milesj/build-tool-config/blob/master/configs/eslint.js)
-  - Configured with `import`, `jest`, `react`, `jsx-a11y`, `flowtype`, and `unicorn` plugins.
+- [ESLint](https://github.com/milesj/build-tool-config/blob/master/packages/config/configs/eslint.js)
+  - Configured with `import`, `jest`, `react`, `jsx-a11y`, `typescript`, `promise`, and `unicorn`
+    plugins.
   - Extends the `airbnb` configuration preset.
-  - Provides `.eslintignore` when syncing dotfiles.
-- [Jest](https://github.com/milesj/build-tool-config/blob/master/configs/jest.js)
-  - Supports React and Enzyme 3 based unit tests.
-  - Provides built-in code coverage scripts.
-- [Webpack](https://github.com/milesj/build-tool-config/blob/master/configs/webpack.js)
-  - Configured with `babel-loader` and `uglify` plugin.
-
-Plus dotfiles that can be synced into each project (as they must exist in each project).
-
-- [ESLint](https://github.com/milesj/build-tool-config/blob/master/dotfiles/eslintignore)
-- [Flow](https://github.com/milesj/build-tool-config/blob/master/dotfiles/flowconfig)
-- [Git](https://github.com/milesj/build-tool-config/blob/master/dotfiles/gitignore)
-- [NPM](https://github.com/milesj/build-tool-config/blob/master/dotfiles/npmignore)
-- [Travis](https://github.com/milesj/build-tool-config/blob/master/dotfiles/travis.yml)
-- [Yarn](https://github.com/milesj/build-tool-config/blob/master/dotfiles/yarnrc)
+  - Provides a default `.eslintignore`.
+- [Jest](https://github.com/milesj/build-tool-config/blob/master/packages/config/configs/jest.js)
+  - Supports React and Enzyme based unit tests.
+  - Provides built-in code coverage thresholds.
+- [Prettier](https://github.com/milesj/build-tool-config/blob/master/packages/config/configs/prettier.js)
+  - Configured to closely align with the Airbnb style guide.
+  - Provides a default `.prettierignore`.
+- [TypeScript](https://github.com/milesj/build-tool-config/blob/master/packages/config/configs/typescript.js)
+  - Configured to build ESM compatible files.
+  - Strict typing enabled.
+- [Templates that can be scaffolded](https://github.com/milesj/build-tool-config/tree/master/packages/config/templates)
+  into each project.
+- Full TypeScript support out of the box.
+- Integrated workspaces (monorepo) support.
+- And much more!
 
 ## Install
 
 ```
-yarn add @milesj/build-tool-config --dev
+yarn add @milesj/build-tools --dev
 ```
 
-To compile Babel with its runtime, add the dependency per project (non-Node.js only).
+To compile Babel with its runtime, add the dependency per package.
 
 ```
-yarn add babel-runtime
+yarn add @babel/runtime
 ```
 
-## Sync Configuration
-
-Some build tools require dotfiles to be local to the project, which sucks. To get around this, we
-can easily sync them to each project, by running the following command in the project root.
-
-```
-node ./node_modules/.bin/sync-configs
-```
-
-## Init Package
-
-To make use of `babel` and `eslint`, we need to configure our `package.json` to extend from the
-presets. To do this, run the following command in the project root.
-
-```
-node ./node_modules/.bin/init-package
-```
-
-## Scripts Usage
-
-This library provides the following binaries that can be consumed per project.
-
-- `build-lib` - Transpiles the root `src/` folder to both CommonJS (main) and ECMAScript (module)
-  builds using Babel.
-  - `--no-clean` - Disable automatic target cleaning.
-  - `--no-cjs` - Disable CommonJS `lib/` builds.
-  - `--no-esm` - Disable ECMAScript `esm/` builds.
-  - `--node` - Target Node.js 6.5+ instead of web (IE 10+).
-  - `--react` - Include `babel-preset-react`.
-- `bundle-lib` - Bundles the library into a single file using Webpack.
-- `run-linter` - Lints source, test, and packages files using ESLint.
-  - `--cache` - Speed up the linting process.
-- `run-tests` - Runs unit tests using Jest.
-  - `--coverage` - Run code coverage.
-- `type-check` - Statically analyzes and type checks files using Flowtype.
-
-Simply add them as Yarn scripts or run `init-package` mentioned previously.
+Finally, add the following Beemo configuration to the root `package.json`.
 
 ```json
 {
-  "scripts": {
-    "build": "build-lib",
-    "bundle": "bundle-lib",
-    "lint": "run-linter",
-    "test": "run-tests",
-    "flow": "type-check"
+  "beemo": {
+    "module": "@milesj/build-tools",
+    "drivers": ["babel", "eslint", "jest", "prettier", "typescript"]
   }
 }
 ```
 
-> CLI options are passed through.
+## Init Project
+
+To make use of the tools and to define default settings, we need to configure our `package.json`. To
+do this, run the following command in the project root.
+
+```
+yarn beemo run-script init
+```
+
+The following options are available:
+
+- `--local` (bool) - Project should use local configuration files.
+- `--node` (bool) - Project targets Node.js and not the browser.
+- `--react` (bool) - Project uses React.
+- `--workspaces` (bool) - Project is a monorepo and uses Yarn workspaces.
+
+## Sync Dotfiles
+
+Some tools require dotfiles to be local to the project, which sucks. To get around this, we can
+easily scaffold them to each project, by running the following command in the project root.
+
+```
+yarn beemo scaffold project dotfiles
+```
 
 ## Lerna Support
 
@@ -104,30 +90,11 @@ So to support Lerna, please follow these instructions per project.
 yarn add lerna --dev
 ```
 
-Run the `init-package` command with a `lerna` flag.
+Run the `init` script with the `workspaces` flag.
 
 ```
-node ./node_modules/.bin/init-package --lerna
-```
-
-Update `.travis.yml` to boostrap Lerna.
-
-```yaml
-before_script: yarn run bootstrap:slow
+yarn beemo run-script init --workspaces
 ```
 
 And remaining setup, like converting old Yarn scripts, or moving files to package folders. That
 should be it.
-
-### Configuring Packages
-
-To build packages using `lerna run`, each package must install this project as a dev dependency,
-while also configuring the Yarn `build` script, like so.
-
-```json
-{
-  "scripts": {
-    "build": "build-lib"
-  }
-}
-```
