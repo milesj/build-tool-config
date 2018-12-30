@@ -1,3 +1,5 @@
+const { CJS_FOLDER } = require('./constants');
+
 // Package: Run in root
 // Workspaces: Run in each package (copied into each)
 const { context, tool } = process.beemo;
@@ -12,7 +14,7 @@ const compilerOptions = {
   module: 'commonjs',
   noEmitOnError: true,
   noImplicitReturns: true,
-  outDir: './lib',
+  outDir: `./${CJS_FOLDER}`,
   pretty: true,
   removeComments: false,
   sourceMap: false,

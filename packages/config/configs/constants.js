@@ -8,4 +8,8 @@ exports.MIN_IE_VERSION = 11;
 
 exports.MIN_NODE_VERSION = '10.9.0';
 
-exports.IGNORE_PATHS = ['node_modules/', 'esm/', 'lib/'];
+exports.CJS_FOLDER = 'lib';
+
+exports.ESM_FOLDER = 'esm';
+
+exports.IGNORE_PATHS = ['node_modules/', `${CJS_FOLDER}/`, `${ESM_FOLDER}/`];

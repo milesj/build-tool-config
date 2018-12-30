@@ -2,6 +2,7 @@
   "private": true,
   "name": "milesj-root",
   "scripts": {
+    "build": "beemo run-script build",
     "eslint": "beemo eslint ./packages/config",
     "jest": "beemo jest",
     "prettier": "beemo prettier \"./packages/config/{configs,dotfiles,scripts}/*.{js,json,md,yml,yaml}\"",
@@ -21,7 +22,8 @@
       "babel",
       "eslint",
       "jest",
-      "prettier"
+      "prettier",
+      "typescript"
     ],
     "eslint": {
       "rules": {

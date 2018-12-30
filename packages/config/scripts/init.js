@@ -3,10 +3,15 @@
 const { Script } = require('@beemo/core');
 const fs = require('fs-extra');
 const path = require('path');
-const { MIN_IE_VERSION, MIN_NODE_VERSION } = require('../configs/constants');
+const {
+  CJS_FOLDER,
+  ESM_FOLDER,
+  MIN_IE_VERSION,
+  MIN_NODE_VERSION,
+} = require('../configs/constants');
 
 module.exports = class InitScript extends Script {
-  parse() {
+  args() {
     return {
       boolean: ['local', 'node', 'react', 'workspaces'],
       default: {
@@ -18,8 +23,8 @@ module.exports = class InitScript extends Script {
     };
   }
 
-  run(args, tool) {
-    const packageConfig = { ...tool.package };
+  execute(context, args) {
+    const packageConfig = { ...this.tool.package };
 
     // Beemo
     Object.assign(packageConfig.beemo, {
@@ -38,7 +43,7 @@ module.exports = class InitScript extends Script {
 
     // Scripts
     Object.assign(packageConfig.scripts, {
-      build: 'beemo typescript',
+      build: 'beemo run-script build',
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
       jest: 'beemo jest',
@@ -69,14 +74,14 @@ module.exports = class InitScript extends Script {
       packageConfig.private = true;
 
       Object.assign(packageConfig.scripts, {
-        build: 'beemo typescript --workspaces=*',
+        build: 'beemo run-script build --workspaces=*',
         release: 'lerna publish',
         type: 'beemo typescript --workspaces=* --noEmit',
       });
     } else {
-      packageConfig.main = './lib/index.js';
-      packageConfig.types = './lib/index.d.ts';
-      // packageConfig.module = './esm/index.js';
+      packageConfig.main = `./${CJS_FOLDER}/index.js`;
+      packageConfig.module = `./${ESM_FOLDER}/index.js`;
+      packageConfig.types = `./${CJS_FOLDER}/index.d.ts`;
     }
 
     if (args.node) {
@@ -86,8 +91,8 @@ module.exports = class InitScript extends Script {
     }
 
     // Save files
-    const packagePath = path.join(tool.options.root, 'package.json');
-    const lernaPath = path.join(tool.options.root, 'lerna.json');
+    const packagePath = path.join(this.tool.options.root, 'package.json');
+    const lernaPath = path.join(this.tool.options.root, 'lerna.json');
     const promises = [fs.writeJSON(packagePath, packageConfig, { spaces: 2 })];
 
     if (args.workspaces) {

@@ -2,7 +2,7 @@
 
 const fs = require('fs-extra');
 const path = require('path');
-const { EXTS, DIR_PATTERN } = require('./configs/constants');
+const { EXTS, DIR_PATTERN, CJS_FOLDER, ESM_FOLDER } = require('./configs/constants');
 
 const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
 
@@ -26,7 +26,7 @@ module.exports = function milesOS(tool) {
 
     if (hasNoPositionalArgs(context, 'babel')) {
       context.addArg('./src');
-      context.addOption('--out-dir', context.args.esm ? './esm' : './lib');
+      context.addOption('--out-dir', context.args.esm ? `./${ESM_FOLDER}` : `./${CJS_FOLDER}`);
     }
   });
 
