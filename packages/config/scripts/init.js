@@ -1,14 +1,7 @@
-/* eslint-disable sort-keys, import/no-extraneous-dependencies */
-
 const { Script } = require('@beemo/core');
 const fs = require('fs-extra');
 const path = require('path');
-const {
-  CJS_FOLDER,
-  ESM_FOLDER,
-  MIN_IE_VERSION,
-  MIN_NODE_VERSION,
-} = require('../configs/constants');
+const { CJS_FOLDER, ESM_FOLDER, MIN_IE_VERSION, MIN_NODE_VERSION } = require('../constants');
 
 module.exports = class InitScript extends Script {
   args() {

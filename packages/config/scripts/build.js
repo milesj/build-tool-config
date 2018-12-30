@@ -1,9 +1,7 @@
-/* eslint-disable sort-keys, import/no-extraneous-dependencies, no-param-reassign */
-
 const { Script } = require('@beemo/core');
 const fs = require('fs-extra');
 const path = require('path');
-const { CJS_FOLDER, ESM_FOLDER } = require('../configs/constants');
+const { CJS_FOLDER, ESM_FOLDER } = require('../constants');
 
 module.exports = class BuildScript extends Script {
   args() {

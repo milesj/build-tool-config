@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "sort-keys": 0,
+    "import/no-extraneous-dependencies": 0
+  }
+}

@@ -12,4 +12,4 @@ exports.CJS_FOLDER = 'lib';
 
 exports.ESM_FOLDER = 'esm';
 
-exports.IGNORE_PATHS = ['node_modules/', `${CJS_FOLDER}/`, `${ESM_FOLDER}/`];
+exports.IGNORE_PATHS = ['node_modules/', `${exports.CJS_FOLDER}/`, `${exports.ESM_FOLDER}/`];

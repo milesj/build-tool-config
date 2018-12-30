@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { EXT_PATTERN, IGNORE_PATHS } = require('./constants');
+const { EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 
 // Package: Run in root
 // Workspaces: Run in root

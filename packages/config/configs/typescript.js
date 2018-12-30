@@ -1,4 +1,4 @@
-const { CJS_FOLDER } = require('./constants');
+const { CJS_FOLDER } = require('../constants');
 
 // Package: Run in root
 // Workspaces: Run in each package (copied into each)

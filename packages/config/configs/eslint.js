@@ -1,6 +1,6 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
-const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('./constants');
+const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 
 // Package: Run in root
 // Workspaces: Run in root
