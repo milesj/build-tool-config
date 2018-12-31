@@ -32,24 +32,20 @@ module.exports = class BuildScript extends Script {
   }
 
   buildCjs(context) {
-    return this.executeCommand('yarn', ['beemo', 'babel'], {
+    return this.executeCommand('beemo', ['babel'], {
       cwd: context.root,
     });
   }
 
   buildEsm(context) {
-    return this.executeCommand('yarn', ['beemo', 'babel', '--esm'], {
+    return this.executeCommand('beemo', ['babel', '--esm'], {
       cwd: context.root,
     });
   }
 
   buildDeclarations(context) {
-    return this.executeCommand(
-      'yarn',
-      ['beemo', 'typescript', '--declaration', '--emitDeclarationOnly'],
-      {
-        cwd: context.root,
-      },
-    );
+    return this.executeCommand('beemo', ['typescript', '--declaration', '--emitDeclarationOnly'], {
+      cwd: context.root,
+    });
   }
 };
