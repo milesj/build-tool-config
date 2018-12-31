@@ -9,6 +9,7 @@ const compilerOptions = {
   allowSyntheticDefaultImports: true,
   declaration: true,
   esModuleInterop: true,
+  experimentalDecorators: context.args.decorators || false,
   forceConsistentCasingInFileNames: true,
   lib: ['dom', 'esnext'],
   module: 'commonjs',
@@ -17,7 +18,7 @@ const compilerOptions = {
   outDir: `./${CJS_FOLDER}`,
   pretty: true,
   removeComments: false,
-  sourceMap: false,
+  sourceMap: context.args.sourceMaps || false,
   strict: true,
   target: node ? 'es2017' : 'es5',
 };
