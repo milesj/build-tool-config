@@ -208,6 +208,7 @@ module.exports = {
       files: [`tests/**/*.${EXT_PATTERN}`, `packages/*/tests/**/*.${EXT_PATTERN}`],
       rules: {
         'max-classes-per-file': 'off',
+        'no-console': 'off',
         'no-magic-numbers': 'off',
         'sort-keys': 'off',
         'import/no-extraneous-dependencies': 'off',
