@@ -17,10 +17,10 @@
   "dependencies": {
     "@babel/core": "^7.2.2",
     "@beemo/cli": "^0.26.0",
-    "@beemo/core": "^0.26.0",
+    "@beemo/core": "^0.26.1",
     "@beemo/driver-babel": "^0.26.0",
     "@beemo/driver-eslint": "^0.26.0",
-    "@beemo/driver-jest": "^0.26.0",
+    "@beemo/driver-jest": "^0.26.1",
     "@beemo/driver-prettier": "^0.26.0",
     "@beemo/driver-typescript": "^0.15.0",
     "eslint": "^5.12.0",
