@@ -20,7 +20,7 @@ module.exports = class BuildScript extends Script {
     this.task('Generating TypeScript declartions', this.buildDeclarations);
   }
 
-  execute(context, args) {
+  execute() {
     return this.serializeTasks();
   }
 
