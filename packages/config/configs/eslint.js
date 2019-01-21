@@ -162,41 +162,9 @@ module.exports = {
     'react/no-did-mount-set-state': 'error',
     'react/no-direct-mutation-state': 'error',
 
-    // TypeScript support
-    'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
-    'import/extensions': [
-      'error',
-      'never',
-      {
-        json: 'always',
-      },
-    ],
-    'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
-    '@typescript-eslint/adjacent-overload-signatures': 'error',
-    '@typescript-eslint/class-name-casing': 'error',
-    '@typescript-eslint/member-delimiter-style': 'error',
-    '@typescript-eslint/member-ordering': 'error',
-    '@typescript-eslint/no-angle-bracket-type-assertion': 'error',
-    '@typescript-eslint/no-empty-interface': 'error',
-    '@typescript-eslint/no-array-constructor': 'error',
-    '@typescript-eslint/no-triple-slash-reference': 'error',
-    '@typescript-eslint/no-parameter-properties': 'error',
-    '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/no-use-before-define': 'error',
-    '@typescript-eslint/prefer-namespace-keyword': 'error',
-    '@typescript-eslint/type-annotation-spacing': 'error',
-
     // Doesnt work with Prettier
     'function-paren-newline': 'off',
     'react/jsx-one-expression-per-line': 'off',
-
-    // Doesnt work with TypeScript
-    'no-restricted-globals': 'off',
-    'no-undef': 'off',
-    'import/no-cycle': 'off',
-    'import/named': 'off',
-    'react/destructuring-assignment': 'off',
-    'unicorn/prefer-spread': 'off',
   },
   overrides: [
     {
@@ -228,9 +196,53 @@ module.exports = {
       },
     },
     {
-      files: ['{src,tests}/**/*.tsx', 'packages/*/{src,tests}/**/*.tsx'],
+      files: ['*.ts', '*.tsx'],
       rules: {
-        '@typescript-eslint/member-ordering': 'off',
+        camelcase: 'off',
+        indent: 'off',
+        'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
+        'import/extensions': [
+          'error',
+          'never',
+          {
+            json: 'always',
+          },
+        ],
+        'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
+        '@typescript-eslint/adjacent-overload-signatures': 'error',
+        '@typescript-eslint/array-type': ['error', 'array'],
+        '@typescript-eslint/camelcase': 'error',
+        '@typescript-eslint/class-name-casing': 'error',
+        '@typescript-eslint/indent': ['error', 2],
+        '@typescript-eslint/member-delimiter-style': 'error',
+        '@typescript-eslint/member-ordering': 'error',
+        '@typescript-eslint/no-angle-bracket-type-assertion': 'error',
+        '@typescript-eslint/no-empty-interface': 'error',
+        '@typescript-eslint/no-array-constructor': 'error',
+        '@typescript-eslint/no-inferrable-types': 'error',
+        '@typescript-eslint/no-misused-new': 'error',
+        '@typescript-eslint/no-namespace': 'error',
+        '@typescript-eslint/no-parameter-properties': 'error',
+        '@typescript-eslint/no-triple-slash-reference': 'error',
+        '@typescript-eslint/no-unused-vars': 'warn',
+        '@typescript-eslint/no-use-before-define': 'error',
+        '@typescript-eslint/no-var-requires': 'error',
+        '@typescript-eslint/prefer-interface': 'error',
+        '@typescript-eslint/prefer-namespace-keyword': 'error',
+        '@typescript-eslint/type-annotation-spacing': 'error',
+
+        // Doesnt work with TypeScript
+        'no-restricted-globals': 'off',
+        'no-undef': 'off',
+        'import/no-cycle': 'off',
+        'import/named': 'off',
+        'react/destructuring-assignment': 'off',
+        'unicorn/prefer-spread': 'off',
+      },
+    },
+    {
+      files: ['*.tsx'],
+      rules: {
         'react/sort-comp': [
           'error',
           {
@@ -266,6 +278,7 @@ module.exports = {
             },
           },
         ],
+        '@typescript-eslint/member-ordering': 'off',
       },
     },
   ],
