@@ -6,9 +6,9 @@ const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 // Workspaces: Run in root
 module.exports = {
   root: true,
-  parser: 'typescript-eslint-parser',
+  parser: '@typescript-eslint/parser',
   extends: ['airbnb', 'prettier'],
-  plugins: ['typescript', 'promise', 'unicorn', 'compat', 'babel'],
+  plugins: ['@typescript-eslint', 'promise', 'unicorn', 'compat', 'babel'],
   ignore: [...IGNORE_PATHS, '*.min.js', '*.map'],
   env: {
     browser: true,
@@ -25,7 +25,7 @@ module.exports = {
       },
     },
     'import/parsers': {
-      'typescript-eslint-parser': ['.ts', '.tsx'],
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
   },
   parserOptions: {
@@ -34,9 +34,6 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-
-    // TEMP https://github.com/eslint/typescript-eslint-parser/issues/570
-    tokens: true,
   },
   rules: {
     'class-methods-use-this': 'off',
@@ -175,19 +172,19 @@ module.exports = {
       },
     ],
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
-    'typescript/adjacent-overload-signatures': 'error',
-    'typescript/class-name-casing': 'error',
-    'typescript/member-delimiter-style': 'error',
-    'typescript/member-ordering': 'error',
-    'typescript/no-angle-bracket-type-assertion': 'error',
-    'typescript/no-empty-interface': 'error',
-    'typescript/no-array-constructor': 'error',
-    'typescript/no-triple-slash-reference': 'error',
-    'typescript/no-parameter-properties': 'error',
-    'typescript/no-unused-vars': 'error',
-    'typescript/no-use-before-define': 'error',
-    'typescript/prefer-namespace-keyword': 'error',
-    'typescript/type-annotation-spacing': 'error',
+    '@typescript-eslint/adjacent-overload-signatures': 'error',
+    '@typescript-eslint/class-name-casing': 'error',
+    '@typescript-eslint/member-delimiter-style': 'error',
+    '@typescript-eslint/member-ordering': 'error',
+    '@typescript-eslint/no-angle-bracket-type-assertion': 'error',
+    '@typescript-eslint/no-empty-interface': 'error',
+    '@typescript-eslint/no-array-constructor': 'error',
+    '@typescript-eslint/no-triple-slash-reference': 'error',
+    '@typescript-eslint/no-parameter-properties': 'error',
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-use-before-define': 'error',
+    '@typescript-eslint/prefer-namespace-keyword': 'error',
+    '@typescript-eslint/type-annotation-spacing': 'error',
 
     // Doesnt work with Prettier
     'function-paren-newline': 'off',
@@ -228,13 +225,12 @@ module.exports = {
         'jest/prefer-to-have-length': 'error',
         'jest/valid-describe': 'error',
         'jest/valid-expect': 'error',
-        'react/jsx-filename-extension': 'off',
       },
     },
     {
       files: ['{src,tests}/**/*.tsx', 'packages/*/{src,tests}/**/*.tsx'],
       rules: {
-        'typescript/member-ordering': 'off',
+        '@typescript-eslint/member-ordering': 'off',
         'react/sort-comp': [
           'error',
           {
