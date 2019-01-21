@@ -13,7 +13,7 @@ function hasNoPositionalArgs(context, name) {
 }
 
 module.exports = function milesOS(tool) {
-  const usingTypeScript = tool.config.drivers.includes('typescript');
+  const usingTypeScript = tool.isPluginEnabled('driver', 'typescript');
   const workspacesEnabled = !!tool.package.workspaces;
 
   // Babel
@@ -49,7 +49,11 @@ module.exports = function milesOS(tool) {
 
   // Jest
   tool.on('jest.init-driver', (context, driver) => {
-    context.addOptions(['--colors', '--logHeapUsage', '--detectOpenHandles']);
+    context.addOptions(['--colors', '--logHeapUsage']);
+
+    if (context.argv.includes('--coverage')) {
+      context.addOption('--detectOpenHandles');
+    }
 
     if (usingTypeScript) {
       driver.options.dependencies.push('typescript');
