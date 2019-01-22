@@ -53,6 +53,7 @@ module.exports = {
   setupFiles,
   setupFilesAfterEnv,
   snapshotSerializers,
+  testEnvironment: react ? 'jsdom' : 'node',
   testURL: 'http://localhost',
   verbose: false,
 };
