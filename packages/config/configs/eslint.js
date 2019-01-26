@@ -199,6 +199,7 @@ module.exports = {
       files: ['*.ts', '*.tsx'],
       rules: {
         camelcase: 'off',
+        'no-unused-vars': ['error', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
         'import/extensions': [
           'error',
           'never',
