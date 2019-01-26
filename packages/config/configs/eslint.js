@@ -199,7 +199,6 @@ module.exports = {
       files: ['*.ts', '*.tsx'],
       rules: {
         camelcase: 'off',
-        'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
         'import/extensions': [
           'error',
           'never',
@@ -222,7 +221,10 @@ module.exports = {
         '@typescript-eslint/no-namespace': 'error',
         '@typescript-eslint/no-parameter-properties': 'error',
         '@typescript-eslint/no-triple-slash-reference': 'error',
-        '@typescript-eslint/no-unused-vars': 'warn',
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          { vars: 'all', args: 'none', ignoreRestSiblings: true },
+        ],
         '@typescript-eslint/no-use-before-define': 'error',
         '@typescript-eslint/no-var-requires': 'off', // No Babel support
         '@typescript-eslint/prefer-interface': 'error',
