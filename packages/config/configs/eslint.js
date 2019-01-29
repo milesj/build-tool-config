@@ -7,7 +7,7 @@ const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  extends: ['airbnb', 'prettier'],
+  extends: ['airbnb', 'prettier', 'prettier/react', 'prettier/@typescript-eslint'],
   plugins: ['@typescript-eslint', 'promise', 'unicorn', 'compat', 'babel'],
   ignore: [...IGNORE_PATHS, '*.min.js', '*.map'],
   env: {
