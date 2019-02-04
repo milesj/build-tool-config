@@ -14,7 +14,7 @@ module.exports = {
     browser: true,
   },
   globals: {
-    __DEV__: true,
+    __DEV__: 'readable',
   },
   settings: {
     polyfills: ['promises'],
