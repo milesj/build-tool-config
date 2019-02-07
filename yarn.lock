@@ -771,27 +771,27 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@beemo/cli@^0.26.1":
-  version "0.26.1"
-  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-0.26.1.tgz#1402e9df4058009ebfbfe5ea0aca274b4694ed67"
-  integrity sha512-RwuGX3JMDBjznb0mnJVCF5HLynrh/J8FbWQAGSTYpQ3z0QduA12kI6UAm7c73U7C3H2zRIcND4Yb5ak3/7Gduw==
+"@beemo/cli@^0.27.0":
+  version "0.27.0"
+  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-0.27.0.tgz#0e91e9906719c9d311021c3f792fa9c330404f55"
+  integrity sha512-Y5I3wInxudwecCzilaNR8E3ATqHZofPJqKva4tf/1rXUwSEtJtPtayjUA4uL1nivpyXDAC2G74l0wUynWXEXSg==
   dependencies:
     chalk "^2.4.2"
     semver "^5.6.0"
     yargs "^12.0.5"
 
-"@beemo/core@^0.26.3":
-  version "0.26.3"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.26.3.tgz#41b9440aaddcf1a2511d8ba85f88853198cc5589"
-  integrity sha512-04nIGv1YKRhXwZk2jqgviBb+keqJBAqh9nroUiyFk958VSKybvhHbN9OjP6V+MwVhSacr6IueB5skPbVIYZ49w==
+"@beemo/core@^0.27.0":
+  version "0.27.0"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-0.27.0.tgz#98c522458ae9ce5f622ad6ad40adb9148d04280c"
+  integrity sha512-spqnZlR5Wgyb5llV5Fw/mxsvpL3sHdYHvbXBUrn3h+6qJsLtDghl2g5GRGM5iljIFtzD2zdzBXvwCV6MRIolwQ==
   dependencies:
-    "@boost/core" "^1.7.1"
+    "@boost/core" "^1.7.2"
     "@types/execa" "^0.9.0"
     "@types/fs-extra" "^5.0.4"
     "@types/is-glob" "^4.0.0"
     "@types/lodash" "^4.14.120"
     "@types/micromatch" "^3.1.0"
-    "@types/node" "^10.12.18"
+    "@types/node" "^10.12.21"
     "@types/yargs" "^12.0.8"
     "@types/yargs-parser" "^11.0.2"
     chalk "^2.4.2"
@@ -806,41 +806,41 @@
     yargs "^12.0.5"
     yargs-parser "^11.1.1"
 
-"@beemo/driver-babel@^0.26.1":
-  version "0.26.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-0.26.1.tgz#75082617e9e1e46ff5956c70c8e0a025749da9e6"
-  integrity sha512-pFSTwDvHdRjDfMZ4ZcXludm+HRAELjls2GKb8FxvVJEWV6NeAGfHh/CfYs/YB0PA3ZKt8xHKPpoM17HVUZK7rg==
+"@beemo/driver-babel@^0.27.0":
+  version "0.27.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-0.27.0.tgz#f8d175df8dbbcb30ecde98d4854c3b9df3e8b2ad"
+  integrity sha512-re3sUIO1fS81UIHc1G2dpfp1Xs5Pfsh4UIjqJ+V0IJ7vbsE8s1kAooyAPNsmIRBhJHJUmbwKo7mjBD8giKL8vQ==
   dependencies:
     rimraf "^2.6.3"
 
-"@beemo/driver-eslint@^0.26.1":
-  version "0.26.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-0.26.1.tgz#d4d78f9d75da356d1d635cc8f2f311a247432b4c"
-  integrity sha512-5CynYDs6dE27avbmkcjlDqesbaqfpvGQLXotVotFgePEFTntuNtCzQPYomET3gC+NHfNriRRd2heUxQHb2vl5w==
+"@beemo/driver-eslint@^0.27.0":
+  version "0.27.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-0.27.0.tgz#dbc702b6b8718797b0cd84a8b2d1e583925daf02"
+  integrity sha512-IofpNTzrJ7CP2/ZGARHqTO3x+WqoRQT5KqwEXyOEFWicnkgCS0umq4Ul2NTSEL5Hp6cUMIlSK8JoSxiAZmCIzQ==
 
-"@beemo/driver-jest@^0.26.2":
-  version "0.26.2"
-  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-0.26.2.tgz#e73f0e8c85ea7d37ff19c3fafb99bdee7640f0f5"
-  integrity sha512-YXLTPS2C6SWwSh1uncLvPT9ujEz42AoTJ3THD1br1mG1bDFWwGxRSyyk/0zaLIK/h3kfJ5FfZ+DboK+x6ZLCDQ==
+"@beemo/driver-jest@^0.27.0":
+  version "0.27.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-0.27.0.tgz#a8c5bd5c4764f8dad11983e5a43de03936d204a8"
+  integrity sha512-MH2N6tyDhchpd7T+v7LGoDDM0/orMZEvISQ1UMmtrPQeLWsVh1AUuMw91E7PHzxqGgV9mkmSX+UwVSnwQpqPKA==
 
-"@beemo/driver-prettier@^0.26.1":
-  version "0.26.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-0.26.1.tgz#4a4c93f5318a167017b9488bf6ef57bcbc9efa57"
-  integrity sha512-OQaxl6/nBMFkn/CjQqzB2duBBwqsaEd+DTVKljkk08W6f3t6g/ri5v/JjyT8Tqg/RrF90BATEAGXphLCLV/q1A==
+"@beemo/driver-prettier@^0.27.0":
+  version "0.27.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-0.27.0.tgz#b526aebac699df7949de6bea0e95fcc8efad24df"
+  integrity sha512-YPOlBq7qCAcJKB36jV9HrFW5bkgVnEcMr9xGuw1nqTuIi0vPbLVyCi/xk1l3ws1BF+UYeK3wSr6MjC2smlW8IA==
   dependencies:
     "@types/prettier" "^1.15.2"
 
-"@beemo/driver-typescript@^0.15.1":
-  version "0.15.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-0.15.1.tgz#6037ec462d489df42c7d5fd52b1035bf493c5fbf"
-  integrity sha512-RLe2/x7z/noNg6XJ976YiIE2Uo15vIfLpya758vJwXD38e81sMxQhNgMkZ5BvnZ7fkFuacUZfCBTN1wP81p+dA==
+"@beemo/driver-typescript@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-0.16.0.tgz#342863bcb8b0e09662a5a3a40b494bc682a113da"
+  integrity sha512-lcOf2Yp/RhxpdMMs1rHdtBcArP8C2lpnI19rR0XosvxxWzRQhFfZDwFVmwkxzK9i4fF6rbF5LR5LS2FDnoXKrw==
   dependencies:
     rimraf "^2.6.3"
 
-"@boost/core@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.npmjs.org/@boost/core/-/core-1.7.1.tgz#ac5e7afccb31941c52130379d587275b88450acb"
-  integrity sha512-xFATA1RtWLNRYCTui/PgIXaLu6BsYKF8Bb02MVU0dn1AdndS2EXCpnmzwqCJ4Eg3+Aj4YhxJOlPSAEfYoOh39A==
+"@boost/core@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.npmjs.org/@boost/core/-/core-1.7.2.tgz#705694cd3a55e4d66de634529f9bcc7dd0a8eccf"
+  integrity sha512-luOBzQzrMQjePaUAqrZAInYgBZU2W2eZOp7JrIAQWaSK7mVbrc6WqRA8hkxJYc7UxDky/CeQ430zFHGv4fZeSw==
   dependencies:
     "@types/ansi-escapes" "^3.0.0"
     "@types/cli-truncate" "^1.1.0"
@@ -857,7 +857,7 @@
     "@types/wrap-ansi" "^3.0.0"
     "@types/yargs" "^12.0.8"
     "@types/yargs-parser" "^11.0.2"
-    ansi-escapes "^3.1.0"
+    ansi-escapes "^3.2.0"
     chalk "^2.4.2"
     cli-truncate "^1.1.0"
     debug "^4.1.1"
@@ -1583,10 +1583,15 @@
   dependencies:
     "@types/braces" "*"
 
-"@types/node@*", "@types/node@^10.12.18":
+"@types/node@*":
   version "10.12.18"
   resolved "https://registry.npmjs.org/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
   integrity sha512-fh+pAqt4xRzPfqA6eh3Z2y6fyZavRIumvjhaCL753+TVkGKGhpPeyrJG2JftD0T9q4GF00KjefsQ+PQNDdWQaQ==
+
+"@types/node@^10.12.21":
+  version "10.12.21"
+  resolved "https://registry.npmjs.org/@types/node/-/node-10.12.21.tgz#7e8a0c34cf29f4e17a36e9bd0ea72d45ba03908e"
+  integrity sha512-CBgLNk4o3XMnqMc0rhb6lc77IwShMEglz05deDcn2lQxyXEZivfwgYJu7SMha9V5XcrP6qZuevTHV/QrN2vjKQ==
 
 "@types/os-locale@^2.1.0":
   version "2.1.0"
@@ -1763,6 +1768,11 @@ ansi-escapes@^3.0.0, ansi-escapes@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-3.1.0.tgz#f73207bb81207d75fd6c83f125af26eea378ca30"
   integrity sha512-UgAb8H9D41AQnu/PbWlCofQVcnV4Gs2bBJi9eZPxfU/hgglFh3SMDMENRIqdr7H6XFnXdoknctFByVsCOotTVw==
+
+ansi-escapes@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-3.2.0.tgz#8780b98ff9dbf5638152d1f1fe5c1d7b4442976b"
+  integrity sha512-cBhpre4ma+U0T1oM5fXg7Dy1Jw7zzwv7lt/GoCpr+hDQJoYnKVPLL4dCvSEFMmQurOQvSrwT7SL/DAlhBI97RQ==
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -7323,22 +7333,27 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@^16.0.0:
-  version "16.7.0"
-  resolved "https://registry.npmjs.org/react-dom/-/react-dom-16.7.0.tgz#a17b2a7ca89ee7390bc1ed5eb81783c7461748b8"
-  integrity sha512-D0Ufv1ExCAmF38P2Uh1lwpminZFRXEINJe53zRAbm4KPwSyd6DY/uDoS0Blj9jvPpn1+wivKpZYc8aAAN/nAkg==
+react-dom@^16.8.1:
+  version "16.8.1"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-16.8.1.tgz#ec860f98853d09d39bafd3a6f1e12389d283dbb4"
+  integrity sha512-N74IZUrPt6UiDjXaO7UbDDFXeUXnVhZzeRLy/6iqqN1ipfjrhR60Bp5NuBK+rv3GMdqdIuwIl22u1SYwf330bg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.12.0"
+    scheduler "^0.13.1"
 
 react-is@^16.7.0:
   version "16.7.0"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.7.0.tgz#c1bd21c64f1f1364c6f70695ec02d69392f41bfa"
   integrity sha512-Z0VRQdF4NPDoI0tsXVMLkJLiwEBa+RP66g0xDHxgxysxSoCUccSten4RTF/UFvZF1dZvZ9Zu1sx+MDXwcOR34g==
 
-react-test-renderer@^16.0.0-0, react-test-renderer@^16.7.0:
+react-is@^16.8.1:
+  version "16.8.1"
+  resolved "https://registry.npmjs.org/react-is/-/react-is-16.8.1.tgz#a80141e246eb894824fb4f2901c0c50ef31d4cdb"
+  integrity sha512-ioMCzVDWvCvKD8eeT+iukyWrBGrA3DiFYkXfBsVYIRdaREZuBjENG+KjrikavCLasozqRWTwFUagU/O4vPpRMA==
+
+react-test-renderer@^16.0.0-0:
   version "16.7.0"
   resolved "https://registry.npmjs.org/react-test-renderer/-/react-test-renderer-16.7.0.tgz#1ca96c2b450ab47c36ba92cd8c03fcefc52ea01c"
   integrity sha512-tFbhSjknSQ6+ttzmuGdv+SjQfmvGcq3PFKyPItohwhhOBmRoTf1We3Mlt3rJtIn85mjPXOkKV+TaKK4irvk9Yg==
@@ -7348,15 +7363,25 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.7.0:
     react-is "^16.7.0"
     scheduler "^0.12.0"
 
-react@^16.0.0:
-  version "16.7.0"
-  resolved "https://registry.npmjs.org/react/-/react-16.7.0.tgz#b674ec396b0a5715873b350446f7ea0802ab6381"
-  integrity sha512-StCz3QY8lxTb5cl2HJxjwLFOXPIFQp+p+hxQfc8WE0QiLfCtIlKj8/+5tjjKm8uSTlAW+fCPaavGFS06V9Ar3A==
+react-test-renderer@^16.8.1:
+  version "16.8.1"
+  resolved "https://registry.npmjs.org/react-test-renderer/-/react-test-renderer-16.8.1.tgz#72845ad9269be526126e97853311982f781767be"
+  integrity sha512-Bd21TN3+YVl6GZwav6O0T6m5UwGfOj+2+xZH5VH93ToD6M5uclN/c+R1DGX49ueG413KZPUx7Kw3sOYz2aJgfg==
+  dependencies:
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    react-is "^16.8.1"
+    scheduler "^0.13.1"
+
+react@^16.8.1:
+  version "16.8.1"
+  resolved "https://registry.npmjs.org/react/-/react-16.8.1.tgz#ae11831f6cb2a05d58603a976afc8a558e852c4a"
+  integrity sha512-wLw5CFGPdo7p/AgteFz7GblI2JPOos0+biSoxf1FPsGxWQZdN/pj6oToJs1crn61DL3Ln7mN86uZ4j74p31ELQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.12.0"
+    scheduler "^0.13.1"
 
 read-cmd-shim@^1.0.1:
   version "1.0.1"
@@ -7867,6 +7892,14 @@ scheduler@^0.12.0:
   version "0.12.0"
   resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.12.0.tgz#8ab17699939c0aedc5a196a657743c496538647b"
   integrity sha512-t7MBR28Akcp4Jm+QoR63XgAi9YgCUmgvDHqf5otgAj4QvdoBE4ImCX0ffehefePPG+aitiYHp0g/mW6s4Tp+dw==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.13.1.tgz#1a217df1bfaabaf4f1b92a9127d5d732d85a9591"
+  integrity sha512-VJKOkiKIN2/6NOoexuypwSrybx13MY7NSy9RNt8wPvZDMRT1CW6qlpF5jXRToXNHz3uWzbm2elNpZfXfGPqP9A==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
