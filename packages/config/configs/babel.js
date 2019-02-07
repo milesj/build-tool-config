@@ -18,7 +18,7 @@ if (!node) {
     '@babel/plugin-transform-runtime',
     {
       helpers: true,
-      regenerator: false,
+      regenerator: process.env.NODE_ENV === 'test',
       useESModules: !!context.args.esm,
     },
   ]);
