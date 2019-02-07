@@ -20,10 +20,6 @@ module.exports = class BuildScript extends Script {
     this.task('Generating TypeScript declartions', this.buildDeclarations);
   }
 
-  execute() {
-    return this.serializeTasks();
-  }
-
   cleanTargets(context) {
     return Promise.all([
       fs.remove(path.join(context.root, CJS_FOLDER)),
