@@ -8,24 +8,44 @@ module.exports = class BuildScript extends Script {
   }
 
   buildCjs(context) {
-    return this.executeCommand('beemo', ['babel', '--workspaces=*', '--clean'], {
-      cwd: context.root,
-    });
+    return this.handleResponse(
+      this.executeCommand('beemo', ['babel', '--workspaces=*', '--clean'], {
+        cwd: context.root,
+      }),
+    );
   }
 
   buildEsm(context) {
-    return this.executeCommand('beemo', ['babel', '--workspaces=*', '--clean', '--esm'], {
-      cwd: context.root,
-    });
+    return this.handleResponse(
+      this.executeCommand('beemo', ['babel', '--workspaces=*', '--clean', '--esm'], {
+        cwd: context.root,
+      }),
+    );
   }
 
   buildDeclarations(context) {
-    return this.executeCommand(
-      'beemo',
-      ['typescript', '--workspaces=*', '--declaration', '--emitDeclarationOnly'],
-      {
-        cwd: context.root,
-      },
+    return this.handleResponse(
+      this.executeCommand(
+        'beemo',
+        ['typescript', '--workspaces=*', '--declaration', '--emitDeclarationOnly'],
+        {
+          cwd: context.root,
+        },
+      ),
     );
+  }
+
+  handleResponse(promise) {
+    return promise
+      .then(response => {
+        this.tool.log(response.stdout);
+
+        return response;
+      })
+      .catch(error => {
+        this.tool.logError(error.message);
+
+        throw error;
+      });
   }
 };
