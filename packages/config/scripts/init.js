@@ -75,6 +75,7 @@ module.exports = class InitScript extends Script {
       packageConfig.main = `./${CJS_FOLDER}/index.js`;
       packageConfig.module = `./${ESM_FOLDER}/index.js`;
       packageConfig.types = `./${CJS_FOLDER}/index.d.ts`;
+      packageConfig.sideEffects = false;
     }
 
     if (args.node) {

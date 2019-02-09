@@ -2,6 +2,8 @@
 
 const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 
+const { node } = process.beemo.tool.config.settings;
+
 // Package: Run in root
 // Workspaces: Run in root
 module.exports = {
@@ -53,7 +55,7 @@ module.exports = {
     'babel/no-invalid-this': 'error',
     'babel/object-curly-spacing': ['error', 'always'],
     'babel/semi': 'error',
-    'compat/compat': 'error',
+    'compat/compat': node ? 'off' : 'error',
     'promise/always-return': 'error',
     'promise/avoid-new': 'off',
     'promise/catch-or-return': 'error',
