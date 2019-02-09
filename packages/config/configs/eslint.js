@@ -181,6 +181,7 @@ module.exports = {
         'no-console': 'off',
         'no-magic-numbers': 'off',
         'sort-keys': 'off',
+        'compat/compat': 'off',
         'import/no-extraneous-dependencies': 'off',
         'jest/consistent-test-it': 'error',
         'jest/expect-expect': 'error',
