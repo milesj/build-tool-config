@@ -1,20 +1,36 @@
+const fs = require('fs');
+const path = require('path');
+const execa = require('execa');
 const { Script } = require('@beemo/core');
 
 module.exports = class BuildScript extends Script {
   bootstrap() {
+    this.task('Filtering workspaces', this.filterWorkspaces);
     this.task('Building CommonJS files', this.buildCjs);
     this.task('Building EcmaScript module files', this.buildEsm);
-    this.task('Generating TypeScript declartions', this.buildDeclarations);
+    this.task('Generating TypeScript declarations', this.buildDeclarations);
   }
 
-  buildCjs(context) {
-    return this.executeCommand('beemo', ['babel', '--workspaces=*', '--clean'], {
-      cwd: context.root,
-    })
+  filterWorkspaces() {
+    const ignorePackages = [];
+
+    this.tool.getWorkspacePackages().forEach(pkg => {
+      const srcPath = path.join(pkg.workspace.packagePath, 'src');
+
+      if (!fs.existsSync(srcPath)) {
+        ignorePackages.push(pkg.name);
+      }
+    });
+
+    return ignorePackages.length > 0 ? `!(${ignorePackages.join('|')})` : '*';
+  }
+
+  buildCjs(context, wsGlob) {
+    return execa('beemo', ['babel', `--workspaces=${wsGlob}`, '--clean'])
       .then(response => {
         this.tool.log(response.stdout);
 
-        return response;
+        return wsGlob;
       })
       .catch(error => {
         this.tool.logError(error.message);
@@ -23,14 +39,12 @@ module.exports = class BuildScript extends Script {
       });
   }
 
-  buildEsm(context) {
-    return this.executeCommand('beemo', ['babel', '--workspaces=*', '--clean', '--esm'], {
-      cwd: context.root,
-    })
+  buildEsm(context, wsGlob) {
+    return execa('beemo', ['babel', `--workspaces=${wsGlob}`, '--clean', '--esm'])
       .then(response => {
         this.tool.log(response.stdout);
 
-        return response;
+        return wsGlob;
       })
       .catch(error => {
         this.tool.logError(error.message);
@@ -39,18 +53,17 @@ module.exports = class BuildScript extends Script {
       });
   }
 
-  buildDeclarations(context) {
-    return this.executeCommand(
-      'beemo',
-      ['typescript', '--workspaces=*', '--declaration', '--emitDeclarationOnly'],
-      {
-        cwd: context.root,
-      },
-    )
+  buildDeclarations(context, wsGlob) {
+    return execa('beemo', [
+      'typescript',
+      `--workspaces=${wsGlob}`,
+      '--declaration',
+      '--emitDeclarationOnly',
+    ])
       .then(response => {
         this.tool.log(response.stdout);
 
-        return response;
+        return wsGlob;
       })
       .catch(error => {
         this.tool.logError(error.message);
