@@ -40,6 +40,8 @@ if (context.args.noEmit) {
 // Be sure not to breat non-workspace enabled projects.
 if (!context.args.workspaces && tool.package.workspaces) {
   include = include.map(path => `./packages/*${path.slice(1)}`);
+} else {
+  include.push('../../types/**/*');
 }
 
 module.exports = {
