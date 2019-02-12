@@ -1,6 +1,6 @@
 {
   "name": "@milesj/build-tools",
-  "version": "0.25.6",
+  "version": "0.25.7",
   "description": "Shared build tools for easier development.",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "postinstall": "bash ./link.sh"
   },
   "dependencies": {
-    "@milesj/build-tool-config": "^0.147.6",
-    "@milesj/build-tool-runtime": "^0.23.1"
+    "@milesj/build-tool-config": "^0.147.7",
+    "@milesj/build-tool-runtime": "^0.23.2"
   }
 }
