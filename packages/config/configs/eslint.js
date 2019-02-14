@@ -10,7 +10,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   extends: ['airbnb', 'prettier', 'prettier/react', 'prettier/@typescript-eslint'],
-  plugins: ['@typescript-eslint', 'promise', 'unicorn', 'compat', 'babel'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'promise', 'unicorn', 'compat', 'babel'],
   ignore: [...IGNORE_PATHS, '*.min.js', '*.map'],
   env: {
     browser: true,
@@ -100,6 +100,7 @@ module.exports = {
     'react/jsx-fragments': ['error', 'syntax'],
     'react/no-typos': 'error',
     'react/no-unsafe': 'error',
+    'react-hooks/rules-of-hooks': 'error',
 
     // Want to support but disabled in Airbnb
     complexity: ['error', 11],
