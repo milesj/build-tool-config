@@ -63,9 +63,9 @@
     "jest": "^24.1.0",
     "np": "^4.0.2",
     "prettier": "^1.16.4",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-test-renderer": "^16.8.1",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-test-renderer": "^16.8.2",
     "typescript": "~3.3.1"
   }
 }
