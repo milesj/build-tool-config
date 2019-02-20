@@ -1,5 +1,6 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
+const path = require('path');
 const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 
 const { node } = process.beemo.tool.config.settings;
@@ -36,6 +37,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    project: path.join(process.cwd(), 'tsconfig.json'),
+    tsconfigRootDir: process.cwd(),
   },
   rules: {
     'class-methods-use-this': 'off',
