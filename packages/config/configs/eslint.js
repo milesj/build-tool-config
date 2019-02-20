@@ -10,7 +10,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   extends: ['airbnb', 'prettier', 'prettier/react', 'prettier/@typescript-eslint'],
-  plugins: ['@typescript-eslint', 'react-hooks', 'promise', 'unicorn', 'compat', 'babel'],
+  plugins: ['react-hooks', 'promise', 'unicorn', 'compat', 'babel'],
   ignore: [...IGNORE_PATHS, '*.min.js', '*.map'],
   env: {
     browser: true,
@@ -171,12 +171,12 @@ module.exports = {
   },
   overrides: [
     {
+      files: [`tests/**/*.${EXT_PATTERN}`, `packages/*/tests/**/*.${EXT_PATTERN}`],
       plugins: ['jest'],
       env: {
         jest: true,
         node: true,
       },
-      files: [`tests/**/*.${EXT_PATTERN}`, `packages/*/tests/**/*.${EXT_PATTERN}`],
       rules: {
         'max-classes-per-file': 'off',
         'no-console': 'off',
@@ -201,6 +201,7 @@ module.exports = {
     },
     {
       files: ['*.ts', '*.tsx'],
+      plugins: ['@typescript-eslint'],
       rules: {
         camelcase: 'off',
         'no-unused-vars': ['error', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
@@ -226,6 +227,7 @@ module.exports = {
         '@typescript-eslint/no-namespace': 'error',
         '@typescript-eslint/no-parameter-properties': 'error',
         '@typescript-eslint/no-triple-slash-reference': 'error',
+        '@typescript-eslint/no-unnecessary-qualifier': 'error',
         '@typescript-eslint/no-unused-vars': [
           'error',
           { vars: 'all', args: 'none', ignoreRestSiblings: true },
@@ -247,6 +249,7 @@ module.exports = {
     },
     {
       files: ['*.tsx'],
+      plugins: ['@typescript-eslint'],
       rules: {
         'react/sort-comp': [
           'error',
