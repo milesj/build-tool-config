@@ -15,7 +15,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.3.3",
+    "@babel/core": "^7.3.4",
     "@beemo/cli": "^0.27.1",
     "@beemo/core": "^0.27.3",
     "@beemo/driver-babel": "^0.27.1",
