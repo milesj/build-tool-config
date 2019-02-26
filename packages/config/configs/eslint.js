@@ -103,6 +103,7 @@ module.exports = {
     'react/jsx-fragments': ['error', 'syntax'],
     'react/no-typos': 'error',
     'react/no-unsafe': 'error',
+    'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
 
     // Want to support but disabled in Airbnb
