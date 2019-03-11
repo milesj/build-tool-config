@@ -55,5 +55,6 @@ module.exports = {
   snapshotSerializers,
   testEnvironment: react ? 'jsdom' : 'node',
   testURL: 'http://localhost',
+  timers: 'fake',
   verbose: false,
 };
