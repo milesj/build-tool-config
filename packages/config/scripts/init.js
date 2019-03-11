@@ -17,7 +17,10 @@ module.exports = class InitScript extends Script {
   }
 
   execute(context, args) {
-    const packageConfig = { ...this.tool.package };
+    const packageConfig = {
+      ...this.tool.package,
+      scripts: {},
+    };
 
     // Beemo
     Object.assign(packageConfig.beemo, {

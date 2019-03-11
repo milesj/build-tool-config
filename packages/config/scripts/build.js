@@ -4,6 +4,15 @@ const execa = require('execa');
 const { Script } = require('@beemo/core');
 
 module.exports = class BuildScript extends Script {
+  args() {
+    return {
+      string: ['workspaces'],
+      default: {
+        workspaces: '',
+      },
+    };
+  }
+
   bootstrap() {
     this.task('Filtering workspaces', this.filterWorkspaces);
     this.task('Building CommonJS files', this.buildCjs);

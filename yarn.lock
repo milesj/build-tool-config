@@ -779,10 +779,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@beemo/cli@^1.0.0-alpha.0":
-  version "1.0.0-alpha.0"
-  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-1.0.0-alpha.0.tgz#2d054078c15cc49f36f4d6e7a4cbdda612153a14"
-  integrity sha512-6KYZalOojXErPDeX6VNr2KOoRvONgH9i93QG2CoXRauvGKkMCHBlaXTjwpwTEioZ0nOpZSbz381L/e/thOm81g==
+"@beemo/cli@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-1.0.0-alpha.1.tgz#932e7354613932aafb5a700f2bd8e73bd13ae395"
+  integrity sha512-DPLgHUPCIpgwvLfD6qmR/mbTJ/bPaamXPnyVK3K/Fh6wtBywlEptY/K6nU8hmgkH4wgSsrxzPp4igrphFpSYMA==
   dependencies:
     chalk "^2.4.2"
     semver "^5.6.0"
@@ -820,34 +820,34 @@
   resolved "https://registry.npmjs.org/@beemo/dependency-graph/-/dependency-graph-1.0.0-alpha.0.tgz#416b7be9755fd02545ccbee703fa6d3d6e60fd7d"
   integrity sha512-FnLYxfzV2+0U4bGazXICTa/fm+feEsUjofEUfrkwKDhxKoGeV5azBd1DgBM0H01PFNiTw9ISTuYcykfH8pJJQQ==
 
-"@beemo/driver-babel@^1.0.0-alpha.0":
-  version "1.0.0-alpha.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.0.0-alpha.0.tgz#b5f17e75cd25e46d718a70acaac439183911ea8c"
-  integrity sha512-/0fYx6XRCB7czDWiXC180905So/547lMuAQ0iO4RTzDlC9yTDKn0AZaRb6+jug6nV6Cu7rmkrCCX94Bdaaqpww==
+"@beemo/driver-babel@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.0.0-alpha.1.tgz#f476dae70523f9117c3277d9a3f2f7a41774bd47"
+  integrity sha512-T4Xweq+ADNGByHQctBVIeAQ0P1rRbRhXlNNEtTQ40dj/JEyBijcScvs46aeZX2yvl64jTg0kkIjDVAMtopNTTw==
   dependencies:
     rimraf "^2.6.3"
 
-"@beemo/driver-eslint@^1.0.0-alpha.0":
-  version "1.0.0-alpha.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.0.0-alpha.0.tgz#779a430a5035204190e1313254f1369bcb873694"
-  integrity sha512-QcGCVpBq4GJpQl6XiC5tBqkHp6mn86eqMnfdxDkr8Q8L4VGFZDjbuIYArQHWtIWSaqjaeXWFmkYxGZY96VuA6Q==
+"@beemo/driver-eslint@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.0.0-alpha.1.tgz#408d734334ef2a3e0960c0afff832c207bfc1fb1"
+  integrity sha512-S9MQoFS86k3zF10WznxAqA3YucGju9+8Vf1BY2ulE83Kj2n7Ix8zaCO4GXIjBLGewXjBqyOj31UhcMqyKjAT6w==
 
-"@beemo/driver-jest@^1.0.0-alpha.0":
-  version "1.0.0-alpha.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.0.0-alpha.0.tgz#e219e6939148160a7252af544dc8516e1aa97448"
-  integrity sha512-9gtdzwKT1l1b7AjwOjOyaQOKxNztcqO9lssFJ2dQ3quhjWJvQ5y9rqRl8yIy2oJ7juaXDbnJe7hxo028i3g6Dg==
+"@beemo/driver-jest@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.0.0-alpha.1.tgz#8268369576dd54bdb09663f2c8c3c425cd1de20c"
+  integrity sha512-4g3dwi+RmKNLJ6fAHyfellrDEQAXcGXGgsQ+uN9kRvzflauK0XymJyLjN0o9ZO1QUUl5kBizbnuUQQ7mCau9UA==
 
-"@beemo/driver-prettier@^1.0.0-alpha.0":
-  version "1.0.0-alpha.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.0.0-alpha.0.tgz#0d1c984c2296bcd23e34768c09190012077de105"
-  integrity sha512-gZa+0gZ/KwRTuqAPNepD2+UWC+vLKn/Ho9iTFc7RjEz5ovbtzPSWYjaQTkWnmRrQq/tFCmj48UwqKS2e5jbK2A==
+"@beemo/driver-prettier@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.0.0-alpha.1.tgz#1b1b5d33c426fe95dc2259562453cb210dfde487"
+  integrity sha512-on2v3/Bm6LCrBN2AYlraFWPtTVfnbWpP6Ntti8WaconsGirlJ7aZa3CATT1n1GfvRRxcsf+djgOCMDBNTtEVdQ==
   dependencies:
     "@types/prettier" "^1.16.1"
 
-"@beemo/driver-typescript@^1.0.0-alpha.0":
-  version "1.0.0-alpha.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.0.0-alpha.0.tgz#5fccd6ddde3c3a6c9a7f26fa92381ad763862ebe"
-  integrity sha512-dKyL+iwj5gOasxAV+AWoBeniCJyZ/EDk+IRHFWxFRsh6E0+Z1AXXxkSYQjqqf1jBNDd+bFEhfJdZPuB0blrveg==
+"@beemo/driver-typescript@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.0.0-alpha.1.tgz#ec93329574f3bf1c75b78b88206dd280f0be5738"
+  integrity sha512-HDKQZtkRmHeqEivDsuOgsj4KhlckFcLA3QAMmXES2ZTK4ddRPLSljuDnQp/gFVSH0Ze150Xnyq6UgXMrrFpfdg==
   dependencies:
     rimraf "^2.6.3"
 
