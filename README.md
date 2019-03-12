@@ -1,4 +1,4 @@
-# 👨‍💻 MilesOS Dev Tools TEST
+# 👨‍💻 MilesOS Dev Tools
 
 I got tired of duplicating dev tool configuration files over and over again between projects, so I
 built [Beemo](https://github.com/milesj/beemo) and subsequently this repository to house them. The
