@@ -1,6 +1,7 @@
 {
   "rules": {
     "sort-keys": 0,
+    "compat/compat": 0,
     "import/no-extraneous-dependencies": 0
   }
 }
