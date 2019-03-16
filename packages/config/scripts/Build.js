@@ -36,37 +36,36 @@ module.exports = class BuildScript extends Script {
       }
     });
 
-    const glob = ignorePackages.length > 0 ? `!(${ignorePackages.join('|')})` : '*';
+    args.push(`--workspaces=${ignorePackages.length > 0 ? `!(${ignorePackages.join('|')})` : '*'}`);
 
-    args.push(`--workspaces=${glob}`);
+    // eslint-disable-next-line no-param-reassign
+    context.workspaceArgs = args;
 
     return args;
   }
 
-  buildCjs(context, extraArgs) {
+  buildCjs(context) {
+    return this.handleResponse(execa('beemo', ['babel', '--clean', ...context.workspaceArgs]));
+  }
+
+  buildEsm(context) {
     return this.handleResponse(
-      execa('beemo', ['babel', '--clean', ...extraArgs], { cwd: context.cwd }),
-      extraArgs,
+      execa('beemo', ['babel', '--clean', '--esm', ...context.workspaceArgs]),
     );
   }
 
-  buildEsm(context, extraArgs) {
+  buildDeclarations(context) {
     return this.handleResponse(
-      execa('beemo', ['babel', '--clean', '--esm', ...extraArgs], { cwd: context.cwd }),
-      extraArgs,
+      execa('beemo', [
+        'typescript',
+        '--declaration',
+        '--emitDeclarationOnly',
+        ...context.workspaceArgs,
+      ]),
     );
   }
 
-  buildDeclarations(context, extraArgs) {
-    return this.handleResponse(
-      execa('beemo', ['typescript', '--declaration', '--emitDeclarationOnly', ...extraArgs], {
-        cwd: context.cwd,
-      }),
-      extraArgs,
-    );
-  }
-
-  handleResponse(promise, extraArgs) {
+  handleResponse(promise) {
     return promise
       .then(response => {
         const out = response.stdout.trim();
@@ -75,7 +74,7 @@ module.exports = class BuildScript extends Script {
           this.tool.log(out);
         }
 
-        return extraArgs;
+        return response;
       })
       .catch(error => {
         this.tool.logError(error.message);
