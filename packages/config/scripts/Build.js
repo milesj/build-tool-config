@@ -49,12 +49,20 @@ module.exports = class BuildScript extends Script {
   }
 
   buildEsm(context) {
+    if (context.args.noEsm) {
+      return Promise.resolve();
+    }
+
     return this.handleResponse(
       execa('beemo', ['babel', '--clean', '--esm', ...context.workspaceArgs]),
     );
   }
 
   buildDeclarations(context) {
+    if (context.args.noDts) {
+      return Promise.resolve();
+    }
+
     return this.handleResponse(
       execa('beemo', [
         'typescript',
