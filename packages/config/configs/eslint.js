@@ -240,6 +240,7 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'off', // No Babel support
         '@typescript-eslint/prefer-interface': 'error',
         '@typescript-eslint/prefer-namespace-keyword': 'error',
+        '@typescript-eslint/unified-signatures': 'error',
         '@typescript-eslint/type-annotation-spacing': 'error',
 
         // Doesnt work with TypeScript
