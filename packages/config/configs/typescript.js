@@ -15,33 +15,29 @@ const compilerOptions = {
   module: 'commonjs',
   noEmitOnError: true,
   noImplicitReturns: true,
-  outDir: `./${CJS_FOLDER}`,
   pretty: true,
   removeComments: false,
   sourceMap: context.args.sourceMaps || false,
   strict: true,
   target: node ? 'es2017' : 'es5',
 };
+const include = [];
 
 if (react) {
   compilerOptions.jsx = 'react';
 }
 
-let include = ['./src/**/*', './types/**/*'];
+if (!context.args.referenceWorkspaces) {
+  include.push('./src/**/*', './types/**/*');
 
-// When --noEmit is passed, we want to run the type checker and include test files.
-// Otherwise, we do not want to emit declarations for test files.
-if (context.args.noEmit) {
-  include.push('./tests/**/*');
-}
+  // When --noEmit is passed, we want to run the type checker and include test files.
+  // Otherwise, we do not want to emit declarations for test files.
+  if (context.args.noEmit) {
+    include.push('./tests/**/*');
+  }
 
-// When --workspaces is passed, this config is copied into each package, so use local paths.
-// However, when running through Jest at the root, we need to find all packages.
-// Be sure not to breat non-workspace enabled projects.
-if (!context.args.workspaces && tool.package.workspaces) {
-  include = include.map(path => `./packages/*${path.slice(1)}`);
-} else {
-  include.push('../../types/**/*');
+  compilerOptions.include = include;
+  compilerOptions.outDir = `./${CJS_FOLDER}`;
 }
 
 module.exports = {

@@ -17,7 +17,12 @@ module.exports = class BuildScript extends Script {
     this.task('Determining workspace arguments', this.determineArgs);
     this.task('Building CommonJS files', this.buildCjs);
     this.task('Building ECMAScript module files', this.buildEsm);
-    this.task('Generating TypeScript declarations', this.buildDeclarations);
+
+    if (!this.context.args.workspaces) {
+      this.task('Generating TypeScript declarations', this.buildDeclarations).skip(
+        this.context.args.noDts,
+      );
+    }
   }
 
   determineArgs(context) {
@@ -58,18 +63,9 @@ module.exports = class BuildScript extends Script {
     );
   }
 
-  buildDeclarations(context) {
-    if (context.args.noDts) {
-      return Promise.resolve();
-    }
-
+  buildDeclarations() {
     return this.handleResponse(
-      execa('beemo', [
-        'typescript',
-        '--declaration',
-        '--emitDeclarationOnly',
-        ...context.workspaceArgs,
-      ]),
+      execa('beemo', ['typescript', '--declaration', '--emitDeclarationOnly']),
     );
   }
 

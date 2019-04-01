@@ -70,9 +70,9 @@ module.exports = class InitScript extends Script {
       packageConfig.private = true;
 
       Object.assign(packageConfig.scripts, {
-        build: 'beemo run-script build --workspaces=*',
+        build: 'beemo run-script build --workspaces=* && yarn run type --emitDeclarationOnly',
         release: 'lerna publish',
-        type: 'beemo typescript --workspaces=* --noEmit',
+        type: 'beemo typescript --build --reference-workspaces',
       });
     } else {
       packageConfig.main = `./${CJS_FOLDER}/index.js`;
