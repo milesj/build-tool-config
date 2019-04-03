@@ -36,7 +36,6 @@ if (!context.args.referenceWorkspaces) {
     include.push('./tests/**/*');
   }
 
-  compilerOptions.include = include;
   compilerOptions.outDir = `./${CJS_FOLDER}`;
 }
 
