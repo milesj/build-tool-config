@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 const fs = require('fs');
 const path = require('path');
 const execa = require('execa');
@@ -24,8 +26,10 @@ module.exports = class BuildScript extends Script {
     const ignorePackages = [];
     const args = ['--silent'];
 
+    context.workspaceArgs = [];
+
     if (!context.args.workspaces) {
-      return args;
+      return;
     }
 
     this.tool.getWorkspacePackages().forEach(pkg => {
@@ -38,10 +42,7 @@ module.exports = class BuildScript extends Script {
 
     args.push(`--workspaces=${ignorePackages.length > 0 ? `!(${ignorePackages.join('|')})` : '*'}`);
 
-    // eslint-disable-next-line no-param-reassign
     context.workspaceArgs = args;
-
-    return args;
   }
 
   buildCjs(context) {
