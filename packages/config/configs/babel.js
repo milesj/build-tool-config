@@ -18,7 +18,7 @@ if (!node) {
   plugins.push([
     '@babel/plugin-transform-runtime',
     {
-      helpers: true,
+      corejs: 3,
       regenerator: process.env.NODE_ENV === 'test',
       useESModules: !!context.args.esm,
     },
@@ -30,10 +30,12 @@ const presets = [
   [
     '@babel/preset-env',
     {
+      corejs: 3,
+      loose: true,
       modules: context.args.esm ? false : 'commonjs',
       shippedProposals: true,
       targets: node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
-      useBuiltIns: false,
+      useBuiltIns: 'usage',
     },
   ],
   '@babel/preset-typescript',
