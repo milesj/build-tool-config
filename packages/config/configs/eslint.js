@@ -58,7 +58,7 @@ module.exports = {
     'babel/no-invalid-this': 'error',
     'babel/object-curly-spacing': ['error', 'always'],
     'babel/semi': 'error',
-    'compat/compat': node ? 'off' : 'error',
+    'compat/compat': node ? 'off' : 'warn',
     'promise/always-return': 'error',
     'promise/avoid-new': 'off',
     'promise/catch-or-return': 'error',
