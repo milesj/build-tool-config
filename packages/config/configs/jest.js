@@ -14,7 +14,9 @@ const setupFiles = [];
 const roots = [];
 
 if (workspacesEnabled) {
-  roots.push('<rootDir>/packages');
+  tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
+    roots.push(`<rootDir>/${wsPath.replace('/*', '')}`);
+  });
 } else {
   roots.push('<rootDir>');
 }
@@ -39,7 +41,7 @@ module.exports = {
       lines: 90,
       statements: 90,
     },
-    [`${workspacesEnabled ? './packages/*/' : './'}src/**/*.${EXT_PATTERN}`]: {
+    [`src/**/*.${EXT_PATTERN}`]: {
       branches: 80,
       functions: 90,
       lines: 90,

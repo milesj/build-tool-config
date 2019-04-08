@@ -180,7 +180,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: [`tests/**/*.${EXT_PATTERN}`, `packages/*/tests/**/*.${EXT_PATTERN}`],
+      files: [`*.test.${EXT_PATTERN}`],
       plugins: ['jest'],
       env: {
         jest: true,

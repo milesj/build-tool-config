@@ -15,6 +15,7 @@ function hasNoPositionalArgs(context, name) {
 module.exports = function milesOS(tool) {
   const usingTypeScript = tool.isPluginEnabled('driver', 'typescript');
   const workspacesEnabled = !!tool.package.workspaces;
+  const workspacePrefixes = tool.getWorkspacePaths({ relative: true });
 
   // Babel
   tool.on('babel.init-driver', context => {
@@ -40,7 +41,9 @@ module.exports = function milesOS(tool) {
 
     if (hasNoPositionalArgs(context, 'eslint')) {
       if (workspacesEnabled) {
-        context.addArg(`./packages/*/${DIR_PATTERN}`);
+        workspacePrefixes.forEach(wsPrefix => {
+          context.addArg(`./${wsPrefix}/${DIR_PATTERN}`);
+        });
       } else {
         context.addArgs(['./src', './tests']);
       }
@@ -71,7 +74,12 @@ module.exports = function milesOS(tool) {
       const exts = '{ts,tsx,js,jsx,scss,css,gql,yml,yaml}';
 
       if (workspacesEnabled) {
-        context.addArgs([`./packages/*/${DIR_PATTERN}/**/*.${exts}`, './packages/*/*.{md,json}']);
+        workspacePrefixes.forEach(wsPrefix => {
+          context.addArgs([
+            `./${wsPrefix}/${DIR_PATTERN}/**/*.${exts}`,
+            `./${wsPrefix}/*.{md,json}`,
+          ]);
+        });
       } else {
         context.addArgs([`./${DIR_PATTERN}/**/*.${exts}`, './*.{md,json}']);
       }
@@ -83,10 +91,10 @@ module.exports = function milesOS(tool) {
   // TypeScript
   if (workspacesEnabled) {
     tool.on('typescript.after-execute', () => {
-      fs.copySync(
-        path.join(tool.options.root, 'README.md'),
-        path.join(tool.options.root, 'packages/core/README.md'),
-      );
+      const corePackage = path.join(tool.options.root, 'packages/core');
+
+      if (fs.existsSync(corePackage))
+        fs.copySync(path.join(tool.options.root, 'README.md'), path.join(corePackage, 'README.md'));
     });
   }
 };
