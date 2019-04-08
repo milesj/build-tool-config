@@ -12,7 +12,7 @@ function hasNoPositionalArgs(context, name) {
   return args.length === 0 || (args.length === 1 && args[0] === name);
 }
 
-module.exports = function milesOS(tool) {
+module.exports = function milesOSS(tool) {
   const usingTypeScript = tool.isPluginEnabled('driver', 'typescript');
   const workspacesEnabled = !!tool.package.workspaces;
   const workspacePrefixes = tool.getWorkspacePaths({ relative: true });
@@ -26,8 +26,8 @@ module.exports = function milesOS(tool) {
     }
 
     if (hasNoPositionalArgs(context, 'babel')) {
-      context.addArg('./src');
-      context.addOption('--out-dir', context.args.esm ? `./${ESM_FOLDER}` : `./${CJS_FOLDER}`);
+      context.addArg('src');
+      context.addOption('--out-dir', context.args.esm ? ESM_FOLDER : CJS_FOLDER);
     }
   });
 
@@ -42,10 +42,10 @@ module.exports = function milesOS(tool) {
     if (hasNoPositionalArgs(context, 'eslint')) {
       if (workspacesEnabled) {
         workspacePrefixes.forEach(wsPrefix => {
-          context.addArg(`./${wsPrefix}/${DIR_PATTERN}`);
+          context.addArg(path.join(wsPrefix, DIR_PATTERN));
         });
       } else {
-        context.addArgs(['./src', './tests']);
+        context.addArgs(['src', 'tests']);
       }
     }
   });
@@ -76,16 +76,16 @@ module.exports = function milesOS(tool) {
       if (workspacesEnabled) {
         workspacePrefixes.forEach(wsPrefix => {
           context.addArgs([
-            `./${wsPrefix}/${DIR_PATTERN}/**/*.${exts}`,
-            `./${wsPrefix}/*.{md,json}`,
+            path.join(wsPrefix, DIR_PATTERN, `**/*.${exts}`),
+            path.join(wsPrefix, '*.{md,json}'),
           ]);
         });
       } else {
-        context.addArgs([`./${DIR_PATTERN}/**/*.${exts}`, './*.{md,json}']);
+        context.addArgs([path.join(DIR_PATTERN, `**/*.${exts}`), '*.{md,json}']);
       }
     }
 
-    context.addArgs(['./docs/**/*.md', './README.md']);
+    context.addArgs(['docs/**/*.md', 'README.md']);
   });
 
   // TypeScript
