@@ -59,6 +59,7 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "eslint-plugin-unicorn": "^8.0.1",
     "execa": "^1.0.0",
+    "fast-glob": "^2.2.6",
     "fs-extra": "^7.0.1",
     "jest": "^24.7.1",
     "np": "^4.0.2",
