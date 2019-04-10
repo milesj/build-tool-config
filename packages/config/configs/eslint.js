@@ -59,6 +59,7 @@ module.exports = {
     'babel/object-curly-spacing': ['error', 'always'],
     'babel/semi': 'error',
     'compat/compat': node ? 'off' : 'warn',
+    'import/prefer-default-export': 'off',
     'promise/always-return': 'error',
     'promise/avoid-new': 'off',
     'promise/catch-or-return': 'error',

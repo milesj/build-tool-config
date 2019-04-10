@@ -57,7 +57,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.6.0",
-    "eslint-plugin-unicorn": "^8.0.1",
+    "eslint-plugin-unicorn": "^8.0.2",
     "execa": "^1.0.0",
     "fast-glob": "^2.2.6",
     "fs-extra": "^7.0.1",
@@ -67,6 +67,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
-    "typescript": "~3.4.2"
+    "typescript": "~3.4.3"
   }
 }

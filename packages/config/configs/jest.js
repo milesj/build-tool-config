@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { EXT_PATTERN, IGNORE_PATHS } = require('../constants');
+const { IGNORE_PATHS } = require('../constants');
 
 // Package: Run in root
 // Workspaces: Run in root
@@ -36,12 +36,6 @@ module.exports = {
   coverageReporters: ['lcov'],
   coverageThreshold: {
     global: {
-      branches: 90,
-      functions: 90,
-      lines: 90,
-      statements: 90,
-    },
-    [`src/**/*.${EXT_PATTERN}`]: {
       branches: 80,
       functions: 90,
       lines: 90,
