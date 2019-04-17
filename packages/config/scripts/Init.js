@@ -16,6 +16,10 @@ module.exports = class InitScript extends Script {
     };
   }
 
+  blueprint() {
+    return {};
+  }
+
   execute(context, args) {
     const packageConfig = {
       ...this.tool.package,

@@ -15,6 +15,10 @@ module.exports = class BuildScript extends Script {
     };
   }
 
+  blueprint() {
+    return {};
+  }
+
   bootstrap() {
     this.task('Determining workspace arguments', this.determineArgs);
     this.task('Building CommonJS files', this.buildCjs);

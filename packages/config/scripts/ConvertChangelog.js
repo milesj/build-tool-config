@@ -4,6 +4,10 @@ const glob = require('fast-glob');
 const semver = require('semver');
 
 module.exports = class ConvertChangelogScript extends Script {
+  blueprint() {
+    return {};
+  }
+
   async execute(context) {
     const files = await glob('**/CHANGELOG.md', {
       absolute: true,
