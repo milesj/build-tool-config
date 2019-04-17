@@ -12,13 +12,15 @@ function hasNoPositionalArgs(context, name) {
   return args.length === 0 || (args.length === 1 && args[0] === name);
 }
 
+/**
+ * @param { import('@beemo/core').default } tool
+ */
 module.exports = function milesOSS(tool) {
   const usingTypeScript = tool.isPluginEnabled('driver', 'typescript');
-  const workspacesEnabled = !!tool.package.workspaces;
   const workspacePrefixes = tool.getWorkspacePaths({ relative: true });
 
   // Babel
-  tool.on('babel.init-driver', context => {
+  tool.onRunDriver.listen(context => {
     context.addOption('--copy-files');
 
     if (usingTypeScript && !context.args.extensions) {
@@ -29,10 +31,10 @@ module.exports = function milesOSS(tool) {
       context.addArg('src');
       context.addOption('--out-dir', context.args.esm ? ESM_FOLDER : CJS_FOLDER);
     }
-  });
+  }, 'babel');
 
   // ESLint
-  tool.on('eslint.init-driver', context => {
+  tool.onRunDriver.listen(context => {
     context.addOptions(['--color', '--report-unused-disable-directives']);
 
     if (usingTypeScript && !context.args.ext) {
@@ -40,7 +42,7 @@ module.exports = function milesOSS(tool) {
     }
 
     if (hasNoPositionalArgs(context, 'eslint')) {
-      if (workspacesEnabled) {
+      if (workspacePrefixes.length > 0) {
         workspacePrefixes.forEach(wsPrefix => {
           context.addArg(path.join(wsPrefix, DIR_PATTERN));
         });
@@ -48,10 +50,10 @@ module.exports = function milesOSS(tool) {
         context.addArgs(['src', 'tests']);
       }
     }
-  });
+  }, 'eslint');
 
   // Jest
-  tool.on('jest.init-driver', (context, driver) => {
+  tool.onRunDriver.listen((context, driver) => {
     context.addOptions(['--colors', '--logHeapUsage']);
 
     if (context.argv.includes('--coverage')) {
@@ -64,16 +66,16 @@ module.exports = function milesOSS(tool) {
 
     driver.options.env.NODE_ENV = 'test';
     driver.options.env.TZ = 'UTC';
-  });
+  }, 'jest');
 
   // Prettier
-  tool.on('prettier.init-driver', context => {
+  tool.onRunDriver.listen(context => {
     context.addOption('--write');
 
     if (hasNoPositionalArgs(context, 'prettier')) {
       const exts = '{ts,tsx,js,jsx,scss,css,gql,yml,yaml}';
 
-      if (workspacesEnabled) {
+      if (workspacePrefixes.length > 0) {
         workspacePrefixes.forEach(wsPrefix => {
           context.addArgs([
             path.join(wsPrefix, DIR_PATTERN, `**/*.${exts}`),
@@ -86,15 +88,16 @@ module.exports = function milesOSS(tool) {
     }
 
     context.addArgs(['docs/**/*.md', 'README.md']);
-  });
+  }, 'prettier');
 
   // TypeScript
-  if (workspacesEnabled) {
-    tool.on('typescript.after-execute', () => {
+  if (usingTypeScript && workspacePrefixes.length > 0) {
+    tool.getPlugin('driver', 'typescript').onAfterExecute.listen(() => {
       const corePackage = path.join(tool.options.root, 'packages/core');
 
-      if (fs.existsSync(corePackage))
+      if (fs.existsSync(corePackage)) {
         fs.copySync(path.join(tool.options.root, 'README.md'), path.join(corePackage, 'README.md'));
+      }
     });
   }
 };
