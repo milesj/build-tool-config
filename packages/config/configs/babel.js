@@ -14,17 +14,6 @@ const plugins = [
   ['babel-plugin-transform-dev', { evaluate: false }],
 ];
 
-if (!node) {
-  plugins.push([
-    '@babel/plugin-transform-runtime',
-    {
-      corejs: 3,
-      regenerator: process.env.NODE_ENV === 'test',
-      useESModules: !!context.args.esm,
-    },
-  ]);
-}
-
 // Order is important!
 const presets = [
   [
