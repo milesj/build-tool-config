@@ -19,12 +19,12 @@ const presets = [
   [
     '@babel/preset-env',
     {
-      corejs: 3,
+      // corejs: 3,
       loose: true,
       modules: context.args.esm ? false : 'commonjs',
       shippedProposals: true,
       targets: node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
-      useBuiltIns: false,
+      // useBuiltIns: false,
     },
   ],
   '@babel/preset-typescript',
