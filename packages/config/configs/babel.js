@@ -24,7 +24,7 @@ const presets = [
       modules: context.args.esm ? false : 'commonjs',
       shippedProposals: true,
       targets: node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
-      useBuiltIns: 'usage',
+      useBuiltIns: false,
     },
   ],
   '@babel/preset-typescript',
