@@ -79,13 +79,13 @@ module.exports = class BuildScript extends Script {
         const out = response.stdout.trim();
 
         if (out) {
-          this.tool.log(out);
+          console.log(out);
         }
 
         return response;
       })
       .catch(error => {
-        this.tool.logError(error.message);
+        console.error(error.message);
 
         throw error;
       });
