@@ -16,16 +16,16 @@
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.4.4",
-    "@beemo/cli": "^1.0.0-alpha.4",
-    "@beemo/core": "^1.0.0-alpha.5",
+    "@beemo/cli": "^1.0.0-alpha.6",
+    "@beemo/core": "^1.0.0-alpha.7",
     "@beemo/driver-babel": "^1.0.0-alpha.3",
-    "@beemo/driver-eslint": "^1.0.0-alpha.4",
+    "@beemo/driver-eslint": "^1.0.0-alpha.6",
     "@beemo/driver-jest": "^1.0.0-alpha.3",
-    "@beemo/driver-prettier": "^1.0.0-alpha.4",
+    "@beemo/driver-prettier": "^1.0.0-alpha.6",
     "@beemo/driver-typescript": "^1.0.0-alpha.4",
     "eslint": "^5.16.0",
     "jest": "^24.8.0",
-    "prettier": "^1.17.0",
+    "prettier": "^1.17.1",
     "typescript": "^3.4.5"
   }
 }
