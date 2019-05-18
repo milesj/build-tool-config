@@ -909,21 +909,21 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@beemo/cli@^1.0.0-alpha.7":
-  version "1.0.0-alpha.7"
-  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-1.0.0-alpha.7.tgz#b96c7c025cf3c2328f03b3722d8171c2ecc4dd42"
-  integrity sha512-Bpv2NmyGBJk45V8n+duYXFKX+j83E5UXHd5NrLtucBraMQs+mfN/RMmguMBktPhe0f/M7lRzetDjxs7HkBqTgw==
+"@beemo/cli@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-1.0.0.tgz#20ed55d53cf75918f73c9d61110b48c64b67760d"
+  integrity sha512-cTviV2UIATOOPnVEYD4WJnfT7XfUFUKKeqsLKpn5oRf+XrbO/B+1CCRfXSvpgvC5qskXyKW+tqWKDDSaaC75Sw==
   dependencies:
     chalk "^2.4.2"
     semver "^6.0.0"
     yargs "^13.2.4"
 
-"@beemo/core@^1.0.0-alpha.8":
-  version "1.0.0-alpha.8"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-1.0.0-alpha.8.tgz#634b562841331374a8c371021e5cd2ac5926858d"
-  integrity sha512-fy9J5iOXyJFrGlqkpzf5miBPbFUuerEP/XsWgDmC+jTEDXIfEhTWL8Uj5yYpF0fltAXcSQMmWd/+gJBW4G8Fgg==
+"@beemo/core@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-1.0.0.tgz#5414e93c8dea0d51c087b7d511e980e396ffe56f"
+  integrity sha512-XKiouf8lONWJEFXE5Q17quSuJBeKioYXG8kfMTvDU5F4b1TUcRuS4m0ihkbY9+M7G45pqhkPSqg7PK4kg22CAQ==
   dependencies:
-    "@beemo/dependency-graph" "^1.0.0-alpha.1"
+    "@beemo/dependency-graph" "^1.0.0"
     "@boost/core" "^1.11.1"
     "@boost/event" "^1.0.0"
     "@types/execa" "^0.9.0"
@@ -946,47 +946,47 @@
     yargs "^13.2.4"
     yargs-parser "^13.1.0"
 
-"@beemo/dependency-graph@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.npmjs.org/@beemo/dependency-graph/-/dependency-graph-1.0.0-alpha.1.tgz#282b7c01f8d6a8f7c599ccd4c65342daa6e09f38"
-  integrity sha512-WRVXnT1EUgsUnv8A630qsnZLMmHv+JqztvwPuGEDDykeZcEow5VNsj3IAopTd7EDhdmj+PRyqho9wHtF67nfQQ==
+"@beemo/dependency-graph@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@beemo/dependency-graph/-/dependency-graph-1.0.0.tgz#4e37fca5235f352d176939514ff9d9fe7a55a7bd"
+  integrity sha512-aU3gwMtFNwmvmcKoCE/Fv/f5hjVIIWAQeNKFH+9jMpe7r8us/KL8V3YXaoqkaAQqPVpiTb9GpfwNxV9OmTSz9A==
 
-"@beemo/driver-babel@^1.0.0-alpha.3":
-  version "1.0.0-alpha.3"
-  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.0.0-alpha.3.tgz#36a181373cf7b95033cc480bf5a8d39b0194ffbc"
-  integrity sha512-/eTviE76GzMXx7hxupTrqTHartiAPl3BEH7SU4lV4ZYqQtstuKWtwZu9kHoSPtePS5br8GNzZs4NjEyGKX61gA==
+"@beemo/driver-babel@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.0.0.tgz#3c2d42b54d1661ac5c372912d8b8982d09abc4c0"
+  integrity sha512-rOvxqDGtPZEvfauhATpH2xwtCefVTiInJlGTb8ezE7zF9lr8kMFkkUL5wjWsetC2ZVeUNJqcbJYVPtUOGipRgA==
   dependencies:
     rimraf "^2.6.3"
 
-"@beemo/driver-eslint@^1.0.0-alpha.7":
-  version "1.0.0-alpha.7"
-  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.0.0-alpha.7.tgz#618ffc32a78a63f24fa143cff534034cb4b1012b"
-  integrity sha512-stBKkkjfWhbUglD42bLa0r9ScV97YXUgXG/Yazyz5TO6ww4KlbpsCjSgfZwdAdFUvXetiq24LwZYyJwkzHqIRg==
+"@beemo/driver-eslint@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.0.0.tgz#2742a3a75840a3597ebbe156b95f1882497937ea"
+  integrity sha512-n6Kn07Cm6JAXeBsH+fqCHRoIiERHdBuUyNHrBqPlGXVD+JLTijIvAOeJIAFWHgmauZYoDk/n4iKs0tvv+WhcZQ==
   dependencies:
     "@boost/event" "^1.0.0"
 
-"@beemo/driver-jest@^1.0.0-alpha.5":
-  version "1.0.0-alpha.5"
-  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.0.0-alpha.5.tgz#e7a3b117980f97ffd6a967ad72402663b707d97f"
-  integrity sha512-0OGwiWNLNClQIMgR/Vus2R4lg3DJaE0Nc6VtFXCX+ECf/lyJX6+pPwoMkXQcPSIUoCWAeI8Chv8sm6zU/E7M5w==
+"@beemo/driver-jest@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.0.0.tgz#e535628af43a552e3d2b10c7d7dfaf53581e4d73"
+  integrity sha512-LW0zLCpm8I9lrDLk+kF4UqKDOGcOr0ByHlv+yUOTllCyJRToH7D8f/4ofmHhnhAGrfyk3bmMD6jREK3m5+S+kg==
   dependencies:
     "@jest/types" "^24.8.0"
     utility-types "^3.7.0"
 
-"@beemo/driver-prettier@^1.0.0-alpha.6":
-  version "1.0.0-alpha.6"
-  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.0.0-alpha.6.tgz#b58ec1b6e510dab6a33b5ca571a94ec36af81eb0"
-  integrity sha512-YGHJPYNFYRU6cWDEApUqwbGVJfGoROFFWQ/dDTnTXIpesnRo9ES1hhPPFuStG980d6X9Z85dqlFCfbKdW4OzCg==
+"@beemo/driver-prettier@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.0.0.tgz#f73d3deb529c9f48b8c585528e5f99dd64996945"
+  integrity sha512-B2Liq6L5JgCA1GWxltsMGFRebLDEfeRKDZHrPRNkkHijCx3c8Rhni4O4FmnT7rmk9qpGg6zL3fDVoBVTupkWGg==
   dependencies:
     "@boost/event" "^1.0.0"
     "@types/prettier" "^1.16.4"
 
-"@beemo/driver-typescript@^1.0.0-alpha.4":
-  version "1.0.0-alpha.4"
-  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.0.0-alpha.4.tgz#b0ee15138dff1e251e5a9e4bab9eabc6accfe7a6"
-  integrity sha512-qG7hs6p8+CWcC7MmOZtHquGvyCPpeKW+N77XSClVkOtmQQhKIurj2F4FkwMxfsRAtEwEIF7+bffhmk2OIvQ+aw==
+"@beemo/driver-typescript@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.0.0.tgz#cf76f108f3c7d1e6cd2dc3d6bdc844ab7a63633c"
+  integrity sha512-c5yHO7+G9Z5GkRJr7fwNeipc/HPjr3WYteVOrEARgXEWfJU7CBxsihFRVoEIdpxAOUbMPYiPCcIgSu+m+Nt15Q==
   dependencies:
-    "@boost/event" "^1.0.0-alpha.1"
+    "@boost/event" "^1.0.0"
     rimraf "^2.6.3"
 
 "@boost/common@^1.0.1":
@@ -1040,11 +1040,6 @@
   version "1.0.0"
   resolved "https://registry.npmjs.org/@boost/event/-/event-1.0.0.tgz#cc16f327f441760429da6999653d3e284b57b33d"
   integrity sha512-WnLCmewW0buwCYrDHdRgx4Hka/Dp1xOYagnV7wZ9wE7OuXGAzdiLgqbyxaAUjSSVTwY1zzsxqSih7gKXWG/+KQ==
-
-"@boost/event@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.npmjs.org/@boost/event/-/event-1.0.0-alpha.1.tgz#2dac6570cef377db057442c88dc4d8406fd7d20e"
-  integrity sha512-+5PTSPe9dmrmolR9yU7vDwafVduD53F5uj+oZUSE6qtjm1EYwQyd+Ai6vHtVO66voXrndYT/2ImEWlawuz7q4g==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
