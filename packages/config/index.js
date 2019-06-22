@@ -60,10 +60,6 @@ module.exports = function milesOSS(tool) {
       context.addOption('--detectOpenHandles');
     }
 
-    if (usingTypeScript) {
-      driver.options.dependencies.push('typescript');
-    }
-
     driver.options.env.NODE_ENV = 'test';
     driver.options.env.TZ = 'UTC';
   }, 'jest');
