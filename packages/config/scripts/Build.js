@@ -50,7 +50,9 @@ module.exports = class BuildScript extends Script {
   }
 
   buildCjs(context) {
-    return this.handleResponse(execa('beemo', ['babel', '--clean', ...context.workspaceArgs]));
+    return this.handleResponse(
+      execa('beemo', ['babel', '--clean', ...context.workspaceArgs], { preferLocal: true }),
+    );
   }
 
   buildEsm(context) {
@@ -59,7 +61,9 @@ module.exports = class BuildScript extends Script {
     }
 
     return this.handleResponse(
-      execa('beemo', ['babel', '--clean', '--esm', ...context.workspaceArgs]),
+      execa('beemo', ['babel', '--clean', '--esm', ...context.workspaceArgs], {
+        preferLocal: true,
+      }),
     );
   }
 
@@ -69,7 +73,9 @@ module.exports = class BuildScript extends Script {
     }
 
     return this.handleResponse(
-      execa('beemo', ['typescript', '--declaration', '--emitDeclarationOnly']),
+      execa('beemo', ['typescript', '--declaration', '--emitDeclarationOnly'], {
+        preferLocal: true,
+      }),
     );
   }
 
