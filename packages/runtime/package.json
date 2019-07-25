@@ -1,6 +1,6 @@
 {
   "name": "@milesj/build-tool-runtime",
-  "version": "0.43.1",
+  "version": "0.44.0",
   "description": "Build tool runtimes for shared configurations.",
   "repository": {
     "type": "git",
