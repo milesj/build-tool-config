@@ -38,7 +38,6 @@ module.exports = {
       jsx: true,
     },
     project: path.join(process.cwd(), 'tsconfig.json'),
-    tsconfigRootDir: process.cwd(),
   },
   rules: {
     'class-methods-use-this': 'off',
@@ -88,7 +87,6 @@ module.exports = {
     'unicorn/no-fn-reference-in-iterator': 'error',
     'unicorn/no-for-loop': 'error',
     'unicorn/no-hex-escape': 'error',
-    'unicorn/no-keyword-prefix': 'error',
     'unicorn/no-new-buffer': 'error',
     'unicorn/no-process-exit': 'error',
     'unicorn/no-unused-properties': 'error',
@@ -156,7 +154,7 @@ module.exports = {
         natural: true,
       },
     ],
-    'import/default': 'error',
+    'import/default': 'off', // Super slow with TS
     'import/no-anonymous-default-export': [
       'error',
       {
@@ -253,7 +251,7 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'off', // No Babel support
         '@typescript-eslint/prefer-interface': 'error',
         '@typescript-eslint/prefer-namespace-keyword': 'error',
-        '@typescript-eslint/prefer-readonly': 'error',
+        '@typescript-eslint/prefer-readonly': 'off', // Annoying with handlers
         '@typescript-eslint/require-await': 'warn',
         '@typescript-eslint/triple-slash-reference': 'error',
         '@typescript-eslint/unified-signatures': 'error',
@@ -266,6 +264,7 @@ module.exports = {
         'import/named': 'off',
         'react/destructuring-assignment': 'off',
         'unicorn/no-fn-reference-in-iterator': 'off',
+        'unicorn/no-keyword-prefix': 'off',
         'unicorn/prefer-spread': 'off',
       },
     },
