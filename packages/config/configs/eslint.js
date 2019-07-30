@@ -310,7 +310,6 @@ module.exports = {
         'jest/prefer-to-have-length': 'error',
         'jest/valid-describe': 'error',
         'jest/valid-expect': 'error',
-        '@typescript-eslint/no-explicit-any': 'off',
       },
     },
   ],
