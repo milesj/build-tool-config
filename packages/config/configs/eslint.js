@@ -45,20 +45,28 @@ module.exports = {
     'no-else-return': ['error', { allowElseIf: true }],
     'no-invalid-this': 'off', // Handled by babel/no-invalid-this
     'object-curly-spacing': 'off', // Handled by babel/object-curly-spacing
-    'padded-blocks': [
-      'error',
-      {
-        // Never apply to blocks
-        classes: 'never',
-        switches: 'never',
-      },
-    ],
+    // 'padded-blocks': [
+    //   'error',
+    //   {
+    //     // Never apply to blocks
+    //     classes: 'never',
+    //     switches: 'never',
+    //   },
+    // ],
+
+    // BABEL
     'babel/new-cap': 'error',
     'babel/no-invalid-this': 'error',
     'babel/object-curly-spacing': ['error', 'always'],
     'babel/semi': 'error',
+
+    // COMPAT
     'compat/compat': node ? 'off' : 'warn',
+
+    // IMPORT
     'import/prefer-default-export': 'off',
+
+    // PROMISE
     'promise/always-return': 'error',
     'promise/avoid-new': 'off',
     'promise/catch-or-return': 'error',
@@ -106,8 +114,6 @@ module.exports = {
     'unicorn/throw-new-error': 'error',
 
     // New and not in Airbnb
-    'no-useless-catch': 'error',
-    'react/jsx-fragments': ['error', 'syntax'],
     'react/no-typos': 'error',
     'react/no-unsafe': 'error',
     'react-hooks/exhaustive-deps': 'error',
@@ -115,7 +121,6 @@ module.exports = {
 
     // Want to support but disabled in Airbnb
     complexity: ['error', 11],
-    'max-classes-per-file': 'error',
     'max-lines-per-function': [
       'off',
       {
@@ -138,12 +143,9 @@ module.exports = {
         enforceConst: true,
       },
     ],
-    'no-misleading-character-class': 'error',
     'no-native-reassign': 'error',
     'no-negated-condition': 'error',
-    'no-async-promise-executor': 'error',
     'no-useless-call': 'error',
-    'prefer-object-spread': 'error',
     'require-atomic-updates': 'error',
     'require-unicode-regexp': 'error',
     'sort-keys': [
