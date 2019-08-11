@@ -79,8 +79,14 @@ module.exports = {
     'promise/no-return-wrap': ['error', { allowReject: true }],
     'promise/param-names': 'error',
     'promise/valid-params': 'error',
+
+    // REACT
     'react/sort-prop-types': 'off', // Handled by sort-keys
+    'react/static-property-placement': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-sort-default-props': 'off', // Handled by sort-keys
+
+    // UNICORN
     'unicorn/catch-error-name': 'error',
     'unicorn/custom-error-definition': 'error',
     'unicorn/error-message': 'error',
