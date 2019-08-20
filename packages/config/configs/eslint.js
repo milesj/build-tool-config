@@ -82,6 +82,7 @@ module.exports = {
 
     // REACT
     'react/sort-prop-types': 'off', // Handled by sort-keys
+    'react/state-in-constructor': 'off',
     'react/static-property-placement': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-sort-default-props': 'off', // Handled by sort-keys
