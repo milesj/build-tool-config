@@ -16,7 +16,6 @@ following tools are pre-configured:
   - Extends the `airbnb` configuration preset.
   - Provides a default `.eslintignore`.
 - [Jest](https://github.com/milesj/build-tool-config/blob/master/packages/config/configs/jest.js)
-  - Supports React and Enzyme based unit tests.
   - Provides built-in code coverage thresholds.
 - [Prettier](https://github.com/milesj/build-tool-config/blob/master/packages/config/configs/prettier.js)
   - Configured to closely align with the Airbnb style guide.

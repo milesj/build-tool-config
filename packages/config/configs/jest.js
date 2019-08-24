@@ -21,11 +21,6 @@ if (workspacesEnabled) {
   roots.push('<rootDir>');
 }
 
-if (react) {
-  setupFiles.push(path.join(__dirname, './jest/enzyme.js'));
-  snapshotSerializers.push('enzyme-to-json/serializer');
-}
-
 if (fs.existsSync(setupFilePath)) {
   setupFilesAfterEnv.push(setupFilePath);
 }
@@ -51,6 +46,6 @@ module.exports = {
   snapshotSerializers,
   testEnvironment: react ? 'jsdom' : 'node',
   testURL: 'http://localhost',
-  timers: 'fake',
+  timers: 'real',
   verbose: false,
 };

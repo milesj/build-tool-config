@@ -19,7 +19,7 @@ const compilerOptions = {
   removeComments: false,
   sourceMap: context.args.sourceMaps || false,
   strict: true,
-  target: node ? 'es2017' : 'es5',
+  target: node ? 'es2018' : 'es5',
 };
 const include = [];
 
