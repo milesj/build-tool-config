@@ -35,7 +35,7 @@ module.exports = function milesOSS(tool) {
 
   // ESLint
   tool.onRunDriver.listen(context => {
-    context.addOptions(['--color', '--report-unused-disable-directives']);
+    context.addOptions(['--color']);
 
     if (usingTypeScript && !context.args.ext) {
       context.addOption('--ext', extsWithoutJSON.join(','));

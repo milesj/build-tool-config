@@ -1,9 +1,25 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
 const path = require('path');
+const glob = require('fast-glob');
 const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 
-const { node } = process.beemo.tool.config.settings;
+const { tool } = process.beemo;
+const { node } = tool.config.settings;
+const workspacesEnabled = !!tool.package.workspaces;
+const project = [path.join(process.cwd(), 'tsconfig.json')];
+
+if (workspacesEnabled) {
+  tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
+    glob
+      .sync(path.join(process.cwd(), wsPath, 'tsconfig.json'), {
+        absolute: true,
+      })
+      .forEach(configPath => {
+        project.push(configPath);
+      });
+  });
+}
 
 // Package: Run in root
 // Workspaces: Run in root
@@ -37,8 +53,8 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    project: path.join(process.cwd(), 'tsconfig.json'),
   },
+  reportUnusedDisableDirectives: true,
   rules: {
     'class-methods-use-this': 'off',
     'multiline-comment-style': 'off',
@@ -193,6 +209,9 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       plugins: ['@typescript-eslint'],
+      parserOptions: {
+        project,
+      },
       rules: {
         camelcase: 'off',
         'no-unused-vars': ['error', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
@@ -205,12 +224,16 @@ module.exports = {
         ],
         'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
         '@typescript-eslint/adjacent-overload-signatures': 'error',
-        '@typescript-eslint/array-type': ['error', 'array'],
+        '@typescript-eslint/array-type': ['error', { default: 'array' }],
         '@typescript-eslint/camelcase': 'error',
         '@typescript-eslint/class-name-casing': 'error',
+        '@typescript-eslint/consistent-type-assertions': [
+          'error',
+          { assertionStyle: 'as', objectLiteralTypeAssertions: 'allow-as-parameter' },
+        ],
+        '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
         '@typescript-eslint/member-delimiter-style': 'error',
         '@typescript-eslint/member-ordering': 'error',
-        '@typescript-eslint/no-angle-bracket-type-assertion': 'error',
         '@typescript-eslint/no-array-constructor': 'error',
         '@typescript-eslint/no-empty-interface': 'error',
         '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
@@ -226,7 +249,6 @@ module.exports = {
         ],
         '@typescript-eslint/no-use-before-define': 'error',
         '@typescript-eslint/no-var-requires': 'off', // No Babel support
-        '@typescript-eslint/prefer-interface': 'error',
         '@typescript-eslint/prefer-namespace-keyword': 'error',
         '@typescript-eslint/prefer-readonly': 'off', // Annoying with handlers
         '@typescript-eslint/require-await': 'warn',
@@ -317,6 +339,7 @@ module.exports = {
         'jest/prefer-to-be-null': 'error',
         'jest/prefer-to-be-undefined': 'error',
         'jest/prefer-to-have-length': 'error',
+        'jest/require-top-level-describe': 'error',
         'jest/valid-describe': 'error',
         'jest/valid-expect': 'error',
       },
