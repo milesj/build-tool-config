@@ -12,7 +12,7 @@ const project = [path.join(process.cwd(), 'tsconfig.json')];
 if (workspacesEnabled) {
   tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
     glob
-      .sync(path.join(process.cwd(), wsPath, 'tsconfig.json'), {
+      .sync(path.join(process.cwd(), wsPath.replace('*', '**'), 'tsconfig.json'), {
         absolute: true,
       })
       .forEach(configPath => {
@@ -237,7 +237,13 @@ module.exports = {
         '@typescript-eslint/no-array-constructor': 'error',
         '@typescript-eslint/no-empty-interface': 'error',
         '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
-        '@typescript-eslint/no-inferrable-types': 'error',
+        '@typescript-eslint/no-inferrable-types': [
+          'error',
+          {
+            ignoreProperties: true,
+            ignoreParameters: true,
+          },
+        ],
         '@typescript-eslint/no-misused-new': 'error',
         '@typescript-eslint/no-misused-promises': 'error',
         '@typescript-eslint/no-namespace': 'error',
