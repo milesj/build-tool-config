@@ -1,18 +1,38 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
+const fs = require('fs');
 const path = require('path');
 const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 
 const { tool } = process.beemo;
 const { node } = tool.config.settings;
 const workspacesEnabled = !!tool.package.workspaces;
-const project = [path.join(process.cwd(), 'tsconfig.json')];
+let project = '';
 
+// Lint crashes with an OOM error when using project references,
+// so just use a single file that globs everything.
 if (workspacesEnabled) {
+  project = path.join(process.cwd(), 'tsconfig.eslint.json');
+  const include = [];
+
   tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
-    // TODO: Include test folders once project refs stop OOM
-    project.push(path.join(process.cwd(), wsPath, 'tsconfig.json'));
+    include.push(
+      path.join(wsPath, 'src/**/*'),
+      path.join(wsPath, 'tests/**/*'),
+      path.join(wsPath, 'types/**/*'),
+    );
   });
+
+  fs.writeFileSync(
+    project,
+    JSON.stringify({
+      extends: './tsconfig.options.json',
+      include,
+    }),
+    'utf8',
+  );
+} else {
+  project = path.join(process.cwd(), 'tsconfig.json');
 }
 
 // Package: Run in root
