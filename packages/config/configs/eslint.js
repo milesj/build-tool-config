@@ -1,7 +1,6 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
 const path = require('path');
-const glob = require('fast-glob');
 const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 
 const { tool } = process.beemo;
@@ -11,13 +10,7 @@ const project = [path.join(process.cwd(), 'tsconfig.json')];
 
 if (workspacesEnabled) {
   tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
-    glob
-      .sync(path.join(process.cwd(), wsPath.replace('*', '**'), 'tsconfig.json'), {
-        absolute: true,
-      })
-      .forEach(configPath => {
-        project.push(configPath);
-      });
+    project.push(path.join(process.cwd(), wsPath.replace('*', '**'), 'tsconfig.json'));
   });
 }
 
