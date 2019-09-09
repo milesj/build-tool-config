@@ -10,7 +10,8 @@ const project = [path.join(process.cwd(), 'tsconfig.json')];
 
 if (workspacesEnabled) {
   tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
-    project.push(path.join(process.cwd(), wsPath.replace('*', '**'), 'tsconfig.json'));
+    // TODO: Include test folders once project refs stop OOM
+    project.push(path.join(process.cwd(), wsPath, 'tsconfig.json'));
   });
 }
 
