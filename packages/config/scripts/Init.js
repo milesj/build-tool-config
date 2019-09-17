@@ -48,7 +48,7 @@ module.exports = class InitScript extends Script {
       eslint: 'beemo eslint',
       jest: 'beemo jest',
       prettier: 'beemo prettier',
-      release: 'np --yolo --no-yarn',
+      release: 'npx np --yolo --no-yarn',
       type: 'beemo typescript --noEmit',
 
       // Hooks
