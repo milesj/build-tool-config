@@ -151,6 +151,9 @@ module.exports = {
     'unicorn/throw-new-error': 'error',
 
     // New and not in Airbnb
+    'default-param-last': 'warn',
+    'no-import-assign': 'error',
+    'prefer-regex-literals': 'error',
     'react/no-typos': 'error',
     'react/no-unsafe': 'error',
     'react-hooks/exhaustive-deps': 'error',
@@ -228,7 +231,7 @@ module.exports = {
       },
       rules: {
         camelcase: 'off',
-        'no-unused-vars': ['error', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
+        'no-unused-vars': 'off',
         'import/extensions': [
           'error',
           'never',
