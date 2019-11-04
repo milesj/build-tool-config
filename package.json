@@ -11,7 +11,7 @@
     "release": "lerna publish"
   },
   "dependencies": {
-    "lerna": "^3.16.4"
+    "lerna": "^3.18.3"
   },
   "workspaces": [
     "packages/*"
