@@ -20,6 +20,7 @@ const compilerOptions = {
   sourceMap: context.args.sourceMaps || false,
   strict: true,
   target: node ? 'es2018' : 'es5',
+  useDefineForClassFields: process.env.NODE_ENV === 'development',
 };
 const include = [];
 
