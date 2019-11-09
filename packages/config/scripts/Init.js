@@ -43,6 +43,7 @@ module.exports = class InitScript extends Script {
 
     // Scripts
     Object.assign(packageConfig.scripts, {
+      prepare: 'beemo create-config --silent',
       build: 'beemo run-script build',
       coverage: 'yarn run jest --coverage',
       eslint: 'beemo eslint',
@@ -86,6 +87,7 @@ module.exports = class InitScript extends Script {
     }
 
     if (args.node) {
+      packageConfig.scripts.build = packageConfig.scripts.type.replace('--noEmit', '').trim();
       packageConfig.engines = { node: `>=${MIN_NODE_VERSION}` };
     } else {
       packageConfig.browserslist = [`ie ${MIN_IE_VERSION}`];
