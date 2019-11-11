@@ -27,5 +27,9 @@
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "typescript": "^3.7.2"
+  },
+  "funding": {
+    "type": "ko-fi",
+    "url": "https://ko-fi.com/milesjohnson"
   }
 }

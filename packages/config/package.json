@@ -61,5 +61,9 @@
     "react-dom": "^16.11.0",
     "react-test-renderer": "^16.11.0",
     "typescript": "^3.7.2"
+  },
+  "funding": {
+    "type": "ko-fi",
+    "url": "https://ko-fi.com/milesjohnson"
   }
 }
