@@ -139,7 +139,6 @@ module.exports = {
     'unicorn/number-literal-case': 'error',
     'unicorn/prefer-add-event-listener': 'error',
     'unicorn/prefer-event-key': 'error',
-    'unicorn/prefer-exponentiation-operator': 'error',
     'unicorn/prefer-flat-map': 'error',
     'unicorn/prefer-includes': 'error',
     'unicorn/prefer-node-append': 'error',
@@ -153,7 +152,11 @@ module.exports = {
 
     // New and not in Airbnb
     'default-param-last': 'warn',
+    'no-constructor-return': 'error',
+    'no-dupe-else-if': 'error',
     'no-import-assign': 'error',
+    'no-setter-return': 'error',
+    'prefer-exponentiation-operator': 'error',
     'prefer-regex-literals': 'error',
     'react/jsx-no-useless-fragment': 'error',
     'react/no-typos': 'error',
@@ -248,7 +251,10 @@ module.exports = {
         '@typescript-eslint/class-name-casing': 'error',
         '@typescript-eslint/consistent-type-assertions': [
           'error',
-          { assertionStyle: 'as', objectLiteralTypeAssertions: 'allow-as-parameter' },
+          {
+            assertionStyle: 'as',
+            objectLiteralTypeAssertions: 'allow-as-parameter',
+          },
         ],
         '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
         '@typescript-eslint/member-delimiter-style': 'error',
