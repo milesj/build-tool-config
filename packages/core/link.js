@@ -7,9 +7,13 @@ const path = require('path');
 const links = ['configs', 'scripts', 'templates'];
 
 links.forEach(folder => {
-  fs.symlinkSync(
-    path.join(__dirname, '../build-tool-config', folder),
-    path.join(__dirname, folder),
-    'dir',
-  );
+  try {
+    fs.symlinkSync(
+      path.join(__dirname, '../build-tool-config', folder),
+      path.join(__dirname, folder),
+      'dir',
+    );
+  } catch (error) {
+    // Ignore
+  }
 });
