@@ -11,3 +11,8 @@ tsconfig.eslint.json
 yarn-error.log
 babel.config.js
 jest.config.js
+
+# Symlinks
+packages/core/configs
+packages/core/scripts
+packages/core/templates
