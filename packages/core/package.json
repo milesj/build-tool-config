@@ -1,6 +1,6 @@
 {
   "name": "@milesj/build-tools",
-  "version": "0.60.1",
+  "version": "0.60.2",
   "description": "Shared build tools for easier development.",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@milesj/build-tool-config": "^0.182.0",
-    "@milesj/build-tool-runtime": "^0.53.0"
+    "@milesj/build-tool-runtime": "^0.53.1"
   },
   "funding": {
     "type": "ko-fi",
