@@ -6,6 +6,12 @@ const { EXTS, DIR_PATTERN, CJS_FOLDER, ESM_FOLDER } = require('./constants');
 
 const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
 
+// Globs require posix style paths, so always use a forward slash.
+// Sorry Windows!
+function normalizePath(parts) {
+  return path.normalize(path.join(...parts)).replace(/\\/gu, '/');
+}
+
 function hasNoPositionalArgs(context, name) {
   const args = context.args._;
 
@@ -44,7 +50,7 @@ module.exports = function milesOSS(tool) {
     if (hasNoPositionalArgs(context, 'eslint')) {
       if (workspacePrefixes.length > 0) {
         workspacePrefixes.forEach(wsPrefix => {
-          context.addArg(path.join(wsPrefix, DIR_PATTERN));
+          context.addArg(normalizePath(wsPrefix, DIR_PATTERN));
         });
       } else {
         context.addArgs(['src', 'tests']);
@@ -74,12 +80,12 @@ module.exports = function milesOSS(tool) {
       if (workspacePrefixes.length > 0) {
         workspacePrefixes.forEach(wsPrefix => {
           context.addArgs([
-            path.join(wsPrefix, DIR_PATTERN, `**/*.${exts}`),
-            path.join(wsPrefix, '*.{md,json}'),
+            normalizePath(wsPrefix, DIR_PATTERN, `**/*.${exts}`),
+            normalizePath(wsPrefix, '*.{md,json}'),
           ]);
         });
       } else {
-        context.addArgs([path.join(DIR_PATTERN, `**/*.${exts}`), '*.{md,json}']);
+        context.addArgs([normalizePath(DIR_PATTERN, `**/*.${exts}`), '*.{md,json}']);
       }
     }
 
@@ -89,10 +95,13 @@ module.exports = function milesOSS(tool) {
   // TypeScript
   if (usingTypeScript && workspacePrefixes.length > 0) {
     tool.getPlugin('driver', 'typescript').onAfterExecute.listen(() => {
-      const corePackage = path.join(tool.options.root, 'packages/core');
+      const corePackage = normalizePath(tool.options.root, 'packages/core');
 
       if (fs.existsSync(corePackage)) {
-        fs.copySync(path.join(tool.options.root, 'README.md'), path.join(corePackage, 'README.md'));
+        fs.copySync(
+          normalizePath(tool.options.root, 'README.md'),
+          normalizePath(corePackage, 'README.md'),
+        );
       }
     });
   }
