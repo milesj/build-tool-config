@@ -8,7 +8,7 @@ const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
 
 // Globs require posix style paths, so always use a forward slash.
 // Sorry Windows!
-function normalizePath(parts) {
+function normalizePath(...parts) {
   return path.normalize(path.join(...parts)).replace(/\\/gu, '/');
 }
 
