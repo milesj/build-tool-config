@@ -26,7 +26,7 @@ module.exports = function milesOSS(tool) {
   const workspacePrefixes = tool.getWorkspacePaths({ relative: true });
 
   // Babel
-  tool.onRunDriver.listen(context => {
+  tool.onRunDriver.listen((context, driver) => {
     context.addOption('--copy-files');
 
     if (usingTypeScript && !context.args.extensions) {
@@ -37,6 +37,8 @@ module.exports = function milesOSS(tool) {
       context.addArg('src');
       context.addOption('--out-dir', context.args.esm ? ESM_FOLDER : CJS_FOLDER);
     }
+
+    driver.metadata.filterOptions = true;
   }, 'babel');
 
   // ESLint
