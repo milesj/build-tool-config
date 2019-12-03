@@ -1,6 +1,6 @@
 {
   "name": "@milesj/build-tools",
-  "version": "0.60.4",
+  "version": "0.60.5",
   "description": "Shared build tools for easier development.",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "postinstall": "node ./link.js"
   },
   "dependencies": {
-    "@milesj/build-tool-config": "^0.182.2",
+    "@milesj/build-tool-config": "^0.182.3",
     "@milesj/build-tool-runtime": "^0.53.1"
   },
   "funding": {
