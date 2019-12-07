@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
 
+'use strict';
+
 const fs = require('fs-extra');
 const path = require('path');
 const { EXTS, DIR_PATTERN, CJS_FOLDER, ESM_FOLDER } = require('./constants');
@@ -68,8 +70,12 @@ module.exports = function milesOSS(tool) {
       context.addOption('--detectOpenHandles');
     }
 
-    driver.options.env.NODE_ENV = 'test';
-    driver.options.env.TZ = 'UTC';
+    driver.configure({
+      env: {
+        NODE_ENV: 'test',
+        TZ: 'UTC',
+      },
+    });
   }, 'jest');
 
   // Prettier
