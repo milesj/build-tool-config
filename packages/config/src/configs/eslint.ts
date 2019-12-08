@@ -1,43 +1,47 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
-const fs = require('fs');
-const path = require('path');
-const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
+import fs from 'fs';
+import { Path } from '@beemo/core';
+import { ESLintConfig } from '@beemo/driver-eslint';
+import { EXTS, EXT_PATTERN, IGNORE_PATHS } from '../constants';
+import { BeemoProcess, Settings } from '../types';
 
-const { tool } = process.beemo;
-const { node } = tool.config.settings;
+const { tool } = process.beemo as BeemoProcess;
+const { node } = tool.config.settings as Settings;
+// @ts-ignore
 const workspacesEnabled = !!tool.package.workspaces;
-let project = '';
+let project: Path;
 
 // Lint crashes with an OOM error when using project references,
 // so just use a single file that globs everything.
 if (workspacesEnabled) {
-  project = path.join(process.cwd(), 'tsconfig.eslint.json');
-  const include = [];
+  project = Path.resolve('tsconfig.eslint.json');
+
+  const include: Path[] = [];
 
   tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
     include.push(
-      path.join(wsPath, 'src/**/*'),
-      path.join(wsPath, 'tests/**/*'),
-      path.join(wsPath, 'types/**/*'),
+      new Path(wsPath, 'src/**/*'),
+      new Path(wsPath, 'tests/**/*'),
+      new Path(wsPath, 'types/**/*'),
     );
   });
 
   fs.writeFileSync(
-    project,
+    project.path(),
     JSON.stringify({
       extends: './tsconfig.options.json',
-      include,
+      include: include.map(i => i.path()),
     }),
     'utf8',
   );
 } else {
-  project = path.join(process.cwd(), 'tsconfig.json');
+  project = Path.resolve('tsconfig.json');
 }
 
 // Package: Run in root
 // Workspaces: Run in root
-module.exports = {
+const config: ESLintConfig = {
   root: true,
   parser: '@typescript-eslint/parser',
   extends: ['airbnb', 'prettier', 'prettier/react', 'prettier/@typescript-eslint'],
@@ -46,6 +50,7 @@ module.exports = {
   env: {
     browser: true,
   },
+  // @ts-ignore Fix upstream
   globals: {
     __DEV__: 'readable',
   },
@@ -232,7 +237,8 @@ module.exports = {
       files: ['*.ts', '*.tsx'],
       plugins: ['@typescript-eslint'],
       parserOptions: {
-        project,
+        // @ts-ignore Fix upstream
+        project: project.path(),
       },
       rules: {
         camelcase: 'off',
@@ -386,3 +392,5 @@ module.exports = {
     },
   ],
 };
+
+export default config;

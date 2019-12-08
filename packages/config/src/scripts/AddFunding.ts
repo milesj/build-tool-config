@@ -1,8 +1,8 @@
-const fs = require('fs-extra');
-const glob = require('fast-glob');
-const { Script } = require('@beemo/core');
+import fs from 'fs-extra';
+import glob from 'fast-glob';
+import { Script, ScriptContext } from '@beemo/core';
 
-module.exports = class AddFundingScript extends Script {
+export default class AddFundingScript extends Script {
   args() {
     return {};
   }
@@ -15,10 +15,10 @@ module.exports = class AddFundingScript extends Script {
     this.task('Add funding to all package.json', this.addFundingToPackages);
   }
 
-  addFundingToPackages(context) {
+  addFundingToPackages(context: ScriptContext) {
     return glob('**/package.json', {
       absolute: true,
-      cwd: context.cwd,
+      cwd: context.cwd.path(),
       ignore: ['**/node_modules'],
     }).then(pkgPaths =>
       pkgPaths.map(pkgPath => {
@@ -35,4 +35,4 @@ module.exports = class AddFundingScript extends Script {
       }),
     );
   }
-};
+}

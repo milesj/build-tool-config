@@ -1,17 +1,17 @@
-const fs = require('fs');
-const path = require('path');
-const { IGNORE_PATHS } = require('../constants');
+import { Path } from '@beemo/core';
+import { JestConfig } from '@beemo/driver-jest';
+import { IGNORE_PATHS } from '../constants';
+import { BeemoProcess, Settings } from '../types';
 
 // Package: Run in root
 // Workspaces: Run in root
-const { tool } = process.beemo;
-const { react } = tool.config.settings;
+const { tool } = process.beemo as BeemoProcess;
+const { react } = tool.config.settings as Settings;
+// @ts-ignore
 const workspacesEnabled = !!tool.package.workspaces;
-const setupFilePath = path.join(process.cwd(), './tests/setup.ts');
-const snapshotSerializers = [];
-const setupFilesAfterEnv = [];
-const setupFiles = [];
-const roots = [];
+const setupFilePath = Path.resolve('./tests/setup.ts');
+const setupFilesAfterEnv: string[] = [];
+const roots: string[] = [];
 
 if (workspacesEnabled) {
   tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
@@ -21,11 +21,11 @@ if (workspacesEnabled) {
   roots.push('<rootDir>');
 }
 
-if (fs.existsSync(setupFilePath)) {
-  setupFilesAfterEnv.push(setupFilePath);
+if (setupFilePath.exists()) {
+  setupFilesAfterEnv.push(setupFilePath.path());
 }
 
-module.exports = {
+const config: JestConfig = {
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: [...IGNORE_PATHS],
   coverageReporters: ['lcov'],
@@ -41,11 +41,11 @@ module.exports = {
     __DEV__: true,
   },
   roots,
-  setupFiles,
   setupFilesAfterEnv,
-  snapshotSerializers,
   testEnvironment: react ? 'jsdom' : 'node',
   testURL: 'http://localhost',
   timers: 'real',
   verbose: false,
 };
+
+export default config;

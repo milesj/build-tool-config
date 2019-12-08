@@ -1,34 +1,21 @@
-/* eslint-disable no-param-reassign, strict */
-
-'use strict';
-
-const fs = require('fs-extra');
-const path = require('path');
-const { EXTS, DIR_PATTERN, CJS_FOLDER, ESM_FOLDER } = require('./constants');
+import fs from 'fs-extra';
+import Beemo, { Path, DriverContext } from '@beemo/core';
+import { EXTS, DIR_PATTERN, CJS_FOLDER, ESM_FOLDER } from './constants';
 
 const extsWithoutJSON = EXTS.filter(ext => ext !== '.json');
 
-// Globs require posix style paths, so always use a forward slash.
-// Sorry Windows!
-function normalizePath(...parts) {
-  return path.normalize(path.join(...parts)).replace(/\\/gu, '/');
-}
-
-function hasNoPositionalArgs(context, name) {
+function hasNoPositionalArgs(context: DriverContext, name: string): boolean {
   const args = context.args._;
 
   return args.length === 0 || (args.length === 1 && args[0] === name);
 }
 
-/**
- * @param { import('@beemo/core').default } tool
- */
-module.exports = function milesOSS(tool) {
+module.exports = function milesOSS(tool: Beemo) {
   const usingTypeScript = tool.isPluginEnabled('driver', 'typescript');
   const workspacePrefixes = tool.getWorkspacePaths({ relative: true });
 
   // Babel
-  tool.onRunDriver.listen((context, driver) => {
+  tool.onRunDriver.listen(context => {
     context.addOption('--copy-files');
 
     if (usingTypeScript && !context.args.extensions) {
@@ -39,8 +26,6 @@ module.exports = function milesOSS(tool) {
       context.addArg('src');
       context.addOption('--out-dir', context.args.esm ? ESM_FOLDER : CJS_FOLDER);
     }
-
-    driver.metadata.filterOptions = true;
   }, 'babel');
 
   // ESLint
@@ -54,7 +39,7 @@ module.exports = function milesOSS(tool) {
     if (hasNoPositionalArgs(context, 'eslint')) {
       if (workspacePrefixes.length > 0) {
         workspacePrefixes.forEach(wsPrefix => {
-          context.addArg(normalizePath(wsPrefix, DIR_PATTERN));
+          context.addArg(new Path(wsPrefix, DIR_PATTERN).path());
         });
       } else {
         context.addArgs(['src', 'tests']);
@@ -88,12 +73,12 @@ module.exports = function milesOSS(tool) {
       if (workspacePrefixes.length > 0) {
         workspacePrefixes.forEach(wsPrefix => {
           context.addArgs([
-            normalizePath(wsPrefix, DIR_PATTERN, `**/*.${exts}`),
-            normalizePath(wsPrefix, '*.{md,json}'),
+            new Path(wsPrefix, DIR_PATTERN, `**/*.${exts}`).path(),
+            new Path(wsPrefix, '*.{md,json}').path(),
           ]);
         });
       } else {
-        context.addArgs([normalizePath(DIR_PATTERN, `**/*.${exts}`), '*.{md,json}']);
+        context.addArgs([new Path(DIR_PATTERN, `**/*.${exts}`).path(), '*.{md,json}']);
       }
     }
 
@@ -103,14 +88,16 @@ module.exports = function milesOSS(tool) {
   // TypeScript
   if (usingTypeScript && workspacePrefixes.length > 0) {
     tool.getPlugin('driver', 'typescript').onAfterExecute.listen(() => {
-      const corePackage = normalizePath(tool.options.root, 'packages/core');
+      const corePackage = Path.resolve('packages/core', tool.options.root);
 
-      if (fs.existsSync(corePackage)) {
+      if (corePackage.exists()) {
         fs.copySync(
-          normalizePath(tool.options.root, 'README.md'),
-          normalizePath(corePackage, 'README.md'),
+          Path.resolve('README.md', tool.options.root).path(),
+          corePackage.append('README.md').path(),
         );
       }
+
+      return Promise.resolve();
     });
   }
 };

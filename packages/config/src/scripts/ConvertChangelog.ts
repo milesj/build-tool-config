@@ -1,25 +1,25 @@
-const { Script } = require('@beemo/core');
-const fs = require('fs-extra');
-const glob = require('fast-glob');
-const semver = require('semver');
+import fs from 'fs-extra';
+import glob from 'fast-glob';
+import semver from 'semver';
+import { Script, ScriptContext } from '@beemo/core';
 
-module.exports = class ConvertChangelogScript extends Script {
+export default class ConvertChangelogScript extends Script {
   blueprint() {
     return {};
   }
 
-  async execute(context) {
+  async execute(context: ScriptContext): Promise<void[]> {
     const files = await glob('**/CHANGELOG.md', {
       absolute: true,
-      cwd: context.cwd,
+      cwd: context.cwd.path(),
       ignore: ['node_modules'],
     });
 
-    return Promise.all(files.map(filePath => this.convertChangelog(String(filePath))));
+    return Promise.all(files.map(filePath => this.convertChangelog(filePath)));
   }
 
-  async convertChangelog(filePath) {
-    const data = [];
+  async convertChangelog(filePath: string): Promise<void> {
+    const data: string[] = [];
     let lastVersion = '0.0.0';
 
     (await fs.readFile(filePath, 'utf8'))
@@ -43,10 +43,10 @@ module.exports = class ConvertChangelogScript extends Script {
         }
       });
 
-    return fs.writeFile(filePath, data.reverse().join('\n'), 'utf8');
+    fs.writeFile(filePath, data.reverse().join('\n'), 'utf8');
   }
 
-  updateVersionHeader(line, lastVersion, cb) {
+  updateVersionHeader(line: string, lastVersion: string, cb: (version: string) => void): string {
     const headerSize = {
       major: 1,
       minor: 2,
@@ -57,7 +57,7 @@ module.exports = class ConvertChangelogScript extends Script {
     };
 
     return line.replace(/^# (\d+\.\d+\.\d+)/u, (match, version) => {
-      const diff = semver.diff(lastVersion, version);
+      const diff = semver.diff(lastVersion, version) as keyof typeof headerSize;
 
       cb(version);
 
@@ -65,7 +65,7 @@ module.exports = class ConvertChangelogScript extends Script {
     });
   }
 
-  updateTimestamp(line) {
+  updateTimestamp(line: string): string {
     return line.replace(/(\d{1,2})\/(\d{1,2})\/(\d{2,4})/u, (match, month, day, year) =>
       // prettier-ignore
       [
@@ -75,4 +75,4 @@ module.exports = class ConvertChangelogScript extends Script {
       ].join('-'),
     );
   }
-};
+}

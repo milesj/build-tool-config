@@ -1,11 +1,9 @@
-/* eslint-disable no-param-reassign */
+import execa from 'execa';
+import { Path, Script, ScriptContext } from '@beemo/core';
 
-const fs = require('fs');
-const path = require('path');
-const execa = require('execa');
-const { Script } = require('@beemo/core');
+export default class BuildScript extends Script {
+  workspaceArgs: string[] = [];
 
-module.exports = class BuildScript extends Script {
   args() {
     return {
       string: ['workspaces'],
@@ -26,48 +24,46 @@ module.exports = class BuildScript extends Script {
     this.task('Generating TypeScript declarations', this.buildDeclarations);
   }
 
-  determineArgs(context) {
-    const ignorePackages = [];
+  determineArgs(context: ScriptContext) {
+    const ignorePackages: string[] = [];
     const args = ['--silent'];
-
-    context.workspaceArgs = [];
 
     if (!context.args.workspaces) {
       return;
     }
 
     this.tool.getWorkspacePackages().forEach(pkg => {
-      const srcPath = path.join(pkg.workspace.packagePath, 'src');
+      const srcPath = new Path(pkg.workspace.packagePath, 'src');
 
-      if (!fs.existsSync(srcPath)) {
+      if (!srcPath.exists()) {
         ignorePackages.push(pkg.name);
       }
     });
 
     args.push(`--workspaces=${ignorePackages.length > 0 ? `!(${ignorePackages.join('|')})` : '*'}`);
 
-    context.workspaceArgs = args;
+    this.workspaceArgs = args;
   }
 
-  buildCjs(context) {
+  buildCjs(context: ScriptContext) {
     return this.handleResponse(
-      execa('beemo', ['babel', '--clean', ...context.workspaceArgs], { preferLocal: true }),
+      execa('beemo', ['babel', '--clean', ...this.workspaceArgs], { preferLocal: true }),
     );
   }
 
-  buildEsm(context) {
+  buildEsm(context: ScriptContext) {
     if (context.args.noEsm) {
       return Promise.resolve();
     }
 
     return this.handleResponse(
-      execa('beemo', ['babel', '--clean', '--esm', ...context.workspaceArgs], {
+      execa('beemo', ['babel', '--clean', '--esm', ...this.workspaceArgs], {
         preferLocal: true,
       }),
     );
   }
 
-  buildDeclarations(context) {
+  buildDeclarations(context: ScriptContext) {
     if (context.args.workspaces || context.args.referenceWorkspaces || context.args.noDts) {
       return Promise.resolve();
     }
@@ -79,7 +75,7 @@ module.exports = class BuildScript extends Script {
     );
   }
 
-  handleResponse(promise) {
+  handleResponse(promise: Promise<execa.ExecaReturnValue>): Promise<execa.ExecaReturnValue> {
     return promise
       .then(response => {
         const out = response.stdout.trim();
@@ -96,4 +92,4 @@ module.exports = class BuildScript extends Script {
         throw error;
       });
   }
-};
+}

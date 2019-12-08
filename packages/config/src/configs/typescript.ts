@@ -1,15 +1,18 @@
-const { CJS_FOLDER } = require('../constants');
+import { TypeScriptConfig } from '@beemo/driver-typescript';
+import { CJS_FOLDER } from '../constants';
+import { BeemoProcess, Settings } from '../types';
 
 // Package: Run in root
 // Workspaces: Run in each package (copied into each)
-const { context, tool } = process.beemo;
-const { node, react } = tool.config.settings;
-const compilerOptions = {
+const { context, tool } = process.beemo as BeemoProcess;
+const { node, react } = tool.config.settings as Settings;
+
+const compilerOptions: TypeScriptConfig['compilerOptions'] = {
   allowJs: false,
   allowSyntheticDefaultImports: true,
   declaration: true,
   esModuleInterop: true,
-  experimentalDecorators: context.args.decorators || false,
+  experimentalDecorators: !!context.args.decorators || false,
   forceConsistentCasingInFileNames: true,
   lib: ['dom', 'esnext'],
   module: 'commonjs',
@@ -17,12 +20,12 @@ const compilerOptions = {
   noImplicitReturns: true,
   pretty: true,
   removeComments: false,
-  sourceMap: context.args.sourceMaps || false,
+  sourceMap: !!context.args.sourceMaps || false,
   strict: true,
   target: node ? 'es2018' : 'es5',
   useDefineForClassFields: process.env.NODE_ENV === 'development',
 };
-const include = [];
+const include: string[] = [];
 
 if (react) {
   compilerOptions.jsx = 'react';
@@ -40,7 +43,9 @@ if (!context.args.referenceWorkspaces) {
   compilerOptions.outDir = `./${CJS_FOLDER}`;
 }
 
-module.exports = {
+const config: TypeScriptConfig = {
   compilerOptions,
   include,
 };
+
+export default config;

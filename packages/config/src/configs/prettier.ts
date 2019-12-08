@@ -1,8 +1,9 @@
-const { IGNORE_PATHS } = require('../constants');
+import { PrettierConfig } from '@beemo/driver-prettier';
+import { IGNORE_PATHS } from '../constants';
 
 // Package: Run in root
 // Workspaces: Run in root
-module.exports = {
+const config: PrettierConfig = {
   arrowParens: 'avoid',
   bracketSpacing: true,
   ignore: [...IGNORE_PATHS, 'book.json', 'lerna.json', 'package.json', 'tsconfig.json', '*.d.ts'],
@@ -15,3 +16,5 @@ module.exports = {
   trailingComma: 'all',
   useTabs: false,
 };
+
+export default config;
