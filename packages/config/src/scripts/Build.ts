@@ -3,11 +3,9 @@
 import execa from 'execa';
 import { Path, Script, ScriptContext } from '@beemo/core';
 
-export interface BuildContext extends ScriptContext {
-  workspaceArgs: string[];
-}
-
 export default class BuildScript extends Script {
+  workspaceArgs: string[] = [];
+
   args() {
     return {
       string: ['workspaces'],
@@ -28,11 +26,9 @@ export default class BuildScript extends Script {
     this.task('Generating TypeScript declarations', this.buildDeclarations);
   }
 
-  determineArgs(context: BuildContext) {
-    const ignorePackages = [];
+  determineArgs(context: ScriptContext) {
+    const ignorePackages: string[] = [];
     const args = ['--silent'];
-
-    context.workspaceArgs = [];
 
     if (!context.args.workspaces) {
       return;
@@ -48,28 +44,28 @@ export default class BuildScript extends Script {
 
     args.push(`--workspaces=${ignorePackages.length > 0 ? `!(${ignorePackages.join('|')})` : '*'}`);
 
-    context.workspaceArgs = args;
+    this.workspaceArgs = args;
   }
 
-  buildCjs(context: BuildContext) {
+  buildCjs(context: ScriptContext) {
     return this.handleResponse(
-      execa('beemo', ['babel', '--clean', ...context.workspaceArgs], { preferLocal: true }),
+      execa('beemo', ['babel', '--clean', ...this.workspaceArgs], { preferLocal: true }),
     );
   }
 
-  buildEsm(context: BuildContext) {
+  buildEsm(context: ScriptContext) {
     if (context.args.noEsm) {
       return Promise.resolve();
     }
 
     return this.handleResponse(
-      execa('beemo', ['babel', '--clean', '--esm', ...context.workspaceArgs], {
+      execa('beemo', ['babel', '--clean', '--esm', ...this.workspaceArgs], {
         preferLocal: true,
       }),
     );
   }
 
-  buildDeclarations(context: BuildContext) {
+  buildDeclarations(context: ScriptContext) {
     if (context.args.workspaces || context.args.referenceWorkspaces || context.args.noDts) {
       return Promise.resolve();
     }

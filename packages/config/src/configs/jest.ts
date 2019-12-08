@@ -10,10 +10,8 @@ const { react } = tool.config.settings as Settings;
 // @ts-ignore
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = Path.resolve('./tests/setup.ts');
-const snapshotSerializers = [];
-const setupFilesAfterEnv = [];
-const setupFiles = [];
-const roots = [];
+const setupFilesAfterEnv: string[] = [];
+const roots: string[] = [];
 
 if (workspacesEnabled) {
   tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
@@ -43,9 +41,7 @@ const config: JestConfig = {
     __DEV__: true,
   },
   roots,
-  setupFiles,
   setupFilesAfterEnv,
-  snapshotSerializers,
   testEnvironment: react ? 'jsdom' : 'node',
   testURL: 'http://localhost',
   timers: 'real',

@@ -1,6 +1,5 @@
 .vscode/
 node_modules/
-
 .eslintrc.js
 .eslintignore
 .prettierignore
@@ -10,8 +9,13 @@ tsconfig.eslint.json
 yarn-error.log
 babel.config.js
 jest.config.js
+*.tsbuildinfo
 
 # Symlinks
 packages/core/configs
 packages/core/scripts
 packages/core/templates
+
+# Ignore for local dev
+*.d.ts
+*.d.ts.map

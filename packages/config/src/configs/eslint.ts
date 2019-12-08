@@ -50,8 +50,8 @@ const config: ESLintConfig = {
   env: {
     browser: true,
   },
+  // @ts-ignore Fix upstream
   globals: {
-    // @ts-ignore Fix upstream
     __DEV__: 'readable',
   },
   settings: {

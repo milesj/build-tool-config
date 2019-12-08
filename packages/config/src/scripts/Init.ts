@@ -13,7 +13,7 @@ export interface InitArgs {
 
 export interface BeemoPackageConfig {
   beemo: Omit<BeemoConfig, 'settings'> & {
-    settings?: Settings;
+    settings: Settings;
   };
   types?: string;
   browserslist?: string[];
@@ -39,7 +39,9 @@ export default class InitScript extends Script<InitArgs> {
 
   execute(context: ScriptContext, args: InitArgs) {
     const packageConfig: PackageConfig & BeemoPackageConfig = {
-      beemo: {},
+      beemo: {
+        settings: {},
+      },
       ...this.tool.package,
       scripts: {},
     };
@@ -78,7 +80,7 @@ export default class InitScript extends Script<InitArgs> {
     });
 
     if (args.workspaces) {
-      if (!packageConfig.devDependencies.lerna) {
+      if (!packageConfig.devDependencies?.lerna) {
         throw new Error(`Lerna must be installed to use workspaces.`);
       }
 
@@ -105,7 +107,7 @@ export default class InitScript extends Script<InitArgs> {
     }
 
     if (args.node) {
-      packageConfig.scripts.build = packageConfig.scripts.type.replace('--noEmit', '').trim();
+      packageConfig.scripts!.build = packageConfig.scripts!.type.replace('--noEmit', '').trim();
       packageConfig.engines = { node: `>=${MIN_NODE_VERSION}` };
     } else {
       packageConfig.browserslist = [`ie ${MIN_IE_VERSION}`];

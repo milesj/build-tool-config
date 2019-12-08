@@ -19,7 +19,7 @@ export default class ConvertChangelogScript extends Script {
   }
 
   async convertChangelog(filePath: string): Promise<void> {
-    const data = [];
+    const data: string[] = [];
     let lastVersion = '0.0.0';
 
     (await fs.readFile(filePath, 'utf8'))
@@ -57,7 +57,7 @@ export default class ConvertChangelogScript extends Script {
     };
 
     return line.replace(/^# (\d+\.\d+\.\d+)/u, (match, version) => {
-      const diff = semver.diff(lastVersion, version);
+      const diff = semver.diff(lastVersion, version) as keyof typeof headerSize;
 
       cb(version);
 
