@@ -6,7 +6,6 @@ node_modules/
 .prettierignore
 prettier.config.js
 test.log
-tsconfig.json
 tsconfig.eslint.json
 yarn-error.log
 babel.config.js

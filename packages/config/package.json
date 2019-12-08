@@ -12,6 +12,7 @@
     "prettier",
     "typescript"
   ],
+  "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/milesj/build-tool-config.git"

@@ -1,11 +1,13 @@
 /* eslint-disable no-param-reassign */
 
-const fs = require('fs');
-const path = require('path');
-const execa = require('execa');
-const { Script } = require('@beemo/core');
+import execa from 'execa';
+import { Path, Script, ScriptContext } from '@beemo/core';
 
-module.exports = class BuildScript extends Script {
+export interface BuildContext extends ScriptContext {
+  workspaceArgs: string[];
+}
+
+export default class BuildScript extends Script {
   args() {
     return {
       string: ['workspaces'],
@@ -26,7 +28,7 @@ module.exports = class BuildScript extends Script {
     this.task('Generating TypeScript declarations', this.buildDeclarations);
   }
 
-  determineArgs(context) {
+  determineArgs(context: BuildContext) {
     const ignorePackages = [];
     const args = ['--silent'];
 
@@ -37,9 +39,9 @@ module.exports = class BuildScript extends Script {
     }
 
     this.tool.getWorkspacePackages().forEach(pkg => {
-      const srcPath = path.join(pkg.workspace.packagePath, 'src');
+      const srcPath = new Path(pkg.workspace.packagePath, 'src');
 
-      if (!fs.existsSync(srcPath)) {
+      if (!srcPath.exists()) {
         ignorePackages.push(pkg.name);
       }
     });
@@ -49,13 +51,13 @@ module.exports = class BuildScript extends Script {
     context.workspaceArgs = args;
   }
 
-  buildCjs(context) {
+  buildCjs(context: BuildContext) {
     return this.handleResponse(
       execa('beemo', ['babel', '--clean', ...context.workspaceArgs], { preferLocal: true }),
     );
   }
 
-  buildEsm(context) {
+  buildEsm(context: BuildContext) {
     if (context.args.noEsm) {
       return Promise.resolve();
     }
@@ -67,7 +69,7 @@ module.exports = class BuildScript extends Script {
     );
   }
 
-  buildDeclarations(context) {
+  buildDeclarations(context: BuildContext) {
     if (context.args.workspaces || context.args.referenceWorkspaces || context.args.noDts) {
       return Promise.resolve();
     }
@@ -79,7 +81,7 @@ module.exports = class BuildScript extends Script {
     );
   }
 
-  handleResponse(promise) {
+  handleResponse(promise: Promise<execa.ExecaReturnValue>): Promise<execa.ExecaReturnValue> {
     return promise
       .then(response => {
         const out = response.stdout.trim();
@@ -96,4 +98,4 @@ module.exports = class BuildScript extends Script {
         throw error;
       });
   }
-};
+}

@@ -1,9 +1,26 @@
-const { Script } = require('@beemo/core');
-const fs = require('fs-extra');
-const path = require('path');
-const { CJS_FOLDER, ESM_FOLDER, MIN_IE_VERSION, MIN_NODE_VERSION } = require('../constants');
+import fs from 'fs-extra';
+import { PackageConfig } from '@boost/core';
+import { Script, ScriptContext, BeemoConfig } from '@beemo/core';
+import { CJS_FOLDER, ESM_FOLDER, MIN_IE_VERSION, MIN_NODE_VERSION } from '../constants';
+import { Settings } from '../types';
 
-module.exports = class InitScript extends Script {
+export interface InitArgs {
+  local?: boolean;
+  node?: boolean;
+  react?: boolean;
+  workspaces?: boolean;
+}
+
+export interface BeemoPackageConfig {
+  beemo: Omit<BeemoConfig, 'settings'> & {
+    settings?: Settings;
+  };
+  types?: string;
+  browserslist?: string[];
+  workspaces?: string[];
+}
+
+export default class InitScript extends Script<InitArgs> {
   args() {
     return {
       boolean: ['local', 'node', 'react', 'workspaces'],
@@ -20,8 +37,9 @@ module.exports = class InitScript extends Script {
     return {};
   }
 
-  execute(context, args) {
-    const packageConfig = {
+  execute(context: ScriptContext, args: InitArgs) {
+    const packageConfig: PackageConfig & BeemoPackageConfig = {
+      beemo: {},
       ...this.tool.package,
       scripts: {},
     };
@@ -94,14 +112,14 @@ module.exports = class InitScript extends Script {
     }
 
     // Save files
-    const packagePath = path.join(this.tool.options.root, 'package.json');
-    const lernaPath = path.join(this.tool.options.root, 'lerna.json');
-    const promises = [fs.writeJSON(packagePath, packageConfig, { spaces: 2 })];
+    const packagePath = this.tool.rootPath.append('package.json');
+    const lernaPath = this.tool.rootPath.append('lerna.json');
+    const promises = [fs.writeJSON(packagePath.path(), packageConfig, { spaces: 2 })];
 
     if (args.workspaces) {
       promises.push(
         fs.writeJSON(
-          lernaPath,
+          lernaPath.path(),
           {
             version: 'independent',
             npmClient: 'yarn',
@@ -119,4 +137,4 @@ module.exports = class InitScript extends Script {
 
     return Promise.all(promises);
   }
-};
+}

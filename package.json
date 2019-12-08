@@ -3,7 +3,7 @@
   "name": "milesj-root",
   "scripts": {
     "prepare": "beemo create-config --silent",
-    "build": "beemo run-script build",
+    "build": "beemo typescript --build --reference-workspaces",
     "eslint": "beemo eslint ./packages/config",
     "jest": "beemo jest",
     "prettier": "beemo prettier \"./packages/config/{configs,dotfiles,scripts}/*.{js,json,md,yml,yaml}\"",
