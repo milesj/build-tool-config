@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-
 import fs from 'fs-extra';
 import Beemo, { Path, DriverContext } from '@beemo/core';
 import { EXTS, DIR_PATTERN, CJS_FOLDER, ESM_FOLDER } from './constants';

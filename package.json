@@ -6,12 +6,14 @@
     "build": "beemo typescript --build --reference-workspaces",
     "eslint": "beemo eslint ./packages/config",
     "jest": "beemo jest",
-    "prettier": "beemo prettier \"./packages/config/{configs,dotfiles,scripts}/*.{js,json,md,yml,yaml}\"",
-    "test": "yarn run eslint && yarn run jest",
+    "prettier": "beemo prettier \"./packages/config/src/{configs,scripts}/*.{ts,json,md,yml,yaml}\"",
+    "test": "yarn run build && yarn run eslint && yarn run jest",
     "prerelease": "yarn test",
     "release": "lerna publish"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@types/fs-extra": "^8.0.1",
+    "@types/semver": "^6.2.0",
     "lerna": "^3.19.0"
   },
   "workspaces": [
@@ -31,18 +33,12 @@
         "no-var": "off",
         "no-console": "off",
         "promise/always-return": "off",
+        "compat/compat": "off",
         "import/no-extraneous-dependencies": "off"
       }
     }
   },
-  "browserslist": [
-    "last 2 versions"
-  ],
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^8.0.1",
-    "@types/semver": "^6.2.0"
   }
 }

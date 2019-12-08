@@ -225,7 +225,7 @@ var config = {
             plugins: ['@typescript-eslint'],
             parserOptions: {
                 // @ts-ignore Fix upstream
-                project: project,
+                project: project.path(),
             },
             rules: {
                 camelcase: 'off',

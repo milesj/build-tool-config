@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-
 import execa from 'execa';
 import { Path, Script, ScriptContext } from '@beemo/core';
 
