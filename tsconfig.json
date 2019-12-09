@@ -1,28 +1,12 @@
 {
-  "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": false,
-    "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "dom",
-      "esnext"
-    ],
-    "module": "commonjs",
-    "noEmitOnError": true,
-    "noImplicitReturns": true,
-    "pretty": true,
-    "removeComments": false,
-    "sourceMap": false,
-    "strict": true,
-    "target": "es5",
-    "useDefineForClassFields": true,
-    "outDir": "./lib"
-  },
-  "include": [
-    "./src/**/*",
-    "./types/**/*"
+  "extends": "./tsconfig.options.json",
+  "files": [],
+  "references": [
+    {
+      "path": "packages/config"
+    },
+    {
+      "path": "packages/config/tests"
+    }
   ]
 }
