@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Symlink specific folders from the @milesj/build-tool-config package
-const links = ['configs', 'scripts', 'templates'];
+const links = ['lib', 'templates'];
 
 links.forEach(folder => {
   try {
