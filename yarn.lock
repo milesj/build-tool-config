@@ -837,10 +837,10 @@
     semver "^6.3.0"
     yargs "^15.0.2"
 
-"@beemo/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-1.1.0.tgz#11efbf0871870b2ff2914d0a2fe28c0d39037986"
-  integrity sha512-U6wj/IgEpIyBzjNrSjTIagyXFcvT0576PpCNTNSB4N0/PEuGBHJ+EsUp8QtEhX0aKf6xLuhLo8yKeNNCFuztMQ==
+"@beemo/core@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-1.1.1.tgz#8ff82bb248975eb752398b7ee53f263e2469af1c"
+  integrity sha512-26rXyW2Y0ipTtiVRNf5blHKQZe3DLYjNVEMUx99fFktr41w7ZzHJIPfrWZIj8/vc4wFJopkJOKrTKpw6KDmEkg==
   dependencies:
     "@beemo/dependency-graph" "^1.0.1"
     "@boost/common" "^1.6.0"
@@ -866,39 +866,39 @@
   resolved "https://registry.npmjs.org/@beemo/dependency-graph/-/dependency-graph-1.0.1.tgz#572b547a435a3b6e8d964c6caadef5e3d2a7284f"
   integrity sha512-ATco1JiZX+B+J5BdEmMGKPcnrjebOAV1TIe/r1VAydnGTSQLbmqt7H/QAG1+VfPlWB8k+bRBOAiw3HjTTleemg==
 
-"@beemo/driver-babel@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.1.0.tgz#166e9d43de5fb384f72b964311cfba2f62f19648"
-  integrity sha512-wFjVaPu6lxrT5zk50m3hpFUH2Y8FZGPndHRSykDehV99WzWVg8fI6Tz47pnhCzM7+uiEy9eePQxwE4LZUSw7Fg==
+"@beemo/driver-babel@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.2.0.tgz#a5808980789a3804f4c43dcc1d0ee3b399fd4632"
+  integrity sha512-YXDW/mbXqlS0Ba+6ECsCHThq5H8qDqY3l/wejYzhBaaVvMl+YE+ZZRhGNTGwZ9FBTgwUwfFmxXlsIMs1nX+s/w==
   dependencies:
     rimraf "^3.0.0"
 
-"@beemo/driver-eslint@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.1.0.tgz#cded33b9f8f2a57ca7958c18a3c1fdaafa79b86c"
-  integrity sha512-eJxLgbnxmyTc0S6fzXmU+0eUBNW174mgAyiBHGoWgV5ZJive5DonaZWBiMkFfoVrK21h/CBguWLBBpy6UNBsbA==
+"@beemo/driver-eslint@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.2.0.tgz#7db72744a815630710bd68b0d31add57d3a5dd1a"
+  integrity sha512-ZWxOVDi1tgmvnzunUob9r3u0kHfIIXcQbWZpvxhe+SwPUIAVVQS88r7kVlP0/l+jEfF3HP3x8CO25iXcxurEJA==
   dependencies:
     "@boost/event" "^1.1.1"
 
-"@beemo/driver-jest@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.1.0.tgz#c0a185b3478e23e324ee739cb1209492af5597eb"
-  integrity sha512-my2IVO3NlSYhccHBeBNqXmJkTFUTuHkIs8V3+a3zNuTwRJVC2XSZx1d0p3eymJKy0woic5tN1NP2EiadIL4Y4w==
+"@beemo/driver-jest@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.1.1.tgz#f199159839e6edceb77f40e20e3a021e2cb4c77b"
+  integrity sha512-xYto/0JzvgSeMRSghJS6+hcgXILmcLHbWBYmc7PU+VSLezZkjzSIP815FAP1KupSsunwTLhfDiSXP/kPDnJDcg==
   dependencies:
     "@jest/types" "^24.9.0"
 
-"@beemo/driver-prettier@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.1.0.tgz#cd68a60c0771113553315ceb1575a98e6ca75092"
-  integrity sha512-IYyitESZ+8c3hGb51lu8odhfTxVtM8OEJRquMpsgH4ShkgslK90QX7Mgy9Bq7YKUq4LspMkUKcQvvVv2wBDxvw==
+"@beemo/driver-prettier@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.2.0.tgz#54ce3d6aeb35992ec7ac94148bc6e07c4145aa9d"
+  integrity sha512-ZHVi5cIlw9ZCkGS4WbyfZ8+5s4Eq1rfv6FrfFXakP6m5QGsVf5C5ewngZXxSBc6TIEACZiv/r5y89XVEPt3T7w==
   dependencies:
     "@boost/event" "^1.1.1"
     "@types/prettier" "*"
 
-"@beemo/driver-typescript@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.2.0.tgz#866c4b303f3c3950757ffcec65982a4829fadbf5"
-  integrity sha512-31MToOwleCsXlOKjBqocmgJh75EZ4+nRPqHI2h1UI2XJdMcjsy0f45TtLYeh6fjW6x2KhdAO9bVRnDju6ZNABw==
+"@beemo/driver-typescript@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.3.0.tgz#523f41d295fb608c2cf9f64bfd83141749c74bc6"
+  integrity sha512-tVAaSussl6hvenqztAbl2rBe3ug7g6j8vSK7An1B0KYEPtrLxAXsh+GVmh3iMi3IDyFVcv1mffxAXVeIin0GQQ==
   dependencies:
     "@boost/event" "^1.1.1"
     rimraf "^3.0.0"

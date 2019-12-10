@@ -1,11 +1,15 @@
-import { BabelConfig } from '@beemo/driver-babel';
+import { BabelConfig, BabelDriverArgs } from '@beemo/driver-babel';
 import { MIN_IE_VERSION, MIN_NODE_VERSION } from '../constants';
-import { Settings, BeemoProcess } from '../types';
+import { BeemoProcess } from '../types';
+
+interface Args extends BabelDriverArgs {
+  esm?: boolean;
+}
 
 // Package: Run in root
 // Workspaces: Run in each package (using --config-file option)
-const { context, tool } = process.beemo as BeemoProcess;
-const { node, react } = tool.config.settings as Settings;
+const { context, tool } = (process.beemo as unknown) as BeemoProcess<Args>;
+const { node, react } = tool.config.settings;
 
 const plugins: BabelConfig['plugins'] = [
   '@babel/plugin-proposal-class-properties',

@@ -45,7 +45,7 @@ export default class BuildScript extends Script {
     this.workspaceArgs = args;
   }
 
-  buildCjs(context: ScriptContext) {
+  buildCjs() {
     return this.handleResponse(
       execa('beemo', ['babel', '--clean', ...this.workspaceArgs], { preferLocal: true }),
     );

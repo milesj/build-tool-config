@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = require("../constants");
+const constants_1 = require("../constants");
 // Package: Run in root
 // Workspaces: Run in each package (using --config-file option)
-var _a = process.beemo, context = _a.context, tool = _a.tool;
-var _b = tool.config.settings, node = _b.node, react = _b.react;
-var plugins = [
+const { context, tool } = process.beemo;
+const { node, react } = tool.config.settings;
+const plugins = [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-nullish-coalescing-operator',
@@ -14,7 +14,7 @@ var plugins = [
     ['babel-plugin-transform-dev', { evaluate: false }],
 ];
 // Order is important!
-var presets = [
+const presets = [
     [
         '@babel/preset-env',
         {
@@ -30,10 +30,10 @@ if (react) {
     presets.push('@babel/preset-react');
     plugins.push('babel-plugin-typescript-to-proptypes');
 }
-var config = {
+const config = {
     babelrc: false,
     comments: false,
-    plugins: plugins,
-    presets: presets,
+    plugins,
+    presets,
 };
 exports.default = config;

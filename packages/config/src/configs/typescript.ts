@@ -1,18 +1,23 @@
-import { TypeScriptConfig } from '@beemo/driver-typescript';
+import { TypeScriptConfig, TypeScriptDriverArgs } from '@beemo/driver-typescript';
 import { CJS_FOLDER } from '../constants';
-import { BeemoProcess, Settings } from '../types';
+import { BeemoProcess } from '../types';
+
+interface Args extends TypeScriptDriverArgs {
+  decorators?: boolean;
+  sourceMaps?: boolean;
+}
 
 // Package: Run in root
 // Workspaces: Run in each package (copied into each)
-const { context, tool } = process.beemo as BeemoProcess;
-const { node, react } = tool.config.settings as Settings;
+const { context, tool } = (process.beemo as unknown) as BeemoProcess<Args>;
+const { node, react } = tool.config.settings;
 
 const compilerOptions: TypeScriptConfig['compilerOptions'] = {
   allowJs: false,
   allowSyntheticDefaultImports: true,
   declaration: true,
   esModuleInterop: true,
-  experimentalDecorators: !!context.args.decorators || false,
+  experimentalDecorators: context.args.decorators || false,
   forceConsistentCasingInFileNames: true,
   lib: ['dom', 'esnext'],
   module: 'commonjs',
@@ -20,7 +25,7 @@ const compilerOptions: TypeScriptConfig['compilerOptions'] = {
   noImplicitReturns: true,
   pretty: true,
   removeComments: false,
-  sourceMap: !!context.args.sourceMaps || false,
+  sourceMap: context.args.sourceMaps || false,
   strict: true,
   target: node ? 'es2018' : 'es5',
   useDefineForClassFields: process.env.NODE_ENV === 'development',

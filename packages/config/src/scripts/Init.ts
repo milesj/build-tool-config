@@ -12,9 +12,7 @@ export interface InitArgs {
 }
 
 export interface BeemoPackageConfig {
-  beemo: Omit<BeemoConfig, 'settings'> & {
-    settings: Settings;
-  };
+  beemo: BeemoConfig<Settings>;
   types?: string;
   browserslist?: string[];
   workspaces?: string[];
@@ -38,10 +36,8 @@ export default class InitScript extends Script<InitArgs> {
   }
 
   execute(context: ScriptContext, args: InitArgs) {
+    // @ts-ignore
     const packageConfig: PackageConfig & BeemoPackageConfig = {
-      beemo: {
-        settings: {},
-      },
       ...this.tool.package,
       scripts: {},
     };

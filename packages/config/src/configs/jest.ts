@@ -1,12 +1,12 @@
 import { Path } from '@beemo/core';
 import { JestConfig } from '@beemo/driver-jest';
 import { IGNORE_PATHS } from '../constants';
-import { BeemoProcess, Settings } from '../types';
+import { BeemoProcess } from '../types';
 
 // Package: Run in root
 // Workspaces: Run in root
-const { tool } = process.beemo as BeemoProcess;
-const { react } = tool.config.settings as Settings;
+const { tool } = (process.beemo as unknown) as BeemoProcess;
+const { react } = tool.config.settings;
 // @ts-ignore
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = Path.resolve('./tests/setup.ts');

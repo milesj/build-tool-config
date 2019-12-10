@@ -28,6 +28,9 @@
       "prettier",
       "typescript"
     ],
+    "settings": {
+      "node": true
+    },
     "eslint": {
       "rules": {
         "no-var": "off",

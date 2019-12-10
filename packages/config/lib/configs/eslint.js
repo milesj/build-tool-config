@@ -1,35 +1,28 @@
 "use strict";
 /* eslint-disable no-magic-numbers, sort-keys */
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs_1 = __importDefault(require("fs"));
-var core_1 = require("@beemo/core");
-var constants_1 = require("../constants");
-var tool = process.beemo.tool;
-var node = tool.config.settings.node;
+const fs_1 = __importDefault(require("fs"));
+const core_1 = require("@beemo/core");
+const constants_1 = require("../constants");
+const { tool } = process.beemo;
+const { node } = tool.config.settings;
 // @ts-ignore
-var workspacesEnabled = !!tool.package.workspaces;
-var project;
+const workspacesEnabled = !!tool.package.workspaces;
+let project;
 // Lint crashes with an OOM error when using project references,
 // so just use a single file that globs everything.
 if (workspacesEnabled) {
     project = core_1.Path.resolve('tsconfig.eslint.json');
-    var include_1 = [];
-    tool.getWorkspacePaths({ relative: true }).forEach(function (wsPath) {
-        include_1.push(new core_1.Path(wsPath, 'src/**/*'), new core_1.Path(wsPath, 'tests/**/*'), new core_1.Path(wsPath, 'types/**/*'));
+    const include = [];
+    tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
+        include.push(new core_1.Path(wsPath, 'src/**/*'), new core_1.Path(wsPath, 'tests/**/*'), new core_1.Path(wsPath, 'types/**/*'));
     });
     fs_1.default.writeFileSync(project.path(), JSON.stringify({
         extends: './tsconfig.options.json',
-        include: include_1.map(function (i) { return i.path(); }),
+        include: include.map(i => i.path()),
     }), 'utf8');
 }
 else {
@@ -37,16 +30,15 @@ else {
 }
 // Package: Run in root
 // Workspaces: Run in root
-var config = {
+const config = {
     root: true,
     parser: '@typescript-eslint/parser',
     extends: ['airbnb', 'prettier', 'prettier/react', 'prettier/@typescript-eslint'],
     plugins: ['react-hooks', 'promise', 'unicorn', 'compat', 'babel'],
-    ignore: __spreadArrays(constants_1.IGNORE_PATHS, ['*.min.js', '*.map']),
+    ignore: [...constants_1.IGNORE_PATHS, '*.min.js', '*.map'],
     env: {
         browser: true,
     },
-    // @ts-ignore Fix upstream
     globals: {
         __DEV__: 'readable',
     },
@@ -224,7 +216,6 @@ var config = {
             files: ['*.ts', '*.tsx'],
             plugins: ['@typescript-eslint'],
             parserOptions: {
-                // @ts-ignore Fix upstream
                 project: project.path(),
             },
             rules: {
@@ -334,7 +325,7 @@ var config = {
             },
         },
         {
-            files: ["*.test." + constants_1.EXT_PATTERN],
+            files: [`*.test.${constants_1.EXT_PATTERN}`],
             plugins: ['jest'],
             env: {
                 jest: true,

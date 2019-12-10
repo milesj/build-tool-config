@@ -1,11 +1,8 @@
-import Beemo, { DriverContext } from '@beemo/core';
-
-export interface BeemoProcess<T = DriverContext> {
-  context: T;
-  tool: Beemo;
-}
+import { BeemoProcess as BaseProcess, DriverArgs, DriverContext } from '@beemo/core';
 
 export interface Settings {
   node?: boolean;
   react?: boolean;
 }
+
+export type BeemoProcess<Args = DriverArgs> = BaseProcess<DriverContext<Args>, Settings>;

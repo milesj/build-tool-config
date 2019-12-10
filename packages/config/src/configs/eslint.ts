@@ -4,10 +4,10 @@ import fs from 'fs';
 import { Path } from '@beemo/core';
 import { ESLintConfig } from '@beemo/driver-eslint';
 import { EXTS, EXT_PATTERN, IGNORE_PATHS } from '../constants';
-import { BeemoProcess, Settings } from '../types';
+import { BeemoProcess } from '../types';
 
-const { tool } = process.beemo as BeemoProcess;
-const { node } = tool.config.settings as Settings;
+const { tool } = (process.beemo as unknown) as BeemoProcess;
+const { node } = tool.config.settings;
 // @ts-ignore
 const workspacesEnabled = !!tool.package.workspaces;
 let project: Path;
@@ -50,7 +50,6 @@ const config: ESLintConfig = {
   env: {
     browser: true,
   },
-  // @ts-ignore Fix upstream
   globals: {
     __DEV__: 'readable',
   },
@@ -237,7 +236,6 @@ const config: ESLintConfig = {
       files: ['*.ts', '*.tsx'],
       plugins: ['@typescript-eslint'],
       parserOptions: {
-        // @ts-ignore Fix upstream
         project: project.path(),
       },
       rules: {
