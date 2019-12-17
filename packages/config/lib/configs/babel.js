@@ -4,8 +4,7 @@ const constants_1 = require("../constants");
 // Package: Run in root
 // Workspaces: Run in each package (using --config-file option)
 const { context, tool } = process.beemo;
-const { node, react } = tool.config.settings;
-const { decorators = false } = context.args;
+const { decorators = false, node = false, react = false } = tool.config.settings;
 const plugins = [
     ['@babel/plugin-proposal-class-properties', { loose: decorators }],
     '@babel/plugin-proposal-export-default-from',

@@ -4,13 +4,13 @@ const constants_1 = require("../constants");
 // Package: Run in root
 // Workspaces: Run in each package (copied into each)
 const { context, tool } = process.beemo;
-const { node, react } = tool.config.settings;
+const { decorators = false, node = false, react = false } = tool.config.settings;
 const compilerOptions = {
     allowJs: false,
     allowSyntheticDefaultImports: true,
     declaration: true,
     esModuleInterop: true,
-    experimentalDecorators: context.args.decorators || false,
+    experimentalDecorators: decorators,
     forceConsistentCasingInFileNames: true,
     lib: ['dom', 'esnext'],
     module: 'commonjs',

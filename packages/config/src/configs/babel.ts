@@ -9,8 +9,7 @@ interface Args extends BabelDriverArgs {
 // Package: Run in root
 // Workspaces: Run in each package (using --config-file option)
 const { context, tool } = (process.beemo as unknown) as BeemoProcess<Args>;
-const { node, react } = tool.config.settings;
-const { decorators = false } = context.args;
+const { decorators = false, node = false, react = false } = tool.config.settings;
 
 const plugins: BabelConfig['plugins'] = [
   ['@babel/plugin-proposal-class-properties', { loose: decorators }],
