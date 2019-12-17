@@ -10,15 +10,21 @@ interface Args extends BabelDriverArgs {
 // Workspaces: Run in each package (using --config-file option)
 const { context, tool } = (process.beemo as unknown) as BeemoProcess<Args>;
 const { node, react } = tool.config.settings;
+const { decorators = false } = context.args;
 
 const plugins: BabelConfig['plugins'] = [
-  '@babel/plugin-proposal-class-properties',
+  ['@babel/plugin-proposal-class-properties', { loose: decorators }],
   '@babel/plugin-proposal-export-default-from',
   '@babel/plugin-proposal-nullish-coalescing-operator',
   '@babel/plugin-proposal-optional-catch-binding',
   '@babel/plugin-proposal-optional-chaining',
   ['babel-plugin-transform-dev', { evaluate: false }],
 ];
+
+// Must be before class properties
+if (decorators) {
+  plugins.unshift(['@babel/plugin-proposal-decorators', { legacy: true }]);
+}
 
 // Order is important!
 const presets: BabelConfig['presets'] = [
