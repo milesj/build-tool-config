@@ -145,6 +145,7 @@ const config: ESLintConfig = {
     'unicorn/prefer-event-key': 'error',
     'unicorn/prefer-flat-map': 'error',
     'unicorn/prefer-includes': 'error',
+    'unicorn/prefer-modern-dom-apis': 'error',
     'unicorn/prefer-node-append': 'error',
     'unicorn/prefer-node-remove': 'error',
     'unicorn/prefer-starts-ends-with': 'error',
