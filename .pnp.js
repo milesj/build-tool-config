@@ -171,7 +171,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/fs-extra", "npm:8.0.1"],
             ["@types/semver", "npm:6.2.0"],
             ["@yarnpkg/pnpify", "virtual:9c4b7d1a29679dcf85403252a1a37c930c7af4f4c732ac362e2ce3338e3c67632f885bfc2ff482ec374b7fbc1a454564a9307db0270ca657b2fc6eb87a72bca2#npm:2.0.0-rc.16"],
-            ["lerna", "npm:3.20.2"]
+            ["eslint", "npm:6.8.0"],
+            ["lerna", "npm:3.20.2"],
+            ["prettier", "npm:1.19.1"],
+            ["typescript", "patch:typescript@npm%3A3.7.5#builtin<compat/typescript>::version=3.7.5&hash=226bd1"]
           ],
           "linkType": "SOFT"
         }]
@@ -3686,8 +3689,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@yarnpkg/fslib", "npm:2.0.0-rc.15"],
             ["comment-json", "npm:2.4.1"],
             ["cross-spawn", "npm:6.0.5"],
-            ["eslint", null],
-            ["typescript", null]
+            ["eslint", "npm:6.8.0"],
+            ["typescript", "patch:typescript@npm%3A3.7.5#builtin<compat/typescript>::version=3.7.5&hash=226bd1"]
           ],
           "packagePeers": [
             "eslint",
@@ -9538,7 +9541,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/fs-extra", "npm:8.0.1"],
             ["@types/semver", "npm:6.2.0"],
             ["@yarnpkg/pnpify", "virtual:9c4b7d1a29679dcf85403252a1a37c930c7af4f4c732ac362e2ce3338e3c67632f885bfc2ff482ec374b7fbc1a454564a9307db0270ca657b2fc6eb87a72bca2#npm:2.0.0-rc.16"],
-            ["lerna", "npm:3.20.2"]
+            ["eslint", "npm:6.8.0"],
+            ["lerna", "npm:3.20.2"],
+            ["prettier", "npm:1.19.1"],
+            ["typescript", "patch:typescript@npm%3A3.7.5#builtin<compat/typescript>::version=3.7.5&hash=226bd1"]
           ],
           "linkType": "SOFT"
         }]
