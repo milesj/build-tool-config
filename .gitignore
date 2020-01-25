@@ -1,4 +1,5 @@
 .vscode/
+.yarn/
 node_modules/
 .eslintrc.js
 .eslintignore
