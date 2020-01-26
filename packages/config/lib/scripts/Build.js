@@ -8,12 +8,7 @@ const core_1 = require("@beemo/core");
 class BuildScript extends core_1.Script {
     constructor() {
         super(...arguments);
-        Object.defineProperty(this, "workspaceArgs", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: []
-        });
+        this.workspaceArgs = [];
     }
     args() {
         return {

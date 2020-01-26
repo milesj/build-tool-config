@@ -17,8 +17,8 @@
     "removeComments": false,
     "sourceMap": false,
     "strict": true,
-    "target": "es2018",
-    "useDefineForClassFields": true,
+    "target": "es2016",
+    "useDefineForClassFields": false,
     "composite": true,
     "declarationMap": true
   }

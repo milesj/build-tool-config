@@ -24,10 +24,7 @@ class InitScript extends core_1.Script {
     execute(context, args) {
         var _a;
         // @ts-ignore
-        const packageConfig = {
-            ...this.tool.package,
-            scripts: {},
-        };
+        const packageConfig = Object.assign(Object.assign({}, this.tool.package), { scripts: {} });
         // Beemo
         Object.assign(packageConfig.beemo, {
             module: args.local ? '@local' : '@milesj/build-tools',

@@ -20,8 +20,8 @@ const compilerOptions = {
     removeComments: false,
     sourceMap: context.args.sourceMaps || false,
     strict: true,
-    target: node ? 'es2018' : 'es5',
-    useDefineForClassFields: process.env.NODE_ENV === 'development',
+    target: node ? 'es2016' : 'es5',
+    useDefineForClassFields: false,
 };
 const include = [];
 if (react) {
