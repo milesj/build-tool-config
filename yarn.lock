@@ -884,26 +884,26 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@beemo/cli@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-1.0.8.tgz#d20b6370c547c73568da927b7d7eb3d61f076f3a"
-  integrity sha512-uzPO/5q2/IF+oxtHMpADkSY+/uI9yi73AqkSFK3bsYVUKeF5ZMQ4sCq+6j0aJyS4aIbYLXCxMFNyXOTG+XxzLQ==
+"@beemo/cli@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.npmjs.org/@beemo/cli/-/cli-1.0.9.tgz#705dbb851c9b61832ce8a70323a6677b1da53d12"
+  integrity sha512-9TE3iOqpfgnhGZMpe4rs/ql8LoO8vI3VaJx2BM0AFftK5yxabW2t/0M3/Q2J6dsel2WlUQRZn+JMSguxWibSKg==
   dependencies:
     chalk "^3.0.0"
     semver "^6.3.0"
     yargs "^15.1.0"
 
-"@beemo/core@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-1.1.2.tgz#ac9310f135b2674a2fd0d880d4a2938eb1ac2362"
-  integrity sha512-h25MmOhgnplJVoeYm4PvPyfENNYF4IJCFT0KZ5hc4JCXEox/PE44cgURtc+gGilfSJk4w9667qwmQv2DjyQs5A==
+"@beemo/core@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-1.1.4.tgz#9c36dd5c25694f0003888ae11a2d74c55ae7f9eb"
+  integrity sha512-MjIXia7WP9b0g0GcDnu3y2Gqyo9Rjcg+MgZVLz7gZy6H5Bd490GKcpxn4KbHWQfb8y0nVg2XSE4Ig6dJCYCoZQ==
   dependencies:
-    "@beemo/dependency-graph" "^1.0.1"
-    "@boost/common" "^1.8.1"
-    "@boost/core" "^1.18.1"
-    "@boost/event" "^1.2.1"
-    "@types/micromatch" "^4.0.0"
-    "@types/yargs" "^15.0.1"
+    "@beemo/dependency-graph" "^1.1.0"
+    "@boost/common" "^1.8.2"
+    "@boost/core" "^1.18.2"
+    "@boost/event" "^1.3.0"
+    "@types/micromatch" "^4.0.1"
+    "@types/yargs" "^15.0.3"
     "@types/yargs-parser" "^15.0.0"
     chalk "^3.0.0"
     execa "^3.4.0"
@@ -913,77 +913,77 @@
     is-glob "^4.0.1"
     lodash "^4.17.15"
     micromatch "^4.0.2"
-    optimal "^4.1.1"
+    optimal "^4.2.0"
     yargs "^15.1.0"
-    yargs-parser "^16.1.0"
+    yargs-parser "^17.0.0"
 
-"@beemo/dependency-graph@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@beemo/dependency-graph/-/dependency-graph-1.0.1.tgz#572b547a435a3b6e8d964c6caadef5e3d2a7284f"
-  integrity sha512-ATco1JiZX+B+J5BdEmMGKPcnrjebOAV1TIe/r1VAydnGTSQLbmqt7H/QAG1+VfPlWB8k+bRBOAiw3HjTTleemg==
+"@beemo/dependency-graph@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@beemo/dependency-graph/-/dependency-graph-1.1.0.tgz#5f110fe8ed148acf589bc4fddc538b07f0a4d03f"
+  integrity sha512-xBPqNB99Q0icr7NgYZyxH9lmjo1UgzzozZM/gcDe1jYqKBFx2CZ4jkuOG3d7exjAN4jq/+QfWETAJrHnopdAaA==
 
-"@beemo/driver-babel@^1.2.1":
+"@beemo/driver-babel@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.2.2.tgz#3ad6c61197b81ebe85819db2465422623b557ae7"
+  integrity sha512-tFObzVoC4N7TT0qPhPgPdlNpBk3T0d/EyCqEAemQCNDkwEd+BQlhDnC8YQ/13ykEtKlrUIo3rpRFlijn8apKpA==
+  dependencies:
+    rimraf "^3.0.2"
+
+"@beemo/driver-eslint@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.2.2.tgz#c6ae690c713b8259525df988907c24ae96640f8e"
+  integrity sha512-ltV09kvhCKTI3lurkGxPrAeJZRxElGPzT9t/rpYU1B8QJqbcUOIhKWk7W+21lCHGov4Ez+L7+TOXTkUl80JIqA==
+  dependencies:
+    "@boost/event" "^1.3.0"
+
+"@beemo/driver-jest@^1.2.1":
   version "1.2.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.2.1.tgz#fb8217c7787b8371f57b199be1f7033cf736ff25"
-  integrity sha512-IaEb9jQRAIaepAH4+WPxCiPrESPKeG3kXWCWm11OiC+iKYyEJu8Wcy3sSRghhFiEARJBoSPJlzUAZ8zNjioEkA==
+  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.2.1.tgz#47b253fac5d390bc3dc0841ee96b26f250113744"
+  integrity sha512-5P6SSUQvydn1S0wnwMTfbuQPYdiWb702LPAwtDVUTwbh9T2oRGCDGl3Sr9FQspvR2Ky9mkyHrL89KULr+qHcZw==
   dependencies:
-    rimraf "^3.0.0"
+    "@jest/types" "^25.1.0"
 
-"@beemo/driver-eslint@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.2.1.tgz#05d3d70718fbccda27c79b7ce1a4d3e9b06cbcd8"
-  integrity sha512-AH2k9ueLONTwUVEYgfZqDJY7gx+z2CmEP5wfHzQguotPYdWjocqYLy96x897vpl9vkkZZABKu9RNxwz6O2+rdQ==
+"@beemo/driver-prettier@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.2.2.tgz#c922dba66f20075ecd7b7051486e43684a841268"
+  integrity sha512-LJbmxdD1fRTnUMj8Zm3QXeMOSexWDW2pN6VQe9/5Ntp6lfnV3zmffntEtuvFS0GXIm9xkiX669uUBHOicKnraA==
   dependencies:
-    "@boost/event" "^1.2.1"
-
-"@beemo/driver-jest@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.2.0.tgz#11927effdebe93f41426c7f12d6b4dd21fea91e9"
-  integrity sha512-SEdbSkZ5yYbrTK2uoOg0TQwvzdOv86d1sqlC84DYHxAs06w5tlB/TMbDvL8lMSgWnKMwcDPGCMd85ZFE/5sePQ==
-  dependencies:
-    "@jest/types" "^24.9.0"
-
-"@beemo/driver-prettier@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.2.1.tgz#f3c2e177ff170e567bffd952a06d25d57d895438"
-  integrity sha512-TQdNcLjgfudqUO9tgRBHSbcE0xxwws8dHAhe/zM6JaeOiaXU4tspeQLtq8u70rmfQiAHbXzQqyaG5Hc5hiZgGg==
-  dependencies:
-    "@boost/event" "^1.2.1"
+    "@boost/event" "^1.3.0"
     "@types/prettier" "*"
 
-"@beemo/driver-typescript@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.3.1.tgz#001fbff870461f33608d0d5a4f6672ed80b3f73a"
-  integrity sha512-gSJPefq+GhtgR/cfxLBHO7r2QVWiIDKlQ7e6nNx1+op99pVG4VeAMAlHnoe3PVx39o7ptxt+yikF43cUdrEeOA==
+"@beemo/driver-typescript@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.3.2.tgz#0c7b71e65e38b025a9b2e49a4b92f1de8b81352e"
+  integrity sha512-XBp0olTjSq7bMYyi6BNpLOLAAdCg92uvEJMWptJMcjpmuOlo7PkQinjhJMYR0DkEQqd6ynzLBktBgglh5z+BzQ==
   dependencies:
-    "@boost/event" "^1.2.1"
-    rimraf "^3.0.0"
+    "@boost/event" "^1.3.0"
+    rimraf "^3.0.2"
 
-"@boost/common@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.npmjs.org/@boost/common/-/common-1.8.1.tgz#23783012e3a091ff046f2a69cb7d7e580490a812"
-  integrity sha512-qblN1ZgFdllzH3PMghSb6aajGTvSgplRDu2yluEUMQ3aAq5MLQW8P1UGTBDRW6Xz54OLXg7jOpEWU0fPLZJVGA==
+"@boost/common@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.npmjs.org/@boost/common/-/common-1.8.2.tgz#affa8b0d1de8ee9e150ce3c3c53580c21bff9008"
+  integrity sha512-fdQILlK4ZQU/YOmBJWWPVeEPfPYc0mLL8DHskUIoyKg7H5eWi3gtwCaCdJq00l19OlMjNEU2qlHrQSQjhxlPzA==
   dependencies:
-    "@boost/internal" "^1.0.3"
+    "@boost/internal" "^1.1.0"
     js-yaml "^3.13.1"
     json5 "^2.1.1"
-    optimal "^4.1.1"
+    optimal "^4.2.0"
     pretty-ms "^5.1.0"
 
-"@boost/core@^1.18.1":
-  version "1.18.1"
-  resolved "https://registry.npmjs.org/@boost/core/-/core-1.18.1.tgz#605b2e9118435dc09561107e3622b6aedbfaf057"
-  integrity sha512-DOGt9qSmkhJe1i+YUGH6P9lxaP2THARf1WCtMNDpYlY4b7MK+Qt0I+oCMQzoM2ZjxsWeiwN/LgKixXy9VWO48w==
+"@boost/core@^1.18.2":
+  version "1.18.2"
+  resolved "https://registry.npmjs.org/@boost/core/-/core-1.18.2.tgz#3e1af5805b68d555803a2cd75571d83e8b5050a9"
+  integrity sha512-N5RH/SV56EJFFTEO4ht3gwGJZF0rs6xaAxYSxOH0Ki/+OGR4t1lxgv9cMAJ8HX+iiJI5jsp55alM0bZ0LInL2A==
   dependencies:
-    "@boost/common" "^1.8.1"
-    "@boost/debug" "^1.4.2"
-    "@boost/event" "^1.2.1"
-    "@boost/internal" "^1.0.3"
-    "@boost/log" "^1.1.10"
-    "@boost/terminal" "^1.0.1"
-    "@boost/translate" "^1.3.5"
+    "@boost/common" "^1.8.2"
+    "@boost/debug" "^1.4.3"
+    "@boost/event" "^1.3.0"
+    "@boost/internal" "^1.1.0"
+    "@boost/log" "^1.1.11"
+    "@boost/terminal" "^1.0.2"
+    "@boost/translate" "^1.3.6"
     "@types/debug" "^4.1.5"
-    "@types/yargs" "^15.0.1"
+    "@types/yargs" "^15.0.3"
     "@types/yargs-parser" "^15.0.0"
     debug "^4.1.1"
     env-ci "^4.5.1"
@@ -993,51 +993,51 @@
     fs-extra "^8.1.0"
     json5 "^2.1.1"
     lodash "^4.17.15"
-    optimal "^4.1.1"
+    optimal "^4.2.0"
     pluralize "^8.0.0"
     split "^1.0.1"
     yargs-parser "^16.1.0"
 
-"@boost/debug@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.npmjs.org/@boost/debug/-/debug-1.4.2.tgz#b5949d967e0386df9230711a47624c2610b9c8f5"
-  integrity sha512-vf+VCNUYMqk9jl4AqWj/X7CvJYfatcgYCZDfC9l8j62gYi4Snh+Wa/YHYE0zJh6Z1lF8ke+j1xgmI21ZKIh3Qw==
+"@boost/debug@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.npmjs.org/@boost/debug/-/debug-1.4.3.tgz#a7bbc390fc422dacbe35905f1d1698558b3222df"
+  integrity sha512-47pKSxGn2g32M4kgb/z6dGZ2J4i9Z/fAUTzkiGj49wtzY4x0NydQ8sqDR7AI28b4udcMTKlsMUULRSETljREeg==
   dependencies:
-    "@boost/common" "^1.8.1"
-    "@boost/internal" "^1.0.3"
+    "@boost/common" "^1.8.2"
+    "@boost/internal" "^1.1.0"
     "@types/debug" "^4.1.5"
     debug "^4.1.1"
     execa "^3.4.0"
     fast-glob "^3.1.1"
 
-"@boost/event@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/@boost/event/-/event-1.2.1.tgz#949f603f07a860d01dbbc297904f218930ab342c"
-  integrity sha512-/gfQHWApt0TKk7y+ESllwx4k1TLbxhHNNtSTaB5Z7CE26sGddrDzMFu4hpJKqquxRW4MhWlao5ZpNgacWkvJbA==
+"@boost/event@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/@boost/event/-/event-1.3.0.tgz#7bc989098aa6e2b819ed1904170056eb288396af"
+  integrity sha512-EszQ+bSw2lfobsE5pGEnFROXMcxqClXnJIohM/INO/8xjKvFeAVVpQKUEnYVbOcCWYVnwsJ7nBapXLA6Z6Zv7w==
   dependencies:
-    "@boost/internal" "^1.0.3"
+    "@boost/internal" "^1.1.0"
 
-"@boost/internal@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@boost/internal/-/internal-1.0.3.tgz#b2a1e66e68f829e06d3b1c1565e03bbe5e3ff602"
-  integrity sha512-xVUgtVO1V3+vLZc5EwQjg0uwj2zO1JASPiisfc74dKCu9Z47kgh/Dk+NSS/j+bZJvkno0so1s5jLkYFpmzFHyQ==
+"@boost/internal@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@boost/internal/-/internal-1.1.0.tgz#380107d83bbd4d38f4b020a2273d51ef1b73e0ae"
+  integrity sha512-dYrCHKqiuLz3u1p+ve1qoWGXOFDBqOlUgMV1is20GiTFxoJzaCJOdexDErC3hLQFCr3WsZ3IbKDb6cpFH6mD9Q==
   dependencies:
     chalk "^3.0.0"
     debug "^4.1.1"
 
-"@boost/log@^1.1.10":
-  version "1.1.10"
-  resolved "https://registry.npmjs.org/@boost/log/-/log-1.1.10.tgz#89c7a19b6a93f5ea065c10e696d4c6ea9e3e9fcd"
-  integrity sha512-prwAMyMUs/Pj8+OZa80RhEOfOzcG6SJYeNs8cCe+Rez4dq5ud2CAt3l5TSh6jxNRiukF9ecAKE3f22r2FgZ5Qw==
+"@boost/log@^1.1.11":
+  version "1.1.11"
+  resolved "https://registry.npmjs.org/@boost/log/-/log-1.1.11.tgz#dd6a3f4a619c1525bba4e1916ba935aa3c4cbc2a"
+  integrity sha512-H6WKemzndR4FypiTX3iTqKQwdtR2odM4BLRhpzm5moBgFdD9xP4/qFmBfPmkDctfbMKZTcX96lqBANRf6ZyzMQ==
   dependencies:
-    "@boost/internal" "^1.0.3"
-    "@boost/translate" "^1.3.5"
+    "@boost/internal" "^1.1.0"
+    "@boost/translate" "^1.3.6"
     chalk "^3.0.0"
 
-"@boost/terminal@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@boost/terminal/-/terminal-1.0.1.tgz#f376e7a4ad32310f2fbf43567a5422c9224b9e80"
-  integrity sha512-o6SrWqFCCmjsxq/XMVnrz8atxH9euYlEoZg/d0InRgOa649YEmF2lzFxhynWIo1PeX3mJA/ce2PEEGVrbId0gA==
+"@boost/terminal@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@boost/terminal/-/terminal-1.0.2.tgz#6bafc827282926f5fee8e4cf48caa353a886b478"
+  integrity sha512-FgTE+tUri38KY0ynKNq6FO2s1H69DOOPTVbikD86b5O+QYy5fG0CdnvhVal4ql72vYVtJCW74Jeg1S7IR3dsFg==
   dependencies:
     ansi-escapes "^4.3.0"
     ansi-regex "^5.0.0"
@@ -1048,17 +1048,17 @@
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
     supports-hyperlinks "^2.0.0"
-    term-size "^2.1.1"
+    term-size "^2.2.0"
     wrap-ansi "^6.2.0"
 
-"@boost/translate@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.npmjs.org/@boost/translate/-/translate-1.3.5.tgz#b8a328df92ab9dd34890409aa8483ab19440f42c"
-  integrity sha512-j9QtqGQFeo3JTEjudxbRrEB+xKg+L6hzdEGttcrTpzFjDlEOkXkZteJgRij9IEH7Y8nbLRaphV+jTZcFGBUr2A==
+"@boost/translate@^1.3.6":
+  version "1.3.6"
+  resolved "https://registry.npmjs.org/@boost/translate/-/translate-1.3.6.tgz#ff6c13b8ee94032e38dfdbfc30f1e2df80f7f7be"
+  integrity sha512-WX6JdC1XDuB/77JRoi0YoH52KxMH5c64TEv0pP0Xx08wQExPKiT+EdKgon4y5WNWOIengvrOjb0jlQwh5IAsjw==
   dependencies:
-    "@boost/common" "^1.8.1"
-    "@boost/internal" "^1.0.3"
-    i18next "^19.0.3"
+    "@boost/common" "^1.8.2"
+    "@boost/internal" "^1.1.0"
+    i18next "^19.1.0"
     os-locale "^4.0.0"
 
 "@cnakazawa/watch@^1.0.3":
@@ -1306,15 +1306,6 @@
     slash "^3.0.0"
     source-map "^0.6.1"
     write-file-atomic "^3.0.0"
-
-"@jest/types@^24.9.0":
-  version "24.9.0"
-  resolved "https://registry.npmjs.org/@jest/types/-/types-24.9.0.tgz#63cb26cb7500d069e5a389441a7c6ab5e909fc59"
-  integrity sha512-XKK7ze1apu5JWQ5eZjHITP66AX+QsLlbaJRBGYr8pNzwcAE2JVkwnf0yqjHTsDRcjR0mujy/NmZMXw5kl+kGBw==
-  dependencies:
-    "@types/istanbul-lib-coverage" "^2.0.0"
-    "@types/istanbul-reports" "^1.1.1"
-    "@types/yargs" "^13.0.0"
 
 "@jest/types@^25.1.0":
   version "25.1.0"
@@ -2228,10 +2219,10 @@
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.4.tgz#38fd73ddfd9b55abb1e1b2ed578cb55bd7b7d339"
   integrity sha512-8+KAKzEvSUdeo+kmqnKrqgeE+LcA0tjYWFY7RPProVYwnqDjukzO+3b6dLD56rYX5TdWejnEOLJYOIeh4CXKuA==
 
-"@types/micromatch@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/@types/micromatch/-/micromatch-4.0.0.tgz#c57e0b11518c930465ce923f44342e1bb4bef309"
-  integrity sha512-bavSCssCRRlbUI639WG0Y30AOowkI5CdxyyrC5eVbsb0BJIbgS5ROfwlwDYHsOmgS59iYlre9sstIA5wfVNKBA==
+"@types/micromatch@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/@types/micromatch/-/micromatch-4.0.1.tgz#9381449dd659fc3823fd2a4190ceacc985083bc7"
+  integrity sha512-my6fLBvpY70KattTNzYOK6KU1oR1+UCz9ug/JbcF5UrEmeCt9P7DV2t7L8+t18mMPINqGQCE4O8PLOPbI84gxw==
   dependencies:
     "@types/braces" "*"
 
@@ -2272,17 +2263,17 @@
   resolved "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-15.0.0.tgz#cb3f9f741869e20cce330ffbeb9271590483882d"
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
-"@types/yargs@^13.0.0":
-  version "13.0.6"
-  resolved "https://registry.npmjs.org/@types/yargs/-/yargs-13.0.6.tgz#6aed913a92c262c13b94d4bca8043237de202124"
-  integrity sha512-IkltIncDQWv6fcAvnHtJ6KtkmY/vtR3bViOaCzpj/A3yNhlfZAgxNe6AEQD1cQrkYD+YsKVo08DSxvNKEsD7BA==
-  dependencies:
-    "@types/yargs-parser" "*"
-
-"@types/yargs@^15.0.0", "@types/yargs@^15.0.1":
+"@types/yargs@^15.0.0":
   version "15.0.1"
   resolved "https://registry.npmjs.org/@types/yargs/-/yargs-15.0.1.tgz#9266a9d7be68cfcc982568211085a49a277f7c96"
   integrity sha512-sYlwNU7zYi6eZbMzFvG6eHD7VsEvFdoDtlD7eI1JTg7YNnuguzmiGsc6MPSq5l8n+h21AsNof0je+9sgOe4+dg==
+  dependencies:
+    "@types/yargs-parser" "*"
+
+"@types/yargs@^15.0.3":
+  version "15.0.4"
+  resolved "https://registry.npmjs.org/@types/yargs/-/yargs-15.0.4.tgz#7e5d0f8ca25e9d5849f2ea443cf7c402decd8299"
+  integrity sha512-9T1auFmbPZoxHz0enUFlUuKRy3it01R+hlggyVUMtnCTQRunsQYifnSGb8hET4Xo8yiC0o0r1paW3ud5+rbURg==
   dependencies:
     "@types/yargs-parser" "*"
 
@@ -4885,10 +4876,10 @@ hygen@^5.0.3:
     ts-jest "^24.1.0"
     yargs-parser "^13.0.0"
 
-i18next@^19.0.3:
-  version "19.0.3"
-  resolved "https://registry.npmjs.org/i18next/-/i18next-19.0.3.tgz#31fd3165762d9802e08a2a86932db4eff5c862e9"
-  integrity sha512-Ru4afr++b4cUApsIBifcMYyWG9Nx8wlFdq4DuOF+UuoPoQKfuh0iAVMekTjs6w1CZLUOVb5QZEuoYRLmu17EIA==
+i18next@^19.1.0:
+  version "19.3.2"
+  resolved "https://registry.npmjs.org/i18next/-/i18next-19.3.2.tgz#a17c3c8bb0dd2d8c4a8963429df99730275b3282"
+  integrity sha512-QDBQ8MqFWi4+L9OQjjZEKVyg9uSTy3NTU3Ri53QHe7nxtV+KD4PyLB8Kxu58gr6b9y5l8cU3mCiNHVeoxPMzAQ==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
@@ -6865,10 +6856,10 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-optimal@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/optimal/-/optimal-4.1.1.tgz#4592e51a90efd5fe5a9eb6890b2bcd1480223dfe"
-  integrity sha512-1lLxcK5oqrnod/ztzn5ZEm06WHOdn1kIDaojcy/xQpg4NYqrMSUKpUPzloCDyvCfFG39+JFRF3yRoHrkNawjJw==
+optimal@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.npmjs.org/optimal/-/optimal-4.2.0.tgz#a97d9a12cb543988f2e54b88416b77d9a811ed69"
+  integrity sha512-jKFdiBkhJCVMh6oXsGNVFv/huPeFTEdlBtSuwDBYYClFn6lwV0fdRwRhWtpazM1ZMuV+bNNRFMth9SMWvUk3uQ==
 
 optimist@^0.6.1:
   version "0.6.1"
@@ -7879,6 +7870,13 @@ rimraf@^3.0.0:
   dependencies:
     glob "^7.1.3"
 
+rimraf@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz#f1a5402ba6220ad52cc1282bac1ae3aa49fd061a"
+  integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
+  dependencies:
+    glob "^7.1.3"
+
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.npmjs.org/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
@@ -8529,10 +8527,10 @@ temp-write@^3.4.0:
     temp-dir "^1.0.0"
     uuid "^3.0.1"
 
-term-size@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/term-size/-/term-size-2.1.1.tgz#f81ec25854af91a480d2f9d0c77ffcb26594ed1a"
-  integrity sha512-UqvQSch04R+69g4RDhrslmGvGL3ucDRX/U+snYW0Mab4uCAyKSndUksaoqlJ81QKSpRnIsuOYQCbC2ZWx2896A==
+term-size@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/term-size/-/term-size-2.2.0.tgz#1f16adedfe9bdc18800e1776821734086fcc6753"
+  integrity sha512-a6sumDlzyHVJWb8+YofY4TW112G6p2FCPEAFk+59gIYHv3XHRhm9ltVQ9kli4hNWeQBwSpe8cRN25x0ROunMOw==
 
 terminal-link@^2.0.0:
   version "2.1.1"
@@ -9209,6 +9207,14 @@ yargs-parser@^16.1.0:
   version "16.1.0"
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-16.1.0.tgz#73747d53ae187e7b8dbe333f95714c76ea00ecf1"
   integrity sha512-H/V41UNZQPkUMIT5h5hiwg4QKIY1RPvoBV4XcjUbRM8Bk2oKqqyZ0DIEbTFZB0XjbtSPG8SAa/0DxCQmiRgzKg==
+  dependencies:
+    camelcase "^5.0.0"
+    decamelize "^1.2.0"
+
+yargs-parser@^17.0.0:
+  version "17.1.0"
+  resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-17.1.0.tgz#b95ff3201e98b89e86070f92bef636016a0b0766"
+  integrity sha512-67zLl4/kWtp9eyVuxX+fHZ2Ey4ySWh0awDJlk/EtT0vzspsXbzrFsh76WjYSP3L++zhSwHQRUE3MCBe754RuEg==
   dependencies:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
