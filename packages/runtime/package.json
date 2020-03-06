@@ -14,10 +14,13 @@
     "access": "public"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=10.10.0"
+  },
   "dependencies": {
-    "@babel/core": "^7.8.6",
+    "@babel/core": "^7.8.7",
     "@beemo/cli": "^1.0.9",
-    "@beemo/core": "^1.1.4",
+    "@beemo/core": "^1.1.5",
     "@beemo/driver-babel": "^1.2.2",
     "@beemo/driver-eslint": "^1.2.2",
     "@beemo/driver-jest": "^1.2.1",

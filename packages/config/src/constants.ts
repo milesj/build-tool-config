@@ -6,7 +6,7 @@ export const DIR_PATTERN = '{bin,src,tests}';
 
 export const MIN_IE_VERSION = 11;
 
-export const MIN_NODE_VERSION = '8.9.0';
+export const MIN_NODE_VERSION = '10.10.0';
 
 export const CJS_FOLDER = 'lib';
 

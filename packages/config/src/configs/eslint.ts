@@ -8,7 +8,6 @@ import { BeemoProcess } from '../types';
 
 const { tool } = (process.beemo as unknown) as BeemoProcess;
 const { node } = tool.config.settings;
-// @ts-ignore
 const workspacesEnabled = !!tool.package.workspaces;
 let project: Path;
 

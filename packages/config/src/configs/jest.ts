@@ -6,8 +6,6 @@ import { BeemoProcess } from '../types';
 // Package: Run in root
 // Workspaces: Run in root
 const { tool } = (process.beemo as unknown) as BeemoProcess;
-const { react } = tool.config.settings;
-// @ts-ignore
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = Path.resolve('./tests/setup.ts');
 const setupFilesAfterEnv: string[] = [];
@@ -42,7 +40,7 @@ const config: JestConfig = {
   },
   roots,
   setupFilesAfterEnv,
-  testEnvironment: react ? 'jsdom' : 'node',
+  testEnvironment: 'node',
   testURL: 'http://localhost',
   timers: 'real',
   verbose: false,

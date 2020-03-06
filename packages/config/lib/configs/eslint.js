@@ -9,7 +9,6 @@ const core_1 = require("@beemo/core");
 const constants_1 = require("../constants");
 const { tool } = process.beemo;
 const { node } = tool.config.settings;
-// @ts-ignore
 const workspacesEnabled = !!tool.package.workspaces;
 let project;
 // Lint crashes with an OOM error when using project references,

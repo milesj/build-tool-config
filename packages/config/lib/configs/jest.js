@@ -5,8 +5,6 @@ const constants_1 = require("../constants");
 // Package: Run in root
 // Workspaces: Run in root
 const { tool } = process.beemo;
-const { react } = tool.config.settings;
-// @ts-ignore
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = core_1.Path.resolve('./tests/setup.ts');
 const setupFilesAfterEnv = [];
@@ -39,7 +37,7 @@ const config = {
     },
     roots,
     setupFilesAfterEnv,
-    testEnvironment: react ? 'jsdom' : 'node',
+    testEnvironment: 'node',
     testURL: 'http://localhost',
     timers: 'real',
     verbose: false,
