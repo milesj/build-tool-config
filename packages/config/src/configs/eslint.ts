@@ -121,6 +121,7 @@ const config: ESLintConfig = {
     'react/jsx-sort-default-props': 'off', // Handled by sort-keys
 
     // UNICORN
+    'unicorn/better-regex': 'error',
     'unicorn/catch-error-name': 'error',
     'unicorn/custom-error-definition': 'error',
     'unicorn/error-message': 'error',
@@ -151,7 +152,6 @@ const config: ESLintConfig = {
     'unicorn/prefer-string-slice': 'error',
     'unicorn/prefer-text-content': 'error',
     'unicorn/prefer-type-error': 'error',
-    'unicorn/regex-shorthand': 'error',
     'unicorn/throw-new-error': 'error',
 
     // New and not in Airbnb

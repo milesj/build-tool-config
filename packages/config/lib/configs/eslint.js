@@ -104,6 +104,7 @@ const config = {
         'react/jsx-props-no-spreading': 'off',
         'react/jsx-sort-default-props': 'off',
         // UNICORN
+        'unicorn/better-regex': 'error',
         'unicorn/catch-error-name': 'error',
         'unicorn/custom-error-definition': 'error',
         'unicorn/error-message': 'error',
@@ -134,7 +135,6 @@ const config = {
         'unicorn/prefer-string-slice': 'error',
         'unicorn/prefer-text-content': 'error',
         'unicorn/prefer-type-error': 'error',
-        'unicorn/regex-shorthand': 'error',
         'unicorn/throw-new-error': 'error',
         // New and not in Airbnb
         'default-param-last': 'warn',
