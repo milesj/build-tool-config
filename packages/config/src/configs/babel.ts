@@ -33,7 +33,13 @@ const presets: BabelConfig['presets'] = [
       loose: true,
       modules: context.args.esm ? false : 'commonjs',
       shippedProposals: true,
-      targets: node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
+      targets:
+        // eslint-disable-next-line no-nested-ternary
+        process.env.NODE_ENV === 'test'
+          ? { node: 'current' }
+          : node
+          ? { node: MIN_NODE_VERSION }
+          : { ie: MIN_IE_VERSION },
     },
   ],
   '@babel/preset-typescript',

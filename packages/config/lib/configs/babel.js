@@ -25,7 +25,13 @@ const presets = [
             loose: true,
             modules: context.args.esm ? false : 'commonjs',
             shippedProposals: true,
-            targets: node ? { node: constants_1.MIN_NODE_VERSION } : { ie: constants_1.MIN_IE_VERSION },
+            targets: 
+            // eslint-disable-next-line no-nested-ternary
+            process.env.NODE_ENV === 'test'
+                ? { node: 'current' }
+                : node
+                    ? { node: constants_1.MIN_NODE_VERSION }
+                    : { ie: constants_1.MIN_IE_VERSION },
         },
     ],
     '@babel/preset-typescript',
