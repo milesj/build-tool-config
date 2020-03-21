@@ -18,7 +18,7 @@ if (workspacesEnabled) {
 
   const include: Path[] = [];
 
-  tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
+  tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
     include.push(
       new Path(wsPath, 'src/**/*'),
       new Path(wsPath, 'tests/**/*'),
@@ -30,7 +30,7 @@ if (workspacesEnabled) {
     project.path(),
     JSON.stringify({
       extends: './tsconfig.options.json',
-      include: include.map(i => i.path()),
+      include: include.map((i) => i.path()),
     }),
     'utf8',
   );

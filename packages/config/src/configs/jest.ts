@@ -12,7 +12,7 @@ const setupFilesAfterEnv: string[] = [];
 const roots: string[] = [];
 
 if (workspacesEnabled) {
-  tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
+  tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
     roots.push(`<rootDir>/${wsPath.replace('/*', '')}`);
   });
 } else {

@@ -32,7 +32,7 @@ export default class BuildScript extends Script {
       return;
     }
 
-    this.tool.getWorkspacePackages().forEach(pkg => {
+    this.tool.getWorkspacePackages().forEach((pkg) => {
       const srcPath = new Path(pkg.workspace.packagePath, 'src');
 
       if (!srcPath.exists()) {
@@ -77,7 +77,7 @@ export default class BuildScript extends Script {
 
   handleResponse(promise: Promise<execa.ExecaReturnValue>): Promise<execa.ExecaReturnValue> {
     return promise
-      .then(response => {
+      .then((response) => {
         const out = response.stdout.trim();
 
         if (out) {
@@ -86,7 +86,7 @@ export default class BuildScript extends Script {
 
         return response;
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error.message);
 
         throw error;

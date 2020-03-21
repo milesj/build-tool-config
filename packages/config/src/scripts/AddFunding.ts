@@ -20,8 +20,8 @@ export default class AddFundingScript extends Script {
       absolute: true,
       cwd: context.cwd.path(),
       ignore: ['**/node_modules'],
-    }).then(pkgPaths =>
-      pkgPaths.map(pkgPath => {
+    }).then((pkgPaths) =>
+      pkgPaths.map((pkgPath) => {
         const pkg = fs.readJsonSync(pkgPath);
 
         if (!pkg.private) {

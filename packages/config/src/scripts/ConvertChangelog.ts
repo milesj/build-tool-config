@@ -15,7 +15,7 @@ export default class ConvertChangelogScript extends Script {
       ignore: ['node_modules'],
     });
 
-    return Promise.all(files.map(filePath => this.convertChangelog(filePath)));
+    return Promise.all(files.map((filePath) => this.convertChangelog(filePath)));
   }
 
   async convertChangelog(filePath: string): Promise<void> {
@@ -25,7 +25,7 @@ export default class ConvertChangelogScript extends Script {
     (await fs.readFile(filePath, 'utf8'))
       .split('\n')
       .reverse()
-      .forEach(line => {
+      .forEach((line) => {
         if (line === '#### 🚀 New') {
           data.push('#### 🚀 Updates');
         } else if (line === '#### 🐞 Fix' || line === '#### 🐞 Fixed') {
@@ -35,7 +35,7 @@ export default class ConvertChangelogScript extends Script {
         } else {
           data.push(
             this.updateTimestamp(
-              this.updateVersionHeader(line, lastVersion, nextVersion => {
+              this.updateVersionHeader(line, lastVersion, (nextVersion) => {
                 lastVersion = nextVersion;
               }),
             ),
