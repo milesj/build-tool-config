@@ -33,7 +33,7 @@ const config = {
     root: true,
     parser: '@typescript-eslint/parser',
     extends: ['airbnb', 'prettier', 'prettier/react', 'prettier/@typescript-eslint'],
-    plugins: ['react-hooks', 'promise', 'unicorn', 'compat', 'babel'],
+    plugins: ['react-hooks', 'promise', 'unicorn', 'compat', 'babel', 'security', 'node'],
     ignore: [...constants_1.IGNORE_PATHS, '*.min.js', '*.map'],
     env: {
         browser: true,
@@ -369,4 +369,33 @@ const config = {
         },
     ],
 };
+if (node) {
+    const tryExtensions = ['.ts', '.tsx', '.js', '.jsx', '.json', '.node'];
+    Object.assign(config.rules, {
+        // NODE
+        'node/no-callback-literal': 'error',
+        'node/no-deprecated-api': 'error',
+        'node/no-exports-assign': 'error',
+        'node/no-missing-import': ['error', { tryExtensions }],
+        'node/no-missing-require': ['error', { tryExtensions }],
+        'node/no-unpublished-bin': 'error',
+        'node/no-unsupported-features/node-builtins': 'error',
+        'node/prefer-global/buffer': 'error',
+        'node/prefer-global/console': 'error',
+        'node/prefer-global/process': 'error',
+        'node/prefer-promises/dns': 'off',
+        'node/prefer-promises/fs': 'off',
+        'node/process-exit-as-throw': 'error',
+        'node/shebang': 'error',
+        // SECURITY
+        'security/detect-buffer-noassert': 'error',
+        'security/detect-child-process': 'error',
+        'security/detect-disable-mustache-escape': 'error',
+        'security/detect-eval-with-expression': 'error',
+        'security/detect-non-literal-regexp': 'error',
+        'security/detect-possible-timing-attacks': 'error',
+        'security/detect-pseudoRandomBytes': 'error',
+        'security/detect-unsafe-regex': 'error',
+    });
+}
 exports.default = config;
