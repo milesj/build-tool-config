@@ -4,8 +4,9 @@ const constants_1 = require("../constants");
 // Package: Run in root
 // Workspaces: Run in root
 const config = {
-    arrowParens: 'avoid',
+    arrowParens: 'always',
     bracketSpacing: true,
+    endOfLine: 'lf',
     ignore: [...constants_1.IGNORE_PATHS, 'book.json', 'lerna.json', 'package.json', 'tsconfig.json', '*.d.ts'],
     jsxBracketSameLine: false,
     printWidth: 100,
