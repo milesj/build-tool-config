@@ -33,7 +33,7 @@ class BuildScript extends core_1.Script {
         if (!context.args.workspaces) {
             return;
         }
-        this.tool.getWorkspacePackages().forEach(pkg => {
+        this.tool.getWorkspacePackages().forEach((pkg) => {
             const srcPath = new core_1.Path(pkg.workspace.packagePath, 'src');
             if (!srcPath.exists()) {
                 ignorePackages.push(pkg.name);
@@ -63,14 +63,14 @@ class BuildScript extends core_1.Script {
     }
     handleResponse(promise) {
         return promise
-            .then(response => {
+            .then((response) => {
             const out = response.stdout.trim();
             if (out) {
                 console.log(out);
             }
             return response;
         })
-            .catch(error => {
+            .catch((error) => {
             console.error(error.message);
             throw error;
         });

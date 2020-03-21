@@ -16,12 +16,12 @@ let project;
 if (workspacesEnabled) {
     project = core_1.Path.resolve('tsconfig.eslint.json');
     const include = [];
-    tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
+    tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
         include.push(new core_1.Path(wsPath, 'src/**/*'), new core_1.Path(wsPath, 'tests/**/*'), new core_1.Path(wsPath, 'types/**/*'));
     });
     fs_1.default.writeFileSync(project.path(), JSON.stringify({
         extends: './tsconfig.options.json',
-        include: include.map(i => i.path()),
+        include: include.map((i) => i.path()),
     }), 'utf8');
 }
 else {

@@ -17,7 +17,7 @@ class ConvertChangelogScript extends core_1.Script {
             cwd: context.cwd.path(),
             ignore: ['node_modules'],
         });
-        return Promise.all(files.map(filePath => this.convertChangelog(filePath)));
+        return Promise.all(files.map((filePath) => this.convertChangelog(filePath)));
     }
     async convertChangelog(filePath) {
         const data = [];
@@ -25,7 +25,7 @@ class ConvertChangelogScript extends core_1.Script {
         (await fs_extra_1.default.readFile(filePath, 'utf8'))
             .split('\n')
             .reverse()
-            .forEach(line => {
+            .forEach((line) => {
             if (line === '#### 🚀 New') {
                 data.push('#### 🚀 Updates');
             }
@@ -36,7 +36,7 @@ class ConvertChangelogScript extends core_1.Script {
                 data.push('#### 🛠 Internals');
             }
             else {
-                data.push(this.updateTimestamp(this.updateVersionHeader(line, lastVersion, nextVersion => {
+                data.push(this.updateTimestamp(this.updateVersionHeader(line, lastVersion, (nextVersion) => {
                     lastVersion = nextVersion;
                 })));
             }

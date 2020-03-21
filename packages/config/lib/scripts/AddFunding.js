@@ -21,7 +21,7 @@ class AddFundingScript extends core_1.Script {
             absolute: true,
             cwd: context.cwd.path(),
             ignore: ['**/node_modules'],
-        }).then(pkgPaths => pkgPaths.map(pkgPath => {
+        }).then((pkgPaths) => pkgPaths.map((pkgPath) => {
             const pkg = fs_extra_1.default.readJsonSync(pkgPath);
             if (!pkg.private) {
                 pkg.funding = {

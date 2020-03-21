@@ -10,7 +10,7 @@ const setupFilePath = core_1.Path.resolve('./tests/setup.ts');
 const setupFilesAfterEnv = [];
 const roots = [];
 if (workspacesEnabled) {
-    tool.getWorkspacePaths({ relative: true }).forEach(wsPath => {
+    tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
         roots.push(`<rootDir>/${wsPath.replace('/*', '')}`);
     });
 }
