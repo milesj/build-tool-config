@@ -56,7 +56,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^17.2.0",
     "execa": "^4.0.0",
@@ -67,9 +67,9 @@
     "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-test-renderer": "^16.13.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1"
   },
   "funding": {
     "type": "ko-fi",
