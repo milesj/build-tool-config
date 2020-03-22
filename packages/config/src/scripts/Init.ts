@@ -62,7 +62,7 @@ export default class InitScript extends Script<InitArgs> {
       prepare: 'beemo create-config --silent',
       build: 'beemo run-script build',
       coverage: 'yarn run jest --coverage',
-      eslint: 'beemo eslint',
+      lint: 'beemo eslint',
       jest: 'beemo jest',
       prettier: 'beemo prettier',
       release: 'npx np --yolo --no-yarn',
@@ -102,9 +102,10 @@ export default class InitScript extends Script<InitArgs> {
       packageConfig.sideEffects = false;
     }
 
+    packageConfig.engines = { node: `>=${MIN_NODE_VERSION}` };
+
     if (args.node) {
       packageConfig.scripts!.build = packageConfig.scripts!.type.replace('--noEmit', '').trim();
-      packageConfig.engines = { node: `>=${MIN_NODE_VERSION}` };
     } else {
       packageConfig.browserslist = [`ie ${MIN_IE_VERSION}`];
     }
@@ -124,7 +125,7 @@ export default class InitScript extends Script<InitArgs> {
             useWorkspaces: true,
             command: {
               publish: {
-                ignoreChanges: ['*.md'],
+                ignoreChanges: ['*.md', '*.test.ts', '*.test.tsx'],
               },
             },
           },

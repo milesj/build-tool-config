@@ -2,7 +2,7 @@ export const EXTS = ['.ts', '.tsx', '.js', '.jsx', '.json'];
 
 export const EXT_PATTERN = '{ts,tsx,js,jsx}';
 
-export const DIR_PATTERN = '{bin,src,tests}';
+export const DIR_PATTERN = '{bin,scripts,src,tests}';
 
 export const MIN_IE_VERSION = 11;
 

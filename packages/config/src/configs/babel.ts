@@ -38,7 +38,7 @@ const presets: BabelConfig['presets'] = [
         process.env.NODE_ENV === 'test'
           ? { node: 'current' }
           : node
-          ? { node: MIN_NODE_VERSION }
+          ? { node: tool.package?.engines?.node?.replace('>=', '') || MIN_NODE_VERSION }
           : { ie: MIN_IE_VERSION },
     },
   ],
