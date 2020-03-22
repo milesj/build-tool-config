@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EXTS = ['.ts', '.tsx', '.js', '.jsx', '.json'];
 exports.EXT_PATTERN = '{ts,tsx,js,jsx}';
-exports.DIR_PATTERN = '{bin,src,tests}';
+exports.DIR_PATTERN = '{bin,scripts,src,tests}';
 exports.MIN_IE_VERSION = 11;
 exports.MIN_NODE_VERSION = '10.10.0';
 exports.CJS_FOLDER = 'lib';
