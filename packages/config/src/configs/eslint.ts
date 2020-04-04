@@ -148,6 +148,7 @@ const config: ESLintConfig = {
     'unicorn/prefer-modern-dom-apis': 'error',
     'unicorn/prefer-node-append': 'error',
     'unicorn/prefer-node-remove': 'error',
+    'unicorn/prefer-number-properties': 'error',
     'unicorn/prefer-starts-ends-with': 'error',
     'unicorn/prefer-string-slice': 'error',
     'unicorn/prefer-text-content': 'error',
