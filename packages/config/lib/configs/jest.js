@@ -2,35 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@beemo/core");
 const constants_1 = require("../constants");
-const colors = [
-    'gray',
-    'blackBright',
-    'magenta',
-    'magentaBright',
-    'cyan',
-    'cyanBright',
-    'yellow',
-    'yellowBright',
-    'blue',
-    'blueBright',
-];
 // Package: Run in root
 // Workspaces: Run in root
 const { tool } = process.beemo;
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = core_1.Path.resolve('./tests/setup.ts');
 const setupFilesAfterEnv = [];
-const projects = [];
+const roots = [];
 if (workspacesEnabled) {
-    tool.getWorkspacePackages().forEach(({ workspace }) => {
-        projects.push({
-            displayName: {
-                color: colors[Math.floor(Math.random() * colors.length)],
-                name: workspace.packageName.toUpperCase(),
-            },
-            rootDir: `<rootDir>${workspace.packagePath.replace(process.cwd(), '')}`,
-        });
+    tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
+        roots.push(`<rootDir>/${wsPath.replace('/*', '')}`);
     });
+}
+else {
+    roots.push('<rootDir>');
 }
 if (setupFilePath.exists()) {
     setupFilesAfterEnv.push(setupFilePath.path());
@@ -50,7 +35,7 @@ const config = {
     globals: {
         __DEV__: true,
     },
-    projects,
+    roots,
     setupFilesAfterEnv,
     testEnvironment: 'node',
     testURL: 'http://localhost',
