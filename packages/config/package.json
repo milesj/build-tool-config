@@ -63,7 +63,7 @@
     "fast-glob": "^3.2.2",
     "fs-extra": "^9.0.0",
     "jest": "^25.2.7",
-    "prettier": "^2.0.1",
+    "prettier": "^2.0.2",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
