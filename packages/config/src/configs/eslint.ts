@@ -264,6 +264,7 @@ const config: ESLintConfig = {
         '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
         '@typescript-eslint/member-delimiter-style': 'error',
         '@typescript-eslint/member-ordering': 'error',
+        '@typescript-eslint/method-signature-style': 'error',
         '@typescript-eslint/no-array-constructor': 'error',
         '@typescript-eslint/no-empty-interface': 'error',
         '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
@@ -279,6 +280,7 @@ const config: ESLintConfig = {
         '@typescript-eslint/no-namespace': 'error',
         '@typescript-eslint/no-parameter-properties': 'error',
         '@typescript-eslint/no-unnecessary-qualifier': 'error',
+        '@typescript-eslint/no-unsafe-assignment': 'error',
         '@typescript-eslint/no-unused-vars': [
           'error',
           { vars: 'all', args: 'none', ignoreRestSiblings: true },
@@ -287,6 +289,8 @@ const config: ESLintConfig = {
         '@typescript-eslint/no-var-requires': 'off', // No Babel support
         '@typescript-eslint/prefer-namespace-keyword': 'error',
         '@typescript-eslint/prefer-readonly': 'off', // Annoying with handlers
+        '@typescript-eslint/prefer-reduce-type-parameter': 'error',
+        '@typescript-eslint/prefer-ts-expect-error': 'off', // ENABLE in 3.9
         '@typescript-eslint/require-await': 'warn',
         '@typescript-eslint/triple-slash-reference': 'error',
         '@typescript-eslint/unified-signatures': 'error',

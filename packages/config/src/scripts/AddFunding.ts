@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
 import glob from 'fast-glob';
+import { PackageConfig } from '@boost/core';
 import { Script, ScriptContext } from '@beemo/core';
 
 export default class AddFundingScript extends Script {
@@ -22,7 +23,7 @@ export default class AddFundingScript extends Script {
       ignore: ['**/node_modules'],
     }).then((pkgPaths) =>
       pkgPaths.map((pkgPath) => {
-        const pkg = fs.readJsonSync(pkgPath);
+        const pkg = fs.readJsonSync(pkgPath) as PackageConfig & { funding?: object };
 
         if (!pkg.private) {
           pkg.funding = {
