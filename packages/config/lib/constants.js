@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.IGNORE_PATHS = exports.ESM_FOLDER = exports.CJS_FOLDER = exports.MIN_NODE_VERSION = exports.MIN_IE_VERSION = exports.DIR_PATTERN = exports.EXT_PATTERN = exports.EXTS = void 0;
 exports.EXTS = ['.ts', '.tsx', '.js', '.jsx', '.json'];
 exports.EXT_PATTERN = '{ts,tsx,js,jsx}';
 exports.DIR_PATTERN = '{bin,scripts,src,tests}';
