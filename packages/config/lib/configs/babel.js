@@ -1,4 +1,5 @@
 "use strict";
+var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", { value: true });
 const constants_1 = require("../constants");
 // Package: Run in root
@@ -30,7 +31,7 @@ const presets = [
             process.env.NODE_ENV === 'test'
                 ? { node: 'current' }
                 : node
-                    ? { node: constants_1.MIN_NODE_VERSION }
+                    ? { node: ((_c = (_b = (_a = tool.package) === null || _a === void 0 ? void 0 : _a.engines) === null || _b === void 0 ? void 0 : _b.node) === null || _c === void 0 ? void 0 : _c.replace('>=', '')) || constants_1.MIN_NODE_VERSION }
                     : { ie: constants_1.MIN_IE_VERSION },
         },
     ],
