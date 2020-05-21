@@ -23,7 +23,7 @@ class InitScript extends core_1.Script {
     }
     execute(context, args) {
         var _a;
-        // @ts-ignore
+        // @ts-expect-error
         const packageConfig = {
             ...this.tool.package,
             scripts: {},

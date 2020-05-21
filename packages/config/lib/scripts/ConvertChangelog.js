@@ -41,7 +41,7 @@ class ConvertChangelogScript extends core_1.Script {
                 })));
             }
         });
-        fs_extra_1.default.writeFile(filePath, data.reverse().join('\n'), 'utf8');
+        await fs_extra_1.default.writeFile(filePath, data.reverse().join('\n'), 'utf8');
     }
     updateVersionHeader(line, lastVersion, cb) {
         const headerSize = {

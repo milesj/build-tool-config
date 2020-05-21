@@ -43,7 +43,7 @@ export default class ConvertChangelogScript extends Script {
         }
       });
 
-    fs.writeFile(filePath, data.reverse().join('\n'), 'utf8');
+    await fs.writeFile(filePath, data.reverse().join('\n'), 'utf8');
   }
 
   updateVersionHeader(line: string, lastVersion: string, cb: (version: string) => void): string {

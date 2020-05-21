@@ -50,6 +50,7 @@ const config: ESLintConfig = {
     browser: true,
   },
   globals: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     __DEV__: 'readable',
   },
   settings: {
@@ -177,6 +178,7 @@ const config: ESLintConfig = {
         max: 50,
         skipBlankLines: true,
         skipComments: true,
+        // eslint-disable-next-line @typescript-eslint/naming-convention
         IIFEs: true,
       },
     ],
@@ -252,8 +254,6 @@ const config: ESLintConfig = {
         'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx'] }],
         '@typescript-eslint/adjacent-overload-signatures': 'error',
         '@typescript-eslint/array-type': ['error', { default: 'array' }],
-        '@typescript-eslint/camelcase': 'error',
-        '@typescript-eslint/class-name-casing': 'error',
         '@typescript-eslint/consistent-type-assertions': [
           'error',
           {
@@ -265,9 +265,24 @@ const config: ESLintConfig = {
         '@typescript-eslint/member-delimiter-style': 'error',
         '@typescript-eslint/member-ordering': 'error',
         '@typescript-eslint/method-signature-style': 'error',
+        '@typescript-eslint/naming-convention': [
+          'error',
+          { selector: 'variableLike', format: ['camelCase'] },
+          { selector: 'memberLike', format: ['camelCase'] },
+          { selector: 'typeLike', format: ['PascalCase'] },
+          {
+            selector: 'variable',
+            format: ['camelCase', 'UPPER_CASE'],
+            leadingUnderscore: 'allow',
+            trailingUnderscore: 'allow',
+          },
+          { selector: 'property', format: ['camelCase', 'UPPER_CASE'] },
+          { selector: 'enumMember', format: ['camelCase', 'UPPER_CASE'] },
+        ],
         '@typescript-eslint/no-array-constructor': 'error',
         '@typescript-eslint/no-empty-interface': 'error',
         '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
+        '@typescript-eslint/no-floating-promises': ['error', { ignoreVoid: true }],
         '@typescript-eslint/no-inferrable-types': [
           'error',
           {
@@ -279,6 +294,10 @@ const config: ESLintConfig = {
         '@typescript-eslint/no-misused-promises': 'error',
         '@typescript-eslint/no-namespace': 'error',
         '@typescript-eslint/no-parameter-properties': 'error',
+        '@typescript-eslint/no-unnecessary-condition': [
+          'error',
+          { allowConstantLoopConditions: true },
+        ],
         '@typescript-eslint/no-unnecessary-qualifier': 'error',
         '@typescript-eslint/no-unsafe-assignment': 'error',
         '@typescript-eslint/no-unused-vars': [
@@ -288,9 +307,10 @@ const config: ESLintConfig = {
         '@typescript-eslint/no-use-before-define': 'error',
         '@typescript-eslint/no-var-requires': 'off', // No Babel support
         '@typescript-eslint/prefer-namespace-keyword': 'error',
+        '@typescript-eslint/prefer-optional-chain': 'error',
         '@typescript-eslint/prefer-readonly': 'off', // Annoying with handlers
         '@typescript-eslint/prefer-reduce-type-parameter': 'error',
-        '@typescript-eslint/prefer-ts-expect-error': 'off', // ENABLE in 3.9
+        '@typescript-eslint/prefer-ts-expect-error': 'error',
         '@typescript-eslint/require-await': 'warn',
         '@typescript-eslint/triple-slash-reference': 'error',
         '@typescript-eslint/unified-signatures': 'error',
