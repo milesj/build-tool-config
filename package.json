@@ -13,9 +13,9 @@
     "release": "lerna publish"
   },
   "devDependencies": {
-    "@types/fs-extra": "^8.1.0",
-    "@types/semver": "^7.1.0",
-    "lerna": "^3.20.2"
+    "@types/fs-extra": "^9.0.1",
+    "@types/semver": "^7.2.0",
+    "lerna": "^3.21.0"
   },
   "workspaces": [
     "packages/*"
