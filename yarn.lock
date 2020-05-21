@@ -955,17 +955,17 @@
     semver "^6.3.0"
     yargs "^15.3.1"
 
-"@beemo/core@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.npmjs.org/@beemo/core/-/core-1.1.7.tgz#e5e080d8fc39fbe5f7f10a0849c99a1a58b4c0ee"
-  integrity sha512-AsQNyQ3+EvYVXNiXIjGPmxg+Heos6Vrsiz39/aGfOhj/l1KBd1pP/63skOODBMQrwVWfnvw5NgEfZYCe9wXV3A==
+"@beemo/core@^1.1.8":
+  version "1.1.8"
+  resolved "https://registry.npmjs.org/@beemo/core/-/core-1.1.8.tgz#490316d3a49d3e6d8c8ee3178b35f4c5e295d556"
+  integrity sha512-mZfPEXoIwUQeAIHYt97c27cHk/xacIO/STOT29/lnzp4sbJiN1BtGcMa9+6zulVgiC2abeKuneSuXKXSu+LF3Q==
   dependencies:
     "@beemo/dependency-graph" "^1.1.1"
-    "@boost/common" "^1.8.4"
-    "@boost/core" "^1.18.5"
-    "@boost/event" "^1.3.0"
+    "@boost/common" "^1.8.5"
+    "@boost/core" "^1.18.6"
+    "@boost/event" "^1.3.1"
     "@types/micromatch" "^4.0.1"
-    "@types/yargs" "^15.0.4"
+    "@types/yargs" "^15.0.5"
     "@types/yargs-parser" "^15.0.0"
     chalk "^3.0.0"
     execa "^3.4.0"
@@ -984,66 +984,66 @@
   resolved "https://registry.npmjs.org/@beemo/dependency-graph/-/dependency-graph-1.1.1.tgz#66de1321e16723744d25976c00c9c488796307e2"
   integrity sha512-fGPazlIZmBfqC/ayoPm2jahdurssiYZV9HXb/MOYXmF6WdP6MIMALx6k18kjAxJflv5FcmvS6ESKU+eBrrh0ug==
 
-"@beemo/driver-babel@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.2.4.tgz#4d00ea1d63b0da27c53566be42178f7dcf488c8c"
-  integrity sha512-k4RVbbZkNyPCp/iu/NttBZATZQVv04DK2lcMZQAt+B3KtiRclw1K2t+PJgfldJ+xiN1VM+fDk2YhXeiP9JACmw==
+"@beemo/driver-babel@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.npmjs.org/@beemo/driver-babel/-/driver-babel-1.2.5.tgz#0a496c947ccfaa1840785e71d3b3a584bb0242bf"
+  integrity sha512-+6SS3OnMv6aWI2QJQdeJSAPLZzRRfl5Tni9/FrZZUreLXN0qFrVIi+buFFdkQ/QpvZiivfFDzf9Vn8r0tPGX2g==
   dependencies:
     rimraf "^3.0.2"
 
-"@beemo/driver-eslint@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.2.2.tgz#c6ae690c713b8259525df988907c24ae96640f8e"
-  integrity sha512-ltV09kvhCKTI3lurkGxPrAeJZRxElGPzT9t/rpYU1B8QJqbcUOIhKWk7W+21lCHGov4Ez+L7+TOXTkUl80JIqA==
+"@beemo/driver-eslint@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.npmjs.org/@beemo/driver-eslint/-/driver-eslint-1.2.3.tgz#9e2bd67bbd266d1d33416c1684c8457a5a09664c"
+  integrity sha512-RmU9kHXo+Cfg1JVDSXDvzaHhC9ClZZ6OvjhvnzGgsoVCnJKGtPNqo+JgIJFjp1ozBngexK7ebkcZa/6iXo3/ug==
   dependencies:
-    "@boost/event" "^1.3.0"
+    "@boost/event" "^1.3.1"
 
-"@beemo/driver-jest@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.2.2.tgz#5b55841e029ec48c32729e984fe8c60972b53cfb"
-  integrity sha512-tnoljY01R5x6CRJBbmgYnLvlYpv9xO/fPx/160Kp06uyQv0Ysv12wjuM27e51mSNAlV6mZ0GvZcYl7032LSBiw==
+"@beemo/driver-jest@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.npmjs.org/@beemo/driver-jest/-/driver-jest-1.2.3.tgz#f0c1e89ca76da615f551900bab2aaf2c80f8034d"
+  integrity sha512-cj8dSz1kNv+v4ygUTRtnOAoqZUbTfqrJ595OgtXqvtgxUmA6JPJ0QQq38yH4HJjPYlw9a2ENc76snzZjZIxJOg==
   dependencies:
     "@jest/types" "^25.4.0"
 
-"@beemo/driver-prettier@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.3.1.tgz#40699857c8fc572465bf8fbf3d2168f22437cdbd"
-  integrity sha512-rM8jDeR8yojwkRbQH9UAv01yReEDA5YYov4Ys+6IlpJmBd78eOXm71CGfE79Rklwl6kJUAH3Lr33NXTec5Drkw==
+"@beemo/driver-prettier@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.npmjs.org/@beemo/driver-prettier/-/driver-prettier-1.3.2.tgz#a68862b8c9729ceceaa4c99507908e4a7fb264b8"
+  integrity sha512-MdvsJOMiHkrigONrxXlJ0Z44bPfknF8JUba9bYA9rNvmVRrRlI9yf/EXAieEectiXagPNfMeAFhxJ/d6AMszfg==
   dependencies:
-    "@boost/event" "^1.3.0"
+    "@boost/event" "^1.3.1"
     "@types/prettier" "*"
 
-"@beemo/driver-typescript@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.3.3.tgz#6933d82a660f2889f8be0e6f5c32b463f5e311aa"
-  integrity sha512-HwY31GFmeNUO4c7omp8WLj8fOX6BXz0z7eN2g/gaQvJnoWiMkOF2Zfw8wOjBQkPo2s8Wtu1FNi69qSoOZuDo6A==
+"@beemo/driver-typescript@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.3.4.tgz#8ed2b1d53c53ad2b93cf79c6705f3dcd218f3c91"
+  integrity sha512-enxfaT8J33oZVU0S0MteJPYQg4ImPstM7yGTMv8bQnmorxeJatK1V9qAHkY9Ro06H9mq9lqU+pgfRuzylkXZaQ==
   dependencies:
-    "@boost/event" "^1.3.0"
+    "@boost/event" "^1.3.1"
     rimraf "^3.0.2"
 
-"@boost/common@^1.8.4":
-  version "1.8.4"
-  resolved "https://registry.npmjs.org/@boost/common/-/common-1.8.4.tgz#8ac48e0f484fe74609d30c757397b6fd295c847c"
-  integrity sha512-iOXgeNbu8L/Y/A2t2G+YZJGVa6yLBVsf1MO8Ah2ObOhXFqxChAV3SJAAVOE2JmV4RbWx4u1hp7IME8HOK714Tw==
+"@boost/common@^1.8.5":
+  version "1.8.5"
+  resolved "https://registry.npmjs.org/@boost/common/-/common-1.8.5.tgz#9e790a1eef206902b5f2894aeac735d6908926f9"
+  integrity sha512-cbI+1UeAgGk3YSemhwUh9PGYc31BZpNWPv8mBgFrs376UKv27jhF67Lpi+8gy+0aHrGtuuF9Y/PoCYjzQMR19w==
   dependencies:
-    "@boost/internal" "^1.1.0"
+    "@boost/internal" "^1.2.0"
     js-yaml "^3.13.1"
     json5 "^2.1.3"
     optimal "^4.2.0"
     pretty-ms "^5.1.0"
 
-"@boost/core@^1.18.5":
-  version "1.18.5"
-  resolved "https://registry.npmjs.org/@boost/core/-/core-1.18.5.tgz#e9404a84778616f4c8d5be990d3507261765232f"
-  integrity sha512-74ujm26EOeIbjyT0/tzHZ1VafO+KLAxi88t5TWnr6qvYsoaDSMdNZ/7dOhFUyF3RX+Lz7KTjMDKIXr3OUa//Vg==
+"@boost/core@^1.18.6":
+  version "1.18.6"
+  resolved "https://registry.npmjs.org/@boost/core/-/core-1.18.6.tgz#2fd8ac16b05e2a92e2c0b92be9fd2ca704307630"
+  integrity sha512-j+UfqurdX4jsWg3PPSq7xTFEi/sGKYNJeWXSThgZm2AGPJI5ZWITeJ+uC6ke5I2nsqVDvboaYjsdGZdYXFZhfg==
   dependencies:
-    "@boost/common" "^1.8.4"
-    "@boost/debug" "^1.4.5"
-    "@boost/event" "^1.3.0"
-    "@boost/internal" "^1.1.0"
-    "@boost/log" "^1.1.14"
+    "@boost/common" "^1.8.5"
+    "@boost/debug" "^1.4.6"
+    "@boost/event" "^1.3.1"
+    "@boost/internal" "^1.2.0"
+    "@boost/log" "^1.2.0"
     "@boost/terminal" "^1.0.3"
-    "@boost/translate" "^1.3.8"
+    "@boost/translate" "^1.3.9"
     "@types/debug" "^4.1.5"
     "@types/yargs" "^15.0.4"
     "@types/yargs-parser" "^15.0.0"
@@ -1060,40 +1060,40 @@
     split "^1.0.1"
     yargs-parser "^18.1.2"
 
-"@boost/debug@^1.4.5":
-  version "1.4.5"
-  resolved "https://registry.npmjs.org/@boost/debug/-/debug-1.4.5.tgz#1149f7e5e69a6bdf7b5a42aa493da500b1134f0c"
-  integrity sha512-qH/RmJZoqjENIfvPcXNLGKpr81Cz4fGqW3p835a4znIJFfCjCvJXl3ZutLCX86ISzxKQK82K1m1DHOemtE7u/A==
+"@boost/debug@^1.4.6":
+  version "1.4.6"
+  resolved "https://registry.npmjs.org/@boost/debug/-/debug-1.4.6.tgz#2aa3ef24a2573687158870c8927e002142ccd48e"
+  integrity sha512-59wxd9GtoIBxeAqwOcLDmMLdIsSIR6+ggSrH1Yi0s2zv4baWJ35E/nvQrHoIl3gAy/YBqdMAIJ2Y2x/a7rDl7A==
   dependencies:
-    "@boost/common" "^1.8.4"
-    "@boost/internal" "^1.1.0"
+    "@boost/common" "^1.8.5"
+    "@boost/internal" "^1.2.0"
     "@types/debug" "^4.1.5"
     debug "^4.1.1"
     execa "^3.4.0"
     fast-glob "^3.2.2"
 
-"@boost/event@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@boost/event/-/event-1.3.0.tgz#7bc989098aa6e2b819ed1904170056eb288396af"
-  integrity sha512-EszQ+bSw2lfobsE5pGEnFROXMcxqClXnJIohM/INO/8xjKvFeAVVpQKUEnYVbOcCWYVnwsJ7nBapXLA6Z6Zv7w==
+"@boost/event@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.npmjs.org/@boost/event/-/event-1.3.1.tgz#0f12d7a6accd06531c56faaf5580e3e6cb57d529"
+  integrity sha512-DjXS55vhBswRZQ5DDL592PZRsTfjgkpEAQCFrUmdNEIi3wUCmrc2BrGg1FdxNtln8FAsGYmLy+s0IyFIyYpUxA==
   dependencies:
-    "@boost/internal" "^1.1.0"
+    "@boost/internal" "^1.2.0"
 
-"@boost/internal@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@boost/internal/-/internal-1.1.0.tgz#380107d83bbd4d38f4b020a2273d51ef1b73e0ae"
-  integrity sha512-dYrCHKqiuLz3u1p+ve1qoWGXOFDBqOlUgMV1is20GiTFxoJzaCJOdexDErC3hLQFCr3WsZ3IbKDb6cpFH6mD9Q==
+"@boost/internal@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@boost/internal/-/internal-1.2.0.tgz#1d6b505c0eedc6a0e023ba0bbfe2ee5947b2e1fa"
+  integrity sha512-G+F62WMOReCD/tXC1gQgvhfbVXEtorNJZFcYZ0sG4KHWlJK0gw6DZpoFG8tCrUKQuZ5aXmA783w3iypRTCZzpg==
   dependencies:
     chalk "^3.0.0"
     debug "^4.1.1"
 
-"@boost/log@^1.1.14":
-  version "1.1.14"
-  resolved "https://registry.npmjs.org/@boost/log/-/log-1.1.14.tgz#d4f919b913762a21d714d0395f3b5564378f79a1"
-  integrity sha512-q0eOD1Luk3C4muDsiwQYu1B1zAvO75JKHi57eLFC8AqlyRHrAgfsNz9zdMdb5qKINGu3u1ad/mY+DMnl2unXtQ==
+"@boost/log@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@boost/log/-/log-1.2.0.tgz#31a2f74261784784b5571ce867b90838989d2bf8"
+  integrity sha512-qrl93rE2NQxFr2pSKQoFaeyfBjl/mF9Ew1N0KABH4pITxpuctpZZy40LgjobkpiKQVRJh9bqlfHWBMwrSuIYEg==
   dependencies:
-    "@boost/internal" "^1.1.0"
-    "@boost/translate" "^1.3.8"
+    "@boost/internal" "^1.2.0"
+    "@boost/translate" "^1.3.9"
     chalk "^3.0.0"
 
 "@boost/terminal@^1.0.3":
@@ -1113,13 +1113,13 @@
     term-size "^2.2.0"
     wrap-ansi "^6.2.0"
 
-"@boost/translate@^1.3.8":
-  version "1.3.8"
-  resolved "https://registry.npmjs.org/@boost/translate/-/translate-1.3.8.tgz#76a15c09eda15de3d558a6de168b91c5de4d5e87"
-  integrity sha512-nkrZBm3trnYnyZ8pZhFsA4MDy1aDcQwzuKJl/weAw2JetRw15PmegfOOGqV03XLh9am19Jthp3HzaIJBjwEkOQ==
+"@boost/translate@^1.3.9":
+  version "1.3.9"
+  resolved "https://registry.npmjs.org/@boost/translate/-/translate-1.3.9.tgz#8eec41d3a538da2bf2cb618670b78c1496e94320"
+  integrity sha512-zdxInBp/ad3QDu6IleywuzBXr39Wa4gZ5GOoHuIE55XgJHSyjmxFeiLBDjdOYyR5nL9yfNs+hBnidBCZnHR6Uw==
   dependencies:
-    "@boost/common" "^1.8.4"
-    "@boost/internal" "^1.1.0"
+    "@boost/common" "^1.8.5"
+    "@boost/internal" "^1.2.0"
     i18next "^19.4.2"
     os-locale "^4.0.0"
 
@@ -2357,10 +2357,10 @@
   resolved "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-15.0.0.tgz#cb3f9f741869e20cce330ffbeb9271590483882d"
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
-"@types/yargs@^15.0.0", "@types/yargs@^15.0.4":
-  version "15.0.4"
-  resolved "https://registry.npmjs.org/@types/yargs/-/yargs-15.0.4.tgz#7e5d0f8ca25e9d5849f2ea443cf7c402decd8299"
-  integrity sha512-9T1auFmbPZoxHz0enUFlUuKRy3it01R+hlggyVUMtnCTQRunsQYifnSGb8hET4Xo8yiC0o0r1paW3ud5+rbURg==
+"@types/yargs@^15.0.0", "@types/yargs@^15.0.4", "@types/yargs@^15.0.5":
+  version "15.0.5"
+  resolved "https://registry.npmjs.org/@types/yargs/-/yargs-15.0.5.tgz#947e9a6561483bdee9adffc983e91a6902af8b79"
+  integrity sha512-Dk/IDOPtOgubt/IaevIUbTgV7doaKkoorvOyYM2CMwuDyP89bekI7H4xLIwunNYiK9jhCkmc6pUrJk3cj2AB9w==
   dependencies:
     "@types/yargs-parser" "*"
 
