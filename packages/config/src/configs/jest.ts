@@ -36,7 +36,6 @@ const config: JestConfig = {
     },
   },
   globals: {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     __DEV__: true,
   },
   roots,

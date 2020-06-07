@@ -50,7 +50,6 @@ const config: ESLintConfig = {
     browser: true,
   },
   globals: {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     __DEV__: 'readable',
   },
   settings: {
@@ -178,7 +177,6 @@ const config: ESLintConfig = {
         max: 50,
         skipBlankLines: true,
         skipComments: true,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         IIFEs: true,
       },
     ],
@@ -267,7 +265,7 @@ const config: ESLintConfig = {
         '@typescript-eslint/member-ordering': 'error',
         '@typescript-eslint/method-signature-style': 'error',
         '@typescript-eslint/naming-convention': [
-          'error',
+          'off', // BUGGY
           { selector: 'variableLike', format: ['camelCase'] },
           { selector: 'memberLike', format: ['camelCase'] },
           { selector: 'typeLike', format: ['PascalCase'] },
@@ -296,7 +294,7 @@ const config: ESLintConfig = {
         '@typescript-eslint/no-namespace': 'error',
         '@typescript-eslint/no-parameter-properties': 'error',
         '@typescript-eslint/no-unnecessary-condition': [
-          'error',
+          'off', // BUGGY
           { allowConstantLoopConditions: true },
         ],
         '@typescript-eslint/no-unnecessary-qualifier': 'error',

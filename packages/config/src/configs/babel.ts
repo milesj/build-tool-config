@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
-
 import { BabelConfig, BabelDriverArgs } from '@beemo/driver-babel';
 import { MIN_IE_VERSION, MIN_NODE_VERSION } from '../constants';
 import { BeemoProcess } from '../types';

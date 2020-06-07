@@ -1,5 +1,4 @@
 "use strict";
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", { value: true });
 const constants_1 = require("../constants");
