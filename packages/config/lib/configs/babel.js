@@ -1,4 +1,5 @@
 "use strict";
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", { value: true });
 const constants_1 = require("../constants");
@@ -7,7 +8,7 @@ const constants_1 = require("../constants");
 const { context, tool } = process.beemo;
 const { decorators = false, node = false, react = false } = tool.config.settings;
 const plugins = [
-    ['@babel/plugin-proposal-class-properties', { loose: decorators }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-nullish-coalescing-operator',
     '@babel/plugin-proposal-optional-catch-binding',

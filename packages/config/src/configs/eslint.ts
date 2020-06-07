@@ -187,6 +187,7 @@ const config: ESLintConfig = {
     'no-div-regex': 'error',
     'no-eq-null': 'error',
     'no-implicit-coercion': 'error',
+    'no-loss-of-precision': 'error',
     'no-magic-numbers': [
       'error',
       {

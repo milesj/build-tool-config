@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+
 import { BabelConfig, BabelDriverArgs } from '@beemo/driver-babel';
 import { MIN_IE_VERSION, MIN_NODE_VERSION } from '../constants';
 import { BeemoProcess } from '../types';
@@ -12,7 +14,7 @@ const { context, tool } = (process.beemo as unknown) as BeemoProcess<Args>;
 const { decorators = false, node = false, react = false } = tool.config.settings;
 
 const plugins: BabelConfig['plugins'] = [
-  ['@babel/plugin-proposal-class-properties', { loose: decorators }],
+  ['@babel/plugin-proposal-class-properties', { loose: true }],
   '@babel/plugin-proposal-export-default-from',
   '@babel/plugin-proposal-nullish-coalescing-operator',
   '@babel/plugin-proposal-optional-catch-binding',
