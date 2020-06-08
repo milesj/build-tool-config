@@ -225,7 +225,7 @@ const config: ESLintConfig = {
       },
     ],
     'react/jsx-key': 'error',
-    'react/jsx-no-literals': 'error',
+    'react/jsx-no-literals': ['error', { ignoreProps: true }],
     'react/no-did-mount-set-state': 'error',
     'react/no-direct-mutation-state': 'error',
 
