@@ -370,7 +370,7 @@ const config: ESLintConfig = {
       },
     },
     {
-      files: [`*.test.${EXT_PATTERN}`],
+      files: [`*.test.${EXT_PATTERN}`, 'testing.ts'],
       plugins: ['jest'],
       env: {
         jest: true,
@@ -410,6 +410,11 @@ const config: ESLintConfig = {
         'jest/valid-describe': 'error',
         'jest/valid-expect': 'error',
         'jest/valid-title': 'error',
+
+        // TYPESCRIPT
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
       },
     },
   ],

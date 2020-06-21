@@ -349,7 +349,7 @@ const config = {
             },
         },
         {
-            files: [`*.test.${constants_1.EXT_PATTERN}`],
+            files: [`*.test.${constants_1.EXT_PATTERN}`, 'testing.ts'],
             plugins: ['jest'],
             env: {
                 jest: true,
@@ -389,6 +389,10 @@ const config = {
                 'jest/valid-describe': 'error',
                 'jest/valid-expect': 'error',
                 'jest/valid-title': 'error',
+                // TYPESCRIPT
+                '@typescript-eslint/no-explicit-any': 'off',
+                '@typescript-eslint/no-floating-promises': 'off',
+                '@typescript-eslint/no-unsafe-assignment': 'off',
             },
         },
     ],
