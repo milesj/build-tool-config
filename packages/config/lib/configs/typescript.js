@@ -18,6 +18,7 @@ const compilerOptions = {
     noImplicitReturns: true,
     pretty: true,
     removeComments: false,
+    resolveJsonModule: true,
     sourceMap: context.args.sourceMaps || false,
     strict: true,
     target: node ? 'es2018' : 'es5',

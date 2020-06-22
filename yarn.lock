@@ -1041,10 +1041,10 @@
     "@boost/event" "^1.3.1"
     "@types/prettier" "*"
 
-"@beemo/driver-typescript@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.3.4.tgz#8ed2b1d53c53ad2b93cf79c6705f3dcd218f3c91"
-  integrity sha512-enxfaT8J33oZVU0S0MteJPYQg4ImPstM7yGTMv8bQnmorxeJatK1V9qAHkY9Ro06H9mq9lqU+pgfRuzylkXZaQ==
+"@beemo/driver-typescript@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@beemo/driver-typescript/-/driver-typescript-1.4.0.tgz#cd922e9048a0138d5e5a907eed5621ab0ad219df"
+  integrity sha512-832lYhwJ8HLZgSWVvS/GFkKMMJmX6PncM0FIdxgW5menA7gQWFOVp7DA6YBYdHgM9//2ANk0NVJ5FZt7XCJfzA==
   dependencies:
     "@boost/event" "^1.3.1"
     rimraf "^3.0.2"
