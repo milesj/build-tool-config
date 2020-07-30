@@ -7,7 +7,7 @@ const config = {
     arrowParens: 'always',
     bracketSpacing: true,
     endOfLine: 'lf',
-    ignore: [...constants_1.IGNORE_PATHS, 'book.json', 'lerna.json', 'package.json', 'tsconfig.json', '*.d.ts'],
+    ignore: [...constants_1.IGNORE_PATHS, 'lerna.json', 'package.json', 'tsconfig.json', '*.d.ts'],
     jsxBracketSameLine: false,
     printWidth: 100,
     proseWrap: 'always',
