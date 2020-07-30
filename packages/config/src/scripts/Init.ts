@@ -61,18 +61,16 @@ export default class InitScript extends Script<InitArgs> {
     Object.assign(packageConfig.scripts, {
       prepare: 'beemo create-config --silent',
       build: 'beemo run-script build',
-      coverage: 'yarn run jest --coverage',
+      ci: 'yarn run type && yarn run test && yarn run lint',
+      coverage: 'yarn run test --coverage',
+      format: 'beemo prettier',
       lint: 'beemo eslint',
-      jest: 'beemo jest',
-      prettier: 'beemo prettier',
-      release: 'npx np --yolo --no-yarn',
+      release: 'npx np --yolo',
+      test: 'beemo jest',
       type: 'beemo typescript --noEmit',
 
       // Hooks
       prerelease: 'yarn test && yarn run build',
-      pretest: 'yarn run type',
-      test: 'yarn run jest',
-      posttest: 'yarn run eslint',
     });
 
     if (args.workspaces) {
