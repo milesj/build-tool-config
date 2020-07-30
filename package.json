@@ -5,10 +5,10 @@
   "scripts": {
     "prepare": "beemo create-config --silent",
     "build": "beemo typescript --build --reference-workspaces",
-    "eslint": "beemo eslint ./packages/config",
+    "lint": "beemo eslint ./packages/config",
     "jest": "beemo jest",
     "prettier": "beemo prettier \"./packages/config/src/{configs,scripts}/*.{ts,json,md,yml,yaml}\"",
-    "test": "yarn run build && yarn run eslint && yarn run jest",
+    "test": "yarn run build && yarn run lint && yarn run jest",
     "prerelease": "yarn test",
     "release": "lerna publish"
   },
