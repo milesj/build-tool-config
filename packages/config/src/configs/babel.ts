@@ -14,9 +14,6 @@ const { decorators = false, node = false, react = false } = tool.config.settings
 const plugins: BabelConfig['plugins'] = [
   ['@babel/plugin-proposal-class-properties', { loose: true }],
   '@babel/plugin-proposal-export-default-from',
-  '@babel/plugin-proposal-nullish-coalescing-operator',
-  '@babel/plugin-proposal-optional-catch-binding',
-  '@babel/plugin-proposal-optional-chaining',
   ['babel-plugin-transform-dev', { evaluate: false }],
 ];
 
