@@ -247,6 +247,7 @@ const config: ESLintConfig = {
       rules: {
         camelcase: 'off',
         'no-unused-vars': 'off',
+        'no-void': 'off',
         'import/extensions': [
           'error',
           'never',
