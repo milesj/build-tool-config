@@ -27,7 +27,7 @@
     "@beemo/driver-prettier": "^1.3.2",
     "@beemo/driver-typescript": "^1.4.0",
     "eslint": "7.5.0",
-    "jest": "^26.2.2",
+    "jest": "^26.4.2",
     "prettier": "^2.1.0",
     "typescript": "^3.9.7"
   },

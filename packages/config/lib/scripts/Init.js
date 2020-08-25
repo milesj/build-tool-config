@@ -52,7 +52,7 @@ class InitScript extends core_1.Script {
             test: 'beemo jest',
             type: 'beemo typescript --noEmit',
             // Hooks
-            prerelease: 'yarn test && yarn run build',
+            prerelease: 'yarn run ci && yarn run build',
         });
         if (args.workspaces) {
             if (!((_a = packageConfig.devDependencies) === null || _a === void 0 ? void 0 : _a.lerna)) {
