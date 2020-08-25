@@ -70,7 +70,7 @@ export default class InitScript extends Script<InitArgs> {
       type: 'beemo typescript --noEmit',
 
       // Hooks
-      prerelease: 'yarn test && yarn run build',
+      prerelease: 'yarn run ci && yarn run build',
     });
 
     if (args.workspaces) {

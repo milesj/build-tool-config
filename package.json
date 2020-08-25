@@ -7,7 +7,7 @@
     "build": "beemo typescript --build --reference-workspaces",
     "lint": "beemo eslint ./packages/config",
     "jest": "beemo jest",
-    "prettier": "beemo prettier \"./packages/config/src/{configs,scripts}/*.{ts,json,md,yml,yaml}\"",
+    "format": "beemo prettier \"./packages/config/src/**/*.{ts,json,md,yml,yaml}\"",
     "test": "yarn run build && yarn run lint && yarn run jest",
     "prerelease": "yarn test",
     "release": "lerna publish"
