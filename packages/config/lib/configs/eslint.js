@@ -55,7 +55,7 @@ const config = {
     },
     parserOptions: {
         sourceType: 'module',
-        // @ts-expect-error
+        // @ts-expect-error Fix Beemo upstream
         ecmaVersion: 2021,
         ecmaFeatures: {
             jsx: true,
