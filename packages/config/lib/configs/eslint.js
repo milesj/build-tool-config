@@ -55,7 +55,8 @@ const config = {
     },
     parserOptions: {
         sourceType: 'module',
-        ecmaVersion: 2020,
+        // @ts-expect-error
+        ecmaVersion: 2021,
         ecmaFeatures: {
             jsx: true,
         },

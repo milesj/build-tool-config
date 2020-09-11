@@ -66,7 +66,8 @@ const config: ESLintConfig = {
   },
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 2020,
+    // @ts-expect-error Fix Beemo upstream
+    ecmaVersion: 2021,
     ecmaFeatures: {
       jsx: true,
     },
