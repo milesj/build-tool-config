@@ -376,7 +376,7 @@ const config: ESLintConfig = {
       },
     },
     {
-      files: [`*.test.${EXT_PATTERN}`, 'testing.ts'],
+      files: [`*.test.${EXT_PATTERN}`, 'test.ts'],
       plugins: ['jest'],
       env: {
         jest: true,

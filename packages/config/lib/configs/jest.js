@@ -38,6 +38,7 @@ const config = {
     roots,
     setupFilesAfterEnv,
     testEnvironment: 'node',
+    testMatch: ['**/tests/**/*.test.[jt]s?(x)'],
     testURL: 'http://localhost',
     timers: 'real',
     verbose: false,

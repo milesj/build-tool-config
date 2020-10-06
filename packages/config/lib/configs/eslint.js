@@ -355,7 +355,7 @@ const config = {
             },
         },
         {
-            files: [`*.test.${constants_1.EXT_PATTERN}`, 'testing.ts'],
+            files: [`*.test.${constants_1.EXT_PATTERN}`, 'test.ts'],
             plugins: ['jest'],
             env: {
                 jest: true,
