@@ -13,7 +13,7 @@
     "release": "lerna publish"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.1",
+    "@types/fs-extra": "^9.0.2",
     "@types/semver": "^7.3.4",
     "lerna": "^3.22.1"
   },
