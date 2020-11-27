@@ -154,6 +154,7 @@ const config: ESLintConfig = {
     'unicorn/prefer-number-properties': 'error',
     'unicorn/prefer-starts-ends-with': 'error',
     'unicorn/prefer-string-slice': 'error',
+    'unicorn/prefer-ternary': 'error',
     'unicorn/prefer-text-content': 'error',
     'unicorn/prefer-type-error': 'error',
     'unicorn/throw-new-error': 'error',
@@ -285,6 +286,7 @@ const config: ESLintConfig = {
           { selector: 'enumMember', format: ['camelCase', 'UPPER_CASE'] },
         ],
         '@typescript-eslint/no-array-constructor': 'error',
+        '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreVoidOperator: true }],
         '@typescript-eslint/no-empty-interface': 'error',
         '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
         '@typescript-eslint/no-floating-promises': ['error', { ignoreVoid: true }],
@@ -304,6 +306,7 @@ const config: ESLintConfig = {
           { allowConstantLoopConditions: true },
         ],
         '@typescript-eslint/no-unnecessary-qualifier': 'error',
+        '@typescript-eslint/no-unnecessary-type-constraint': 'error',
         '@typescript-eslint/no-unsafe-assignment': 'error',
         '@typescript-eslint/no-unused-vars': [
           'error',
