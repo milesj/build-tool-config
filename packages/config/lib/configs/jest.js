@@ -8,17 +8,14 @@ const { tool } = process.beemo;
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = core_1.Path.resolve('./tests/setup.ts');
 const setupFilesAfterEnv = [];
-const roots = [];
+const projects = [];
 if (workspacesEnabled) {
     tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
-        roots.push(`<rootDir>/${wsPath.replace('/*', '')}`);
+        projects.push(`<rootDir>/${wsPath}`);
     });
 }
-else {
-    roots.push('<rootDir>');
-}
 if (setupFilePath.exists()) {
-    setupFilesAfterEnv.push(setupFilePath.path());
+    setupFilesAfterEnv.push('<rootDir>/tests/setup.ts');
 }
 const config = {
     coverageDirectory: './coverage',
@@ -35,7 +32,7 @@ const config = {
     globals: {
         __DEV__: true,
     },
-    roots,
+    projects,
     setupFilesAfterEnv,
     testEnvironment: 'node',
     testMatch: ['**/tests/**/*.test.[jt]s?(x)'],

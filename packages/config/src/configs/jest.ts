@@ -9,18 +9,16 @@ const { tool } = (process.beemo as unknown) as BeemoProcess;
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = Path.resolve('./tests/setup.ts');
 const setupFilesAfterEnv: string[] = [];
-const roots: string[] = [];
+const projects: string[] = [];
 
 if (workspacesEnabled) {
   tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
-    roots.push(`<rootDir>/${wsPath.replace('/*', '')}`);
+    projects.push(`<rootDir>/${wsPath}`);
   });
-} else {
-  roots.push('<rootDir>');
 }
 
 if (setupFilePath.exists()) {
-  setupFilesAfterEnv.push(setupFilePath.path());
+  setupFilesAfterEnv.push('<rootDir>/tests/setup.ts');
 }
 
 const config: JestConfig = {
@@ -38,7 +36,7 @@ const config: JestConfig = {
   globals: {
     __DEV__: true,
   },
-  roots,
+  projects,
   setupFilesAfterEnv,
   testEnvironment: 'node',
   testMatch: ['**/tests/**/*.test.[jt]s?(x)'],
