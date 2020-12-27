@@ -18,7 +18,7 @@
     "node": ">=10.10.0"
   },
   "dependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.12.10",
     "@beemo/cli": "^1.0.11",
     "@beemo/core": "^1.1.8",
     "@beemo/driver-babel": "^1.2.6",
