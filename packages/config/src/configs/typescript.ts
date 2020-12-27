@@ -19,7 +19,7 @@ const compilerOptions: TypeScriptConfig['compilerOptions'] = {
   esModuleInterop: true,
   experimentalDecorators: decorators,
   forceConsistentCasingInFileNames: true,
-  lib: ['dom', 'esnext'],
+  lib: ['esnext'],
   module: 'commonjs',
   noEmitOnError: true,
   noImplicitReturns: true,
@@ -34,6 +34,7 @@ const compilerOptions: TypeScriptConfig['compilerOptions'] = {
 const include: string[] = [];
 
 if (react) {
+  compilerOptions.lib!.push('dom');
   compilerOptions.jsx = 'react';
 }
 

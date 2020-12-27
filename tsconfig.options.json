@@ -7,7 +7,6 @@
     "experimentalDecorators": false,
     "forceConsistentCasingInFileNames": true,
     "lib": [
-      "dom",
       "esnext"
     ],
     "module": "commonjs",

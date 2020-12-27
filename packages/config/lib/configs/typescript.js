@@ -12,7 +12,7 @@ const compilerOptions = {
     esModuleInterop: true,
     experimentalDecorators: decorators,
     forceConsistentCasingInFileNames: true,
-    lib: ['dom', 'esnext'],
+    lib: ['esnext'],
     module: 'commonjs',
     noEmitOnError: true,
     noImplicitReturns: true,
@@ -26,6 +26,7 @@ const compilerOptions = {
 };
 const include = [];
 if (react) {
+    compilerOptions.lib.push('dom');
     compilerOptions.jsx = 'react';
 }
 if (!context.args.referenceWorkspaces) {
