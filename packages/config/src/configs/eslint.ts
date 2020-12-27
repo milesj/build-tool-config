@@ -317,6 +317,7 @@ const config: ESLintConfig = {
         ],
         '@typescript-eslint/no-use-before-define': 'error',
         '@typescript-eslint/no-var-requires': 'off', // No Babel support
+        '@typescript-eslint/non-nullable-type-assertion-style': 'error',
         '@typescript-eslint/prefer-namespace-keyword': 'error',
         '@typescript-eslint/prefer-optional-chain': 'error',
         '@typescript-eslint/prefer-readonly': 'off', // Annoying with handlers
