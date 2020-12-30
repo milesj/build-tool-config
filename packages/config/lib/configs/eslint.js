@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
+const builtin_modules_1 = __importDefault(require("builtin-modules"));
 const core_1 = require("@beemo/core");
 const constants_1 = require("../constants");
 const { tool } = process.beemo;
@@ -33,7 +34,16 @@ const config = {
     root: true,
     parser: '@typescript-eslint/parser',
     extends: ['airbnb', 'prettier', 'prettier/react', 'prettier/@typescript-eslint'],
-    plugins: ['react-hooks', 'promise', 'unicorn', 'compat', 'babel', 'security', 'node'],
+    plugins: [
+        'babel',
+        'compat',
+        'node',
+        'promise',
+        'react-hooks',
+        'security',
+        'simple-import-sort',
+        'unicorn',
+    ],
     ignore: [...constants_1.IGNORE_PATHS, '*.min.js', '*.map'],
     env: {
         browser: true,
@@ -84,6 +94,9 @@ const config = {
         // COMPAT
         'compat/compat': node ? 'off' : 'warn',
         // IMPORT
+        'import/first': 'error',
+        'import/newline-after-import': 'error',
+        'import/no-duplicates': 'error',
         'import/prefer-default-export': 'off',
         // PROMISE
         'promise/always-return': 'error',
@@ -146,6 +159,39 @@ const config = {
         'unicorn/prefer-ternary': 'error',
         'unicorn/prefer-type-error': 'error',
         'unicorn/throw-new-error': 'error',
+        // SORT IMPORTS
+        'sort-imports': 'off',
+        'import/order': 'off',
+        'simple-import-sort/exports': 'error',
+        'simple-import-sort/imports': [
+            'error',
+            {
+                groups: [
+                    [
+                        // Side-effects
+                        '^\\u0000',
+                        // Node built-ins
+                        `^(${builtin_modules_1.default.join('|')})$`,
+                        // React NPM packages
+                        '^react',
+                        // NPM packages
+                        '^[a-z]',
+                        // Scoped NPM packages
+                        '^@[a-z]',
+                        // Aliased modules
+                        '^:[a-z]',
+                        // Parent files
+                        '^\\.\\./',
+                        // Sibling files
+                        '^\\./',
+                        // Index file
+                        '^\\.$',
+                        // Everything else
+                        '\\*',
+                    ],
+                ],
+            },
+        ],
         // New and not in Airbnb
         'default-param-last': 'warn',
         'no-constructor-return': 'error',

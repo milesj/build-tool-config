@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_extra_1 = __importDefault(require("fs-extra"));
 const fast_glob_1 = __importDefault(require("fast-glob"));
+const fs_extra_1 = __importDefault(require("fs-extra"));
 const core_1 = require("@beemo/core");
 class AddFundingScript extends core_1.Script {
     args() {

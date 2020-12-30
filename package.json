@@ -3,7 +3,6 @@
   "name": "milesj-root",
   "version": "0.0.0",
   "scripts": {
-    "prepare": "beemo create-config --silent",
     "build": "beemo typescript --build --reference-workspaces",
     "lint": "beemo eslint ./packages/config",
     "jest": "beemo jest",

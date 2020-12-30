@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
+import { BeemoConfig, Script, ScriptContext } from '@beemo/core';
 import { PackageConfig } from '@boost/core';
-import { Script, ScriptContext, BeemoConfig } from '@beemo/core';
 import { CJS_FOLDER, ESM_FOLDER, MIN_IE_VERSION, MIN_NODE_VERSION } from '../constants';
 import { Settings } from '../types';
 

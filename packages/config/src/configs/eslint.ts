@@ -1,9 +1,10 @@
 /* eslint-disable no-magic-numbers, sort-keys */
 
 import fs from 'fs';
+import builtinModules from 'builtin-modules';
 import { Path } from '@beemo/core';
 import { ESLintConfig } from '@beemo/driver-eslint';
-import { EXTS, EXT_PATTERN, IGNORE_PATHS } from '../constants';
+import { EXT_PATTERN, EXTS, IGNORE_PATHS } from '../constants';
 import { BeemoProcess } from '../types';
 
 const { tool } = (process.beemo as unknown) as BeemoProcess;
@@ -44,7 +45,16 @@ const config: ESLintConfig = {
   root: true,
   parser: '@typescript-eslint/parser',
   extends: ['airbnb', 'prettier', 'prettier/react', 'prettier/@typescript-eslint'],
-  plugins: ['react-hooks', 'promise', 'unicorn', 'compat', 'babel', 'security', 'node'],
+  plugins: [
+    'babel',
+    'compat',
+    'node',
+    'promise',
+    'react-hooks',
+    'security',
+    'simple-import-sort',
+    'unicorn',
+  ],
   ignore: [...IGNORE_PATHS, '*.min.js', '*.map'],
   env: {
     browser: true,
@@ -98,6 +108,9 @@ const config: ESLintConfig = {
     'compat/compat': node ? 'off' : 'warn',
 
     // IMPORT
+    'import/first': 'error',
+    'import/newline-after-import': 'error',
+    'import/no-duplicates': 'error',
     'import/prefer-default-export': 'off',
 
     // PROMISE
@@ -163,6 +176,40 @@ const config: ESLintConfig = {
     'unicorn/prefer-ternary': 'error',
     'unicorn/prefer-type-error': 'error',
     'unicorn/throw-new-error': 'error',
+
+    // SORT IMPORTS
+    'sort-imports': 'off',
+    'import/order': 'off',
+    'simple-import-sort/exports': 'error',
+    'simple-import-sort/imports': [
+      'error',
+      {
+        groups: [
+          [
+            // Side-effects
+            '^\\u0000',
+            // Node built-ins
+            `^(${builtinModules.join('|')})$`,
+            // React NPM packages
+            '^react',
+            // NPM packages
+            '^[a-z]',
+            // Scoped NPM packages
+            '^@[a-z]',
+            // Aliased modules
+            '^:[a-z]',
+            // Parent files
+            '^\\.\\./',
+            // Sibling files
+            '^\\./',
+            // Index file
+            '^\\.$',
+            // Everything else
+            '\\*',
+          ],
+        ],
+      },
+    ],
 
     // New and not in Airbnb
     'default-param-last': 'warn',

@@ -1,5 +1,5 @@
-import Beemo, { Path, DriverContext } from '@beemo/core';
-import { EXTS, DIR_PATTERN, CJS_FOLDER, ESM_FOLDER } from './constants';
+import Beemo, { DriverContext, Path } from '@beemo/core';
+import { CJS_FOLDER, DIR_PATTERN, ESM_FOLDER, EXTS } from './constants';
 
 const extsWithoutJSON = EXTS.filter((ext) => ext !== '.json');
 
@@ -29,7 +29,7 @@ module.exports = function milesOSS(tool: Beemo) {
 
   // ESLint
   tool.onRunDriver.listen((context) => {
-    context.addOptions(['--color']);
+    context.addOptions(['--color', '--fix']);
 
     if (usingTypeScript && !context.args.ext) {
       context.addOption('--ext', extsWithoutJSON.join(','));

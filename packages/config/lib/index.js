@@ -23,7 +23,7 @@ module.exports = function milesOSS(tool) {
     }, 'babel');
     // ESLint
     tool.onRunDriver.listen((context) => {
-        context.addOptions(['--color']);
+        context.addOptions(['--color', '--fix']);
         if (usingTypeScript && !context.args.ext) {
             context.addOption('--ext', extsWithoutJSON.join(','));
         }

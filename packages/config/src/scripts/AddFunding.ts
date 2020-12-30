@@ -1,7 +1,7 @@
-import fs from 'fs-extra';
 import glob from 'fast-glob';
-import { PackageConfig } from '@boost/core';
+import fs from 'fs-extra';
 import { Script, ScriptContext } from '@beemo/core';
+import { PackageConfig } from '@boost/core';
 
 export default class AddFundingScript extends Script {
   args() {

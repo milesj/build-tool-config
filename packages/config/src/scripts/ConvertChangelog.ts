@@ -1,5 +1,5 @@
-import fs from 'fs-extra';
 import glob from 'fast-glob';
+import fs from 'fs-extra';
 import semver from 'semver';
 import { Script, ScriptContext } from '@beemo/core';
 
