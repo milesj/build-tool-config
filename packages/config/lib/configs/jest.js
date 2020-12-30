@@ -4,12 +4,12 @@ const core_1 = require("@beemo/core");
 const constants_1 = require("../constants");
 // Package: Run in root
 // Workspaces: Run in root
-const { tool } = process.beemo;
+const { context, tool } = process.beemo;
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = core_1.Path.resolve('./tests/setup.ts');
 const setupFilesAfterEnv = [];
 const projects = [];
-if (workspacesEnabled) {
+if (workspacesEnabled && context.args.useProjects) {
     tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
         projects.push(`<rootDir>/${wsPath}`);
     });
@@ -32,7 +32,6 @@ const config = {
     globals: {
         __DEV__: true,
     },
-    projects,
     setupFilesAfterEnv,
     testEnvironment: 'node',
     testMatch: ['**/tests/**/*.test.[jt]s?(x)'],
@@ -40,4 +39,7 @@ const config = {
     timers: 'real',
     verbose: false,
 };
+if (projects.length > 0) {
+    config.projects = projects;
+}
 exports.default = config;

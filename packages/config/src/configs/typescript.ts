@@ -3,7 +3,6 @@ import { CJS_FOLDER } from '../constants';
 import { BeemoProcess } from '../types';
 
 interface Args extends TypeScriptDriverArgs {
-  decorators?: boolean;
   sourceMaps?: boolean;
 }
 

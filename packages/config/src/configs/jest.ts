@@ -3,15 +3,19 @@ import { JestConfig } from '@beemo/driver-jest';
 import { IGNORE_PATHS } from '../constants';
 import { BeemoProcess } from '../types';
 
+interface Args {
+  useProjects?: boolean;
+}
+
 // Package: Run in root
 // Workspaces: Run in root
-const { tool } = (process.beemo as unknown) as BeemoProcess;
+const { context, tool } = (process.beemo as unknown) as BeemoProcess<Args>;
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = Path.resolve('./tests/setup.ts');
 const setupFilesAfterEnv: string[] = [];
 const projects: string[] = [];
 
-if (workspacesEnabled) {
+if (workspacesEnabled && context.args.useProjects) {
   tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
     projects.push(`<rootDir>/${wsPath}`);
   });
@@ -36,7 +40,6 @@ const config: JestConfig = {
   globals: {
     __DEV__: true,
   },
-  projects,
   setupFilesAfterEnv,
   testEnvironment: 'node',
   testMatch: ['**/tests/**/*.test.[jt]s?(x)'],
@@ -44,5 +47,9 @@ const config: JestConfig = {
   timers: 'real',
   verbose: false,
 };
+
+if (projects.length > 0) {
+  config.projects = projects;
+}
 
 export default config;
