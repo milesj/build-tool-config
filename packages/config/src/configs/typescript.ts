@@ -25,6 +25,7 @@ const compilerOptions: TypeScriptConfig['compilerOptions'] = {
   pretty: true,
   removeComments: false,
   resolveJsonModule: true,
+  skipLibCheck: true,
   sourceMap: context.args.sourceMaps || false,
   strict: true,
   target: node ? 'es2018' : 'es5',
