@@ -37,7 +37,7 @@ export default class InitScript extends Script<InitArgs> {
 
   execute(context: ScriptContext, args: InitArgs) {
     // @ts-expect-error
-    const packageConfig: PackageConfig & BeemoPackageConfig = {
+    const packageConfig: BeemoPackageConfig & PackageConfig = {
       ...this.tool.package,
       scripts: {},
     };

@@ -88,7 +88,6 @@ const config: ESLintConfig = {
     'multiline-comment-style': 'off',
     'no-else-return': ['error', { allowElseIf: true }],
     'no-invalid-this': 'off', // Handled by babel/no-invalid-this
-    'object-curly-spacing': 'off', // Handled by babel/object-curly-spacing
     // 'padded-blocks': [
     //   'error',
     //   {
@@ -101,7 +100,6 @@ const config: ESLintConfig = {
     // BABEL
     'babel/new-cap': 'error',
     'babel/no-invalid-this': 'error',
-    'babel/object-curly-spacing': ['error', 'always'],
     'babel/semi': 'error',
 
     // COMPAT
@@ -151,6 +149,7 @@ const config: ESLintConfig = {
     'unicorn/no-for-loop': 'error',
     'unicorn/no-hex-escape': 'error',
     'unicorn/no-instanceof-array': 'error',
+    'unicorn/no-new-array': 'error',
     'unicorn/no-new-buffer': 'error',
     'unicorn/no-object-as-default-parameter': 'error',
     'unicorn/no-process-exit': 'error',
@@ -368,12 +367,14 @@ const config: ESLintConfig = {
         '@typescript-eslint/no-use-before-define': 'error',
         '@typescript-eslint/no-var-requires': 'off', // No Babel support
         '@typescript-eslint/non-nullable-type-assertion-style': 'error',
+        '@typescript-eslint/object-curly-spacing': ['error', 'always'],
         '@typescript-eslint/prefer-namespace-keyword': 'error',
         '@typescript-eslint/prefer-optional-chain': 'error',
         '@typescript-eslint/prefer-readonly': 'off', // Annoying with handlers
         '@typescript-eslint/prefer-reduce-type-parameter': 'error',
         '@typescript-eslint/prefer-ts-expect-error': 'error',
         '@typescript-eslint/require-await': 'warn',
+        '@typescript-eslint/sort-type-union-intersection-members': 'error',
         '@typescript-eslint/triple-slash-reference': 'error',
         '@typescript-eslint/unified-signatures': 'error',
         '@typescript-eslint/type-annotation-spacing': 'error',
@@ -381,6 +382,7 @@ const config: ESLintConfig = {
         // Doesnt work with TypeScript
         'no-restricted-globals': 'off',
         'no-undef': 'off',
+        'object-curly-spacing': 'off',
         'import/no-cycle': 'off',
         'import/named': 'off',
         'react/destructuring-assignment': 'off',
