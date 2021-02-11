@@ -4,7 +4,7 @@ const core_1 = require("@beemo/core");
 const constants_1 = require("./constants");
 const extsWithoutJSON = constants_1.EXTS.filter((ext) => ext !== '.json');
 function hasNoPositionalArgs(context, name) {
-    const args = context.args._;
+    const args = (context.args.params || context.args._);
     return args.length === 0 || (args.length === 1 && args[0] === name);
 }
 module.exports = function milesOSS(tool) {

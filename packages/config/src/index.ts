@@ -4,7 +4,7 @@ import { CJS_FOLDER, DIR_PATTERN, ESM_FOLDER, EXTS } from './constants';
 const extsWithoutJSON = EXTS.filter((ext) => ext !== '.json');
 
 function hasNoPositionalArgs(context: DriverContext, name: string): boolean {
-  const args = context.args._;
+  const args = (context.args.params || context.args._) as string[];
 
   return args.length === 0 || (args.length === 1 && args[0] === name);
 }
