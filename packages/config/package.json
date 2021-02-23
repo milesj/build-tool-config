@@ -29,13 +29,13 @@
     "node": ">=10.10.0"
   },
   "dependencies": {
-    "@babel/cli": "^7.12.13",
-    "@babel/core": "^7.12.13",
-    "@babel/plugin-proposal-decorators": "^7.12.13",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/plugin-proposal-decorators": "^7.13.0",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-env": "^7.13.0",
     "@babel/preset-react": "^7.12.13",
-    "@babel/preset-typescript": "^7.12.13",
+    "@babel/preset-typescript": "^7.13.0",
     "@types/jest": "^26.0.20",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
