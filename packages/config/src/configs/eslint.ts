@@ -44,7 +44,7 @@ if (workspacesEnabled) {
 const config: ESLintConfig = {
   root: true,
   parser: '@typescript-eslint/parser',
-  extends: ['airbnb', 'prettier', 'prettier/react', 'prettier/@typescript-eslint'],
+  extends: ['airbnb', 'prettier'],
   plugins: [
     'babel',
     'compat',
