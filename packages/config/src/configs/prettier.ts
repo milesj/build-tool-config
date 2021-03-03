@@ -9,6 +9,7 @@ const config: PrettierConfig = {
   endOfLine: 'lf',
   ignore: [
     ...IGNORE_PATHS,
+    'CHANGELOG.md',
     'lerna.json',
     'package.json',
     'tsconfig.json',

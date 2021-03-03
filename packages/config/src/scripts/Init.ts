@@ -1,7 +1,5 @@
-/* eslint-disable unicorn/no-unused-properties */
-
 import fs from 'fs-extra';
-import { Arguments, BeemoConfig, Script, ScriptContext } from '@beemo/core';
+import { Arguments, BeemoConfig, ParserOptions, Script, ScriptContext } from '@beemo/core';
 import { PackageStructure } from '@boost/common';
 import { CJS_FOLDER, DTS_FOLDER, ESM_FOLDER } from '../constants';
 
@@ -13,20 +11,27 @@ export interface InitArgs {
 }
 
 export default class InitScript extends Script<{}, InitArgs> {
-  args() {
+  parse(): ParserOptions<InitArgs> {
     return {
-      boolean: ['local', 'node', 'react', 'workspaces'],
-      default: {
-        local: false,
-        node: false,
-        react: false,
-        workspaces: false,
+      options: {
+        local: {
+          description: 'Initialize with an @local config module',
+          type: 'boolean',
+        },
+        node: {
+          description: 'Project is Node.js only',
+          type: 'boolean',
+        },
+        react: {
+          description: 'Project will be using React',
+          type: 'boolean',
+        },
+        workspaces: {
+          description: 'Initialize project as a monorepo using workspaces',
+          type: 'boolean',
+        },
       },
     };
-  }
-
-  blueprint() {
-    return {};
   }
 
   execute(context: ScriptContext, args: Arguments<InitArgs>) {
@@ -100,13 +105,17 @@ export default class InitScript extends Script<{}, InitArgs> {
     }
 
     // Save files
+    const beemoPath = context.cwd.append('.config/beemo.ts');
     const packagePath = context.cwd.append('package.json');
     const lernaPath = context.cwd.append('lerna.json');
-    const promises = [fs.writeJSON(packagePath.path(), pkg, { spaces: 2 })];
+    const promises = [
+      fs.writeJson(packagePath.path(), pkg, { spaces: 2 }),
+      fs.writeFile(beemoPath.path(), `export default ${JSON.stringify(config)};`, 'utf8'),
+    ];
 
     if (args.options.workspaces) {
       promises.push(
-        fs.writeJSON(
+        fs.writeJson(
           lernaPath.path(),
           {
             version: 'independent',

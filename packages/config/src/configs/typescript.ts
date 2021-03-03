@@ -21,7 +21,7 @@ const compilerOptions: TypeScriptConfig['compilerOptions'] = {
   removeComments: false,
   resolveJsonModule: true,
   skipLibCheck: true,
-  sourceMap: Boolean(context.getRiskyOption('sourceMaps') || false),
+  sourceMap: Boolean(context.getRiskyOption('sourceMaps')),
   strict: true,
   target: node ? 'es2018' : 'es5',
   useDefineForClassFields: false,
