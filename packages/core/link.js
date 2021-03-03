@@ -1,16 +1,13 @@
-#!/usr/bin/env node
-
 const fs = require('fs');
 const path = require('path');
 
 // Symlink specific folders from the @milesj/build-tool-config package
-const links = ['lib', 'templates'];
+const links = ['src', 'templates'];
 
 links.forEach((folder) => {
   try {
     fs.symlinkSync(
-      // Resolves to lib/index.js
-      path.join(require.resolve('@milesj/build-tool-config'), '../..', folder),
+      path.join(path.dirname(require.resolve('@milesj/build-tool-config/package.json')), folder),
       path.join(__dirname, folder),
       'dir',
     );

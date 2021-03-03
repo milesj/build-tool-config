@@ -16,5 +16,6 @@ packages/core/lib
 packages/core/templates
 
 # Ignore for local dev
+dts/
 *.d.ts
 *.d.ts.map

@@ -1,8 +1,9 @@
+/* eslint-disable unicorn/no-unused-properties */
+
 import fs from 'fs-extra';
-import { BeemoConfig, Script, ScriptContext } from '@beemo/core';
-import { PackageConfig } from '@boost/core';
-import { CJS_FOLDER, ESM_FOLDER, MIN_IE_VERSION, MIN_NODE_VERSION } from '../constants';
-import { Settings } from '../types';
+import { Arguments, BeemoConfig, Script, ScriptContext } from '@beemo/core';
+import { PackageStructure } from '@boost/common';
+import { CJS_FOLDER, DTS_FOLDER, ESM_FOLDER } from '../constants';
 
 export interface InitArgs {
   local?: boolean;
@@ -11,14 +12,7 @@ export interface InitArgs {
   workspaces?: boolean;
 }
 
-export interface BeemoPackageConfig {
-  beemo: BeemoConfig<Settings>;
-  types?: string;
-  browserslist?: string[];
-  workspaces?: string[];
-}
-
-export default class InitScript extends Script<InitArgs> {
+export default class InitScript extends Script<{}, InitArgs> {
   args() {
     return {
       boolean: ['local', 'node', 'react', 'workspaces'],
@@ -35,85 +29,82 @@ export default class InitScript extends Script<InitArgs> {
     return {};
   }
 
-  execute(context: ScriptContext, args: InitArgs) {
-    // @ts-expect-error
-    const packageConfig: BeemoPackageConfig & PackageConfig = {
+  execute(context: ScriptContext, args: Arguments<InitArgs>) {
+    const pkg: PackageStructure = {
       ...this.tool.package,
       scripts: {},
     };
 
-    // Beemo
-    Object.assign(packageConfig.beemo, {
-      module: args.local ? '@local' : '@milesj/build-tools',
+    const config: BeemoConfig = {
+      module: args.options.local ? '@local' : '@milesj/build-tools',
       drivers: ['babel', 'eslint', 'jest', 'prettier', 'typescript'],
       settings: {},
-    });
+    };
 
-    if (args.node) {
-      packageConfig.beemo.settings.node = true;
+    if (args.options.node) {
+      config.settings!.node = true;
     }
 
-    if (args.react) {
-      packageConfig.beemo.settings.react = true;
+    if (args.options.react) {
+      config.settings!.react = true;
     }
 
     // Scripts
-    Object.assign(packageConfig.scripts, {
+    Object.assign(pkg.scripts, {
       prepare: 'beemo create-config --silent',
-      build: 'beemo run-script build',
       ci: 'yarn run type && yarn run test && yarn run lint',
+      release: 'npx np --yolo',
+
+      // Building
+      clean: 'packemon clean',
+      build: 'packemon build --addEngines',
+      pack: 'NODE_ENV=production packemon pack --addEngines --declaration=standard',
+
+      // Testing
       coverage: 'yarn run test --coverage',
+      test: 'beemo jest',
+
+      // Other
       format: 'beemo prettier',
       lint: 'beemo eslint',
-      release: 'npx np --yolo',
-      test: 'beemo jest',
       type: 'beemo typescript --noEmit',
 
       // Hooks
-      prerelease: 'yarn run ci && yarn run build',
+      prerelease: 'yarn run pack && yarn run ci',
     });
 
-    if (args.workspaces) {
-      if (!packageConfig.devDependencies?.lerna) {
+    if (args.options.workspaces) {
+      if (!pkg.devDependencies?.lerna) {
         throw new Error(`Lerna must be installed to use workspaces.`);
       }
 
-      if (!packageConfig.name.endsWith('-root')) {
-        packageConfig.name += '-root';
+      if (!pkg.name.endsWith('-root')) {
+        pkg.name += '-root';
       }
 
-      if (!packageConfig.workspaces) {
-        packageConfig.workspaces = ['packages/*'];
+      if (!pkg.workspaces) {
+        pkg.workspaces = ['packages/*'];
       }
 
-      packageConfig.private = true;
+      pkg.private = true;
 
-      Object.assign(packageConfig.scripts, {
-        build: 'beemo run-script build --workspaces=* && yarn run type --emitDeclarationOnly',
+      Object.assign(pkg.scripts, {
         release: 'lerna publish',
         type: 'beemo typescript --build --reference-workspaces',
       });
     } else {
-      packageConfig.main = `./${CJS_FOLDER}/index.js`;
-      packageConfig.module = `./${ESM_FOLDER}/index.js`;
-      packageConfig.types = `./${CJS_FOLDER}/index.d.ts`;
-      packageConfig.sideEffects = false;
-    }
-
-    packageConfig.engines = { node: `>=${MIN_NODE_VERSION}` };
-
-    if (args.node) {
-      packageConfig.scripts!.build = packageConfig.scripts!.type.replace('--noEmit', '').trim();
-    } else {
-      packageConfig.browserslist = [`ie ${MIN_IE_VERSION}`];
+      pkg.main = `./${CJS_FOLDER}/index.js`;
+      pkg.module = `./${ESM_FOLDER}/index.js`;
+      pkg.types = `./${DTS_FOLDER}/index.d.ts`;
+      pkg.sideEffects = false;
     }
 
     // Save files
-    const packagePath = this.tool.rootPath.append('package.json');
-    const lernaPath = this.tool.rootPath.append('lerna.json');
-    const promises = [fs.writeJSON(packagePath.path(), packageConfig, { spaces: 2 })];
+    const packagePath = context.cwd.append('package.json');
+    const lernaPath = context.cwd.append('lerna.json');
+    const promises = [fs.writeJSON(packagePath.path(), pkg, { spaces: 2 })];
 
-    if (args.workspaces) {
+    if (args.options.workspaces) {
       promises.push(
         fs.writeJSON(
           lernaPath.path(),

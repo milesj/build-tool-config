@@ -1,29 +1,18 @@
 import glob from 'fast-glob';
 import fs from 'fs-extra';
-import { Script, ScriptContext } from '@beemo/core';
-import { PackageConfig } from '@boost/core';
+import { PackageStructure, Script, ScriptContext } from '@beemo/core';
 
 export default class AddFundingScript extends Script {
-  args() {
-    return {};
-  }
-
-  blueprint() {
-    return {};
-  }
-
-  bootstrap() {
-    this.task('Add funding to all package.json', this.addFundingToPackages);
-  }
-
-  addFundingToPackages(context: ScriptContext) {
-    return glob('**/package.json', {
+  async execute(context: ScriptContext) {
+    const pkgPaths = await glob('**/package.json', {
       absolute: true,
       cwd: context.cwd.path(),
       ignore: ['**/node_modules'],
-    }).then((pkgPaths) =>
-      pkgPaths.map((pkgPath) => {
-        const pkg = fs.readJsonSync(pkgPath) as PackageConfig & { funding?: object };
+    });
+
+    await Promise.all(
+      pkgPaths.map(async (pkgPath) => {
+        const pkg = (await fs.readJson(pkgPath)) as PackageStructure & { funding?: object };
 
         if (!pkg.private) {
           pkg.funding = {

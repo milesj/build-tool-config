@@ -4,15 +4,11 @@ import semver from 'semver';
 import { Script, ScriptContext } from '@beemo/core';
 
 export default class ConvertChangelogScript extends Script {
-  blueprint() {
-    return {};
-  }
-
   async execute(context: ScriptContext): Promise<void[]> {
     const files = await glob('**/CHANGELOG.md', {
       absolute: true,
       cwd: context.cwd.path(),
-      ignore: ['node_modules'],
+      ignore: ['**/node_modules'],
     });
 
     return Promise.all(files.map((filePath) => this.convertChangelog(filePath)));
