@@ -10,7 +10,9 @@ export interface InitArgs {
   workspaces?: boolean;
 }
 
-export default class InitScript extends Script<{}, InitArgs> {
+class InitScript extends Script<{}, InitArgs> {
+  readonly name = '@milesj/beemo-script-init';
+
   parse(): ParserOptions<InitArgs> {
     return {
       options: {
@@ -57,7 +59,7 @@ export default class InitScript extends Script<{}, InitArgs> {
     // Scripts
     Object.assign(pkg.scripts, {
       prepare: 'beemo create-config --silent',
-      ci: 'yarn run type && yarn run test && yarn run lint',
+      check: 'yarn run type && yarn run test && yarn run lint',
       release: 'npx np --yolo',
 
       // Building
@@ -66,8 +68,8 @@ export default class InitScript extends Script<{}, InitArgs> {
       pack: 'NODE_ENV=production packemon pack --addEngines --declaration=standard',
 
       // Testing
-      coverage: 'yarn run test --coverage',
       test: 'beemo jest',
+      coverage: 'yarn run test --coverage',
 
       // Other
       format: 'beemo prettier',
@@ -94,7 +96,8 @@ export default class InitScript extends Script<{}, InitArgs> {
       pkg.private = true;
 
       Object.assign(pkg.scripts, {
-        release: 'lerna publish',
+        release:
+          'lerna version --conventional-commits --changelog-preset conventional-changelog-beemo --create-release github --push && lerna publish from-git',
         type: 'beemo typescript --build --reference-workspaces',
       });
     } else {
@@ -102,7 +105,14 @@ export default class InitScript extends Script<{}, InitArgs> {
       pkg.module = `./${ESM_FOLDER}/index.js`;
       pkg.types = `./${DTS_FOLDER}/index.d.ts`;
       pkg.sideEffects = false;
+      pkg.funding = {
+        type: 'ko-fi',
+        url: 'https://ko-fi.com/milesjohnson',
+      };
     }
+
+    // Sort scripts
+    pkg.scripts = this.sortObject(pkg.scripts!);
 
     // Save files
     const beemoPath = context.cwd.append('.config/beemo.ts');
@@ -134,4 +144,14 @@ export default class InitScript extends Script<{}, InitArgs> {
 
     return Promise.all(promises);
   }
+
+  protected sortObject(object: Record<string, string>): Record<string, string> {
+    const entries = Object.entries(object).sort((a, b) => a[0].localeCompare(b[0]));
+
+    return Object.fromEntries(entries);
+  }
+}
+
+export default function init() {
+  return new InitScript();
 }

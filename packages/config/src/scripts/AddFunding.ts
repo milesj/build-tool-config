@@ -2,7 +2,9 @@ import glob from 'fast-glob';
 import fs from 'fs-extra';
 import { PackageStructure, Script, ScriptContext } from '@beemo/core';
 
-export default class AddFundingScript extends Script {
+class AddFundingScript extends Script {
+  readonly name = '@milesj/beemo-script-add-funding';
+
   async execute(context: ScriptContext) {
     const pkgPaths = await glob('**/package.json', {
       absolute: true,
@@ -25,4 +27,8 @@ export default class AddFundingScript extends Script {
       }),
     );
   }
+}
+
+export default function addFunding() {
+  return new AddFundingScript();
 }
