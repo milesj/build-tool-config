@@ -19,28 +19,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "beemo": {
-    "module": "@milesj/build-tool-config",
-    "drivers": [
-      "babel",
-      "eslint",
-      "jest",
-      "prettier",
-      "typescript"
-    ],
-    "settings": {
-      "node": true
-    },
-    "eslint": {
-      "rules": {
-        "no-var": "off",
-        "no-console": "off",
-        "promise/always-return": "off",
-        "compat/compat": "off",
-        "import/no-extraneous-dependencies": "off"
-      }
-    }
-  },
   "publishConfig": {
     "access": "public"
   }

@@ -12,7 +12,7 @@
     "prettier",
     "typescript"
   ],
-  "main": "./lib/index.js",
+  "main": "./src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/milesj/build-tool-config.git"
@@ -26,7 +26,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=10.10.0"
+    "node": ">=10.3.0"
   },
   "dependencies": {
     "@babel/cli": "^7.13.0",

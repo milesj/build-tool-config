@@ -1,29 +1,29 @@
-import Beemo, { DriverContext, Path } from '@beemo/core';
+import { DriverContext, Path, Tool } from '@beemo/core';
 import { CJS_FOLDER, DIR_PATTERN, ESM_FOLDER, EXTS } from './constants';
 
 const extsWithoutJSON = EXTS.filter((ext) => ext !== '.json');
 
-function hasNoPositionalArgs(context: DriverContext, name: string): boolean {
-  const args = (context.args.params || context.args._) as string[];
+function hasNoParams(context: DriverContext, name: string): boolean {
+  const { params } = context.args;
 
-  return args.length === 0 || (args.length === 1 && args[0] === name);
+  return params.length === 0 || (params.length === 1 && params[0] === name);
 }
 
-module.exports = function milesOSS(tool: Beemo) {
-  const usingTypeScript = tool.isPluginEnabled('driver', 'typescript');
-  const workspacePrefixes = tool.getWorkspacePaths({ relative: true });
+export default function milesOSS(tool: Tool) {
+  const usingTypeScript = tool.driverRegistry.isRegistered('typescript');
+  const workspacePrefixes = tool.project.getWorkspaceGlobs({ relative: true });
 
   // Babel
   tool.onRunDriver.listen((context) => {
     context.addOption('--copy-files');
 
-    if (usingTypeScript && !context.args.extensions) {
+    if (usingTypeScript && !context.getRiskyOption('extensions')) {
       context.addOption('--extensions', extsWithoutJSON.join(','));
     }
 
-    if (hasNoPositionalArgs(context, 'babel')) {
-      context.addArg('src');
-      context.addOption('--out-dir', context.args.esm ? ESM_FOLDER : CJS_FOLDER);
+    if (hasNoParams(context, 'babel')) {
+      context.addParam('src');
+      context.addOption('--out-dir', context.getRiskyOption('esm') ? ESM_FOLDER : CJS_FOLDER);
     }
   }, 'babel');
 
@@ -31,17 +31,17 @@ module.exports = function milesOSS(tool: Beemo) {
   tool.onRunDriver.listen((context) => {
     context.addOptions(['--color', '--fix']);
 
-    if (usingTypeScript && !context.args.ext) {
+    if (usingTypeScript && !context.getRiskyOption('ext')) {
       context.addOption('--ext', extsWithoutJSON.join(','));
     }
 
-    if (hasNoPositionalArgs(context, 'eslint')) {
+    if (hasNoParams(context, 'eslint')) {
       if (workspacePrefixes.length > 0) {
         workspacePrefixes.forEach((wsPrefix) => {
-          context.addArg(new Path(wsPrefix, DIR_PATTERN).path());
+          context.addParam(new Path(wsPrefix, DIR_PATTERN).path());
         });
       } else {
-        context.addArgs(['src', 'tests']);
+        context.addParams(['src', 'tests']);
       }
     }
   }, 'eslint');
@@ -66,21 +66,21 @@ module.exports = function milesOSS(tool: Beemo) {
   tool.onRunDriver.listen((context) => {
     context.addOption('--write');
 
-    if (hasNoPositionalArgs(context, 'prettier')) {
+    if (hasNoParams(context, 'prettier')) {
       const exts = '{ts,tsx,js,jsx,scss,css,gql,yml,yaml}';
 
       if (workspacePrefixes.length > 0) {
         workspacePrefixes.forEach((wsPrefix) => {
-          context.addArgs([
+          context.addParams([
             new Path(wsPrefix, DIR_PATTERN, `**/*.${exts}`).path(),
             new Path(wsPrefix, '*.{md,json}').path(),
           ]);
         });
       } else {
-        context.addArgs([new Path(DIR_PATTERN, `**/*.${exts}`).path(), '*.{md,json}']);
+        context.addParams([new Path(DIR_PATTERN, `**/*.${exts}`).path(), '*.{md,json}']);
       }
     }
 
-    context.addArgs(['docs/**/*.md', 'README.md']);
+    context.addParams(['docs/**/*.md', 'README.md']);
   }, 'prettier');
-};
+}

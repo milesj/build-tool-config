@@ -5,9 +5,8 @@ import builtinModules from 'builtin-modules';
 import { Path } from '@beemo/core';
 import { ESLintConfig } from '@beemo/driver-eslint';
 import { EXT_PATTERN, EXTS, IGNORE_PATHS } from '../constants';
-import { BeemoProcess } from '../types';
 
-const { tool } = (process.beemo as unknown) as BeemoProcess;
+const { tool } = process.beemo;
 const { node } = tool.config.settings;
 const workspacesEnabled = !!tool.package.workspaces;
 let project: Path;
@@ -19,7 +18,7 @@ if (workspacesEnabled) {
 
   const include: Path[] = [];
 
-  tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
+  tool.project.getWorkspaceGlobs({ relative: true }).forEach((wsPath) => {
     include.push(
       new Path(wsPath, 'src/**/*'),
       new Path(wsPath, 'tests/**/*'),
@@ -76,7 +75,7 @@ const config: ESLintConfig = {
   },
   parserOptions: {
     sourceType: 'module',
-    // @ts-expect-error Fix Beemo upstream
+    // @ts-expect-error
     ecmaVersion: 2021,
     ecmaFeatures: {
       jsx: true,

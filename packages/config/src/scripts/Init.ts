@@ -1,8 +1,7 @@
 import fs from 'fs-extra';
-import { BeemoConfig, Script, ScriptContext } from '@beemo/core';
-import { PackageConfig } from '@boost/core';
-import { CJS_FOLDER, ESM_FOLDER, MIN_IE_VERSION, MIN_NODE_VERSION } from '../constants';
-import { Settings } from '../types';
+import { Arguments, BeemoConfig, ParserOptions, Script, ScriptContext } from '@beemo/core';
+import { PackageStructure } from '@boost/common';
+import { CJS_FOLDER, DTS_FOLDER, ESM_FOLDER } from '../constants';
 
 export interface InitArgs {
   local?: boolean;
@@ -11,111 +10,122 @@ export interface InitArgs {
   workspaces?: boolean;
 }
 
-export interface BeemoPackageConfig {
-  beemo: BeemoConfig<Settings>;
-  types?: string;
-  browserslist?: string[];
-  workspaces?: string[];
-}
+class InitScript extends Script<{}, InitArgs> {
+  readonly name = '@milesj/beemo-script-init';
 
-export default class InitScript extends Script<InitArgs> {
-  args() {
+  parse(): ParserOptions<InitArgs> {
     return {
-      boolean: ['local', 'node', 'react', 'workspaces'],
-      default: {
-        local: false,
-        node: false,
-        react: false,
-        workspaces: false,
+      options: {
+        local: {
+          description: 'Initialize with an @local config module',
+          type: 'boolean',
+        },
+        node: {
+          description: 'Project is Node.js only',
+          type: 'boolean',
+        },
+        react: {
+          description: 'Project will be using React',
+          type: 'boolean',
+        },
+        workspaces: {
+          description: 'Initialize project as a monorepo using workspaces',
+          type: 'boolean',
+        },
       },
     };
   }
 
-  blueprint() {
-    return {};
-  }
-
-  execute(context: ScriptContext, args: InitArgs) {
-    // @ts-expect-error
-    const packageConfig: BeemoPackageConfig & PackageConfig = {
+  execute(context: ScriptContext, args: Arguments<InitArgs>) {
+    const pkg: PackageStructure = {
       ...this.tool.package,
       scripts: {},
     };
 
-    // Beemo
-    Object.assign(packageConfig.beemo, {
-      module: args.local ? '@local' : '@milesj/build-tools',
+    const config: BeemoConfig = {
+      module: args.options.local ? '@local' : '@milesj/build-tools',
       drivers: ['babel', 'eslint', 'jest', 'prettier', 'typescript'],
       settings: {},
-    });
+    };
 
-    if (args.node) {
-      packageConfig.beemo.settings.node = true;
+    if (args.options.node) {
+      config.settings!.node = true;
     }
 
-    if (args.react) {
-      packageConfig.beemo.settings.react = true;
+    if (args.options.react) {
+      config.settings!.react = true;
     }
 
     // Scripts
-    Object.assign(packageConfig.scripts, {
+    Object.assign(pkg.scripts, {
       prepare: 'beemo create-config --silent',
-      build: 'beemo run-script build',
-      ci: 'yarn run type && yarn run test && yarn run lint',
+      check: 'yarn run type && yarn run test && yarn run lint',
+      release: 'npx np --yolo',
+
+      // Building
+      clean: 'packemon clean',
+      build: 'packemon build --addEngines',
+      pack: 'NODE_ENV=production packemon pack --addEngines --declaration=standard',
+
+      // Testing
+      test: 'beemo jest',
       coverage: 'yarn run test --coverage',
+
+      // Other
       format: 'beemo prettier',
       lint: 'beemo eslint',
-      release: 'npx np --yolo',
-      test: 'beemo jest',
       type: 'beemo typescript --noEmit',
 
       // Hooks
-      prerelease: 'yarn run ci && yarn run build',
+      prerelease: 'yarn run pack && yarn run ci',
     });
 
-    if (args.workspaces) {
-      if (!packageConfig.devDependencies?.lerna) {
+    if (args.options.workspaces) {
+      if (!pkg.devDependencies?.lerna) {
         throw new Error(`Lerna must be installed to use workspaces.`);
       }
 
-      if (!packageConfig.name.endsWith('-root')) {
-        packageConfig.name += '-root';
+      if (!pkg.name.endsWith('-root')) {
+        pkg.name += '-root';
       }
 
-      if (!packageConfig.workspaces) {
-        packageConfig.workspaces = ['packages/*'];
+      if (!pkg.workspaces) {
+        pkg.workspaces = ['packages/*'];
       }
 
-      packageConfig.private = true;
+      pkg.private = true;
 
-      Object.assign(packageConfig.scripts, {
-        build: 'beemo run-script build --workspaces=* && yarn run type --emitDeclarationOnly',
-        release: 'lerna publish',
+      Object.assign(pkg.scripts, {
+        release:
+          'lerna version --conventional-commits --changelog-preset conventional-changelog-beemo --create-release github --push && lerna publish from-git',
         type: 'beemo typescript --build --reference-workspaces',
       });
     } else {
-      packageConfig.main = `./${CJS_FOLDER}/index.js`;
-      packageConfig.module = `./${ESM_FOLDER}/index.js`;
-      packageConfig.types = `./${CJS_FOLDER}/index.d.ts`;
-      packageConfig.sideEffects = false;
+      pkg.main = `./${CJS_FOLDER}/index.js`;
+      pkg.module = `./${ESM_FOLDER}/index.js`;
+      pkg.types = `./${DTS_FOLDER}/index.d.ts`;
+      pkg.sideEffects = false;
+      pkg.funding = {
+        type: 'ko-fi',
+        url: 'https://ko-fi.com/milesjohnson',
+      };
     }
 
-    packageConfig.engines = { node: `>=${MIN_NODE_VERSION}` };
-
-    if (args.node) {
-      packageConfig.scripts!.build = packageConfig.scripts!.type.replace('--noEmit', '').trim();
-    } else {
-      packageConfig.browserslist = [`ie ${MIN_IE_VERSION}`];
-    }
+    // Sort scripts
+    pkg.scripts = this.sortObject(pkg.scripts!);
 
     // Save files
-    const packagePath = this.tool.rootPath.append('package.json');
-    const lernaPath = this.tool.rootPath.append('lerna.json');
-    const promises = [fs.writeJSON(packagePath.path(), packageConfig, { spaces: 2 })];
+    const beemoPath = context.cwd.append('.config/beemo.ts');
+    const packagePath = context.cwd.append('package.json');
+    const lernaPath = context.cwd.append('lerna.json');
+    const promises = [
+      fs.writeJson(packagePath.path(), pkg, { spaces: 2 }),
+      fs.writeFile(beemoPath.path(), `export default ${JSON.stringify(config)};`, 'utf8'),
+    ];
 
-    if (args.workspaces) {
+    if (args.options.workspaces) {
       promises.push(
-        fs.writeJSON(
+        fs.writeJson(
           lernaPath.path(),
           {
             version: 'independent',
@@ -134,4 +144,14 @@ export default class InitScript extends Script<InitArgs> {
 
     return Promise.all(promises);
   }
+
+  protected sortObject(object: Record<string, string>): Record<string, string> {
+    const entries = Object.entries(object).sort((a, b) => a[0].localeCompare(b[0]));
+
+    return Object.fromEntries(entries);
+  }
+}
+
+export default function init() {
+  return new InitScript();
 }

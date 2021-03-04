@@ -1,14 +1,9 @@
-import { BabelConfig, BabelDriverArgs } from '@beemo/driver-babel';
+import { BabelConfig } from '@beemo/driver-babel';
 import { MIN_IE_VERSION, MIN_NODE_VERSION } from '../constants';
-import { BeemoProcess } from '../types';
-
-interface Args extends BabelDriverArgs {
-  esm?: boolean;
-}
 
 // Package: Run in root
 // Workspaces: Run in each package (using --config-file option)
-const { context, tool } = (process.beemo as unknown) as BeemoProcess<Args>;
+const { context, tool } = process.beemo;
 const { decorators = false, node = false, react = false } = tool.config.settings;
 
 const plugins: BabelConfig['plugins'] = [
@@ -28,15 +23,11 @@ const presets: BabelConfig['presets'] = [
     '@babel/preset-env',
     {
       loose: true,
-      modules: context.args.esm ? false : 'commonjs',
+      modules: context.getRiskyOption('esm') ? false : 'commonjs',
       shippedProposals: true,
-      targets:
-        // eslint-disable-next-line no-nested-ternary
-        process.env.NODE_ENV === 'test'
-          ? { node: 'current' }
-          : node
-          ? { node: tool.package?.engines?.node?.replace('>=', '') || MIN_NODE_VERSION }
-          : { ie: MIN_IE_VERSION },
+      targets: node
+        ? { node: tool.package?.engines?.node?.replace('>=', '') || MIN_NODE_VERSION }
+        : { ie: MIN_IE_VERSION },
     },
   ],
   '@babel/preset-typescript',

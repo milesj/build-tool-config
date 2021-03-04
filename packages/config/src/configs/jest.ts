@@ -1,22 +1,17 @@
 import { Path } from '@beemo/core';
 import { JestConfig } from '@beemo/driver-jest';
 import { IGNORE_PATHS } from '../constants';
-import { BeemoProcess } from '../types';
-
-interface Args {
-  useProjects?: boolean;
-}
 
 // Package: Run in root
 // Workspaces: Run in root
-const { context, tool } = (process.beemo as unknown) as BeemoProcess<Args>;
+const { context, tool } = process.beemo;
 const workspacesEnabled = !!tool.package.workspaces;
 const setupFilePath = Path.resolve('./tests/setup.ts');
 const setupFilesAfterEnv: string[] = [];
 const projects: string[] = [];
 
-if (workspacesEnabled && context.args.useProjects) {
-  tool.getWorkspacePaths({ relative: true }).forEach((wsPath) => {
+if (workspacesEnabled && context.getRiskyOption('useProjects')) {
+  tool.project.getWorkspaceGlobs({ relative: true }).forEach((wsPath) => {
     projects.push(`<rootDir>/${wsPath}`);
   });
 }
