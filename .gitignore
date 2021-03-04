@@ -12,7 +12,7 @@ jest.config.js
 *.tsbuildinfo
 
 # Symlinks
-packages/core/lib
+packages/core/src
 packages/core/templates
 
 # Ignore for local dev

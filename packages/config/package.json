@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "@babel/cli": "^7.13.0",
-    "@babel/core": "^7.13.1",
-    "@babel/plugin-proposal-decorators": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/plugin-proposal-decorators": "^7.13.5",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",
-    "@babel/preset-env": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
     "@types/jest": "^26.0.20",
