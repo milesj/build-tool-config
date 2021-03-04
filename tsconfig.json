@@ -7,6 +7,12 @@
     },
     {
       "path": "packages/config/tests"
+    },
+    {
+      "path": "packages/core"
+    },
+    {
+      "path": "packages/runtime"
     }
   ]
 }
