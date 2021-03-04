@@ -12,12 +12,12 @@
     "release": "lerna publish"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.6",
+    "@types/fs-extra": "^9.0.8",
     "@types/semver": "^7.3.4",
-    "lerna": "^3.22.1"
+    "lerna": "^4.0.0"
   },
   "workspaces": [
-    "packages/*"
+    "packages/config"
   ],
   "publishConfig": {
     "access": "public"
