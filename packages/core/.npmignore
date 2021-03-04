@@ -1,4 +1,5 @@
 dts/
+src/
 tests/
 tsconfig.json
 *.tsbuildinfo
