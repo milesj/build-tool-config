@@ -75,7 +75,6 @@ const config: ESLintConfig = {
   },
   parserOptions: {
     sourceType: 'module',
-    // @ts-expect-error
     ecmaVersion: 2021,
     ecmaFeatures: {
       jsx: true,
