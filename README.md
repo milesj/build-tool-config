@@ -1,3 +1,5 @@
+> <h1>Deprecated! Use <a href="https://www.npmjs.com/package/@beemo/dev">@beemo/dev</a> instead!</h1>
+
 # 👨‍💻 MilesOSS Dev Tools
 
 I got tired of duplicating dev tool configuration files over and over again between projects, so I
